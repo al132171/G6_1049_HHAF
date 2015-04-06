@@ -78,6 +78,7 @@ public class ActividadServicios {
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Produces(MediaType.APPLICATION_JSON)
     public Response creaNuevaEntrada(@PathParam("nombre") String nombre, Actividad actividad) {
+		
         if(!nombre.equals(actividad.getNombre())) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }

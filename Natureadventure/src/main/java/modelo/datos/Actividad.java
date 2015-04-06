@@ -35,6 +35,8 @@ public class Actividad {
     private int participantesMax;
     private int participantesMin;
     private String lugar;
+	//@Lob
+    //private byte[] imagen;
     private String imagen;
 
     public Actividad() {
@@ -56,8 +58,8 @@ public class Actividad {
 		this.precio = precio;
 		this.participantesMax = participantesMax;
 		this.participantesMin = participantesMin;
-		this.setLugar(lugar);
-		this.setImagen(imagen);
+		this.lugar = lugar;
+		this.imagen = imagen;
 	}
 
 	public String getNombre() {

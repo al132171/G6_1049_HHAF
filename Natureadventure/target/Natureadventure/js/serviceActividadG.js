@@ -8,12 +8,20 @@ function borraCampos($scope) {
 }
 
 //Comprobar que no existen errores en los campos del formulario
-function validator($scope) { 
-    if ($scope.createForm.$valid) {
-	      return true;
-	    } else {
-	      return false;
-	    }
+function validator($scope, tipo) { 
+	if(tipo == "create"){
+		if ($scope.createForm.$valid) {
+			  return true;
+			} else {
+			  return false;
+			}
+	}else{
+		if ($scope.updateForm.$valid) {
+			  return true;
+			} else {
+			  return false;
+			}
+	}
 };
 
 
@@ -33,30 +41,52 @@ function validator($scope) {
 //    	Limpiar el formulario para que si sales de la ventana modal se limpien los mensajes de error y formato
 
     	$scope.resetForm = function(user){ 
-		 var defaultForm = {
+		 	var defaultForm = {
 			      nombre: "", duracion: "", horaInicio: "", fechaInicio: "", fechaFin: "",
         		descripcion: "", nivel: "", precio: "", participantesMax: "", participantesMin: "",lugar: "", imagen:""
 			  };
-    		 $scope.createForm.$setPristine();
-		 $scope.user = defaultForm;
+    	 	$scope.createForm.$setPristine();
+		 	$scope.user = defaultForm;
     	};
     	
 //    	Comprueba en tiempo real si el nombre introducido ya existe y mostrar o quitar el error
     	$scope.comprobar = function(nombre){
-    		ActividadGService.retrieveContact(nombre).success(function(){
+
+			ActividadGService.retrieveContact(nombre).success(function(data){
 				alert("esta" + nombre);
     			$scope.createForm.nombre.$setValidity("nombre", false);
+				$scope.updateForm.nombreU.$setValidity("nombreU", false);		  
+				if(data.actividad.nombre == nombre){
+					
+					alert(data.actividad.nombre);
+				}
     		}).error(function(){
-    				alert("no está"+nombre);
-    				$scope.createForm.nombre.$setValidity("nombre", true);
+    			alert("no está"+nombre);
+    			$scope.createForm.nombre.$setValidity("nombre", true);
+				$scope.updateForm.nombreU.$setValidity("nombreU", true);
+				
     		});
     	};
+		
+		
+		
+		/*$scope.$watch(function() {
+		  return $scope.currentActividad.actividad.nombre;
+		}, function(newValue, oldValue) {
+		 alert("change detected: " + newValue +"--"+ oldValue);
+		});*/
 		
     	
 //    	Comprueba si los datos introducidos son números o "-"
     	 $scope.fechaInicio1 = { 
     		        //word: /[^\d|\-+|\.+]/g
     			 word: /^([0-9-])*$/
+    		      };
+		
+		//    	Comprueba si los datos introducidos son números o "-"
+    	 $scope.horaInicio1 = { 
+    		        //word: /[^\d|\-+|\.+]/g
+    			 word: /^([0-9:])*$/
     		      };
 		
 //		Con estas tres funciones evito el espacio en blanco por defecto que pone ng-model en los select
@@ -70,7 +100,8 @@ function validator($scope) {
                                   'value': 'Alto'}
                                ];
 		
-	$scope.feed.nivel = $scope.feed.niveles[0].value;
+		$scope.feed.nivel = $scope.feed.niveles[0].value;
+		$scope.feed.nivelU = $scope.feed.niveles[0].value;
 
 	
 //	Comprueba que la fecha inicio no sea mayor que la final
@@ -85,10 +116,22 @@ function validator($scope) {
 		var añoFin = fechaFin.substring(6);
 
 
-		if(añoInicio > añoFin){$scope.createForm.fechaFin.$setValidity("fechaFin", false);}
-		else if(mesInicio > mesFin){$scope.createForm.fechaFin.$setValidity("fechaFin", false);}
-		else if(diaInicio > diaFin){ alert("dia");$scope.createForm.fechaFin.$setValidity("fechaFin", false);}
-		else{ $scope.createForm.fechaFin.$setValidity("fechaFin", true);}
+		if(añoInicio > añoFin){ 
+			$scope.createForm.fechaFin.$setValidity("fechaFin", false); 
+			$scope.updateForm.fechaFinU.$setValidity("fechaFinU", false); 
+		}
+		else if(mesInicio > mesFin){
+			$scope.createForm.fechaFin.$setValidity("fechaFin", false);
+			$scope.updateForm.fechaFinU.$setValidity("fechaFinU", false);
+		}
+		else if(diaInicio > diaFin){ 
+			$scope.createForm.fechaFin.$setValidity("fechaFin", false);
+			$scope.updateForm.fechaFinU.$setValidity("fechaFinU", false);
+		}
+		else{ 
+			$scope.createForm.fechaFin.$setValidity("fechaFin", true);
+			$scope.updateForm.fechaFinU.$setValidity("fechaFinU", true);
+		}
 	};
 		
     	
@@ -100,7 +143,7 @@ function validator($scope) {
         self.create = function (nombre, duracion, horaInicio, fechaInicio, fechaFin,
         		descripcion, nivel, precio, participantesMax, participantesMin, lugar, imagen) {
         	
-        	var bool = validator($scope);
+        	var bool = validator($scope, "create");
         	alert(bool);
         	
         	if(bool == true){
@@ -133,25 +176,31 @@ function validator($scope) {
         self.retreiveContact = function(nombre) {
             ActividadGService.retrieveContact(nombre)
                 .success(function(data) {
-                    console.log(data);
                     $scope.currentActividad = data;
+					
                 });
         };
 
         self.update = function(nombre, duracion, horaInicio, fechaInicio, fechaFin,
         		descripcion, nivel, precio, participantesMax, participantesMin,lugar, imagen) {
-							
-            ActividadGService.update(nombre, duracion, horaInicio, fechaInicio, fechaFin,
-            		descripcion, nivel, precio, participantesMax, participantesMin, lugar, imagen)
-                .success(function(data) {
-				
-                    ActividadGService.retrieveAll()
-                        .success(function (data) {
-                            $scope.actividades = data.actividad;
-                        });
-                });
-			 $('#actualizar').modal('hide');
-        };
+			
+			var bool = validator($scope, "update");
+			alert(bool);
+						
+			if(bool == true){
+				ActividadGService.update(nombre, duracion, horaInicio, fechaInicio, fechaFin,
+						descripcion, nivel, precio, participantesMax, participantesMin, lugar, imagen)
+					.success(function(data) {
+
+						ActividadGService.retrieveAll()
+							.success(function (data) {
+								$scope.actividades = data.actividad;
+							});
+					$('#actualizar').modal('hide');
+					});
+
+			};
+		};
 
     }]);
 

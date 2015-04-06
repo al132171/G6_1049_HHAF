@@ -157,75 +157,121 @@
                 </div>
                 <div class="modal-body">
 					
-	                 <div class="form-group">
-					    	<label for="nombre">Nombre:</label>
-					   		<input type="text" ng-model="currentActividad.actividad.nombre" class="form-control" ng-change="comprobar(currentActividad.actividad.nombre)" required>
+					 <form name="updateForm">
+					
+					 <div class="form-group" ng-class="{ 'has-error' : updateForm.nombreU.$invalid && !updateForm.nombreU.$pristine, 
+						'has-success' : !updateForm.nombreU.$invalid}">					    	
+						    <label>Nombre:</label>
+					   		<input type="text" name="nombreU" class="form-control" ng-model="currentActividad.actividad.nombre" 
+								   ng-minlength="2" ng-maxlength="50" ng-change="comprobar(currentActividad.actividad.nombre)" required> 
+							<small class="error" ng-show="updateForm.nombreU.$error.required">*Nombre obligatorio</small>
+							<small class="error" ng-show="updateForm.nombreU.$error.minlength">*Min. 2 caracteres</small>
+							<small class="error" ng-show="updateForm.nombreU.$error.maxlength">*Máx. 50 caracteres</small>
+							<small class="error" ng-show="updateForm.nombreU.$error.nombreU">*El nombre ya existe</small>
 					  </div>
-					  <div class="form-group">
+						 
+					  <div class="form-group" ng-class="{ 'has-error' : updateForm.descripcionU.$invalid && !updateForm.descripcionU.$pristine, 
+						'has-success' : !updateForm.descripcionU.$invalid}">	
 					    	<label for="descripcion">Descripción:</label>
-					   		<textarea rows="4" cols="50" ng-model="currentActividad.actividad.descripcion" class="form-control" required></textarea>
+					   		<textarea rows="4" cols="50" name="descripcionU" ng-model="currentActividad.actividad.descripcion" class="form-control" 
+									   ng-maxlength="255" required></textarea>
+						  	<small class="error" ng-show="updateForm.descripcionU.$error.required">*Descripción obligatoria</small>
+							<small class="error" ng-show="updateForm.descripcionU.$error.maxlength">*Máx. 255 caracteres</small>
 					  </div>
-					  <div class="form-group">
-					    	<label for="duracion">Duracion:</label>
-					   		<input type="number" ng-model="currentActividad.actividad.duracion" class="form-control" required placeholder="minutos">
+						 
+					  <div class="form-group" ng-class="{ 'has-error' : updateForm.duracionU.$invalid && !updateForm.duracionU.$pristine, 
+						'has-success' : !updateForm.duracionU.$invalid}">	
+					    	<label>Duracion:</label>
+					   		<input type="number" name="duracionU" ng-min=0 min="0" ng-model="currentActividad.actividad.duracion" class="form-control" required placeholder="minutos">
+					  		<small class="error" ng-show="updateForm.duracionU.$error.required">*Duración obligatoria</small>
+							<small class="error" ng-show="updateForm.duracionU.$error.min">*Duración inválida</small>
 					  </div>
-					  <div class="form-group">
-						  <label for="horaInicio">Hora inicio:</label>
+						 
+					  <div class="form-group" ng-class="{ 'has-error' : updateForm.horaInicioU.$invalid && !updateForm.horaInicioU.$pristine, 
+						'has-success' : !updateForm.horaInicioU.$invalid}">	
+						  <label>Hora inicio:</label>
 					    	<div class="input-group date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
-						   		<input type="text" ng-model="currentActividad.actividad.horaInicio" class="form-control" name="horaInicio" required/>
+						   		<input type="text" name="horaInicioU" ng-model="currentActividad.actividad.horaInicio" class="form-control" ng-pattern="horaInicio1.word" required ng-maxlength="5" placeholder="(hh:mm)">
 						   		<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
 					  		</div>
+						  <small class="error" ng-show="updateForm.horaInicioU.$error.required">*Hora obligatoria</small>
+						  <small class="error" ng-show="updateForm.horaInicioU.$error.pattern">*Formato inválido</small>
+						  <small class="error" ng-show="updateForm.horaInicioU.$error.maxlength">*Máx. 5 caracteres</small>
 					  </div>
-					  <div class="form-group">
+						 
+					 <div class="form-group" ng-class="{ 'has-error' : updateForm.fechaInicioU.$invalid && !updateForm.fechaInicioU.$pristine, 
+						'has-success' : !updateForm.fechaInicioU.$invalid}">	
 					    	<label for="dtp_input2">Fecha inicio:</label>
-                			<!-- <div id="datetimepicker1" class="input-append date"> -->
 					    	<div class="input-group date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-					    		<input type="text" id="fechaInicio" name="fechaInicio" class="form-control" ng-model="currentActividad.actividad.fechaInicio" ng-maxlength="10" ng-minlength="10" ng-pattern="fechaInicio1.word" required ng-change="compararFechas(currentActividad.actividad.fechaInicio, currentActividad.actividad.fechaFin)" />
+					    		<input type="text" name="fechaInicioU" class="form-control" ng-model="currentActividad.actividad.fechaInicio" ng-maxlength="10" ng-minlength="10" ng-pattern="fechaInicio1.word" required ng-change="compararFechas(currentActividad.actividad.fechaInicio, currentActividad.actividad.fechaFin)" />
 					  			<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 					  		</div>
+						   <small class="error" ng-show="updateForm.fechaInicioU.$error.required">*Fecha inicio obligatoria</small>
+						   <small class="error" ng-show="updateForm.fechaInicioU.$error.maxlength || updateForm.fechaInicioU.$error.pattern || createForm.fechaInicioU.$error.minlength">*Formato inválido</small>	
 					  </div>
-					  <div class="form-group">
+						 
+					  <div class="form-group" ng-class="{ 'has-error' : updateForm.fechaFinU.$invalid && !updateForm.fechaFinU.$pristine, 
+						'has-success' : !updateForm.fechaFinU.$invalid}">	
 					    	<label for="dtp_input3">Fecha fin:</label>
 					    	<div class="input-group date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input3" data-link-format="yyyy-mm-dd">
-					    		<input type="text" id="fechaFin" name="fechaFin" class="form-control" ng-model="currentActividad.actividad.fechaFin" required ng-change="compararFechas(currentActividad.actividad.fechaInicio, currentActividad.actividad.fechaFin)"/>
+					    		<input type="text" name="fechaFinU" class="form-control" ng-model="currentActividad.actividad.fechaFin" required ng-change="compararFechas(currentActividad.actividad.fechaInicio, currentActividad.actividad.fechaFin)"/>
 					  			<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-					  		</div>				  </div>
-					  <div class="form-group">
-					    	<label for="nivel">Nivel:</label>
-					    	 <select ng-model="currentActividad.actividad.nivel"  ng-options="template.value as template.name for template in feed.niveles" class="form-control" name="nivel">
+					  		</div>
+						    <small class="error" ng-show="updateForm.fechaFinU.$error.required">*Fecha fin obligatoria</small>
+							<small class="error" ng-show="updateForm.fechaFinU.$error.maxlength || updateForm.fechaFinU.$error.pattern">*Fecha inválida
+							</small>
+						    <small class="error" ng-show="updateForm.fechaFinU.$error.fechaFinU">*Fecha Inicio > Fecha Fin</small>
+						</div>
+					  
+					 <div class="form-group" ng-class="{ 'has-error' : updateForm.nivelU.$invalid && !updateForm.nivelU.$pristine, 
+						'has-success' : !updateForm.nivelU.$invalid}">	
+					    	<label>Nivel:</label>
+					    	 <select ng-model="currentActividad.actividad.nivel"  ng-options="template.value as template.name for template in feed.niveles" class="form-control" name="nivelU">
               				 </select>
 					  </div>
-					  <div class="form-group">
-					    	<label for="precio">Precio:</label>
-					   		<input type="number" min="0" ng-model="currentActividad.actividad.precio" class="form-control" name="precio" ng-min="0"  class="form-control" required>
+						 
+					  <div class="form-group" ng-class="{ 'has-error' : updateForm.precioU.$invalid && !updateForm.precioU.$pristine, 
+						'has-success' : !updateForm.precioU.$invalid}">	
+					    	<label>Precio:</label>
+					   		<input type="number" name="precioU" min="0" ng-model="currentActividad.actividad.precio" class="form-control" ng-min="0"  class="form-control" required>
+						    <small class="error" ng-show="updateForm.precioU.$error.required">*Precio obligatorio</small>
+						    <small class="error" ng-show="updateForm.precioU.$error.min">*Precio inválido</small>
 					  </div> 
 					 
 					   <div class="row">
-			            <div class="form-group col-xs-6">
-			                <label for="participantesMin">Participantes Min.</label>
-			                <input id="participantesMin" ng-model="currentActividad.actividad.participantesMin" class="form-control input-group-lg reg_name" type="number" min="0"
-			                name="participantesMin" required="required"/>
+			            <div class="form-group col-xs-6" ng-class="{ 'has-error' : updateForm.participantesMinU.$invalid && !updateForm.precioU.$pristine, 'has-success' : !updateForm.participantesMinU.$invalid}">
+			                <label>Participantes Min.</label>
+			                <input ng-model="currentActividad.actividad.participantesMin" class="form-control input-group-lg reg_name" type="number" min="0" name="participantesMinU" ng-min="0" min="0" max="{{currentActividad.actividad.participantesMax}}" required/>
+							 <small class="error" ng-show="updateForm.participantesMinU.$error.required">*Participantes mín. obligatorios</small>
+						     <small class="error" ng-show="updateForm.participantesMinU.$error.min">*Participantes mín. inválidos</small>
+							 <small class="error" ng-show="updateForm.participantesMin.$error.max">*Participantes mín. inválidos</small>
 			            </div>
 			            </div>
 
            				<div class="row">
-			             <div class="form-group col-xs-6">
-			                <label for="participantesMax">Participantes Max.</label>
-			                <input id="participantesMax" ng-model="currentActividad.actividad.participantesMax" class="form-control input-group-lg reg_name" type="number" min="0"
-			                name="participantesMax" />
+			             <div class="form-group col-xs-6" ng-class="{ 'has-error' : updateForm.participantesMaxU.$invalid && !updateForm.participantesMaxU.$pristine, 'has-success' : !updateForm.participantesMaxU.$invalid}">
+			                <label>Participantes Max.</label>
+			                <input name="participantesMaxU" ng-model="currentActividad.actividad.participantesMax" class="form-control input-group-lg reg_name" type="number" ng-min="0" min="{{currentActividad.actividad.participantesMin}}" required/>
+							 <small class="error" ng-show="updateForm.participantesMaxU.$error.required">*Participantes máx. obligatorios</small>
+							 <small class="error" ng-show="updateForm.participantesMaxU.$error.min">*Participantes máx. inválidos</small>
 			            </div>
         			</div>
-					<div class="form-group">
-					    	<label for="lugar">Lugar:</label>
-					   		<input type="text" ng-model="currentActividad.actividad.lugar" class="form-control" name="lugar" required/>
+					<div class="form-group" ng-class="{ 'has-error' : updateForm.lugarU.$invalid && !updateForm.lugarU.$pristine, 
+						'has-success' : !updateForm.lugarU.$invalid}">
+					    	<label>Lugar:</label>
+					   		<input type="text" ng-model="currentActividad.actividad.lugar" class="form-control" name="lugarU" required/>
+							<small class="error" ng-show="updateForm.lugarU.$error.required">*Lugar obligatorio</small>
 					</div>
 					  
-					  <div class="form-group">
+					<div class="form-group" ng-class="{ 'has-error' : updateForm.imagenU.$invalid && !updateForm.imagenU.$pristine, 
+						'has-success' : !updateForm.imagenU.$invalid}">
 					    	<label for="nivel">Imagen:</label>
-					   		<input type="text" ng-model="currentActividad.actividad.imagen" class="form-control" name="imagen" required/>
+					   		<input type="text" ng-model="currentActividad.actividad.imagen" class="form-control" name="imagenU" required/>
+						  	<small class="error" ng-show="updateForm.imagenU.$error.required">*Imagen obligatoria</small>
+
 					</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -233,6 +279,7 @@
                             ng-click="actividadesCtrl.update(currentActividad)"
                             >Actualizar</button>
                 </div>
+			</form>
             </div>
         </div>
     </div>
@@ -261,11 +308,11 @@
 						    </small>
 						     <small class="error" 
 					            ng-show="createForm.nombre.$error.minlength">
-					             *Min. 2 caracteres
+					             *Mín. 2 caracteres
 					    </small>
 					    <small class="error" 
 					            ng-show="createForm.nombre.$error.maxlength">
-					             *Max. 50 caracteres
+					             *Máx. 50 caracteres
 					    </small>
 					  
 					    <small class="error" 
@@ -292,10 +339,7 @@
 							            ng-show="createForm.descripcion.$error.maxlength">
 							            * Max. 255 caracteres
 							    </small>
-							    <small class="error" 
-					            ng-show="createForm.nombre.$error.descripcion">
-					             ////
-					    </small>
+							   
 						    </div>
 					  </div>
 					  
@@ -321,19 +365,14 @@
 						'has-success' : !createForm.horaInicio.$invalid}">
 					    	<label for="horaInicio">Hora inicio:</label>
 					    	<div class="input-group date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
-						   		<input type="text" ng-model="user.horaInicio" class="form-control" name="horaInicio" required/>
+						   		<input type="text" ng-model="user.horaInicio" class="form-control" name="horaInicio" ng-pattern="horaInicio1.word" required ng-maxlength="5" placeholder="(hh:mm)"/>
 						   		<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
 					  		</div>
 					  		<div class="error" ng-show="createForm.horaInicio.$dirty && createForm.horaInicio.$invalid">
-								    <small class="error" 
-								        ng-show="createForm.horaInicio.$error.required">
-								        *Hora obligatoria
-								    </small>
-								     <small class="error" 
-							            ng-show="createForm.horaInicio.$error.time">
-							            *Hora inválida
-							    </small>
+								    <small class="error" ng-show="createForm.horaInicio.$error.required">*Hora obligatoria</small>
+								    <small class="error"ng-show="createForm.horaInicio.$error.pattern">*Formato inválido</small>
+									<small class="error"ng-show="createForm.horaInicio.$error.maxlength">*Máx. 5 caracteres</small>
 						    </div>
 					  </div>
 					  
@@ -467,18 +506,20 @@ ng-change="compararFechas(user.fechaInicio, user.fechaFin)"/>
 						    </div>
 					  </div>
 					  
-					  <div class="form-group" ng-class="{ 'has-error' : createForm.imagen.$invalid && !createForm.imagen.$pristine, 
-						'has-success' : !createForm.imagen.$invalid}">
-					    	<label for="nivel">Imagen:</label>
+					  <div class="form-group">
+					    	<label for="imagen">Imagen:</label>
 					   		<input type="text" ng-model="user.imagen" class="form-control" name="imagen" required/>
-					   		<div class="error" ng-show="createForm.imagen.$dirty && createForm.imagen.$invalid">
+						  	<div class="error" ng-show="createForm.imagen.$dirty && createForm.imagen.$invalid">
 								    <small class="error" 
 								        ng-show="createForm.imagen.$error.required">
 								        *Imagen obligatorio
 								    </small>
-								     
+								    
 						    </div>
+						  
 					  </div>
+				  
+				 
 			            
 			     
 			            
