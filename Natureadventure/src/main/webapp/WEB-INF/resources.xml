@@ -4,7 +4,7 @@
         jdbcUrl = jdbc:mysql://localhost:3306/natureadventure
         jtaManaged = true
         userName = fernando
-        password = nekrwpint
+        password = practicas123
     </Resource>
     <!--<Resource id="derbyDataSource" type="DataSource">-->
         <!--jdbcDriver = org.apache.derby.jdbc.ClientDriver-->
