@@ -9,39 +9,40 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * Created by oscar on 27/11/14.
  */
+
 @XmlRootElement
 @XmlType(propOrder = {"nombre", "duracion","horaInicio", "fechaInicio","fechaFin","descripcion","nivel","precio","participantesMax","participantesMin","lugar","imagen"})
 @Entity
 @NamedQueries({
-        @NamedQuery(name="Actividad.encuentraTodas", query = "SELECT p FROM Actividad p"),
-        @NamedQuery(name = "Actividad.encuentraPorNombre", query = "SELECT p FROM Actividad p WHERE p.nombre = :nombre"),
-        @NamedQuery(name="Actividad.borraPorNombre", query = "DELETE FROM Actividad p WHERE p.nombre = :nombre")
+	@NamedQuery(name="Actividad.encuentraTodas", query = "SELECT p FROM Actividad p"),
+	@NamedQuery(name = "Actividad.encuentraPorNombre", query = "SELECT p FROM Actividad p WHERE p.nombre = :nombre"),
+	@NamedQuery(name="Actividad.borraPorNombre", query = "DELETE FROM Actividad p WHERE p.nombre = :nombre")
 })
 
 
 public class Actividad {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @XmlTransient
-    private Long id;
-    private String nombre;
-    private String duracion;
-    private String horaInicio;
-    private String fechaInicio;
-    private String fechaFin;
-    private String descripcion;
-    private String nivel;
-    private float precio;
-    private int participantesMax;
-    private int participantesMin;
-    private String lugar;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@XmlTransient
+	private Long id;
+	private String nombre;
+	private String duracion;
+	private String horaInicio;
+	private String fechaInicio;
+	private String fechaFin;
+	private String descripcion;
+	private String nivel;
+	private float precio;
+	private int participantesMax;
+	private int participantesMin;
+	private String lugar;
 	//@Lob
-    //private byte[] imagen;
-    private String imagen;
+	//private byte[] imagen;
+	private String imagen;
 
-    public Actividad() {
-        super();
-    }
+	public Actividad() {
+		super();
+	}
 
 	public Actividad(Long id, String nombre, String duracion,
 			String horaInicio, String fechaInicio, String fechaFin,
@@ -157,9 +158,9 @@ public class Actividad {
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}    
-	
-	
 
-	
+
+
+
 }
 

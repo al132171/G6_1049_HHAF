@@ -1,3 +1,6 @@
+controlador/LoginServicios.class
+modelo/datos/Actividad.class
 modelo/dao/ActividadJPA.class
 controlador/ActividadServicios.class
-modelo/datos/Actividad.class
+modelo/dao/LoginJPA.class
+modelo/datos/Usuario.class

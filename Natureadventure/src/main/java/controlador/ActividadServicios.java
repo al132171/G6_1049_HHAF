@@ -26,7 +26,7 @@ import modelo.datos.Actividad;
 /**
  * Created by oscar on 27/11/14.
  */
-@Path("actividades")
+@Path("gerente/actividades")
 @Stateless
 public class ActividadServicios {
     @Inject

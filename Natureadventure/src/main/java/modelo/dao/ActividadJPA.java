@@ -10,9 +10,7 @@ import javax.persistence.TypedQuery;
 
 import modelo.datos.Actividad;
 
-/**
- * Created by oscar on 30/01/15.
- */
+
 @Stateless
 public class ActividadJPA {
     public static Actividad ENTRADA_NULL = new Actividad();
