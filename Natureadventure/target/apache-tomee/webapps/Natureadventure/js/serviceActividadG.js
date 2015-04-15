@@ -32,12 +32,11 @@ function validator($scope, tipo) {
 
 	var actividadesG = angular.module('actividadesG', []); //Define el modulo de la aplicación (ng-app="actividadesG") para todo el fichero
 	actividadesG.baseURI = 'http://localhost:8080/Natureadventure/gerente/actividades/';
-
+	
 
 	actividadesG.controller('ActividadesCtrl', ['$scope', 'ActividadGService', function ($scope, ActividadGService) { //Inyecta los atributos
-
+		
 		var self = this;
-
 //		Limpiar el formulario para que si sales de la ventana modal se limpien los mensajes de error y formato
 
 		$scope.resetForm = function(user){ 
@@ -53,15 +52,15 @@ function validator($scope, tipo) {
 		$scope.comprobar = function(nombre){
 
 			ActividadGService.retrieveContact(nombre).success(function(data){
-				alert("esta" + nombre);
+				//alert("esta" + nombre);
 				$scope.createForm.nombre.$setValidity("nombre", false);
 				$scope.updateForm.nombreU.$setValidity("nombreU", false);		  
 				if(data.actividad.nombre == nombre){
 
-					alert(data.actividad.nombre);
+					//alert(data.actividad.nombre);
 				}
 			}).error(function(){
-				alert("no está"+nombre);
+				//alert("no está"+nombre);
 				$scope.createForm.nombre.$setValidity("nombre", true);
 				$scope.updateForm.nombreU.$setValidity("nombreU", true);
 
@@ -144,7 +143,6 @@ function validator($scope, tipo) {
 				descripcion, nivel, precio, participantesMax, participantesMin, lugar, imagen) {
 
 			var bool = validator($scope, "create");
-			alert(bool);
 
 			if(bool == true){
 
@@ -152,7 +150,6 @@ function validator($scope, tipo) {
 						descripcion, nivel, precio, participantesMax, participantesMin, lugar, imagen)
 						.success(function (data) {
 							borraCampos($scope);
-							alert("borraCampos");
 							ActividadGService.retrieveAll()
 							.success(function (data) {
 								$scope.actividades = data.actividad;
@@ -185,7 +182,6 @@ function validator($scope, tipo) {
 				descripcion, nivel, precio, participantesMax, participantesMin,lugar, imagen) {
 
 			var bool = validator($scope, "update");
-			alert(bool);
 
 			if(bool == true){
 				ActividadGService.update(nombre, duracion, horaInicio, fechaInicio, fechaFin,

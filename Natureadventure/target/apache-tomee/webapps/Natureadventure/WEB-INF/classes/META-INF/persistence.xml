@@ -40,7 +40,7 @@
             <!--<property name="eclipselink.jdbc.user" value="APP"/>-->
             <!--<property name="eclipselink.jdbc.password" value="APP"/>-->
             <!--<property name="eclipselink.target-database" value="DERBY"/>-->
-            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.logging.level" value="FINE"/>
         </properties>
     </persistence-unit>
@@ -65,7 +65,7 @@
             <!--<property name="eclipselink.jdbc.user" value="APP"/>-->
             <!--<property name="eclipselink.jdbc.password" value="APP"/>-->
             <!--<property name="eclipselink.target-database" value="DERBY"/>-->
-            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.logging.level" value="INFO"/>
         </properties>
     </persistence-unit>
