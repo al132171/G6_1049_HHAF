@@ -97,13 +97,10 @@ public class ActividadServicios {
     @Path("{nombre}")
     @Produces("application/json")
     public Response borraEntrada(@PathParam("nombre") String nombre) {
-        if (nombre != null) {
             if (actividadJPA.borraActividad(nombre) == true)
                 return Response.status(Response.Status.ACCEPTED).build();
             else
                 return Response.status(Response.Status.NOT_FOUND).build();
 
-        } else
-            return Response.status(Response.Status.BAD_REQUEST).build();
     }
 }

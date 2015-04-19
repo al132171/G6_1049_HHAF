@@ -24,15 +24,15 @@ public class ActividadServiciosTest {
 		// Inicializo 3 actividades
 		actividad1 = new Actividad(null, "ActividadPrueba1", "02:00", "10:00", "13-04-2015", "13-05-2015", 
 				"Primera actividad de prueba para el método creaNuevaEntrada", "Bajo", 10.0f, 10, 5,
-				"Lugar establecido", "Imagen de prueba1");
+				"Lugar establecido", "Imagen de prueba1", "Bicicleta");
 
 		actividad2 = new Actividad(null, "ActividadPrueba2", "02:00", "10:00", "13-04-2015", "13-05-2015", 
 				"Segunda actividad de prueba para el método creaNuevaEntrada", "Bajo", 10.0f, 10, 5,
-				"Lugar establecido", "Imagen de prueba2");
+				"Lugar establecido", "Imagen de prueba2", "Bicicleta");
 
 		actividad3 = new Actividad(null, "ActividadPrueba3", "02:00", "10:00", "13-04-2015", "13-05-2015", 
 				"Tercera actividad de prueba para el método creaNuevaEntrada", "Bajo", 10.0f, 10, 5,
-				"Lugar establecido", "Imagen de prueba3");
+				"Lugar establecido", "Imagen de prueba3", "Bicicleta");
 
 		// Elimino las 5 actividades que se usan en las pruebas
 		WebClient.create(uriBase)
@@ -85,7 +85,7 @@ public class ActividadServiciosTest {
 		Response response;
 		Actividad actividad4 = new Actividad(null, "ActividadPrueba4", "01:00", "10:00", "12-04-2015", "12-05-2015", 
 				"Cuarta actividad de prueba para el método creaNuevaEntrada", "Bajo", 10.0f, 10, 5,
-				"Lugar establecido", "Imagen de prueba4");
+				"Lugar establecido", "Imagen de prueba4", "Bicicleta");
 
 		// Test OK produciendo un XML 
 		response = WebClient.create(uriBase)
@@ -102,7 +102,7 @@ public class ActividadServiciosTest {
 		
 		Actividad actividad5 = new Actividad(null, "ActividadPrueba5", "02:00", "10:00", "13-04-2015", "13-05-2015", 
 				"Quinta actividad de prueba para el método creaNuevaEntrada", "Bajo", 10.0f, 10, 5,
-				"Lugar establecido", "Imagen de prueba5");
+				"Lugar establecido", "Imagen de prueba5", "Bicicleta");
 		
 		// Test OK produciendo un JSON 
 				response = WebClient.create(uriBase)
@@ -119,7 +119,7 @@ public class ActividadServiciosTest {
 		
 		Actividad actividad5 = new Actividad(null, "ActividadPrueba5", "02:00", "10:00", "13-04-2015", "13-05-2015", 
 				"Quinta actividad de prueba para el método creaNuevaEntrada", "Bajo", 10.0f, 10, 5,
-				"Lugar establecido", "Imagen de prueba5");
+				"Lugar establecido", "Imagen de prueba5", "Bicicleta");
 
 
 		// Test Bad request 
@@ -137,7 +137,7 @@ public class ActividadServiciosTest {
 
 		Actividad actividad4 = new Actividad(null, "ActividadPrueba4", "01:00", "10:00", "12-04-2015", "12-05-2015", 
 				"Cuarta actividad de prueba para el método creaNuevaEntrada", "Bajo", 10.0f, 10, 5,
-				"Lugar establecido", "Imagen de prueba4");
+				"Lugar establecido", "Imagen de prueba4", "Bicicleta");
 
 		// Test No Content
 		response = WebClient.create(uriBase)

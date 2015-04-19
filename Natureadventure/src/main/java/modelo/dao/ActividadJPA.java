@@ -61,6 +61,7 @@ public class ActividadJPA {
             actividadBBDD.setParticipantesMin(actividad.getParticipantesMin());
             actividadBBDD.setLugar(actividad.getLugar());
             actividadBBDD.setImagen(actividad.getImagen());
+            actividadBBDD.setCategoria(actividad.getCategoria());
             return true;
         } catch (NoResultException e) {
             return false;

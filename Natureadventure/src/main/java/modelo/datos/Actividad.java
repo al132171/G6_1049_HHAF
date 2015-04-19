@@ -11,7 +11,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 
 @XmlRootElement
-@XmlType(propOrder = {"nombre", "duracion","horaInicio", "fechaInicio","fechaFin","descripcion","nivel","precio","participantesMax","participantesMin","lugar","imagen"})
+@XmlType(propOrder = {"nombre", "duracion","horaInicio", "fechaInicio","fechaFin","descripcion","nivel",
+		"precio","participantesMax","participantesMin","lugar","imagen", "categoria"})
 @Entity
 @NamedQueries({
 	@NamedQuery(name="Actividad.encuentraTodas", query = "SELECT p FROM Actividad p"),
@@ -39,6 +40,7 @@ public class Actividad {
 	//@Lob
 	//private byte[] imagen;
 	private String imagen;
+	private String categoria;
 
 	public Actividad() {
 		super();
@@ -47,7 +49,7 @@ public class Actividad {
 	public Actividad(Long id, String nombre, String duracion,
 			String horaInicio, String fechaInicio, String fechaFin,
 			String descripcion, String nivel, float precio,
-			int participantesMax, int participantesMin, String lugar, String imagen) {
+			int participantesMax, int participantesMin, String lugar, String imagen, String categoria) {
 		this.id = id;
 		this.nombre = nombre;
 		this.duracion = duracion;
@@ -61,6 +63,7 @@ public class Actividad {
 		this.participantesMin = participantesMin;
 		this.lugar = lugar;
 		this.imagen = imagen;
+		this.categoria = categoria;
 	}
 
 	public String getNombre() {
@@ -157,6 +160,14 @@ public class Actividad {
 
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}    
 
 

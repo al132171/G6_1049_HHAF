@@ -25,20 +25,29 @@ function validator($scope, tipo) {
 };
 
 
+	var app = angular.module("app", []); //Define el modulo de la aplicación (ng-app="app") para todo el fichero
+	app.factory('myService', function() {
+		 var savedData = {};
+		 function set(data) {
+		   savedData = data;
+		 }
+		 function get() {
+		  return savedData;
+		 }
 
+		 return {
+		  set: set,
+		  get: get
+		 };
 
-(function() {
-
-
-	var actividadesG = angular.module('actividadesG', []); //Define el modulo de la aplicación (ng-app="actividadesG") para todo el fichero
-	actividadesG.baseURI = 'http://localhost:8080/Natureadventure/gerente/actividades/';
-	
-
-	actividadesG.controller('ActividadesCtrl', ['$scope', 'ActividadGService', function ($scope, ActividadGService) { //Inyecta los atributos
+		});
+	app.controller('ActividadesCtrl', ['$scope', 'ActividadGService', '$rootScope', 'myService', 
+	                                            function ($scope, ActividadGService, $rootScope, myService) { //Inyecta los atributos
+		app.baseURI = 'http://localhost:8080/Natureadventure/gerente/actividades/';
 		
 		var self = this;
+		
 //		Limpiar el formulario para que si sales de la ventana modal se limpien los mensajes de error y formato
-
 		$scope.resetForm = function(user){ 
 			var defaultForm = {
 					nombre: "", duracion: "", horaInicio: "", fechaInicio: "", fechaFin: "",
@@ -101,7 +110,26 @@ function validator($scope, tipo) {
 
 		$scope.feed.nivel = $scope.feed.niveles[0].value;
 		$scope.feed.nivelU = $scope.feed.niveles[0].value;
+		
+		$scope.feed.categorias = [
+		                       {'name': 'Bicicleta',
+		                    	   'value': 'Bicicleta'},
+		                    	   {'name': 'Running',
+		                    		   'value': 'Running'},
+		                    		   {'name': 'Extremo',
+		                    			   'value': 'Extremo'},
+			                    		   {'name': 'Acuaticos',
+			                    			   'value': 'Acuaticos'},
+				                    		   {'name': 'Motor',
+				                    			   'value': 'Motor'},
+					                    		   {'name': 'Montaña',
+					                    			   'value': 'Montaña'},
+						                    		   {'name': 'Otros',
+						                    			   'value': 'Otros'}
+		                    		   ];
 
+		$scope.feed.categoria = $scope.feed.categorias[0].value;
+		$scope.feed.categoriaU = $scope.feed.categorias[0].value;
 
 //		Comprueba que la fecha inicio no sea mayor que la final
 		$scope.compararFechas =  function(fechaInicio, fechaFin){
@@ -137,17 +165,18 @@ function validator($scope, tipo) {
 		$scope.actividades = ActividadGService.retrieveAll()
 		.success(function(data){
 			$scope.actividades = data.actividad;
+			
 		});
 
 		self.create = function (nombre, duracion, horaInicio, fechaInicio, fechaFin,
-				descripcion, nivel, precio, participantesMax, participantesMin, lugar, imagen) {
+				descripcion, nivel, precio, participantesMax, participantesMin, lugar, imagen, categoria) {
 
 			var bool = validator($scope, "create");
 
 			if(bool == true){
 
 				ActividadGService.create(nombre, duracion, horaInicio, fechaInicio, fechaFin,
-						descripcion, nivel, precio, participantesMax, participantesMin, lugar, imagen)
+						descripcion, nivel, precio, participantesMax, participantesMin, lugar, imagen, categoria)
 						.success(function (data) {
 							borraCampos($scope);
 							ActividadGService.retrieveAll()
@@ -199,39 +228,79 @@ function validator($scope, tipo) {
 		};
 
 	}]);
+	
+//	********* LOGIN CONTROLLER *********
+	app.controller('LoginCtrl', ['$scope', '$rootScope', 'LoginService', 'myService',
+	                               function ($scope, $rootScope, LoginService, myService) { //Inyecta los atributos
+		app.baseURI = 'http://localhost:8080/Natureadventure/login/';
+		var self = this;
+	
+		self.login = function(username, password){
+			LoginService.retrieveUser(username, password)
+			.success(function (data) {
+				//myService.set(username);
+				if(data.usuario.rol == "G")
+					window.location.href="http://localhost:8080/Natureadventure/html/gerente/gestionarActividades.html";
+				else(data.usuario.rol =="M")
+				//window.location.href="http://localhost:8080/Natureadventure/html/monitor/index.html";
+			}).error(function(data){
+				$scope.loginForm.password.$setValidity("password", false);
+			});
+		};
 
-	//FUNCION SERVICIOS WEB
-	actividadesG.service('ActividadGService', ['$http', function($http) {
+	}]);
+
+/*##############################################################################################################
+############################################SERVICIOS WEB#######################################################
+################################################################################################################*/
+	
+	//FUNCION SERVICIOS WEB ACTIVIDADES
+	app.service('ActividadGService', ['$http', function($http) {
 
 		this.create = function(nombre, duracion, horaInicio, fechaInicio, fechaFin,
-				descripcion, nivel, precio, participantesMax, participantesMin, lugar, imagen) {
+				descripcion, nivel, precio, participantesMax, participantesMin, lugar, imagen, categoria) {
 			dato = {'actividad': {'nombre': nombre, 'duracion': duracion, 'horaInicio': horaInicio, 
 				'fechaInicio':fechaInicio, 'fechaFin':fechaFin, 'descripcion':descripcion,
 				'nivel':nivel, 'precio':precio, 'participantesMax':participantesMax, 'participantesMin':participantesMin,
-				'lugar':lugar, 'imagen':imagen}};
-			var url = actividadesG.baseURI + nombre;
+				'lugar':lugar, 'imagen':imagen, 'categoria':categoria}};
+			var url = app.baseURI + nombre;
 			return $http.put(url, dato);
 		}
 
 		this.retrieveAll = function() {
-			return $http.get(actividadesG.baseURI);
+			return $http.get(app.baseURI);
 		}
 
 		this.retrieveContact = function(nombre) {
-			var url = actividadesG.baseURI + nombre;
+			var url = app.baseURI + nombre;
 			return $http.get(url);
 		}
 
 		this.delete = function(nombre) {
-			var url = actividadesG.baseURI + nombre;
+			var url = app.baseURI + nombre;
 			var dato = {'nombre': nombre};
 			return $http.delete(url, dato);
 		}
 
 		this.update = function (actividad) {
-			var url = actividadesG.baseURI + actividad.actividad.nombre;
+			var url = app.baseURI + actividad.actividad.nombre;
 			return $http.put(url, actividad);
 		};
 	}]);
+	
+	//FUNCION SERVICIOS WEB LOGIN
+	app.service('LoginService', ['$http', function($http) {
+		this.retrieveUser = function(username, password) {
+			var url = app.baseURI + username+"/"+password;
+//			var req = {
+//			method: 'GET',
+//			url: url,
+//			headers: {
+//			'Content-Type': undefined,
+//			usuario: username
+//			}
 
-})();
+			return $http.get(url);
+		};
+
+	}]);

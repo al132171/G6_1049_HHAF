@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="actividadesG">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,10 +31,11 @@
 	
 	
 
+    
+    
     <!-- Mis scripts-->
     <script src="../../js/serviceActividadG.js"></script>
     <script src="../../js/funcionesActividadG.js"></script>
-    
     
 
 </head>
@@ -79,23 +80,20 @@
 
 <div class="container" >
     <h1>Gestión de actividades</h1>
-
-       <p ng-model="username">{{username}}</p>
-       
         <!-- Table -->
         <div class="table-responsive">
         <table class="table table-hover ">
             <tr>
-            	<th>Nombre</th><th>Duración</th><th>Hora inicio</th>
+            	<th>Nombre</th><th>Duración</th>
             	<th>Fecha inicio</th><th>Fecha fin</th><th>Descripción</th>
             	<th>Nivel</th><th>Precio</th><th>Participantes Mín.</th> <th>Participantes Máx.</th>
-            	<th>Lugar</th><th>Imagen</th>
+            	<th>Categoria</th>
+            	
             </tr>
             <tbody>
             <tr ng-repeat="a in actividades">
                 <td>{{a.nombre}}</td>
                 <td>{{a.duracion}}</td>
-                <td>{{a.horaInicio}}</td>
                 <td>{{a.fechaInicio}}</td>
                 <td>{{a.fechaFin}}</td>
                 <td>{{a.descripcion}}</td>
@@ -103,8 +101,7 @@
                 <td>{{a.precio}}</td>
                 <td>{{a.participantesMin}}</td>
                 <td>{{a.participantesMax}}</td>
-                <td>{{a.lugar}}</td>
-                <td>{{a.imagen}}</td>
+                <td>{{a.categoria}}</td>
                 <td><button type="submit" id="update:{{a.nombre}}" class="btn btn-info btn-sm" data-toggle="modal" data-target="#actualizar"
                         ng-click="actividadesCtrl.retreiveContact(a.nombre)">
                         <span class="glyphicon glyphicon-pencil"></span> Actualizar</button></td>
@@ -273,6 +270,14 @@
 						  	<small class="error" ng-show="updateForm.imagenU.$error.required">*Imagen obligatoria</small>
 
 					</div>
+					
+					<div class="form-group" ng-class="{ 'has-error' : updateForm.categoriaU.$invalid && !updateForm.categoriaU.$pristine, 
+						'has-success' : !updateForm.categoriaU.$invalid}">	
+					    	<label>Categoria:</label>
+					    	 <select ng-model="currentActividad.actividad.categoria"  ng-options="template.value as template.name for template in feed.categorias" class="form-control" name="categoriaU">
+              				 </select>
+					  </div>
+					  
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-info"
@@ -519,6 +524,19 @@ ng-change="compararFechas(user.fechaInicio, user.fechaFin)"/>
 						  
 					  </div>
 				  
+				  <div class="form-group">
+					    	<label for="categoria">Categoria:</label>
+							<select ng-model="feed.categoria"  ng-options="template.value as template.name for template in feed.categorias" class="form-control" name="categoria">
+              				 </select>	
+						  	<div class="error" ng-show="createForm.categoria.$dirty && createForm.categoria.$invalid">
+								    <small class="error" 
+								        ng-show="createForm.categoria.$error.required">
+								        *Categoria obligatoria
+								    </small>
+								    
+						    </div>
+						  
+					  </div>
 				 
 			            
 			     
@@ -526,7 +544,7 @@ ng-change="compararFechas(user.fechaInicio, user.fechaFin)"/>
 			     <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 		        <button type="submit" ng-click="actividadesCtrl.create(user.nombre, user.duracion, user.horaInicio, 
-		        user.fechaInicio, user.fechaFin, user.descripcion, feed.nivel, user.precio, user.participantesMax, user.participantesMin, user.lugar, user.imagen)" 
+		        user.fechaInicio, user.fechaFin, user.descripcion, feed.nivel, user.precio, user.participantesMax, user.participantesMin, user.lugar, user.imagen, feed.categoria)" 
 		        class="btn btn-success">Añadir</button>
 		      </div>
         </form>
