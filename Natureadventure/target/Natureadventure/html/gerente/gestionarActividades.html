@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Natureadventure | Índice</title>
+    <title>Natureadventure | Actividades</title>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -57,8 +57,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-	        <li class="active"><a href="#">Actividades</a></li>
-	        <li><a href="#">Monitores</a></li> 
+        	<li><a href="dashboard.html#/user?id={{username}}">Dashboard</a></li>
+	        <li class="active"><a href="">Actividades</a></li>
+	        <li><a href="gestionarMonitores.html#/user?id={{username}}">Monitores</a></li> 
 	        <li><a href="#">Reservas</a></li> 
       </ul>
       <form class="navbar-form navbar-left" role="search">
@@ -69,7 +70,7 @@
       </form>
      
           <ul class="nav navbar-nav navbar-right">
-	        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+	        <li><a href="editaPerfil.html"><span class="glyphicon glyphicon-user"></span> {{username}}</a></li>
 	        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 	      </ul>
        
@@ -102,45 +103,51 @@
                 <td>{{a.participantesMin}}</td>
                 <td>{{a.participantesMax}}</td>
                 <td>{{a.categoria}}</td>
+                
+                
                 <td><button type="submit" id="update:{{a.nombre}}" class="btn btn-info btn-sm" data-toggle="modal" data-target="#actualizar"
                         ng-click="actividadesCtrl.retreiveContact(a.nombre)">
                         <span class="glyphicon glyphicon-pencil"></span> Actualizar</button></td>
-                <td>
                 
                
-                
-               
+               <td ng-switch="a.estado"> 
+  
+	            	<button ng-switch-when="T" type="submit" class="btn btn-danger btn-sm" data-toggle="modal" 
+	            	data-target="#eliminar" ng-click="actividadesCtrl.retreiveContact(a.nombre)">
+				    <span class="glyphicon glyphicon-arrow-down"></span> Dar de baja</button>
+            	<button ng-switch-when="F" type="submit" class="btn btn-success btn-sm" data-toggle="modal" 
+            	data-target="#eliminar" ng-click="actividadesCtrl.retreiveContact(a.nombre)">
+				    <span class="glyphicon glyphicon-arrow-up"></span> Dar de alta</button>
+				 
             	
-            	<button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar">
-			    <span class="glyphicon glyphicon-trash"></span> Eliminar</button>
-			    <!-- Ventana Modal insertar-->
-			    <div class="modal fade" id="eliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
-			    
-			    <div class="modal-dialog">
-			        <div class="modal-content">
-			            <div class="modal-header modal-header-danger">
-			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			                <h4 class="modal-title"><i class="glyphicon glyphicon-trash"></i> Eliminar actividad</h4>
-			            </div>
-			            <div class="modal-body">
-			                <p>¿Desea eliminar realmente la actividad "{{a.nombre}}"?</p>
-			            </div>
-			            <div class="modal-footer">
-			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-						 <button type="button" id="delete:{{a.id}}" class="btn btn-danger" data-dismiss="modal" ng-click="actividadesCtrl.delete(a.nombre)"> 
-						  Eliminar</button>			            
-						</div>
-			        	</div>
-			    </div>
-			</div>
-            	
-            </td>
             
+				             </td>
             </tr>
             </tbody>
         </table>
         </div>
         
+			     <!-- Ventana Modal insertar-->
+			    <div class="modal fade" id="eliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+			    
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header modal-header-warning">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title"><i class="glyphicon glyphicon-question-sign"></i> Cambiar estado</h4>
+			            </div>
+			            <div class="modal-body">
+			                <p> ¿Desea cambiar el estado a la actividad "{{currentActividad.actividad.nombre}}"?</p>
+			            </div>
+			            <div class="modal-footer">
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						 <button type="button" class="btn btn-warning" data-dismiss="modal" 
+						 ng-click='actividadesCtrl.delete(currentActividad)'> 
+						  Aceptar</button>			            
+						</div>
+			        	</div>
+			    </div>
+			</div>
        
 	<!-- Ventana modal actualizar -->
     <div class="modal fade" id="actualizar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -213,7 +220,7 @@
 						'has-success' : !updateForm.fechaFinU.$invalid}">	
 					    	<label for="dtp_input3">Fecha fin:</label>
 					    	<div class="input-group date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input3" data-link-format="yyyy-mm-dd">
-					    		<input type="text" name="fechaFinU" class="form-control" ng-model="currentActividad.actividad.fechaFin" required ng-change="compararFechas(currentActividad.actividad.fechaInicio, currentActividad.actividad.fechaFin)"/>
+					    		<input type="text" name="fechaFinU" class="form-control" ng-model="currentActividad.actividad.fechaFin" ng-maxlength="10" ng-minlength="10" ng-pattern="fechaInicio1.word" required ng-change="compararFechas(currentActividad.actividad.fechaInicio, currentActividad.actividad.fechaFin)"/>
 					  			<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 					  		</div>
@@ -411,7 +418,7 @@
 						'has-success' : !createForm.fechaFin.$invalid}">
                 			<label for="dtp_input3">Fecha fin:</label>
 					    	<div class="input-group date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input3" data-link-format="yyyy-mm-dd">
-					    		<input type="text" id="fechaFin" name="fechaFin" class="form-control" ng-model="user.fechaFin" required 
+					    		<input type="text" id="fechaFin" name="fechaFin" class="form-control" ng-model="user.fechaFin" required ng-maxlength="10" ng-minlength="10" ng-pattern="fechaInicio1.word"
 ng-change="compararFechas(user.fechaInicio, user.fechaFin)"/>
 					  			<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>

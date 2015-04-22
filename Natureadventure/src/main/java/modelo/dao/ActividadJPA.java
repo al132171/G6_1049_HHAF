@@ -18,6 +18,7 @@ public class ActividadJPA {
     EntityManager em;
 
     public void nuevaActividad(Actividad actividad) {
+    	actividad.setEstado("T"); //Siempre esta dada de alta cuando se añade
         em.persist(actividad);
     }
 
@@ -40,6 +41,7 @@ public class ActividadJPA {
     }
 
     public boolean creaNuevaEntrada(Actividad actividad) {
+    	actividad.setEstado("T"); //Siempre esta dada de alta cuando se añade
         em.persist(actividad);
         return true;
     }
@@ -69,14 +71,26 @@ public class ActividadJPA {
     }
 
     public boolean borraActividad(String nombre) {
-        TypedQuery<Actividad> query = em.createNamedQuery("Actividad.borraPorNombre", Actividad.class);
+        TypedQuery<Actividad> query = em.createNamedQuery("Actividad.encuentraPorNombre", Actividad.class);
         query.setParameter("nombre", nombre);
         try {
-            int deletedRows = query.executeUpdate();
-            if(deletedRows == 1) return true;
-            else return false;
+        Actividad actividadBBDD = query.getSingleResult();
+        if(actividadBBDD.getEstado().equals("T")){
+        	actividadBBDD.setEstado("F");
+        }
+        else{
+        	actividadBBDD.setEstado("T");
+        }
+        return true;
         } catch (NoResultException e) {
             return false;
         }
+//        try {
+//            int deletedRows = query.executeUpdate();
+//            if(deletedRows == 1) return true;
+//            else return false;
+//        } catch (NoResultException e) {
+//            return false;
+//        }
     }
 }

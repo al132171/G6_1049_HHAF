@@ -26,27 +26,15 @@ function validator($scope, tipo) {
 
 
 	var app = angular.module("app", []); //Define el modulo de la aplicación (ng-app="app") para todo el fichero
-	app.factory('myService', function() {
-		 var savedData = {};
-		 function set(data) {
-		   savedData = data;
-		 }
-		 function get() {
-		  return savedData;
-		 }
-
-		 return {
-		  set: set,
-		  get: get
-		 };
-
-		});
-	app.controller('ActividadesCtrl', ['$scope', 'ActividadGService', '$rootScope', 'myService', 
-	                                            function ($scope, ActividadGService, $rootScope, myService) { //Inyecta los atributos
+	
+	app.controller('ActividadesCtrl', ['$scope', 'ActividadGService', '$rootScope', '$location',
+	                                            function ($scope, ActividadGService, $rootScope, $location) { //Inyecta los atributos
 		app.baseURI = 'http://localhost:8080/Natureadventure/gerente/actividades/';
 		
+
 		var self = this;
 		
+		$scope.username =  window.location.href.slice(window.location.href.indexOf('?') + 1).split('=')[1];
 //		Limpiar el formulario para que si sales de la ventana modal se limpien los mensajes de error y formato
 		$scope.resetForm = function(user){ 
 			var defaultForm = {
@@ -147,11 +135,11 @@ function validator($scope, tipo) {
 				$scope.createForm.fechaFin.$setValidity("fechaFin", false); 
 				$scope.updateForm.fechaFinU.$setValidity("fechaFinU", false); 
 			}
-			else if(mesInicio > mesFin){
+			else if( (mesInicio > mesFin) && (añoInicio == añoFin) ){
 				$scope.createForm.fechaFin.$setValidity("fechaFin", false);
 				$scope.updateForm.fechaFinU.$setValidity("fechaFinU", false);
 			}
-			else if(diaInicio > diaFin){ 
+			else if( (diaInicio > diaFin) && (mesInicio == mesFin) ){ 
 				$scope.createForm.fechaFin.$setValidity("fechaFin", false);
 				$scope.updateForm.fechaFinU.$setValidity("fechaFinU", false);
 			}
@@ -190,7 +178,7 @@ function validator($scope, tipo) {
 		};
 
 		self.delete = function (nombre) {
-			ActividadGService.delete(nombre)
+			ActividadGService.delete(nombre.actividad.nombre)
 			.success(function (data) {
 				ActividadGService.retrieveAll()
 				.success(function (data) {
@@ -230,8 +218,8 @@ function validator($scope, tipo) {
 	}]);
 	
 //	********* LOGIN CONTROLLER *********
-	app.controller('LoginCtrl', ['$scope', '$rootScope', 'LoginService', 'myService',
-	                               function ($scope, $rootScope, LoginService, myService) { //Inyecta los atributos
+	app.controller('LoginCtrl', ['$scope', '$rootScope', 'LoginService', 
+	                               function ($scope, $rootScope, LoginService) { //Inyecta los atributos
 		app.baseURI = 'http://localhost:8080/Natureadventure/login/';
 		var self = this;
 	
@@ -239,10 +227,11 @@ function validator($scope, tipo) {
 			LoginService.retrieveUser(username, password)
 			.success(function (data) {
 				//myService.set(username);
+				alert(data.usuario.rol);
 				if(data.usuario.rol == "G")
-					window.location.href="http://localhost:8080/Natureadventure/html/gerente/gestionarActividades.html";
-				else(data.usuario.rol =="M")
-				//window.location.href="http://localhost:8080/Natureadventure/html/monitor/index.html";
+					window.location.href="http://localhost:8080/Natureadventure/html/gerente/dashboard.html#/user?id="+username;
+				else if(data.usuario.rol == "M")
+					window.location.href="http://localhost:8080/Natureadventure/html/monitor/dashboard.html#/user?id="+username;
 			}).error(function(data){
 				$scope.loginForm.password.$setValidity("password", false);
 			});

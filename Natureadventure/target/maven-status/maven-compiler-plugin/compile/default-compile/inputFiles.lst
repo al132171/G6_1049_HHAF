@@ -1,6 +1,6 @@
-/home/fer/Desktop/TallerIngSoft-master/Natureadventure/src/main/java/modelo/dao/LoginJPA.java
-/home/fer/Desktop/TallerIngSoft-master/Natureadventure/src/main/java/modelo/dao/ActividadJPA.java
-/home/fer/Desktop/TallerIngSoft-master/Natureadventure/src/main/java/controlador/LoginServicios.java
-/home/fer/Desktop/TallerIngSoft-master/Natureadventure/src/main/java/modelo/datos/Actividad.java
-/home/fer/Desktop/TallerIngSoft-master/Natureadventure/src/main/java/controlador/ActividadServicios.java
-/home/fer/Desktop/TallerIngSoft-master/Natureadventure/src/main/java/modelo/datos/Usuario.java
+/home/fer/Desktop/natureadventure_rep/Natureadventure/src/main/java/modelo/datos/Actividad.java
+/home/fer/Desktop/natureadventure_rep/Natureadventure/src/main/java/modelo/dao/ActividadJPA.java
+/home/fer/Desktop/natureadventure_rep/Natureadventure/src/main/java/modelo/datos/Usuario.java
+/home/fer/Desktop/natureadventure_rep/Natureadventure/src/main/java/controlador/ActividadServicios.java
+/home/fer/Desktop/natureadventure_rep/Natureadventure/src/main/java/modelo/dao/LoginJPA.java
+/home/fer/Desktop/natureadventure_rep/Natureadventure/src/main/java/controlador/LoginServicios.java

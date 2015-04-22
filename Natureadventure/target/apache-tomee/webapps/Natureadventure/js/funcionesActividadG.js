@@ -3,9 +3,6 @@
  	document.getElementById("createForm").reset();
  });
 
-    
-
-
 
 $( document ).on(
     'DOMMouseScroll mousewheel scroll',
