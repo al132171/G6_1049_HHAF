@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"  ng-app="usuarioG"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>NaturAdventure | categorías</title>
+    <meta name="description" content="">
+
+    <meta name="viewport" content="width=device-width">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300' rel='stylesheet' type='text/css'>
+
+    <link rel="shortcut icon" href="../images/ico/favicon.ico">
+
+    <link rel="stylesheet" href="../css/usuario/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/usuario/font-awesome.css">
+    <link rel="stylesheet" href="../css/usuario/animate.css">
+    <link rel="stylesheet" href="../css/usuario/misc.css">
+    <link rel="stylesheet" href="../css/usuario/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+
+    <script src="../js/usuario/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+
+
+    <script src="../js/serviceUsuario.js"></script>
+
+
+
+</head>
+<body ng-controller="UsuarioCtrl as usuarioCtrl">
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+
+<div class="site-header">
+    <div class="container">
+        <div class="main-header">
+            <div class="row">
+                <div class="col-md-2 col-sm-6 col-xs-10">
+                    <div class="logo">
+                        <a href="#">
+                            <img src="../images/logo.png" alt="travel html5 template" title="travel html5 template">
+                        </a>
+                    </div> <!-- /.logo -->
+                </div> <!-- /.col-md-4 -->
+                <div class="col-md-10 col-sm-6 col-xs-2">
+                    <div class="main-menu">
+                        <ul class="visible-lg visible-md">
+                            <li><a href="index.html">Inicio</a></li>
+                            <li><a href="services.html">Noticias</a></li>
+                            <li class="active"><a href="categorias.html">Reserva de actividades</a></li>
+                            <li><a href="about.html">Quiénes somos</a></li>
+                            <li><a href="contact.html">Contacto</a></li>
+                            <li><a href="login.html">Administración</a></li>
+                        </ul>
+                        <a href="#" class="toggle-menu visible-sm visible-xs">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div> <!-- /.main-menu -->
+                </div> <!-- /.col-md-8 -->
+            </div> <!-- /.row -->
+        </div> <!-- /.main-header -->
+        <div class="row">
+            <div class="col-md-12 visible-sm visible-xs">
+                <div class="menu-responsive">
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="services.html">Noticias</a></li>
+                        <li class="active"><a href="categorias.html">Reserva de actividades</a></li>
+                        <li><a href="about.html">Quiénes somos</a></li>
+                        <li><a href="contact.html">Contacto</a></li>
+                        <li><a href="login.html">Administración</a></li>
+                    </ul>
+                </div> <!-- /.menu-responsive -->
+            </div> <!-- /.col-md-12 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</div> <!-- /.site-header -->
+
+<div class="page-top" id="content_events">
+</div> <!-- /.page-header -->
+
+<div class="middle-content">
+
+    <div class="container">
+
+        <div class="row" ng-show="show.categorias===true"><!-- first row -->
+
+            <div class="col-md-4 col-sm-4"><!-- first column -->
+                <h3 class="widget-title">Selecciona categoría:</h3>
+                <div class="widget-item">
+                    <div ng-repeat="a in feed.categorias">
+                        <div class="service-item" ng-if="$even">
+                            <a href="index.html" class="link">
+                                <div class="service-icon">
+                                    <i class="fa fa-chevron-right"></i>
+                                </div> <!-- /.service-icon -->
+                            </a>
+                            <div class="service-content">
+                                <button class="btn btn-link"><h4 class="consult-title">{{a.name}}</h4></button>
+                            </div> <!-- /.service-content -->
+                        </div> <!-- /.service-item -->
+                    </div>
+                </div> <!-- /.widget-item -->
+            </div> <!-- /.col-md-4 -->
+
+
+            <div class="col-md-4 col-sm-4"><!-- second column -->
+                <div class="widget-item">
+                    <h3 class="widget-title"><br></h3>
+                    <div ng-repeat="a in feed.categorias">
+                        <div class="service-item" ng-if="$odd">
+                            <a href="index.html" class="link">
+                                <div class="service-icon">
+                                    <i class="fa fa-chevron-right"></i>
+                                </div> <!-- /.service-icon -->
+                            </a>
+                            <div class="service-content">
+                                <h4 class="consult-title "><a href="index.html" class="link">{{a.name}}</a></h4>
+                            </div> <!-- /.service-content -->
+                        </div> <!-- /.service-item -->
+                    </div>
+                </div> <!-- /.widget-item -->
+            </div> <!-- /.col-md-4 -->
+
+            <div class="col-md-4 col-sm-4"><!-- third column -->
+                <div class="widget-item">
+                    <h4 class="consult-title">Busca actividad:</h4>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Palabra clave">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button> 
+                                  </span>
+                            </div><!-- /input-group -->
+                        </div><!-- /.col-lg-12 -->
+                    </div><!-- /.row -->
+
+                    <h3 class="widget-title"><br></h3>
+                    <div class="sample-thumb img-border">
+                        <img src="../images/event_1.jpg" alt="New Event" title="New Event">
+                    </div> <!-- /.sample-thumb -->
+                    <h4 class="consult-title">Las actividades más salvajes<br><br><br>Y los mejores paisajes</h4>
+                    <div class="sample-thumb img-border">
+                        <img src="../images/event_2.jpg" alt="New Event" title="New Event">
+                    </div> <!-- /.sample-thumb -->                        </div> <!-- /.widget-item -->
+            </div> <!-- /.col-md-4 -->
+        </div> <!-- /.row first -->
+
+
+
+        <div class="go-act">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="act-btn">
+                            <div class="inner">
+                                <div class="title">
+                                    <h2>Personaliza tus propias actividades</h2>
+                                    <span>Escoge la actividad que prefieras y adaptala a tus necesidades</span>
+                                </div>
+                            </div> <!-- /.inner -->
+                            <a href="#" class="link">  <!-- Enlace a personalizar actividades -->
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div> <!-- /.act-btn -->
+                    </div> <!-- /.col-md-8 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.go-act -->
+    </div> <!-- /.container -->
+</div> <!-- /.middle-content -->
+
+<div class="partner-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="../images/partners/partner1.png" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="../images/partners/partner2.png" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="../images/partners/partner3.png" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="../images/partners/partner1.png" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="../images/partners/partner2.png" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item last">
+                    <img src="../images/partners/partner3.png" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</div> <!-- /.partner-list -->
+
+
+
+<div class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="footer-logo">
+                    <a href="index.html">
+                        <img src="../images/logo.png" alt="">
+                    </a>
+                </div>
+            </div> <!-- /.col-md-4 -->
+            <div class="col-md-4 col-sm-4">
+                <div class="copyright">
+                    <span>Copyright &copy; 2015 <a href="#">APPujimática</a></span>
+                </div>
+            </div> <!-- /.col-md-4 -->
+            <div class="col-md-4 col-sm-4">
+                <ul class="social-icons">
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                    <li><a href="#" class="fa fa-linkedin"></a></li>
+                    <li><a href="#" class="fa fa-flickr"></a></li>
+                    <li><a href="#" class="fa fa-rss"></a></li>
+                </ul>
+            </div> <!-- /.col-md-4 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</div> <!-- /.site-footer -->
+
+<script src="../js/usuario/vendor/jquery-1.11.0.min.js"></script>
+<script src="../js/usuario/bootstrap.js"></script>
+<script src="../js/usuario/plugins.js"></script>
+<script src="../js/usuario/main.js"></script>
+</body>
+</html>
