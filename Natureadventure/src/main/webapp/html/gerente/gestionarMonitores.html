@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Natureadventure | Monitores</title>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/bootstrap-datetimepicker.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+
+	<script src="../../js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
+	
+	
+
+    <!-- Mis scripts-->
+    <script src="../../js/serviceMonitorG.js"></script>
+    
+    
+    
+
+</head>
+<body ng-controller="MonitoresCtrl as monitoresCtrl">
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Natureadventure</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li><a href="dashboard.html#/user?id={{username}}">Dashboard</a></li>
+	        <li><a href="gestionarActividades.html#/user?id={{username}}">Actividades</a></li>
+	        <li  class="active"><a href="">Monitores</a></li> 
+	        <li><a href="gestionarReservas.html#/user?id={{username}}">Reservas</a></li> 
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+     
+          <ul class="nav navbar-nav navbar-right">
+	        <li><a href="editarPerfil.html#/user?id={{username}}"><span class="glyphicon glyphicon-user"></span> {{username}}</a></li>
+	        <li><a href="../login.html"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+	      </ul>
+       
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="container" >
+<ul class="nav nav-tabs">
+  <li role="activas" ng-class="class1"><a href="gestionarMonitores.html#/user?id={{username}}" ng-click="changeClass(1)" ng-model="1">Activos</a></li>
+  <li role="archivo" ng-class="class2"><a href="gestionarMonitores.html#/user?id={{username}}" ng-click="changeClass(2)">No disponibles</a></li>
+</ul>
+    <h1>Gestión de Monitores</h1>
+
+       
+
+        <!-- Table -->
+        <div class="table-responsive">
+        <table class="table table-hover ">
+            <tr>
+            	<th>Nombre</th><th>Apellidos</th><th>DNI</th>
+            	<th>Correo</th><th>Telefono</th><th>Username</th><th>Password</th>
+            	<th>Especialidad</th>
+            </tr>
+            <tbody>
+            <tr ng-repeat="m in monitores" ng-switch="m.estado">
+            
+            
+                <td>{{m.nombre}}</td>
+                <td>{{m.apellidos}}</td>
+                <td>{{m.dni}}</td>
+                <td>{{m.email}}</td>
+                <td>{{m.telefono}}</td>
+                <td>{{m.username}}</td>
+                <td>{{m.password}}</td>
+                <td>{{m.especialidad}}</td>
+
+                <td ng-switch-when="A"><button type="submit" id="update:{{m.nombre}}" class="btn btn-info btn-sm" data-toggle="modal" data-target="#actualizar"
+                        ng-click="monitoresCtrl.retreiveContact(m.dni)">
+                        <span class="glyphicon glyphicon-pencil"></span> Actualizar</button></td>
+                <td ng-switch-when="A">           	
+            	<button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar" ng-click="monitoresCtrl.retreiveContact(m.dni)">
+			    <span class="glyphicon glyphicon-trash"></span> Eliminar</button>
+			    
+			     <td ng-switch-when="B">           	
+            	<button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#eliminar" ng-click="monitoresCtrl.retreiveContact(m.dni)">
+			    <span class="glyphicon glyphicon-ok"></span> Alta</button>
+            	
+            </td>
+            
+            </tr>
+            </tbody>
+        </table>
+        </div>
+       
+       
+        <!-- Ventana Modal insertar-->
+			    <div class="modal fade" id="eliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+			    
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header modal-header-danger">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title"><i class="glyphicon glyphicon-trash"></i> Eliminar Monitor</h4>
+			            </div>
+			            <div class="modal-body">
+			                <p>¿Desea eliminar realmente el monitor "{{currentMonitor.usuario.nombre}} {{currentMonitor.usuario.apellidos}}"?</p>
+			            </div>
+			            <div class="modal-footer">
+			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						 <button type="button" id="delete:{{a.id}}" class="btn btn-danger" data-dismiss="modal" ng-click="monitoresCtrl.delete(currentMonitor.usuario.dni)"> 
+						  Eliminar</button>			            
+						</div>
+			        	</div>
+			    </div>
+			</div>
+       
+	<!-- Ventana modal actualizar -->
+    <div class="modal fade" id="actualizar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-update">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">
+                    <i class="glyphicon glyphicon-pencil"></i>{{currentMonitor.usuario.nombre}} {{currentMonitor.usuario.apellidos}}</h4>
+                </div>
+                <div class="modal-body">
+					
+					 <form name="updateForm">
+					
+					 <div class="form-group" ng-class="{ 'has-error' : updateForm.nombreU.$invalid && !updateForm.nombreU.$pristine, 
+						'has-success' : !updateForm.nombreU.$invalid}">					    	
+						    <label>Nombre:</label>
+					   		<input type="text" name="nombreU" class="form-control" ng-model="currentMonitor.usuario.nombre" 
+								   ng-minlength="1" ng-maxlength="50" ng-change="comprobar(currentMonitor.usuario.nombre)" required> 
+							<small class="error" ng-show="updateForm.nombreU.$error.required">*Nombre obligatorio</small>
+							<small class="error" ng-show="updateForm.nombreU.$error.minlength">*Min. 1 caracteres</small>
+							<small class="error" ng-show="updateForm.nombreU.$error.maxlength">*Máx. 50 caracteres</small>
+					  </div>
+						 
+					  <div class="form-group" ng-class="{ 'has-error' : updateForm.apellidosU.$invalid && !updateForm.apellidosU.$pristine, 
+						'has-success' : !updateForm.apellidosU.$invalid}">	
+					    	<label for="Apellidos">Apellidos:</label>
+					    	<input type="text" name="apellidosU" ng-model="currentMonitor.usuario.apellidos" class="form-control" required >
+						  	<small class="error" ng-show="updateForm.apellidosU.$error.required">*Apellidos obligatorios</small>
+							<small class="error" ng-show="updateForm.apellidosU.$error.maxlength">*Máx. 50 caracteres</small>
+					  </div>
+					  
+					  <div class="form-group" ng-class="{ 'has-error' : updateForm.dniU.$invalid && !updateForm.dni.$pristine, 
+						'has-success' : !updateForm.dniU.$invalid}">	
+					    	<label>Dni:</label>
+					   		<input type="text" name="dniU" ng-model="currentMonitor.usuario.dni" 
+					   		ng-change="comprobarDni(currentMonitor.usuario.dni)" class="form-control" required >
+					   		<small class="error" ng-show="updateForm.dniU.$error.dniU">*DNI ya existente</small>
+					   		<small class="error" ng-show="updateForm.dniU.$error.required">*DNI obligatorio</small>
+					  </div>
+						 
+					  
+					  <div class="form-group" ng-class="{ 'has-error' : updateForm.correoU.$invalid && !updateForm.correoU.$pristine, 
+						'has-success' : !updateForm.correoU.$invalid}" >
+					    	<label>Correo:</label>
+					   		<input class="form-control" type="email" ng-minlength=1 ng-maxlength=50 ng-model="currentMonitor.usuario.email" id="correo" name="correo" required/>
+			  				<div class="error" ng-show="updateForm.correoU.$dirty && updateForm.correoU.$invalid">
+			  				<small class="error" ng-show="updateForm.correoU.$error.required">*Correo obligatorio</small>
+			  				<small class="error" ng-show="updateForm.nombreU.$error.nombreU">*El correo ya existe</small>
+			  						  
+					  		</div>
+					  </div>
+					
+					
+					<div class="form-group" ng-class="{ 'has-error' : updateForm.telefonoU.$invalid && !updateForm.telefonoU.$pristine, 
+								'has-success' : !updateForm.telefonoU.$invalid}" >
+							    	<label>Telefono:</label>
+							   		<input class="form-control" type="text" ng-minlength=1 ng-maxlength=50 ng-model="currentMonitor.usuario.telefono" ng-pattern="telefono.word" id="telefono" name="telefono" required/>
+							   		<div class="error" ng-show="updateForm.telefonoU.$dirty && updateForm.telefonoU.$invalid">
+							   		<small class="error" ng-show="updateForm.telefonoU.$error.required">*Telefono obligatorio</small>
+							   		</div>
+					  </div> 
+						 
+						 
+					  <div class="form-group" ng-class="{ 'has-error' : updateForm.usernameU.$invalid && !updateForm.usernameU.$pristine, 
+						'has-success' : !updateForm.usernameU.$invalid}">	
+					    	<label>Username:</label>
+					   		<input type="text" name="usernameU" ng-min=0 min="0" ng-model="currentMonitor.usuario.username" class="form-control" required >
+					  </div>
+					  
+					  <div class="form-group" ng-class="{ 'has-error' : updateForm.passwordU.$invalid && !updateForm.passwordU.$pristine, 
+						'has-success' : !updateForm.passwordU.$invalid}">	
+					    	<label>Password:</label>
+					   		<input type="text" name="passwordU" ng-min=0 min="0" ng-model="currentMonitor.usuario.password" class="form-control" required >
+					  </div>
+					  
+						 
+					  <div class="form-group" ng-class="{ 'has-error' : updateForm.especialidadU.$invalid && !updateForm.especialidadU.$pristine, 
+						'has-success' : !updateForm.especialidadU.$invalid}">	
+						  <label for="Especialidad">Especialidad</label>
+						  <select ng-model="currentMonitor.usuario.especialidad"  ng-options="template.value as template.name for template in feed.especialidades" class="form-control" name="especialidadU">
+						  </select>
+					  </div>
+
+
+					  
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info"
+                            ng-click="monitoresCtrl.update(currentMonitor)"
+                            >Actualizar</button>
+                </div>
+			</form>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#create" ng-click="resetForm(user)">
+    <span class="glyphicon glyphicon-plus"></span>Añadir</button>
+    
+    
+    
+    <!-- Ventana Modal insertar-->
+				<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header modal-header-new">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>Nuevo monitor</h4>
+		      </div>
+		      <div class="modal-body">
+		      <form id="createForm" name="createForm" >
+				
+				<div class="form-group" ng-class="{ 'has-error' : createForm.nombre.$invalid && !createForm.nombre.$pristine, 
+						'has-success' : !createForm.nombre.$invalid}" >
+					    	<label>Nombre:</label>
+					   		<input class="form-control" type="text" ng-minlength=1 ng-maxlength=50 ng-model="user.nombre" id="nombre" name="nombre" required/>
+			  				<div class="error" ng-show="createForm.nombre.$dirty && createForm.nombre.$invalid">
+			  				<small class="error" ng-show="createForm.nombre.$error.required">*Nombre obligatorio</small>
+			  </div>
+			  </div>
+			  
+			 <div class="form-group" ng-class="{ 'has-error' : createForm.apellidos.$invalid && !createForm.apellidos.$pristine, 
+						'has-success' : !createForm.apellidos.$invalid}" >
+					    	<label>Apellidos:</label>
+					   		<input class="form-control" type="text" ng-minlength=1 ng-maxlength=50 ng-model="user.apellidos" id="apellidos" name="apellidos" required/>
+			  				<div class="error" ng-show="createForm.apellidos.$dirty && createForm.apellidos.$invalid">
+			  				<small class="error" ng-show="createForm.apellidos.$error.required">*Nombre obligatorio</small>	
+			  			</div>			  
+			  </div>
+			  
+			  <div class="form-group" ng-class="{ 'has-error' : createForm.correo.$invalid && !createForm.correo.$pristine, 
+						'has-success' : !createForm.correo.$invalid}" >
+					    	<label>Correo:</label>
+					   		<input class="form-control" type="email" ng-minlength=1 ng-maxlength=50 ng-model="user.correo" id="correo" name="correo" required/>
+			  				<div class="error" ng-show="createForm.correo.$dirty && createForm.correo.$invalid">
+			  				<small class="error" ng-show="createForm.correo.$error.required">*Correo obligatorio</small>	
+			  						  
+			  </div>
+			
+			
+			<div class="form-group" ng-class="{ 'has-error' : createForm.telefono.$invalid && !createForm.telefono.$pristine, 
+						'has-success' : !createForm.telefono.$invalid}" >
+					    	<label>Telefono:</label>
+					   		<input class="form-control" type="text" ng-minlength=1 ng-maxlength=50 ng-model="user.telefono" ng-pattern="telefono.word" id="telefono" name="telefono" required/>
+					   		<div class="error" ng-show="createForm.telefono.$dirty && createForm.telefono.$invalid">
+					   		<small class="error" ng-show="createForm.telefono.$error.required">*Telefono obligatorio</small>
+					   		</div>
+			  </div>
+			
+			  
+			  <div class="form-group" ng-class="{ 'has-error' : createForm.dni.$invalid && !createForm.dni.$pristine, 
+						'has-success' : !createForm.dni.$invalid}" >
+					    	<label>DNI:</label>
+					   		<input class="form-control" type="text" ng-minlength=1 ng-maxlength=9 ng-model="user.dni" 
+					   		ng-change="comprobarDni(user.dni)" id="dni" name="dni" required/>
+					   		<div class="error" ng-show="createForm.dni.$dirty && createForm.dni.$invalid">
+					   		<small class="error" ng-show="createForm.dni.$error.required">*DNI obligatorio</small>
+					   		<small class="error" ng-show="createForm.dni.$error.dni">*DNI ya existe</small>
+					   		</div>
+			  </div>
+			  
+
+			 <div class="form-group" ng-class="{ 'has-error' : createForm.username.$invalid && !createForm.username.$pristine, 
+						'has-success' : !createForm.username.$invalid}" >
+					    	<label>Username:</label>
+					   		<input class="form-control" type="text" ng-minlength=1 ng-maxlength=50 ng-model="user.username" id="username" name="username" required/>
+			     	   		<div class="error" ng-show="createForm.username.$dirty && createForm.username.$invalid">
+			     	   		<small class="error" ng-show="createForm.username.$error.required">*Username obligatorio</small>
+			 </div>
+			 </div>
+			  
+			 <div class="form-group" ng-class="{ 'has-error' : createForm.password.$invalid && !createForm.password.$pristine, 
+						'has-success' : !createForm.password.$invalid}" >
+					    	<label>Password:</label>
+					   		<input class="form-control" type="text" ng-minlength=1 ng-maxlength=50 ng-model="user.password" id="password" name="password" required/>
+			  		   		<div class="error" ng-show="createForm.password.$dirty && createForm.password.$invalid">
+			  		   		<small class="error" ng-show="createForm.password.$error.required">*Password obligatoria</small>
+			  		   		</div>
+			  </div>
+			  
+			  
+			  <div class="form-group" ng-class="{ 'has-error' : createForm.especialidad.$invalid && !createForm.especialidad.$pristine, 
+						'has-success' : !createForm.especialidad.$invalid}" >
+							 <label for="Especialidad">Especialidad</label>
+						  	<select ng-model="feed.especialidad"  ng-options="template.value as template.name for template in feed.especialidades" class="form-control" name="especialidad">
+						  	</select>
+			  </div>
+        
+			     <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		        <button type="submit" ng-click="monitoresCtrl.create(user.nombre, user.apellidos, user.dni, user.correo, user.telefono, user.username, user.password, user.especialidad)" 
+		        class="btn btn-success">Añadir</button>
+		      </div>
+        </form>
+        </div>
+		     
+		    </div>
+		  </div>
+		</div>
+		<br/>
+		
+ </div>		
+		<!-- ######################################################################33 -->
+  
+  
+
+<script type="text/javascript">
+$('#create').on('shown.bs.modal', function() {
+ 	document.getElementById("createForm").reset();
+ });
+</script>
+</body>
+
+
+</html>

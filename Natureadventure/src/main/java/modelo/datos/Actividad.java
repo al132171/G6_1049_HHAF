@@ -1,7 +1,17 @@
 package modelo.datos;
 
 
-import javax.persistence.*;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
@@ -15,7 +25,8 @@ import javax.xml.bind.annotation.XmlType;
 		"precio","participantesMax","participantesMin","lugar","imagen", "categoria", "estado"})
 @Entity
 @NamedQueries({
-	@NamedQuery(name="Actividad.encuentraTodas", query = "SELECT p FROM Actividad p"),
+	@NamedQuery(name="Actividad.encuentraTodasActivas", query = "SELECT p FROM Actividad p WHERE p.estado = 'T'"),
+	@NamedQuery(name="Actividad.encuentraTodasArchivadas", query = "SELECT p FROM Actividad p WHERE p.estado = 'F'"),
 	@NamedQuery(name = "Actividad.encuentraPorNombre", query = "SELECT p FROM Actividad p WHERE p.nombre = :nombre"),
 	@NamedQuery(name="Actividad.borraPorNombre", query = "DELETE FROM Actividad p WHERE p.nombre = :nombre")
 })
@@ -42,7 +53,7 @@ public class Actividad {
 	private String imagen;
 	private String categoria;
 	private String estado;
-
+	
 	public Actividad() {
 		super();
 	}

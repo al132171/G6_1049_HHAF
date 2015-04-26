@@ -34,7 +34,7 @@
     
     
     <!-- Mis scripts-->
-    <script src="../../js/serviceActividadG.js"></script>
+    <script src="../../js/serviceGerente.js"></script>
     <script src="../../js/funcionesActividadG.js"></script>
     
 
@@ -60,7 +60,7 @@
         	<li><a href="dashboard.html#/user?id={{username}}">Dashboard</a></li>
 	        <li class="active"><a href="">Actividades</a></li>
 	        <li><a href="gestionarMonitores.html#/user?id={{username}}">Monitores</a></li> 
-	        <li><a href="#">Reservas</a></li> 
+			<li><a href="gestionarReservas.html#/user?id={{username}}">Reservas</a></li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -70,8 +70,8 @@
       </form>
      
           <ul class="nav navbar-nav navbar-right">
-	        <li><a href="editaPerfil.html"><span class="glyphicon glyphicon-user"></span> {{username}}</a></li>
-	        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	        <li><a href="editarPerfil.html#/user?id={{username}}"><span class="glyphicon glyphicon-user"></span> {{username}}</a></li>
+	        <li><a href="../login.html"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 	      </ul>
        
     </div><!-- /.navbar-collapse -->
@@ -79,7 +79,12 @@
 </nav>
 
 
+
 <div class="container" >
+<ul class="nav nav-tabs">
+  <li role="activas" ng-class="class1"><a href="gestionarActividades.html#/user?id={{username}}" ng-click="changeClass(1)" ng-model="1">Activas</a></li>
+  <li role="archivo" ng-class="class2"><a href="gestionarActividades.html#/user?id={{username}}" ng-click="changeClass(2)">Archivadas</a></li>
+</ul>
     <h1>Gestión de actividades</h1>
         <!-- Table -->
         <div class="table-responsive">
@@ -92,7 +97,7 @@
             	
             </tr>
             <tbody>
-            <tr ng-repeat="a in actividades">
+            <tr ng-repeat="a in actividades" ng-switch="a.estado">
                 <td>{{a.nombre}}</td>
                 <td>{{a.duracion}}</td>
                 <td>{{a.fechaInicio}}</td>
@@ -103,25 +108,22 @@
                 <td>{{a.participantesMin}}</td>
                 <td>{{a.participantesMax}}</td>
                 <td>{{a.categoria}}</td>
-                
-                
-                <td><button type="submit" id="update:{{a.nombre}}" class="btn btn-info btn-sm" data-toggle="modal" data-target="#actualizar"
+                                
+                <td  ng-switch-when="T"><button type="submit" id="update:{{a.nombre}}" class="btn btn-info btn-sm" data-toggle="modal" data-target="#actualizar"
                         ng-click="actividadesCtrl.retreiveContact(a.nombre)">
                         <span class="glyphicon glyphicon-pencil"></span> Actualizar</button></td>
-                
                
-               <td ng-switch="a.estado"> 
-  
-	            	<button ng-switch-when="T" type="submit" class="btn btn-danger btn-sm" data-toggle="modal" 
+               <td ng-switch-when="T"> 
+	            	<button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" 
 	            	data-target="#eliminar" ng-click="actividadesCtrl.retreiveContact(a.nombre)">
-				    <span class="glyphicon glyphicon-arrow-down"></span> Dar de baja</button>
-            	<button ng-switch-when="F" type="submit" class="btn btn-success btn-sm" data-toggle="modal" 
+				    <span class="glyphicon glyphicon-folder-close"></span> Archivar</button>
+				</td>
+				<td ng-switch-when="F">
+            	<button  type="submit" class="btn btn-primary btn-sm" data-toggle="modal" 
             	data-target="#eliminar" ng-click="actividadesCtrl.retreiveContact(a.nombre)">
-				    <span class="glyphicon glyphicon-arrow-up"></span> Dar de alta</button>
-				 
-            	
+				    <span class="glyphicon glyphicon-folder-open"></span> Activar</button>
+            	</td>
             
-				             </td>
             </tr>
             </tbody>
         </table>
@@ -167,9 +169,9 @@
 						'has-success' : !updateForm.nombreU.$invalid}">					    	
 						    <label>Nombre:</label>
 					   		<input type="text" name="nombreU" class="form-control" ng-model="currentActividad.actividad.nombre" 
-								   ng-minlength="2" ng-maxlength="50" ng-change="comprobar(currentActividad.actividad.nombre)" required> 
+								   ng-minlength="1" ng-maxlength="50" ng-change="comprobar(currentActividad.actividad.nombre)" required> 
 							<small class="error" ng-show="updateForm.nombreU.$error.required">*Nombre obligatorio</small>
-							<small class="error" ng-show="updateForm.nombreU.$error.minlength">*Min. 2 caracteres</small>
+							<small class="error" ng-show="updateForm.nombreU.$error.minlength">*Min. 1 caracteres</small>
 							<small class="error" ng-show="updateForm.nombreU.$error.maxlength">*Máx. 50 caracteres</small>
 							<small class="error" ng-show="updateForm.nombreU.$error.nombreU">*El nombre ya existe</small>
 					  </div>
@@ -297,7 +299,7 @@
     </div>
     </div>
     
-    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#create" ng-click="resetForm(user)">
+    <button type="submit" ng-hide="add" class="btn btn-success" data-toggle="modal" data-target="#create" ng-click="resetForm(user)">
     <span class="glyphicon glyphicon-plus"></span>Añadir</button>
     <!-- Ventana Modal insertar-->
 		<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
@@ -312,7 +314,7 @@
 				<div class="form-group" ng-class="{ 'has-error' : createForm.nombre.$invalid && !createForm.nombre.$pristine, 
 						'has-success' : !createForm.nombre.$invalid}" >
 					    	<label>Nombre:</label>
-					   		<input class="form-control" type="text" ng-minlength=2 ng-maxlength=50 ng-model="user.nombre" ng-change="comprobar(user.nombre)" id="nombre" name="nombre" required/>
+					   		<input class="form-control" type="text" ng-minlength=1 ng-maxlength=50 ng-model="user.nombre" ng-change="comprobar(user.nombre)" id="nombre" name="nombre" required/>
 					   		<div class="error" ng-show="createForm.nombre.$dirty && createForm.nombre.$invalid">
 						    <small class="error" 
 						        ng-show="createForm.nombre.$error.required">
@@ -320,7 +322,7 @@
 						    </small>
 						     <small class="error" 
 					            ng-show="createForm.nombre.$error.minlength">
-					             *Mín. 2 caracteres
+					             *Mín. 1 caracteres
 					    </small>
 					    <small class="error" 
 					            ng-show="createForm.nombre.$error.maxlength">

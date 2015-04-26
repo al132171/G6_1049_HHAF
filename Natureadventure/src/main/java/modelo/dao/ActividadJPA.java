@@ -32,8 +32,16 @@ public class ActividadJPA {
         }
     }
 
-    public Actividad[] listaTodasActividades() {
-        TypedQuery<Actividad> query = em.createNamedQuery("Actividad.encuentraTodas", Actividad.class);
+    public Actividad[] listaTodasActividadesActivas() {
+        TypedQuery<Actividad> query = em.createNamedQuery("Actividad.encuentraTodasActivas", Actividad.class);
+        List<Actividad> listaActividades = query.getResultList();
+        Actividad[] actividades = new Actividad[listaActividades.size()];
+        listaActividades.toArray(actividades);
+        return actividades;
+    }
+    
+    public Actividad[] listaTodasActividadesArchivadas() {
+        TypedQuery<Actividad> query = em.createNamedQuery("Actividad.encuentraTodasArchivadas", Actividad.class);
         List<Actividad> listaActividades = query.getResultList();
         Actividad[] actividades = new Actividad[listaActividades.size()];
         listaActividades.toArray(actividades);

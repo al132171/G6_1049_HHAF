@@ -24,7 +24,7 @@ public class ActividadJPATest {
         actividadJPA.nuevaActividad(segunda);
         Actividad[] personas = new Actividad[2];
         Arrays.asList(primera, segunda).toArray(personas);
-        assertThat(actividadJPA.listaTodasActividades(), is(personas));
+        assertThat(actividadJPA.listaTodasActividadesActivas(), is(personas));
     }
 
     @Test

@@ -51,8 +51,16 @@ public class ActividadServicios {
 
     @GET
     @Produces("application/json")
-    public Response listaTodasActividades() {
-        Actividad[] actividades = actividadJPA.listaTodasActividades();
+    public Response listaTodasActividadesActivas() {
+        Actividad[] actividades = actividadJPA.listaTodasActividadesActivas();
+        return Response.ok(actividades).build();
+    }
+    
+    @GET
+    @Path("archivadas")
+    @Produces("application/json")
+    public Response listaTodasActividadesArchivadas() {
+        Actividad[] actividades = actividadJPA.listaTodasActividadesArchivadas();
         return Response.ok(actividades).build();
     }
 

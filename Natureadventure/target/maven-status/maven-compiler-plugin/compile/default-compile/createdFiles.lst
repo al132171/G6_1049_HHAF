@@ -1,6 +1,12 @@
 controlador/LoginServicios.class
 modelo/datos/Actividad.class
-modelo/dao/ActividadJPA.class
 controlador/ActividadServicios.class
-modelo/dao/LoginJPA.class
 modelo/datos/Usuario.class
+modelo/dao/UsuarioJPA.class
+modelo/datos/Reserva.class
+controlador/MonitorServicios.class
+modelo/dao/ActividadJPA.class
+modelo/dao/ReservaJPA.class
+controlador/UsuarioServicios.class
+modelo/dao/LoginJPA.class
+controlador/ReservaServicios.class
