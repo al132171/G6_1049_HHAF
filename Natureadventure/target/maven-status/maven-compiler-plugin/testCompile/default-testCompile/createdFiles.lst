@@ -1,2 +1,7 @@
-persistencia/ActividadJPATest.class
+test/LoginCorrectoScenario.class
 controlador/ActividadServiciosTest.class
+test/LoginIncorrectoScenario.class
+test/EditarPerfilGerenteCorrecto.class
+persistencia/ActividadJPATest.class
+test/EditarPerfilGerenteIncorrecto.class
+test/Runner.class

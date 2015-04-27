@@ -1,0 +1,8 @@
+127.0.0.1 - - [27/Apr/2015:22:41:18 +0200] "GET /Natureadventure/html/gerente/editarPerfil.html HTTP/1.1" 200 8661
+127.0.0.1 - - [27/Apr/2015:22:41:20 +0200] "GET /Natureadventure/css/bootstrap-datetimepicker.min.css HTTP/1.1" 200 11308
+127.0.0.1 - - [27/Apr/2015:22:41:20 +0200] "GET /Natureadventure/js/bootstrap-datetimepicker.min.js HTTP/1.1" 200 36069
+127.0.0.1 - - [27/Apr/2015:22:41:20 +0200] "GET /Natureadventure/css/style.css HTTP/1.1" 200 1348
+127.0.0.1 - - [27/Apr/2015:22:41:20 +0200] "GET /Natureadventure/js/bootstrap-datetimepicker.es.js HTTP/1.1" 200 697
+127.0.0.1 - - [27/Apr/2015:22:41:20 +0200] "GET /Natureadventure/js/serviceGerente.js HTTP/1.1" 200 16023
+127.0.0.1 - - [27/Apr/2015:22:41:20 +0200] "GET /Natureadventure/img/g.png HTTP/1.1" 200 8558
+127.0.0.1 - - [27/Apr/2015:22:41:23 +0200] "GET /Natureadventure/usuario/perfil/gerente HTTP/1.1" 200 206

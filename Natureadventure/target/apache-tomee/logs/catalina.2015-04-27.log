@@ -1,0 +1,458 @@
+abr 27, 2015 10:40:57 PM org.apache.openejb.persistence.PersistenceBootstrap getDefaultProvider
+INFORMACIÓN: Default JPA Provider changed to org.eclipse.persistence.jpa.PersistenceProvider
+abr 27, 2015 10:40:57 PM org.apache.catalina.core.AprLifecycleListener init
+INFORMACIÓN: La biblioteca nativa de Apache Tomcat basada en ARP que permite un rendimiento óptimo en entornos de desarrollo no ha sido hallada en java.library.path: /usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+abr 27, 2015 10:40:57 PM org.apache.coyote.AbstractProtocol init
+INFORMACIÓN: Initializing ProtocolHandler ["http-bio-8080"]
+abr 27, 2015 10:40:57 PM org.apache.coyote.AbstractProtocol init
+INFORMACIÓN: Initializing ProtocolHandler ["ajp-bio-8009"]
+abr 27, 2015 10:40:58 PM org.apache.openejb.util.OptionsLog info
+INFORMACIÓN: Using 'tomee.remote.support=true'
+abr 27, 2015 10:40:58 PM org.apache.openejb.util.OptionsLog info
+INFORMACIÓN: Using 'openejb.jdbc.datasource-creator=org.apache.tomee.jdbc.TomEEDataSourceCreator'
+abr 27, 2015 10:40:58 PM org.apache.openejb.OpenEJB$Instance <init>
+INFORMACIÓN: ********************************************************************************
+abr 27, 2015 10:40:58 PM org.apache.openejb.OpenEJB$Instance <init>
+INFORMACIÓN: OpenEJB http://openejb.apache.org/
+abr 27, 2015 10:40:59 PM org.apache.openejb.OpenEJB$Instance <init>
+INFORMACIÓN: Startup: Mon Apr 27 22:40:58 CEST 2015
+abr 27, 2015 10:40:59 PM org.apache.openejb.OpenEJB$Instance <init>
+INFORMACIÓN: Copyright 1999-2013 (C) Apache OpenEJB Project, All Rights Reserved.
+abr 27, 2015 10:40:59 PM org.apache.openejb.OpenEJB$Instance <init>
+INFORMACIÓN: Version: 4.7.1
+abr 27, 2015 10:40:59 PM org.apache.openejb.OpenEJB$Instance <init>
+INFORMACIÓN: Build date: 20140912
+abr 27, 2015 10:40:59 PM org.apache.openejb.OpenEJB$Instance <init>
+INFORMACIÓN: Build time: 01:43
+abr 27, 2015 10:40:59 PM org.apache.openejb.OpenEJB$Instance <init>
+INFORMACIÓN: ********************************************************************************
+abr 27, 2015 10:40:59 PM org.apache.openejb.OpenEJB$Instance <init>
+INFORMACIÓN: openejb.home = /home/fer/Desktop/natureadventure_rep/Natureadventure/target/apache-tomee
+abr 27, 2015 10:40:59 PM org.apache.openejb.OpenEJB$Instance <init>
+INFORMACIÓN: openejb.base = /home/fer/Desktop/natureadventure_rep/Natureadventure/target/apache-tomee
+abr 27, 2015 10:40:59 PM org.apache.openejb.cdi.CdiBuilder initializeOWB
+INFORMACIÓN: Created new singletonService org.apache.openejb.cdi.ThreadSingletonServiceImpl@5892a141
+abr 27, 2015 10:40:59 PM org.apache.openejb.cdi.CdiBuilder initializeOWB
+INFORMACIÓN: Succeeded in installing singleton service
+abr 27, 2015 10:40:59 PM org.apache.openejb.config.ConfigurationFactory init
+INFORMACIÓN: openejb configuration file is '/home/fer/Desktop/natureadventure_rep/Natureadventure/target/apache-tomee/conf/tomee.xml'
+abr 27, 2015 10:40:59 PM org.apache.openejb.config.ConfigurationFactory configureService
+INFORMACIÓN: Configuring Service(id=Tomcat Security Service, type=SecurityService, provider-id=Tomcat Security Service)
+abr 27, 2015 10:40:59 PM org.apache.openejb.config.ConfigurationFactory configureService
+INFORMACIÓN: Configuring Service(id=Default Transaction Manager, type=TransactionManager, provider-id=Default Transaction Manager)
+abr 27, 2015 10:40:59 PM org.apache.openejb.util.OptionsLog info
+INFORMACIÓN: Using 'openejb.system.apps=false'
+abr 27, 2015 10:40:59 PM org.apache.openejb.util.OptionsLog info
+INFORMACIÓN: Using 'openejb.deployments.classpath=false'
+abr 27, 2015 10:40:59 PM org.apache.openejb.assembler.classic.Assembler createRecipe
+INFORMACIÓN: Creating TransactionManager(id=Default Transaction Manager)
+abr 27, 2015 10:40:59 PM org.apache.openejb.assembler.classic.Assembler createRecipe
+INFORMACIÓN: Creating SecurityService(id=Tomcat Security Service)
+abr 27, 2015 10:40:59 PM org.apache.openejb.server.ServiceManager initServer
+INFORMACIÓN: Creating ServerService(id=cxf)
+abr 27, 2015 10:40:59 PM org.apache.openejb.server.ServiceManager initServer
+INFORMACIÓN: Creating ServerService(id=cxf-rs)
+abr 27, 2015 10:40:59 PM org.apache.openejb.server.SimpleServiceManager start
+INFORMACIÓN:   ** Bound Services **
+abr 27, 2015 10:40:59 PM org.apache.openejb.server.SimpleServiceManager printRow
+INFORMACIÓN:   NAME                 IP              PORT  
+abr 27, 2015 10:40:59 PM org.apache.openejb.server.SimpleServiceManager start
+INFORMACIÓN: -------
+abr 27, 2015 10:40:59 PM org.apache.openejb.server.SimpleServiceManager start
+INFORMACIÓN: Ready!
+abr 27, 2015 10:40:59 PM org.apache.catalina.startup.Catalina load
+INFORMACIÓN: Initialization processed in 2712 ms
+abr 27, 2015 10:40:59 PM org.apache.tomee.catalina.OpenEJBNamingContextListener bindResource
+INFORMACIÓN: Importing a Tomcat Resource with id 'UserDatabase' of type 'org.apache.catalina.UserDatabase'.
+abr 27, 2015 10:40:59 PM org.apache.openejb.assembler.classic.Assembler createRecipe
+INFORMACIÓN: Creating Resource(id=UserDatabase)
+abr 27, 2015 10:40:59 PM org.apache.catalina.core.StandardService startInternal
+INFORMACIÓN: Arrancando servicio Catalina
+abr 27, 2015 10:40:59 PM org.apache.catalina.core.StandardEngine startInternal
+INFORMACIÓN: Starting Servlet Engine: Apache Tomcat (TomEE)/7.0.55 (1.7.1)
+abr 27, 2015 10:40:59 PM org.apache.catalina.startup.HostConfig deployWAR
+INFORMACIÓN: Despliegue del archivo /home/fer/Desktop/natureadventure_rep/Natureadventure/target/apache-tomee/webapps/Natureadventure.war de la aplicación web
+abr 27, 2015 10:40:59 PM org.apache.tomee.catalina.TomcatWebAppBuilder init
+INFORMACIÓN: ------------------------- localhost -> /Natureadventure
+abr 27, 2015 10:40:59 PM org.apache.openejb.util.JarExtractor extract
+INFORMACIÓN: Extracting jar: /home/fer/Desktop/natureadventure_rep/Natureadventure/target/apache-tomee/webapps/Natureadventure.war
+abr 27, 2015 10:41:00 PM org.apache.openejb.util.JarExtractor extract
+INFORMACIÓN: Extracted path: /home/fer/Desktop/natureadventure_rep/Natureadventure/target/apache-tomee/webapps/Natureadventure
+abr 27, 2015 10:41:00 PM org.apache.openejb.util.OptionsLog info
+INFORMACIÓN: Using 'openejb.session.manager=org.apache.tomee.catalina.session.QuickSessionManager'
+abr 27, 2015 10:41:01 PM org.apache.openejb.config.ConfigurationFactory configureApplication
+INFORMACIÓN: Configuring enterprise application: /home/fer/Desktop/natureadventure_rep/Natureadventure/target/apache-tomee/webapps/Natureadventure
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.InitEjbDeployments deploy
+INFORMACIÓN: Auto-deploying ejb LoginJPA: EjbDeployment(deployment-id=LoginJPA)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.InitEjbDeployments deploy
+INFORMACIÓN: Auto-deploying ejb ReservaServicios: EjbDeployment(deployment-id=ReservaServicios)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.InitEjbDeployments deploy
+INFORMACIÓN: Auto-deploying ejb UsuarioJPA: EjbDeployment(deployment-id=UsuarioJPA)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.InitEjbDeployments deploy
+INFORMACIÓN: Auto-deploying ejb LoginServicios: EjbDeployment(deployment-id=LoginServicios)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.InitEjbDeployments deploy
+INFORMACIÓN: Auto-deploying ejb ActividadJPA: EjbDeployment(deployment-id=ActividadJPA)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.InitEjbDeployments deploy
+INFORMACIÓN: Auto-deploying ejb ActividadServicios: EjbDeployment(deployment-id=ActividadServicios)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.InitEjbDeployments deploy
+INFORMACIÓN: Auto-deploying ejb UsuarioServicios: EjbDeployment(deployment-id=UsuarioServicios)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.InitEjbDeployments deploy
+INFORMACIÓN: Auto-deploying ejb MonitorServicios: EjbDeployment(deployment-id=MonitorServicios)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.InitEjbDeployments deploy
+INFORMACIÓN: Auto-deploying ejb ReservaJPA: EjbDeployment(deployment-id=ReservaJPA)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.ConfigurationFactory configureService
+INFORMACIÓN: Configuring Service(id=Natureadventure/derbyDataSource, type=Resource, provider-id=Default JDBC Database)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.ConfigurationFactory configureService
+INFORMACIÓN: Configuring Service(id=Natureadventure/mysqlDataSource, type=Resource, provider-id=Default JDBC Database)
+abr 27, 2015 10:41:02 PM org.apache.openejb.assembler.classic.Assembler createRecipe
+INFORMACIÓN: Creating Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:02 PM org.apache.tomee.jdbc.TomEEDataSourceCreator$TomEEDataSource readOnly
+INFORMACIÓN: Disabling testOnBorrow since no validation query is provided
+abr 27, 2015 10:41:02 PM org.apache.openejb.assembler.classic.Assembler createRecipe
+INFORMACIÓN: Creating Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:02 PM org.apache.tomee.jdbc.TomEEDataSourceCreator$TomEEDataSource readOnly
+INFORMACIÓN: Disabling testOnBorrow since no validation query is provided
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.ConfigurationFactory configureService
+INFORMACIÓN: Configuring Service(id=Default Managed Container, type=Container, provider-id=Default Managed Container)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig createContainer
+INFORMACIÓN: Auto-creating a container for bean Natureadventure.Comp2138056720: Container(type=MANAGED, id=Default Managed Container)
+abr 27, 2015 10:41:02 PM org.apache.openejb.assembler.classic.Assembler createRecipe
+INFORMACIÓN: Creating Container(id=Default Managed Container)
+abr 27, 2015 10:41:02 PM org.apache.openejb.core.managed.SimplePassivater init
+INFORMACIÓN: Using directory /home/fer/Desktop/natureadventure_rep/Natureadventure/target/apache-tomee/temp for stateful session passivation
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/derbyDataSource' in bean Natureadventure.Comp2138056720 to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/derbyDataSource' in bean Natureadventure.Comp2138056720 to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/mysqlDataSource' in bean Natureadventure.Comp2138056720 to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/mysqlDataSource' in bean Natureadventure.Comp2138056720 to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.ConfigurationFactory configureService
+INFORMACIÓN: Configuring Service(id=Default Stateless Container, type=Container, provider-id=Default Stateless Container)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig createContainer
+INFORMACIÓN: Auto-creating a container for bean LoginJPA: Container(type=STATELESS, id=Default Stateless Container)
+abr 27, 2015 10:41:02 PM org.apache.openejb.assembler.classic.Assembler createRecipe
+INFORMACIÓN: Creating Container(id=Default Stateless Container)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/derbyDataSource' in bean LoginJPA to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/derbyDataSource' in bean LoginJPA to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/mysqlDataSource' in bean LoginJPA to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/mysqlDataSource' in bean LoginJPA to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/derbyDataSource' in bean ReservaServicios to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/derbyDataSource' in bean ReservaServicios to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/mysqlDataSource' in bean ReservaServicios to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/mysqlDataSource' in bean ReservaServicios to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/derbyDataSource' in bean UsuarioJPA to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/derbyDataSource' in bean UsuarioJPA to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/mysqlDataSource' in bean UsuarioJPA to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/mysqlDataSource' in bean UsuarioJPA to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/derbyDataSource' in bean LoginServicios to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/derbyDataSource' in bean LoginServicios to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/mysqlDataSource' in bean LoginServicios to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/mysqlDataSource' in bean LoginServicios to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/derbyDataSource' in bean ActividadJPA to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/derbyDataSource' in bean ActividadJPA to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/mysqlDataSource' in bean ActividadJPA to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/mysqlDataSource' in bean ActividadJPA to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/derbyDataSource' in bean ActividadServicios to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:02 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/derbyDataSource' in bean ActividadServicios to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/mysqlDataSource' in bean ActividadServicios to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/mysqlDataSource' in bean ActividadServicios to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/derbyDataSource' in bean UsuarioServicios to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/derbyDataSource' in bean UsuarioServicios to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/mysqlDataSource' in bean UsuarioServicios to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/mysqlDataSource' in bean UsuarioServicios to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/derbyDataSource' in bean MonitorServicios to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/derbyDataSource' in bean MonitorServicios to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/mysqlDataSource' in bean MonitorServicios to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/mysqlDataSource' in bean MonitorServicios to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/derbyDataSource' in bean ReservaJPA to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/derbyDataSource' in bean ReservaJPA to Resource(id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/Natureadventure/mysqlDataSource' in bean ReservaJPA to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig processResourceRef
+INFORMACIÓN: Auto-linking resource-ref 'openejb/Resource/mysqlDataSource' in bean ReservaJPA to Resource(id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig deploy
+INFORMACIÓN: Configuring PersistenceUnit(name=prueba, provider=org.eclipse.persistence.jpa.PersistenceProvider)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig logAutoCreateResource
+INFORMACIÓN: Auto-creating a Resource with id 'Natureadventure/derbyDataSourceNonJta' of type 'DataSource for 'prueba'.
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig deploy
+INFORMACIÓN: Configuring Service(id=Natureadventure/derbyDataSourceNonJta, type=Resource, provider-id=Natureadventure/derbyDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.assembler.classic.Assembler createRecipe
+INFORMACIÓN: Creating Resource(id=Natureadventure/derbyDataSourceNonJta)
+abr 27, 2015 10:41:03 PM org.apache.tomee.jdbc.TomEEDataSourceCreator$TomEEDataSource readOnly
+INFORMACIÓN: Disabling testOnBorrow since no validation query is provided
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig setJtaDataSource
+INFORMACIÓN: Adjusting PersistenceUnit prueba <jta-data-source> to Resource ID 'Natureadventure/derbyDataSource' from 'null'
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig setNonJtaDataSource
+INFORMACIÓN: Adjusting PersistenceUnit prueba <non-jta-data-source> to Resource ID 'Natureadventure/derbyDataSourceNonJta' from 'null'
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig deploy
+INFORMACIÓN: Configuring PersistenceUnit(name=natureadventureJTA)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig logAutoCreateResource
+INFORMACIÓN: Auto-creating a Resource with id 'Natureadventure/mysqlDataSourceNonJta' of type 'DataSource for 'natureadventureJTA'.
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig deploy
+INFORMACIÓN: Configuring Service(id=Natureadventure/mysqlDataSourceNonJta, type=Resource, provider-id=Natureadventure/mysqlDataSource)
+abr 27, 2015 10:41:03 PM org.apache.openejb.assembler.classic.Assembler createRecipe
+INFORMACIÓN: Creating Resource(id=Natureadventure/mysqlDataSourceNonJta)
+abr 27, 2015 10:41:03 PM org.apache.tomee.jdbc.TomEEDataSourceCreator$TomEEDataSource readOnly
+INFORMACIÓN: Disabling testOnBorrow since no validation query is provided
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig setJtaDataSource
+INFORMACIÓN: Adjusting PersistenceUnit natureadventureJTA <jta-data-source> to Resource ID 'Natureadventure/mysqlDataSource' from 'mysqlDataSource'
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig setNonJtaDataSource
+INFORMACIÓN: Adjusting PersistenceUnit natureadventureJTA <non-jta-data-source> to Resource ID 'Natureadventure/mysqlDataSourceNonJta' from 'null'
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig deploy
+INFORMACIÓN: Configuring PersistenceUnit(name=personasJTADerby)
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig setJtaDataSource
+INFORMACIÓN: Adjusting PersistenceUnit personasJTADerby <jta-data-source> to Resource ID 'Natureadventure/derbyDataSource' from 'derbyDataSource'
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AutoConfig setNonJtaDataSource
+INFORMACIÓN: Adjusting PersistenceUnit personasJTADerby <non-jta-data-source> to Resource ID 'Natureadventure/derbyDataSourceNonJta' from 'null'
+abr 27, 2015 10:41:03 PM org.apache.openejb.config.AppInfoBuilder build
+INFORMACIÓN: Enterprise application "/home/fer/Desktop/natureadventure_rep/Natureadventure/target/apache-tomee/webapps/Natureadventure" loaded.
+abr 27, 2015 10:41:03 PM org.apache.openejb.assembler.classic.Assembler createApplication
+INFORMACIÓN: Assembling app: /home/fer/Desktop/natureadventure_rep/Natureadventure/target/apache-tomee/webapps/Natureadventure
+abr 27, 2015 10:41:03 PM org.apache.openejb.assembler.classic.ReloadableEntityManagerFactory createDelegate
+INFORMACIÓN: PersistenceUnit(name=prueba, provider=org.eclipse.persistence.jpa.PersistenceProvider) - provider time 540ms
+abr 27, 2015 10:41:03 PM org.apache.openejb.assembler.classic.ReloadableEntityManagerFactory createDelegate
+INFORMACIÓN: PersistenceUnit(name=natureadventureJTA, provider=org.eclipse.persistence.jpa.PersistenceProvider) - provider time 80ms
+abr 27, 2015 10:41:03 PM org.apache.openejb.assembler.classic.ReloadableEntityManagerFactory createDelegate
+INFORMACIÓN: PersistenceUnit(name=personasJTADerby, provider=org.eclipse.persistence.jpa.PersistenceProvider) - provider time 19ms
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=LoginJPALocalBean) --> Ejb(deployment-id=LoginJPA)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/LoginJPA!modelo.dao.LoginJPA) --> Ejb(deployment-id=LoginJPA)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/LoginJPA) --> Ejb(deployment-id=LoginJPA)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=ReservaServiciosLocalBean) --> Ejb(deployment-id=ReservaServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/ReservaServicios!controlador.ReservaServicios) --> Ejb(deployment-id=ReservaServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/ReservaServicios) --> Ejb(deployment-id=ReservaServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=UsuarioJPALocalBean) --> Ejb(deployment-id=UsuarioJPA)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/UsuarioJPA!modelo.dao.UsuarioJPA) --> Ejb(deployment-id=UsuarioJPA)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/UsuarioJPA) --> Ejb(deployment-id=UsuarioJPA)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=LoginServiciosLocalBean) --> Ejb(deployment-id=LoginServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/LoginServicios!controlador.LoginServicios) --> Ejb(deployment-id=LoginServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/LoginServicios) --> Ejb(deployment-id=LoginServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=ActividadJPALocalBean) --> Ejb(deployment-id=ActividadJPA)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/ActividadJPA!modelo.dao.ActividadJPA) --> Ejb(deployment-id=ActividadJPA)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/ActividadJPA) --> Ejb(deployment-id=ActividadJPA)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=ActividadServiciosLocalBean) --> Ejb(deployment-id=ActividadServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/ActividadServicios!controlador.ActividadServicios) --> Ejb(deployment-id=ActividadServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/ActividadServicios) --> Ejb(deployment-id=ActividadServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=UsuarioServiciosLocalBean) --> Ejb(deployment-id=UsuarioServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/UsuarioServicios!controlador.UsuarioServicios) --> Ejb(deployment-id=UsuarioServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/UsuarioServicios) --> Ejb(deployment-id=UsuarioServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=MonitorServiciosLocalBean) --> Ejb(deployment-id=MonitorServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/MonitorServicios!controlador.MonitorServicios) --> Ejb(deployment-id=MonitorServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/MonitorServicios) --> Ejb(deployment-id=MonitorServicios)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=ReservaJPALocalBean) --> Ejb(deployment-id=ReservaJPA)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/ReservaJPA!modelo.dao.ReservaJPA) --> Ejb(deployment-id=ReservaJPA)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.JndiBuilder bind
+INFORMACIÓN: Jndi(name=global/Natureadventure/ReservaJPA) --> Ejb(deployment-id=ReservaJPA)
+abr 27, 2015 10:41:04 PM org.apache.openejb.cdi.CdiBuilder initSingleton
+INFORMACIÓN: Existing thread singleton service in SystemInstance(): org.apache.openejb.cdi.ThreadSingletonServiceImpl@5892a141
+abr 27, 2015 10:41:04 PM org.apache.openejb.cdi.OpenEJBLifecycle startApplication
+INFORMACIÓN: OpenWebBeans Container is starting...
+abr 27, 2015 10:41:04 PM org.apache.webbeans.plugins.PluginLoader startUp
+INFORMACIÓN: Adding OpenWebBeansPlugin : [CdiPlugin]
+abr 27, 2015 10:41:04 PM org.apache.webbeans.plugins.PluginLoader startUp
+INFORMACIÓN: Adding OpenWebBeansPlugin : [OpenWebBeansJsfPlugin]
+abr 27, 2015 10:41:04 PM org.apache.webbeans.config.BeansDeployer validateInjectionPoints
+INFORMACIÓN: All injection points were validated successfully.
+abr 27, 2015 10:41:04 PM org.apache.openejb.cdi.OpenEJBLifecycle startApplication
+INFORMACIÓN: OpenWebBeans Container has started, it took 224 ms.
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Created Ejb(deployment-id=ReservaJPA, ejb-name=ReservaJPA, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Created Ejb(deployment-id=MonitorServicios, ejb-name=MonitorServicios, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Created Ejb(deployment-id=ActividadServicios, ejb-name=ActividadServicios, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Created Ejb(deployment-id=ActividadJPA, ejb-name=ActividadJPA, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Created Ejb(deployment-id=UsuarioServicios, ejb-name=UsuarioServicios, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Created Ejb(deployment-id=UsuarioJPA, ejb-name=UsuarioJPA, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Created Ejb(deployment-id=ReservaServicios, ejb-name=ReservaServicios, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Created Ejb(deployment-id=LoginJPA, ejb-name=LoginJPA, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Created Ejb(deployment-id=LoginServicios, ejb-name=LoginServicios, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Started Ejb(deployment-id=ReservaJPA, ejb-name=ReservaJPA, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Started Ejb(deployment-id=MonitorServicios, ejb-name=MonitorServicios, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Started Ejb(deployment-id=ActividadServicios, ejb-name=ActividadServicios, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Started Ejb(deployment-id=ActividadJPA, ejb-name=ActividadJPA, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Started Ejb(deployment-id=UsuarioServicios, ejb-name=UsuarioServicios, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Started Ejb(deployment-id=UsuarioJPA, ejb-name=UsuarioJPA, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Started Ejb(deployment-id=ReservaServicios, ejb-name=ReservaServicios, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Started Ejb(deployment-id=LoginJPA, ejb-name=LoginJPA, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler startEjbs
+INFORMACIÓN: Started Ejb(deployment-id=LoginServicios, ejb-name=LoginServicios, container=Default Stateless Container)
+abr 27, 2015 10:41:04 PM org.apache.openejb.assembler.classic.Assembler createApplication
+INFORMACIÓN: Deployed Application(path=/home/fer/Desktop/natureadventure_rep/Natureadventure/target/apache-tomee/webapps/Natureadventure)
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener configureFactory
+INFORMACIÓN: Using providers:
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener configureFactory
+INFORMACIÓN:      org.apache.cxf.jaxrs.provider.JAXBElementProvider@3423ce52
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener configureFactory
+INFORMACIÓN:      org.apache.openejb.server.cxf.rs.EJBAccessExceptionMapper@1abe843c
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN: REST Application: http://localhost:8080/Natureadventure/                                      -> org.apache.openejb.server.rest.InternalApplication
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:      Service URI: http://localhost:8080/Natureadventure/gerente/actividades                   ->  EJB controlador.ActividadServicios
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:            DELETE http://localhost:8080/Natureadventure/gerente/actividades/{nombre}          ->      Response borraEntrada(String)                       
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               GET http://localhost:8080/Natureadventure/gerente/actividades/                  ->      Response listaTodasActividadesActivas()             
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               GET http://localhost:8080/Natureadventure/gerente/actividades/archivadas        ->      Response listaTodasActividadesArchivadas()          
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               GET http://localhost:8080/Natureadventure/gerente/actividades/{nombre}          ->      Response buscarActividadPorNombre(String)           
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:              POST http://localhost:8080/Natureadventure/gerente/actividades/                  ->      Response nuevaEntradaDesdeFormulario(String, String)
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               PUT http://localhost:8080/Natureadventure/gerente/actividades/{nombre}          ->      Response creaNuevaEntrada(String, Actividad)        
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:      Service URI: http://localhost:8080/Natureadventure/gerente/monitores                     ->  EJB controlador.MonitorServicios  
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:            DELETE http://localhost:8080/Natureadventure/gerente/monitores/{dni}               ->      Response borraEntrada(String)              
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               GET http://localhost:8080/Natureadventure/gerente/monitores/activos             ->      Response listaTodosMonitoresActivos()      
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               GET http://localhost:8080/Natureadventure/gerente/monitores/nodisponibles       ->      Response listaTodosMonitoresNoDisponibles()
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               GET http://localhost:8080/Natureadventure/gerente/monitores/{dni}               ->      Response buscarMonitorPorDni(String)       
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               PUT http://localhost:8080/Natureadventure/gerente/monitores/actualizar/{dni}    ->      Response actualizaMonitor(String, Usuario) 
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               PUT http://localhost:8080/Natureadventure/gerente/monitores/anyadir/{dni}       ->      Response creaNuevaEntrada(String, Usuario) 
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:      Service URI: http://localhost:8080/Natureadventure/gerente/reservas                      ->  EJB controlador.ReservaServicios  
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:            DELETE http://localhost:8080/Natureadventure/gerente/reservas/{dni}/{fechaReserva} ->      Response borraEntrada(String, String)       
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               GET http://localhost:8080/Natureadventure/gerente/reservas/aceptadas            ->      Response listaTodasReservasAceptadas()      
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               GET http://localhost:8080/Natureadventure/gerente/reservas/pendientes           ->      Response listaTodasReservasPendientes()     
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               GET http://localhost:8080/Natureadventure/gerente/reservas/{dni}/{fechaReserva} ->      Response buscaReserva(String, String)       
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               GET http://localhost:8080/Natureadventure/gerente/reservas/{especialidad}       ->      Response buscarMonitorDisponible(String)    
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               PUT http://localhost:8080/Natureadventure/gerente/reservas/{dniMonitor}         ->      Response actualizaActividad(String, Reserva)
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:      Service URI: http://localhost:8080/Natureadventure/login                                 ->  EJB controlador.LoginServicios    
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               GET http://localhost:8080/Natureadventure/login/{username}/{password}           ->      Response comprobarLogin(String, String)
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:      Service URI: http://localhost:8080/Natureadventure/usuario/perfil                        ->  EJB controlador.UsuarioServicios  
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               GET http://localhost:8080/Natureadventure/usuario/perfil/{username}             ->      Response perfilUsuario(String)            
+abr 27, 2015 10:41:05 PM org.apache.openejb.server.cxf.rs.CxfRsHttpListener logEndpoints
+INFORMACIÓN:               PUT http://localhost:8080/Natureadventure/usuario/perfil/{username}             ->      Response creaNuevaEntrada(String, Usuario)
+abr 27, 2015 10:41:05 PM org.apache.catalina.startup.HostConfig deployWAR
+INFORMACIÓN: Deployment of web application archive /home/fer/Desktop/natureadventure_rep/Natureadventure/target/apache-tomee/webapps/Natureadventure.war has finished in 5.800 ms
+abr 27, 2015 10:41:05 PM org.apache.coyote.AbstractProtocol start
+INFORMACIÓN: Starting ProtocolHandler ["http-bio-8080"]
+abr 27, 2015 10:41:05 PM org.apache.coyote.AbstractProtocol start
+INFORMACIÓN: Starting ProtocolHandler ["ajp-bio-8009"]
+abr 27, 2015 10:41:05 PM org.apache.catalina.startup.Catalina start
+INFORMACIÓN: Server startup in 5926 ms
+abr 27, 2015 10:41:30 PM org.apache.catalina.core.StandardServer await
+INFORMACIÓN: Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+abr 27, 2015 10:41:30 PM org.apache.coyote.AbstractProtocol pause
+INFORMACIÓN: Pausing ProtocolHandler ["http-bio-8080"]
+abr 27, 2015 10:41:30 PM org.apache.coyote.AbstractProtocol pause
+INFORMACIÓN: Pausing ProtocolHandler ["ajp-bio-8009"]
+abr 27, 2015 10:41:30 PM org.apache.catalina.core.StandardService stopInternal
+INFORMACIÓN: Parando servicio Catalina
+abr 27, 2015 10:41:30 PM org.apache.openejb.assembler.classic.Assembler destroyApplication
+INFORMACIÓN: Undeploying app: /home/fer/Desktop/natureadventure_rep/Natureadventure/target/apache-tomee/webapps/Natureadventure
+abr 27, 2015 10:41:30 PM org.apache.openejb.assembler.classic.Assembler destroyResource
+INFORMACIÓN: Closing DataSource: Natureadventure/derbyDataSource
+abr 27, 2015 10:41:30 PM org.apache.openejb.assembler.classic.Assembler destroyResource
+INFORMACIÓN: Closing DataSource: Natureadventure/mysqlDataSource
+abr 27, 2015 10:41:30 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+GRAVE: La aplicación web [/Natureadventure] registró el conductor JDBC [org.apache.derby.jdbc.AutoloadedDriver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+abr 27, 2015 10:41:30 PM org.apache.catalina.loader.WebappClassLoader clearReferencesJdbc
+GRAVE: La aplicación web [/Natureadventure] registró el conductor JDBC [com.mysql.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+abr 27, 2015 10:41:30 PM org.apache.catalina.loader.WebappClassLoader clearReferencesThreads
+GRAVE: La aplicación web [/Natureadventure] parece haber arrancado un hilo llamado [Abandoned connection cleanup thread] pero no ha podido pararlo. Esto tiene todas las papeletas de convertirse en un fallo de memoria.
+abr 27, 2015 10:41:30 PM org.apache.coyote.AbstractProtocol stop
+INFORMACIÓN: Stopping ProtocolHandler ["http-bio-8080"]
+abr 27, 2015 10:41:30 PM org.apache.coyote.AbstractProtocol stop
+INFORMACIÓN: Stopping ProtocolHandler ["ajp-bio-8009"]
+abr 27, 2015 10:41:30 PM org.apache.openejb.server.SimpleServiceManager stop
+INFORMACIÓN: Stopping server services
+abr 27, 2015 10:41:30 PM org.apache.openejb.assembler.classic.Assembler destroyResource
+INFORMACIÓN: Closing DataSource: mysqlDataSourceNonJta
+abr 27, 2015 10:41:30 PM org.apache.openejb.assembler.classic.Assembler destroyResource
+INFORMACIÓN: Closing DataSource: derbyDataSourceNonJta
+abr 27, 2015 10:41:30 PM org.apache.coyote.AbstractProtocol destroy
+INFORMACIÓN: Destroying ProtocolHandler ["http-bio-8080"]
+abr 27, 2015 10:41:30 PM org.apache.coyote.AbstractProtocol destroy
+INFORMACIÓN: Destroying ProtocolHandler ["ajp-bio-8009"]
