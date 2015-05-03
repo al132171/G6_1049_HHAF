@@ -137,7 +137,7 @@ a {
 }
 
 a:hover {
-    color: #e54747;
+    color: #5CB8E6;
     text-decoration: none;
 }
 
@@ -611,6 +611,10 @@ h3.widget-title {
     border-radius: 35px;
     -webkit-border-radius: 35px;
     -moz-border-radius: 35px;
+}
+
+.service-icon:hover {
+    background: #90be2c;
 }
 
 .service-item .service-content {

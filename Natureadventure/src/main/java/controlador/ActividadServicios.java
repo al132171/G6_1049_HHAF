@@ -49,6 +49,8 @@ public class ActividadServicios {
         return Response.ok(actividad).build();
     }
 
+    
+
     @GET
     @Produces("application/json")
     public Response listaTodasActividadesActivas() {

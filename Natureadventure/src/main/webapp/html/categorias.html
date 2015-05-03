@@ -86,10 +86,43 @@
 
     <div class="container">
 
-        <div class="row" ng-show="show.categorias===true"><!-- first row -->
+        <div class="row" id="row_categorias" ng-show="show.categorias===true"><!-- first row -->
+            
+            <div class="widget-item">
+                <div class="col-md-8 col-sm-6">
+                    <h4 class="consult-title"></h4>
+                    <h3 class="widget-title">Selecciona categoría:</h3>
+                </div>
+                <div class="col-md-4 col-sm-6">
+
+                    <!--<div class="row">
+                        <div class="col-md-6">
+                            <h4 class="consult-title">Busca actividad:</h4>
+                        </div>
+                        <div class="col-md-6"><h4 class="consult-title">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Palabra clave">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button> 
+                                  </span>
+                            </div>&lt;!&ndash; /input-group &ndash;&gt;
+                        </h4>
+                        </div>
+
+                    </div> &lt;!&ndash; /.row &ndash;&gt;-->
+
+                    <h4 class="consult-title">Busca actividad:</h4>
+                    <div class="input-group">
+                        <input type="text" id="inputCategorias" class="form-control" placeholder="Palabra clave" ng-model="palabraClave" ng-change="usuarioCtrl.buscaActividades(palabraClave)">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" ng-click="usuarioCtrl.buscaActividades(palabraClave)"><span class="fa fa-search"></span></button>
+                                  </span>
+                    </div><!-- /input-group -->
+
+                </div><!-- /.col-md-4 col-sm-6 -->
+            </div><!-- /.widget-item -->
 
             <div class="col-md-4 col-sm-4"><!-- first column -->
-                <h3 class="widget-title">Selecciona categoría:</h3>
                 <div class="widget-item">
                     <div ng-repeat="a in feed.categorias">
                         <div class="service-item" ng-if="$even">
@@ -99,7 +132,7 @@
                                 </div> <!-- /.service-icon -->
                             </a>
                             <div class="service-content">
-                                <button class="btn btn-link"><h4 class="consult-title">{{a.name}}</h4></button>
+                                <h4 class="consult-title "><a href="index.html" class="link">{{a.name}}</a></h4>
                             </div> <!-- /.service-content -->
                         </div> <!-- /.service-item -->
                     </div>
@@ -109,7 +142,6 @@
 
             <div class="col-md-4 col-sm-4"><!-- second column -->
                 <div class="widget-item">
-                    <h3 class="widget-title"><br></h3>
                     <div ng-repeat="a in feed.categorias">
                         <div class="service-item" ng-if="$odd">
                             <a href="index.html" class="link">
@@ -127,19 +159,7 @@
 
             <div class="col-md-4 col-sm-4"><!-- third column -->
                 <div class="widget-item">
-                    <h4 class="consult-title">Busca actividad:</h4>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Palabra clave">
-                                  <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button> 
-                                  </span>
-                            </div><!-- /input-group -->
-                        </div><!-- /.col-lg-12 -->
-                    </div><!-- /.row -->
-
-                    <h3 class="widget-title"><br></h3>
+                  
                     <div class="sample-thumb img-border">
                         <img src="../images/event_1.jpg" alt="New Event" title="New Event">
                     </div> <!-- /.sample-thumb -->
@@ -149,6 +169,82 @@
                     </div> <!-- /.sample-thumb -->                        </div> <!-- /.widget-item -->
             </div> <!-- /.col-md-4 -->
         </div> <!-- /.row first -->
+
+
+        <div class="row" id="row_resultados_busqueda" ng-show="show.resultadosBusqueda===true">
+
+            <div class="widget-item">
+                <div class="col-md-8 col-sm-6">
+                    <h4 class="consult-title"></h4>
+                    <h3 class="widget-title">Resultados búsqueda "{{palabraClave}}":</h3>
+                </div>
+                <div class="col-md-4 col-sm-6">
+
+                    <!--<div class="row">
+                        <div class="col-md-6">
+                            <h4 class="consult-title">Busca actividad:</h4>
+                        </div>
+                        <div class="col-md-6"><h4 class="consult-title">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Palabra clave">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button> 
+                                  </span>
+                            </div>&lt;!&ndash; /input-group &ndash;&gt;
+                        </h4>
+                        </div>
+
+                    </div> &lt;!&ndash; /.row &ndash;&gt;-->
+
+                    <h4 class="consult-title">Busca actividad:</h4>
+                    <div class="input-group">
+                        <input type="text" id="inputResultadosBusqueda" class="form-control" placeholder="Palabra clave" ng-model="palabraClave" ng-change="usuarioCtrl.buscaActividades(palabraClave)">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" ng-click="usuarioCtrl.buscaActividades(palabraClave)"><span class="fa fa-search"></span></button> 
+                                  </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-md-4 col-sm-6 -->
+            </div><!-- /.widget-item -->
+
+
+
+            <div ng-repeat="a in feed.resultadosBusqueda">
+                <div class="col-md-4 col-sm-4"><!-- column -->
+
+                    <div class="service-item">
+                        <a href="index.html" class="link">
+                            <div class='sample-thumb img-border'>
+                                <img ng-src="../imagenes/{{a.categoria}}/{{a.imagen}}" alt="Imagen de la actividad" height=200 weight=200 />
+                            </div>
+                        </a>
+                        <div class="service-content">
+                            <button class="btn btn-success">{{a.nombre}}</button>
+                        </div> <!-- /.service-content -->
+                    </div> <!-- /.service-item -->
+                </div> <!-- /.col-md-4 -->
+            </div> <!-- /ng-repeat -->
+
+
+
+
+            <div class='col-sm-4 col-md-4'>
+                <div class='wow fadeInLeft' data-wow-delay='0.2s'>
+                    <div class='service-item'>
+                        <div class='sample-thumb img-border'>
+                            <img src='../images/event_3.jpg' alt='' height=200 weight=200 />
+                        </div>
+                        <div class='service-desc'>
+                            <h5>Anabel</h5>
+                            <p>Bolso ideal para la primavera</p>
+                            <p>Precio: 15&euro;</p>
+                            <p><a onclick=informacionBolso('6')> M&aacutes informaci&oacuten</a></p>
+                            <button class="btn btn-danger" ng-click="usuarioCtrl.muestraCategorias()">Categorías</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.row -->
 
 
 

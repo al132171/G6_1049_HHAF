@@ -5,8 +5,8 @@
         jtaManaged = true
        <!-- userName = root
         password = root_123 -->
-        userName = fernando
-        password = nekrwpint
+        userName = root
+        password = root_123
     </Resource>
     <!--<Resource id="derbyDataSource" type="DataSource">-->
         <!--jdbcDriver = org.apache.derby.jdbc.ClientDriver-->

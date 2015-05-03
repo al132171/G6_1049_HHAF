@@ -31,6 +31,15 @@ public class ActividadJPA {
             return ENTRADA_NULL;
         }
     }
+    
+    public Actividad[] buscaActividadPorPalabraClave(String palabraClave) {
+        TypedQuery<Actividad> query = em.createNamedQuery("Actividad.encuentraPorPalabraClave", Actividad.class);
+        query.setParameter("palabraClave", "%" + palabraClave + "%");
+        List<Actividad> listaActividades = query.getResultList();
+        Actividad[] actividades = new Actividad[listaActividades.size()];
+        listaActividades.toArray(actividades);
+        return actividades;
+    }
 
     public Actividad[] listaTodasActividadesActivas() {
         TypedQuery<Actividad> query = em.createNamedQuery("Actividad.encuentraTodasActivas", Actividad.class);

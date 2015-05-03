@@ -66,7 +66,7 @@
             <!--<property name="eclipselink.jdbc.password" value="APP"/>-->
             <!--<property name="eclipselink.target-database" value="DERBY"/>-->
             <property name="eclipselink.ddl-generation" value="create-tables"/>
-            <property name="eclipselink.logging.level" value="INFO"/>
+            <property name="eclipselink.logging.level" value="FINE"/>
         </properties>
     </persistence-unit>
 </persistence>
