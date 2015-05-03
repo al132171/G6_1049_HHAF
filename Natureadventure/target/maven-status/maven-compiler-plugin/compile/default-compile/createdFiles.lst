@@ -1,7 +1,11 @@
+controlador/utilidades/CrearFactura.class
 controlador/LoginServicios.class
 modelo/datos/Actividad.class
+controlador/utilidades/EnviaCorreo.class
+controlador/MonitorAdminServicios.class
 controlador/ActividadServicios.class
 modelo/datos/Usuario.class
+modelo/dao/MonitorJPA.class
 modelo/dao/UsuarioJPA.class
 modelo/datos/Reserva.class
 controlador/MonitorServicios.class

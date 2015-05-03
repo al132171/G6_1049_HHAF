@@ -33,8 +33,8 @@ function validator($scope, tipo) {
 
 	var app = angular.module("app", []); //Define el modulo de la aplicación (ng-app="app") para todo el fichero
 	
-	app.controller('ActividadesCtrl', ['$scope', 'ActividadGService', '$rootScope', '$location',
-	                                            function ($scope, ActividadGService, $rootScope, $location) { //Inyecta los atributos
+	app.controller('ActividadesCtrl', ['$scope', 'ActividadGService',
+	                                            function ($scope, ActividadGService) { //Inyecta los atributos
 		app.baseURI = 'http://localhost:8080/Natureadventure/gerente/actividades/';
 		
 
@@ -206,8 +206,8 @@ function validator($scope, tipo) {
 			};
 		};
 
-		self.delete = function (nombre) {
-			ActividadGService.delete(nombre.actividad.nombre)
+		self.cambiaEstado = function (nombre) {
+			ActividadGService.cambiaEstado(nombre.actividad.nombre)
 			.success(function (data) {
 				ActividadGService.retrieveAllActivas()
 				.success(function (data) {
@@ -299,9 +299,16 @@ function validator($scope, tipo) {
 			ReservasService.retrieveReserva(dni, fechaReserva)
 			.success(function(data) {
 				$scope.currentReserva = data;
-				ReservasService.retrieveMonitor(data.reserva.actividad.categoria)
+				ReservasService.retrieveMonitor(data.reserva.actividad.categoria, data.reserva.fechaActividad)
 				.success(function(data){
-					$scope.monitores = data.usuario;
+					if(Object.keys(data.usuario).length != 0){
+						$scope.selectMonitor = false;
+						$scope.errorMonitor = true;
+						$scope.monitores = data.usuario;
+					}else{
+						$scope.errorMonitor = false;
+						$scope.selectMonitor = true;
+					}
 					});
 		});
 		};
@@ -318,8 +325,8 @@ function validator($scope, tipo) {
 		
 		
 		
-		self.delete = function (currentReserva){
-		ReservasService.delete(currentReserva.reserva.dni, currentReserva.reserva.fechaReserva) 
+		self.cambiaEstado = function (currentReserva){
+		ReservasService.cambiaEstado(currentReserva.reserva.dni, currentReserva.reserva.fechaReserva) 
 		.success(function (data) {
 			ReservasService.retrieveReservasPendientes()
 			.success(function (data) {
@@ -425,10 +432,10 @@ function validator($scope, tipo) {
 			return $http.get(url);
 		}
 
-		this.delete = function(nombre) {
-			var url = app.baseURI + nombre;
+		this.cambiaEstado = function(nombre) {
+			var url = app.baseURI +"estado/"+ nombre;
 			var dato = {'nombre': nombre};
-			return $http.delete(url, dato);
+			return $http.put(url, dato);
 		}
 
 		this.update = function (actividad) {
@@ -450,24 +457,24 @@ function validator($scope, tipo) {
 		};
 		
 		this.retrieveReserva = function(dni, fechaReserva) {
-			var url = app.baseURI + dni+"/"+fechaReserva;
+			var url = app.baseURI +"reserva/"+dni+"/"+fechaReserva;
 			return $http.get(url);
 		}
 		
-		this.retrieveMonitor = function(especialidad){
-			var url = app.baseURI + especialidad;
+		this.retrieveMonitor = function(especialidad, fechaActividad){
+			var url = app.baseURI + especialidad+"/"+fechaActividad;
 			return $http.get(url);
 		};
 		
-		this.updateReserva = function(currentReserva,dniMonitor){
+		this.updateReserva = function(reservacurrentReserva,dniMonitor){
 			var url = app.baseURI+dniMonitor;
 			return $http.put(url, currentReserva);
 		};
 		
-		this.delete = function(dni, fechaReserva) {
+		this.cambiaEstado = function(dni, fechaReserva) {
 			var url = app.baseURI + dni+"/"+fechaReserva;
 			var dato = {'dni': dni, 'fechaReserva':fechaReserva};
-			return $http.delete(url, dato);
+			return $http.put(url, dato);
 		};
 		
 		

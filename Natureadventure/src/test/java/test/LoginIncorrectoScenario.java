@@ -33,7 +33,7 @@ public class LoginIncorrectoScenario {
 	    @Then("^Se muestra un mensaje advirtiendo que los datos son erróneos$")
 	    public void the_person_is_deleted_from_the_database() throws Throwable {
 	        try {
-		    	webDriver.findElement(By.id("login:gerente")); //si no lo encuentra excepcion
+		    	webDriver.findElement(By.id("login:gerente")); //si no lo encuentra es que no se ha logueado
 	        } catch (NoSuchElementException e) {
 		    	webDriver.close(); //correcto
 	        }

@@ -13,15 +13,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
 @XmlType(propOrder = {"fechaActividad", "fechaReserva","cantidadPersonas", "precio","nombre","apellidos","dni",
-		"correo","telefono","estado", "actividad", "usuario"})
+		"correo","telefono","estado", "actividad", "usuario", "contrato"})
 @Entity
 @NamedQueries({
+	
+	
 	@NamedQuery(name="Reserva.encuentraTodasPendientes", query = "SELECT r FROM Reserva r WHERE r.estado = 'P'"),
 	@NamedQuery(name="Reserva.encuentraTodasAceptadas", query = "SELECT r FROM Reserva r WHERE r.estado = 'A'"),
 	@NamedQuery(name="Reserva.encuentraReserva", query = "SELECT r FROM Reserva r WHERE r.dni = :dni AND r.fechaReserva = :fechaReserva"),
-	@NamedQuery(name="Reserva.borrarReserva", query = "DELETE FROM Reserva r WHERE r.dni = :dni AND r.fechaReserva = :fechaReserva")
-
-
+	@NamedQuery(name="Reserva.encuentraTodasMonitorFechaActividad", query = "SELECT r FROM Reserva r WHERE r.usuario.username = :username AND r.fechaActividad = :fechaActividad"),
+	@NamedQuery(name="Reserva.borrarReserva", query = "DELETE FROM Reserva r WHERE r.dni = :dni AND r.fechaReserva = :fechaReserva"),
+	@NamedQuery(name="Reserva.encuentraTodas", query = "SELECT r FROM Reserva r WHERE r.usuario.username = :username")
+	
 	
 })
 
@@ -40,6 +43,7 @@ public class Reserva {
 	private String correo;
 	private String telefono;
 	private String estado;
+	private String contrato;
 	@ManyToOne
 	private Actividad actividad;
 	@ManyToOne
@@ -54,7 +58,7 @@ public class Reserva {
 	public Reserva(Long id, String fechaActividad, String fechaReserva,
 			int cantidadPersonas, float precio, String nombre,
 			String apellidos, String dni, String correo, String telefono,
-			String estado) {
+			String estado, String contrato) {
 		super();
 		this.id = id;
 		this.fechaActividad = fechaActividad;
@@ -67,6 +71,7 @@ public class Reserva {
 		this.correo = correo;
 		this.telefono = telefono;
 		this.estado = estado;
+		this.contrato = contrato;
 	}
 
 
@@ -166,6 +171,14 @@ public class Reserva {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getContrato() {
+		return contrato;
+	}
+
+	public void setContrato(String contrato) {
+		this.contrato = contrato;
 	}
 
 	@Override

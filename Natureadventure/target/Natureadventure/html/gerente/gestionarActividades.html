@@ -29,9 +29,6 @@
 	<script src="../../js/bootstrap-datetimepicker.min.js"></script>
 	<script type="text/javascript" src="../../js/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
 	
-	
-
-    
     
     <!-- Mis scripts-->
     <script src="../../js/serviceGerente.js"></script>
@@ -97,7 +94,7 @@
             	
             </tr>
             <tbody>
-            <tr ng-repeat="a in actividades" ng-switch="a.estado">
+            <tr ng-repeat="a in actividades" ng-switch="a.estado" id="{{a.nombre}}">
                 <td>{{a.nombre}}</td>
                 <td>{{a.duracion}}</td>
                 <td>{{a.fechaInicio}}</td>
@@ -109,7 +106,7 @@
                 <td>{{a.participantesMax}}</td>
                 <td>{{a.categoria}}</td>
                                 
-                <td  ng-switch-when="T"><button type="submit" id="update:{{a.nombre}}" class="btn btn-info btn-sm" data-toggle="modal" data-target="#actualizar"
+                <td  ng-switch-when="T"><button  id="update:{{a.nombre}}" type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#actualizar"
                         ng-click="actividadesCtrl.retreiveContact(a.nombre)">
                         <span class="glyphicon glyphicon-pencil"></span> Actualizar</button></td>
                
@@ -144,7 +141,7 @@
 			            <div class="modal-footer">
 			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 						 <button type="button" class="btn btn-warning" data-dismiss="modal" 
-						 ng-click='actividadesCtrl.delete(currentActividad)'> 
+						 ng-click='actividadesCtrl.cambiaEstado(currentActividad)'> 
 						  Aceptar</button>			            
 						</div>
 			        	</div>
@@ -168,7 +165,7 @@
 					 <div class="form-group" ng-class="{ 'has-error' : updateForm.nombreU.$invalid && !updateForm.nombreU.$pristine, 
 						'has-success' : !updateForm.nombreU.$invalid}">					    	
 						    <label>Nombre:</label>
-					   		<input type="text" name="nombreU" class="form-control" ng-model="currentActividad.actividad.nombre" 
+					   		<input type="text" id="nombreU" name="nombreU" class="form-control" ng-model="currentActividad.actividad.nombre" 
 								   ng-minlength="1" ng-maxlength="50" ng-change="comprobar(currentActividad.actividad.nombre)" required> 
 							<small class="error" ng-show="updateForm.nombreU.$error.required">*Nombre obligatorio</small>
 							<small class="error" ng-show="updateForm.nombreU.$error.minlength">*Min. 1 caracteres</small>
@@ -242,7 +239,7 @@
 					  <div class="form-group" ng-class="{ 'has-error' : updateForm.precioU.$invalid && !updateForm.precioU.$pristine, 
 						'has-success' : !updateForm.precioU.$invalid}">	
 					    	<label>Precio:</label>
-					   		<input type="number" name="precioU" min="0" ng-model="currentActividad.actividad.precio" class="form-control" ng-min="0"  class="form-control" required>
+					   		<input id="precioU" type="number" name="precioU" min="0" ng-model="currentActividad.actividad.precio" class="form-control" ng-min="0"  class="form-control" required>
 						    <small class="error" ng-show="updateForm.precioU.$error.required">*Precio obligatorio</small>
 						    <small class="error" ng-show="updateForm.precioU.$error.min">*Precio inválido</small>
 					  </div> 
@@ -299,7 +296,7 @@
     </div>
     </div>
     
-    <button type="submit" ng-hide="add" class="btn btn-success" data-toggle="modal" data-target="#create" ng-click="resetForm(user)">
+    <button type="submit" id="añadir1" ng-hide="add" class="btn btn-success" data-toggle="modal" data-target="#create" ng-click="resetForm(user)">
     <span class="glyphicon glyphicon-plus"></span>Añadir</button>
     <!-- Ventana Modal insertar-->
 		<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
@@ -330,7 +327,7 @@
 					    </small>
 					  
 					    <small class="error" 
-					            ng-show="createForm.nombre.$error.nombre">
+					            ng-show="createForm.nombre.$error.nombre" id="errorNombre">
 					             *El nombre introducido ya existe
 					    </small>
 						    </div>
@@ -361,7 +358,7 @@
 					  <div class="form-group" ng-class="{ 'has-error' : createForm.duracion.$invalid && !createForm.duracion.$pristine, 
 						'has-success' : !createForm.duracion.$invalid}">
 					    	<label for="duracion">Duracion:</label>
-					   		<input type="number" ng-model="user.duracion" ng-min=0 min="0" class="form-control" placeholder="minutos" name="duracion" required/>
+					   		<input type="number" ng-model="user.duracion" ng-min=0 min="0" class="form-control" placeholder="minutos" id="duracion" name="duracion" required/>
 					  		 <div class="error" ng-show="createForm.duracion.$dirty && createForm.duracion.$invalid">
 								    <small class="error" 
 								        ng-show="createForm.duracion.$error.required">
@@ -379,7 +376,7 @@
 						'has-success' : !createForm.horaInicio.$invalid}">
 					    	<label for="horaInicio">Hora inicio:</label>
 					    	<div class="input-group date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
-						   		<input type="text" ng-model="user.horaInicio" class="form-control" name="horaInicio" ng-pattern="horaInicio1.word" required ng-maxlength="5" placeholder="(hh:mm)"/>
+						   		<input type="text" ng-model="user.horaInicio" class="form-control" name="horaInicio" ng-pattern="horaInicio1.word" required ng-maxlength="5" placeholder="(hh:mm)" id="horaInicio"/>
 						   		<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
 					  		</div>
@@ -397,7 +394,7 @@
                 			<!-- <div id="datetimepicker1" class="input-append date"> -->
 					    	<div class="input-group date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
 					    		
-					    		<input type="text" id="fechaInicio" name="fechaInicio" class="form-control" ng-model="user.fechaInicio" 
+					    		<input type="text" name="fechaInicio" class="form-control" ng-model="user.fechaInicio"  id="fechaInicio"
 					    		ng-maxlength="10" ng-minlength="10" ng-pattern="fechaInicio1.word" required ng-change="compararFechas(user.fechaInicio, user.fechaFin)" />
 					  			<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -444,7 +441,7 @@ ng-change="compararFechas(user.fechaInicio, user.fechaFin)"/>
 					  <div class="form-group" ng-class="{ 'has-error' : createForm.nivel.$invalid && !createForm.nivel.$pristine, 
 						'has-success' : !createForm.nivel.$invalid}">
 					    	<label for="nivel">Nivel:</label>
-					    	 <select ng-model="feed.nivel"  ng-options="template.value as template.name for template in feed.niveles" class="form-control" name="nivel">
+					    	 <select id="nivel" ng-model="feed.nivel"  ng-options="template.value as template.name for template in feed.niveles" class="form-control" name="nivel">
               				 </select>
 
 					   		
@@ -453,7 +450,7 @@ ng-change="compararFechas(user.fechaInicio, user.fechaFin)"/>
 					  <div class="form-group" ng-class="{ 'has-error' : createForm.precio.$invalid && !createForm.precio.$pristine, 
 						'has-success' : !createForm.precio.$invalid}">
 					    	<label for="precio">Precio:</label>
-					   		<input type="number" min="0" ng-model="user.precio" class="form-control" name="precio" ng-min="0" required/>
+					   		<input type="number" min="0" ng-model="user.precio" class="form-control" id="precio" name="precio" ng-min="0" required/>
 					   		<div class="error" ng-show="createForm.precio.$dirty && createForm.precio.$invalid">
 								    <small class="error" 
 								        ng-show="createForm.precio.$error.required">
@@ -510,7 +507,7 @@ ng-change="compararFechas(user.fechaInicio, user.fechaFin)"/>
 			            <div class="form-group" ng-class="{ 'has-error' : createForm.lugar.$invalid && !createForm.lugar.$pristine, 
 						'has-success' : !createForm.lugar.$invalid}">
 					    	<label for="nivel">Lugar:</label>
-					   		<input type="text" ng-model="user.lugar" class="form-control" name="lugar" required/>
+					   		<input id="lugar" type="text" ng-model="user.lugar" class="form-control" name="lugar" required/>
 					   		<div class="error" ng-show="createForm.lugar.$dirty && createForm.lugar.$invalid">
 								    <small class="error" 
 								        ng-show="createForm.lugar.$error.required">
@@ -522,7 +519,7 @@ ng-change="compararFechas(user.fechaInicio, user.fechaFin)"/>
 					  
 					  <div class="form-group">
 					    	<label for="imagen">Imagen:</label>
-					   		<input type="text" ng-model="user.imagen" class="form-control" name="imagen" required/>
+					   		<input type="text" ng-model="user.imagen" class="form-control" id="imagen" name="imagen" required/>
 						  	<div class="error" ng-show="createForm.imagen.$dirty && createForm.imagen.$invalid">
 								    <small class="error" 
 								        ng-show="createForm.imagen.$error.required">
@@ -552,7 +549,7 @@ ng-change="compararFechas(user.fechaInicio, user.fechaFin)"/>
 			            
 			     <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-		        <button type="submit" ng-click="actividadesCtrl.create(user.nombre, user.duracion, user.horaInicio, 
+		        <button id="añadir" type="submit" ng-click="actividadesCtrl.create(user.nombre, user.duracion, user.horaInicio, 
 		        user.fechaInicio, user.fechaFin, user.descripcion, feed.nivel, user.precio, user.participantesMax, user.participantesMin, user.lugar, user.imagen, feed.categoria)" 
 		        class="btn btn-success">Añadir</button>
 		      </div>

@@ -78,7 +78,7 @@ public class ActividadJPA {
         }
     }
 
-    public boolean borraActividad(String nombre) {
+    public boolean cambiaEstado(String nombre) {
         TypedQuery<Actividad> query = em.createNamedQuery("Actividad.encuentraPorNombre", Actividad.class);
         query.setParameter("nombre", nombre);
         try {
@@ -101,4 +101,6 @@ public class ActividadJPA {
 //            return false;
 //        }
     }
+
+	
 }

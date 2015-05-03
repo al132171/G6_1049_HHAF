@@ -1,15 +1,9 @@
 package controlador;
 
-import java.net.URI;
-
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -17,7 +11,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
 import modelo.dao.UsuarioJPA;
@@ -41,7 +34,7 @@ public class MonitorServicios {
 	@Produces("application/json")
 	public Response buscarMonitorPorDni(@PathParam("dni") String dni) {
 		Usuario monitor = monitorJPA.buscaMonitorPorDni(dni);
-		if (monitor == monitorJPA.ENTRADA_NULL)
+		if (monitor == UsuarioJPA.ENTRADA_NULL)
 			return Response.status(Response.Status.NOT_FOUND).build();
 		return Response.ok(monitor).build();
 	}
@@ -82,11 +75,11 @@ public class MonitorServicios {
 		return Response.ok(monitor).build();
 	}
 
-	@DELETE
+	@PUT
 	@Path("{dni}")
 	@Produces("application/json")
-	public Response borraEntrada(@PathParam("dni") String dni) {
-		if (monitorJPA.borraMonitor(dni) == true)
+	public Response cambiaEstado(@PathParam("dni") String dni) {
+		if (monitorJPA.cambiaEstado(dni) == true)
 			return Response.status(Response.Status.ACCEPTED).build();
 		else
 			return Response.status(Response.Status.NOT_FOUND).build();

@@ -1,7 +1,14 @@
-test/LoginCorrectoScenario.class
+test/ListarActividadesGerente.class
+test/AnyadirActividadGerenteCorrecto.class
 controlador/ActividadServiciosTest.class
-test/LoginIncorrectoScenario.class
-test/EditarPerfilGerenteCorrecto.class
+test/LoginCorrectoScenario.class
+test/ConsultarReservasActivasCorrecto.class
+test/AsignarMonitorReserva.class
 persistencia/ActividadJPATest.class
 test/EditarPerfilGerenteIncorrecto.class
+test/ConsultarReservasAceptadasCorrecto.class
+test/EditarActividadGerenteCorrecto.class
+test/LoginIncorrectoScenario.class
+test/EditarPerfilGerenteCorrecto.class
+test/AnyadirActividadGerenteRepetida.class
 test/Runner.class

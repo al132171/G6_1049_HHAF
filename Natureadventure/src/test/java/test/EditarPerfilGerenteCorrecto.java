@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import cucumber.api.java.en.Given;
@@ -39,12 +40,15 @@ public class EditarPerfilGerenteCorrecto {
 	    	webDriver.findElement(By.id("password")).sendKeys("aaa");
 	    	webDriver.findElement(By.id("telefono")).sendKeys("964-22-11-00");
             webDriver.findElement(By.id("editarPerfil")).click();
+            webDriver.findElement(By.id("exito"));
+        	//webDriver.findElement(By.cssSelector("div[ng-hide='exito']"));
+
 	    }
 
 	    @Then("^Se actualizan mis cambios y se muestra mi perfil actualizado$")
 	    public void click_update() throws Throwable {
 	        try {
-		    	webDriver.findElement(By.id("exito"));
+	        	webDriver.findElement(By.cssSelector("div[ng-hide='exito']"));
 		    	webDriver.close();
 	        } catch (NoSuchElementException e) {
 	            fail("Perfil incorrecto");

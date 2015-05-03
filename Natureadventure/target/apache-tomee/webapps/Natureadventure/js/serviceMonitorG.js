@@ -133,12 +133,14 @@ app.controller('MonitoresCtrl', ['$scope', 'MonitorGService',
 		};
 	};
 
-	self.delete = function (dni) {
-		MonitorGService.delete(dni)
+	self.cambiaEstado = function (dni) {
+		MonitorGService.cambiaEstado(dni)
 		.success(function (data) {
-			MonitorGService.retrieveAll()
+			MonitorGService.retrieveAllActivos()
 			.success(function (data) {
 				$scope.monitores = data.usuario;
+				$scope.class1 = "active";
+				$scope.class2 = "";
 			});
 		});
 	};
@@ -147,19 +149,17 @@ app.controller('MonitoresCtrl', ['$scope', 'MonitorGService',
 		MonitorGService.retrieveContact(dni)
 		.success(function(data) {
 			$scope.currentMonitor = data;
-
 		});
 	};
 
 	self.update = function(nombre,apellidos,dni, correo, telefono, username, password, especialidad) {
-		alert("update");
 		var bool = validator($scope, "update");
 
 		if(bool == true){
 			MonitorGService.update(nombre,apellidos,dni, correo, telefono,username, password,especialidad)
 			.success(function(data) {
 
-				MonitorGService.retrieveAll()
+				MonitorGService.retrieveAllActivos()
 				.success(function (data) {
 					$scope.monitores = data.usuario;
 				});
@@ -200,10 +200,10 @@ app.service('MonitorGService', ['$http', function($http) {
 		return $http.get(url);
 	}
 
-	this.delete = function(dni) {
+	this.cambiaEstado = function(dni) {
 		var url = app.baseURI + dni;
 		var dato = {'dni': dni};
-		return $http.delete(url, dato);
+		return $http.put(url, dato);
 	}
 
 	this.update = function (monitor) {

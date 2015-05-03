@@ -1,7 +1,14 @@
-/home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/controlador/ActividadServiciosTest.java
 /home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/test/LoginCorrectoScenario.java
+/home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/test/ListarActividadesGerente.java
+/home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/test/AnyadirActividadGerenteRepetida.java
+/home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/controlador/ActividadServiciosTest.java
+/home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/test/EditarActividadGerenteCorrecto.java
+/home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/test/AnyadirActividadGerenteCorrecto.java
 /home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/test/EditarPerfilGerenteCorrecto.java
+/home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/test/ConsultarReservasAceptadasCorrecto.java
 /home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/test/EditarPerfilGerenteIncorrecto.java
 /home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/persistencia/ActividadJPATest.java
+/home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/test/ConsultarReservasActivasCorrecto.java
+/home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/test/AsignarMonitorReserva.java
 /home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/test/LoginIncorrectoScenario.java
 /home/fer/Desktop/natureadventure_rep/Natureadventure/src/test/java/test/Runner.java

@@ -149,7 +149,7 @@ public class ActividadJPATest {
         assertThat(encontrada.getParticipantesMax(), is(30));
         assertThat(encontrada.getLugar(), is("C/falsa 123"));
         assertThat(encontrada.getImagen(), is("imagen"));
-        actividadJPA.borraActividad("Caminata Penyagolosa");
+        actividadJPA.cambiaEstado("Caminata Penyagolosa");
         encontrada = actividadJPA.buscaActividadPorNombre("Caminata Penyagolosa");
         assertThat(encontrada, is(ActividadJPA.ENTRADA_NULL));
     }

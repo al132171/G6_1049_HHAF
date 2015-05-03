@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Cucumber.class)
 @CucumberOptions(plugin = "html:target/cukes",
-    tags = {"@get"}
+    tags = {"@put"}
 )
 public class Runner {
 }

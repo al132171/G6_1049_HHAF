@@ -13,9 +13,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import modelo.dao.ActividadJPA;
 import modelo.dao.UsuarioJPA;
-import modelo.datos.Actividad;
 import modelo.datos.Usuario;
 
 @Path("usuario/perfil")
