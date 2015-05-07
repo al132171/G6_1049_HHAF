@@ -54,13 +54,14 @@ public class ReservaJPA {
 	            Reserva reservaBBDD = query.getSingleResult();
 	            reservaBBDD.setEstado("A");
 	            reservaBBDD.setUsuario(reserva.getUsuario());
+	            reservaBBDD.setContrato(reserva.getContrato());
 	            return true;
 	        } catch (NoResultException e) {
 	            return false;
 	        }
 	    }
 	
-	public boolean borraReserva(String dni, String fechaReserva) {
+	public boolean cambiaEstado(String dni, String fechaReserva) {
         TypedQuery<Reserva> query = em.createNamedQuery("Reserva.borrarReserva", Reserva.class);
         query.setParameter("dni", dni);
         query.setParameter("fechaReserva", fechaReserva);
@@ -72,4 +73,6 @@ public class ReservaJPA {
             return false;
         }
 	}
+
+	
 }

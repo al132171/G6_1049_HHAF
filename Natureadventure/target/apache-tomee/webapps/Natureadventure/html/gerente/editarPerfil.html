@@ -101,12 +101,12 @@
 			</div>
 			
 			<div class="col-md-8">
-			<div class="alert alert-success alert-dismissible" role="alert" ng-hide="exito">
+			<div class="alert alert-success alert-dismissible" role="alert" ng-hide="exito" id="exito">
 			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 			  <strong>Perfil actualizado</strong>
 			</div>
 			
-			<div class="alert alert-danger alert-dismissible" role="alert" ng-hide="error">
+			<div class="alert alert-danger alert-dismissible" role="alert" ng-hide="error" id="error">
 			  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 			  <strong>Error</strong>
 			</div>
@@ -115,21 +115,21 @@
 				<form name="perfilForm">
 				
 				<div class="form-group">
-						<label>Username:</label> <input type="text" name="nombre"
-							class="form-control" ng-model="currentUsuario.usuario.username" disabled>
+						<label>Username:</label> <input type="text" name="nombre" id="username"
+							class="form-control" ng-model="currentUsuario.usuario.username" disabled/>
 				</div>
 				
 				<div class="form-group">
-						<label>DNI:</label> <input type="text" name="dni"
-							class="form-control" ng-model="currentUsuario.usuario.dni" disabled>
+						<label>DNI:</label> <input type="text" name="dni" id="dni"
+							class="form-control" ng-model="currentUsuario.usuario.dni" disabled/>
 				</div>
 				
 					<div class="form-group"
 						ng-class="{ 'has-error' : perfilForm.nombre.$invalid && !perfilForm.nombre.$pristine, 
 						'has-success' : !perfilForm.nombre.$invalid}">
-						<label>Nombre:</label> <input type="text" name="nombre"
-							class="form-control" ng-model="currentUsuario.usuario.nombre"
-							ng-minlength="1" ng-maxlength="50" required>
+						<label>Nombre:</label> <input type="text" id="nombre"
+							class="form-control" ng-model="currentUsuario.usuario.nombre" name="nombre"
+							ng-minlength="1" ng-maxlength="50" required/>
 						<small class="error" ng-show="perfilForm.nombre.$error.required">*Nombre
 							obligatorio</small> <small class="error"
 							ng-show="perfilForm.nombre.$error.minlength">*Min. 1
@@ -141,9 +141,9 @@
 					<div class="form-group"
 						ng-class="{ 'has-error' : perfilForm.apellidos.$invalid && !perfilForm.apellidos.$pristine, 
 						'has-success' : !perfilForm.apellidos.$invalid}">
-						<label>Apellidos:</label> <input type="text" name="apellidos"
+						<label>Apellidos:</label> <input type="text"  id="apellidos" name="apellidos"
 							class="form-control" ng-model="currentUsuario.usuario.apellidos"
-							ng-minlength="1" ng-maxlength="100" required>
+							ng-minlength="1" ng-maxlength="100" required/>
 						<small class="error" ng-show="perfilForm.apellidos.$error.required">*apellidos
 							obligatorios</small> <small class="error"
 							ng-show="perfilForm.apellidos.$error.minlength">*Min. 1
@@ -155,9 +155,9 @@
 					<div class="form-group"
 						ng-class="{ 'has-error' : perfilForm.email.$invalid && !perfilForm.email.$pristine, 
 						'has-success' : !perfilForm.email.$invalid}">
-						<label>Email:</label> <input type="email" name="email"
+						<label>Email:</label> <input type="email" name="email" id="email"
 							class="form-control" ng-model="currentUsuario.usuario.email"
-							ng-minlength="1" ng-maxlength="50" required>
+							ng-minlength="1" ng-maxlength="50" required/>
 						<small class="error" ng-show="perfilForm.email.$error.required">*email
 							obligatorio</small> <small class="error"
 							ng-show="perfilForm.email.$error.minlength">*Min. 1
@@ -169,7 +169,7 @@
 					<div class="form-group"
 						ng-class="{ 'has-error' : perfilForm.telefono.$invalid && !perfilForm.telefono.$pristine, 
 						'has-success' : !perfilForm.telefono.$invalid}">
-						<label>Teléfono:</label> <input type="text" name="telefono"
+						<label>Teléfono:</label> <input type="text" name="telefono" id="telefono"
 							class="form-control" ng-model="currentUsuario.usuario.telefono"
 							ng-minlength="12" ng-maxlength="12" required  ng-pattern="telefono.word" placeholder="(xxx-xx-xx-xx)">
 						<small class="error" ng-show="perfilForm.telefono.$error.required">*telefono
@@ -182,7 +182,7 @@
 					<div class="form-group"
 						ng-class="{ 'has-error' : perfilForm.password.$invalid && !perfilForm.password.$pristine, 
 						'has-success' : !perfilForm.password.$invalid}">
-						<label>Password:</label> <input type="text" name="password"
+						<label>Password:</label> <input type="text" name="password" id="password"
 							class="form-control" ng-model="currentUsuario.usuario.password"
 							ng-minlength="1" ng-maxlength="12" required>
 						<small class="error" ng-show="perfilForm.password.$error.required">*password
@@ -193,7 +193,7 @@
 							caracteres</small>
 					</div>
 					
-					<button type="submit" class="btn btn-info" ng-click="perfilCtrl.editar(currentUsuario)">
+					<button type="submit" id="editarPerfil" class="btn btn-info" ng-click="perfilCtrl.editar(currentUsuario)">
     				<span class="glyphicon glyphicon-pencil"></span> Editar</button>
 					</form>
 					<br/>

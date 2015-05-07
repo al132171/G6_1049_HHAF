@@ -1,5 +1,6 @@
 package modelo.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,7 +9,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import modelo.datos.Actividad;
 import modelo.datos.Reserva;
 import modelo.datos.Usuario;
 
@@ -45,12 +45,24 @@ public class UsuarioJPA {
 		}
 	}
 
-	public Usuario[] buscaMonitorDisponible(String especialidad) {
+	public Usuario[] buscaMonitorDisponible(String especialidad, String fechaActividad) {
 		TypedQuery<Usuario> query = em.createNamedQuery("Usuario.buscaMonitorDisponible", Usuario.class);
 		query.setParameter("especialidad", especialidad);
 		List<Usuario> listaUsuarios = query.getResultList();
-		Usuario[] usuarios = new Usuario[listaUsuarios.size()];
-		listaUsuarios.toArray(usuarios);
+		//Añado los monitores que no tienen una reserva en esa fecha
+		ArrayList<Usuario> aux = new ArrayList<Usuario>();
+		for (Usuario u : listaUsuarios){	
+			TypedQuery<Reserva> query2 = em.createNamedQuery("Reserva.encuentraTodasMonitorFechaActividad", Reserva.class);
+			query2.setParameter("username", u.getUsername());
+			query2.setParameter("fechaActividad", fechaActividad);
+			if(query2.getResultList().isEmpty()){ // Si hay alguna reserva en esa fecha, quitamos al monitor
+				System.out.println(" no tiene reserva");
+				aux.add(u);
+			}	
+		}
+		
+		Usuario[] usuarios = new Usuario[aux.size()];
+		aux.toArray(usuarios);
 		return usuarios;
 	}
 
@@ -108,13 +120,17 @@ public class UsuarioJPA {
 		}
 	}
 
-	public boolean borraMonitor(String dni) {
+	public boolean cambiaEstado(String dni) {
 		TypedQuery<Usuario> query = em.createNamedQuery("Usuario.buscaMonitorPorDni", Usuario.class);
 		query.setParameter("dni", dni);
 		try {
 			Usuario monitorBBDD = query.getSingleResult();
-			monitorBBDD.setEstado("B");
-
+			System.out.println(monitorBBDD.getEstado() + "   "+monitorBBDD.getDni());
+			if(monitorBBDD.getEstado().equals("A")){
+				monitorBBDD.setEstado("B");
+			}
+			else
+				monitorBBDD.setEstado("A");
 			return true;
 		} catch (NoResultException e) {
 			return false;

@@ -5,7 +5,6 @@ import java.net.URI;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -44,7 +43,7 @@ public class ActividadServicios {
     public Response buscarActividadPorNombre(@PathParam("nombre") String nombre) {
         Actividad actividad = actividadJPA.buscaActividadPorNombre(nombre);
         
-        if (actividad == actividadJPA.ENTRADA_NULL)
+        if (actividad == ActividadJPA.ENTRADA_NULL)
             return Response.status(Response.Status.NOT_FOUND).build();
         return Response.ok(actividad).build();
     }
@@ -103,11 +102,11 @@ public class ActividadServicios {
         }
     }
 
-    @DELETE
-    @Path("{nombre}")
+    @PUT
+    @Path("estado/{nombre}")
     @Produces("application/json")
-    public Response borraEntrada(@PathParam("nombre") String nombre) {
-            if (actividadJPA.borraActividad(nombre) == true)
+    public Response cambiaEstado(@PathParam("nombre") String nombre) {
+            if (actividadJPA.cambiaEstado(nombre) == true)
                 return Response.status(Response.Status.ACCEPTED).build();
             else
                 return Response.status(Response.Status.NOT_FOUND).build();

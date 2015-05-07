@@ -1,8 +1,0 @@
-127.0.0.1 - - [05/Apr/2015:14:37:32 +0200] "GET /Natureadventure/html/index.html HTTP/1.1" 200 26674
-127.0.0.1 - - [05/Apr/2015:14:37:33 +0200] "GET /Natureadventure/css/style.css HTTP/1.1" 200 1020
-127.0.0.1 - - [05/Apr/2015:14:37:33 +0200] "GET /Natureadventure/css/bootstrap-datetimepicker.min.css HTTP/1.1" 200 11308
-127.0.0.1 - - [05/Apr/2015:14:37:33 +0200] "GET /Natureadventure/js/serviceActividadG.js HTTP/1.1" 200 6981
-127.0.0.1 - - [05/Apr/2015:14:37:33 +0200] "GET /Natureadventure/js/bootstrap-datetimepicker.min.js HTTP/1.1" 200 36069
-127.0.0.1 - - [05/Apr/2015:14:37:33 +0200] "GET /Natureadventure/js/bootstrap-datetimepicker.es.js HTTP/1.1" 200 697
-127.0.0.1 - - [05/Apr/2015:14:37:33 +0200] "GET /Natureadventure/js/funcionesActividadG.js HTTP/1.1" 200 415
-127.0.0.1 - - [05/Apr/2015:14:37:36 +0200] "GET /Natureadventure/actividades/ HTTP/1.1" 200 16

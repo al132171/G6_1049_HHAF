@@ -1,3 +1,16 @@
-controlador/PersonaServiciosJPATest.class
+test/EditarPerfilGerenteIncorrecto.class
+test/ConsultarReservasActivasCorrecto.class
+test/AnyadirActividadGerenteRepetida.class
 persistencia/ActividadJPATest.class
+test/EditarActividadGerenteCorrecto.class
+test/AnyadirActividadGerenteCorrecto.class
+test/ListarActividadesGerente.class
+test/ConsultarReservasAceptadasCorrecto.class
+test/EditarPerfilGerenteCorrecto.class
+controlador/PersonaServiciosJPATest.class
 controlador/ActividadServiciosTest.class
+test/AsignarMonitorNoDisponible.class
+test/LoginIncorrectoScenario.class
+test/AsignarMonitorReserva.class
+test/LoginCorrectoScenario.class
+test/Runner.class

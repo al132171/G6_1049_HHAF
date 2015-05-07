@@ -113,7 +113,7 @@
                         <span class="glyphicon glyphicon-pencil"></span> Actualizar</button></td>
                 <td ng-switch-when="A">           	
             	<button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar" ng-click="monitoresCtrl.retreiveContact(m.dni)">
-			    <span class="glyphicon glyphicon-trash"></span> Eliminar</button>
+			    <span class="glyphicon glyphicon-cancel"></span> Dar de baja</button>
 			    
 			     <td ng-switch-when="B">           	
             	<button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#eliminar" ng-click="monitoresCtrl.retreiveContact(m.dni)">
@@ -127,26 +127,27 @@
         </div>
        
        
-        <!-- Ventana Modal insertar-->
+        <!-- Ventana Modal dar de baja-->
 			    <div class="modal fade" id="eliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
-			    
 			    <div class="modal-dialog">
 			        <div class="modal-content">
-			            <div class="modal-header modal-header-danger">
+			            <div class="modal-header modal-header-warning">
 			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			                <h4 class="modal-title"><i class="glyphicon glyphicon-trash"></i> Eliminar Monitor</h4>
+			                <h4 class="modal-title"><i class="glyphicon glyphicon-sign"></i>Estado monitor</h4>
 			            </div>
 			            <div class="modal-body">
-			                <p>¿Desea eliminar realmente el monitor "{{currentMonitor.usuario.nombre}} {{currentMonitor.usuario.apellidos}}"?</p>
+			                <p>¿Desea cambiar el estado al monitor "{{currentMonitor.usuario.nombre}} {{currentMonitor.usuario.apellidos}}"?</p>
 			            </div>
 			            <div class="modal-footer">
 			                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-						 <button type="button" id="delete:{{a.id}}" class="btn btn-danger" data-dismiss="modal" ng-click="monitoresCtrl.delete(currentMonitor.usuario.dni)"> 
-						  Eliminar</button>			            
+						 <button type="button" id="cambiaEstado:{{a.id}}" class="btn btn-warning" data-dismiss="modal" ng-click="monitoresCtrl.cambiaEstado(currentMonitor.usuario.dni)"> 
+						  Aceptar</button>			            
 						</div>
 			        	</div>
 			    </div>
 			</div>
+			
+			
        
 	<!-- Ventana modal actualizar -->
     <div class="modal fade" id="actualizar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
