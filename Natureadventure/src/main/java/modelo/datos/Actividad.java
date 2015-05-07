@@ -28,7 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 	@NamedQuery(name="Actividad.encuentraTodasActivas", query = "SELECT p FROM Actividad p WHERE p.estado = 'T'"),
 	@NamedQuery(name="Actividad.encuentraTodasArchivadas", query = "SELECT p FROM Actividad p WHERE p.estado = 'F'"),
 	@NamedQuery(name = "Actividad.encuentraPorNombre", query = "SELECT p FROM Actividad p WHERE p.nombre = :nombre"),
+	@NamedQuery(name = "Actividad.encuentraPorNombreActiva", query = "SELECT p FROM Actividad p WHERE p.estado = 'T' AND p.nombre = :nombre"),
 	@NamedQuery(name = "Actividad.encuentraPorPalabraClave", query = "SELECT p FROM Actividad p WHERE p.estado = 'T'AND (p.nombre LIKE :palabraClave OR p.descripcion LIKE :palabraClave)"),
+	@NamedQuery(name = "Actividad.encuentraPorCategoria", query = "SELECT p FROM Actividad p WHERE p.estado = 'T'AND p.categoria LIKE :categoria"),
 	@NamedQuery(name="Actividad.borraPorNombre", query = "DELETE FROM Actividad p WHERE p.nombre = :nombre")
 })
 

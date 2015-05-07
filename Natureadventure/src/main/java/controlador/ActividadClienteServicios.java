@@ -38,12 +38,30 @@ public class ActividadClienteServicios {
         super();
     }
 
+    @GET
+    @Path("{nombre}")
+    @Produces("application/json")
+    public Response buscarActividadPorNombreActiva(@PathParam("nombre") String nombre) {
+        Actividad actividad = actividadJPA.buscaActividadPorNombreActiva(nombre);
+        
+        if (actividad == actividadJPA.ENTRADA_NULL)
+            return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.ok(actividad).build();
+    }
     
     @GET
     @Path("palabraClave/{palabraClave}")
     @Produces("application/json")
     public Response buscarActividadPorPalabraClave(@PathParam("palabraClave") String palabraClave) {
     	Actividad[] actividades = actividadJPA.buscaActividadPorPalabraClave(palabraClave);
+        return Response.ok(actividades).build();
+    }
+    
+    @GET
+    @Path("categoria/{categoria}")
+    @Produces("application/json")
+    public Response buscarActividadPorCategoria(@PathParam("categoria") String categoria) {
+    	Actividad[] actividades = actividadJPA.buscaActividadPorCategoria(categoria);
         return Response.ok(actividades).build();
     }
     

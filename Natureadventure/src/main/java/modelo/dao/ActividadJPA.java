@@ -32,9 +32,31 @@ public class ActividadJPA {
         }
     }
     
+    // Método de ActividadClienteServicios
+    public Actividad buscaActividadPorNombreActiva(String nombre) {
+        TypedQuery<Actividad> query = em.createNamedQuery("Actividad.encuentraPorNombreActiva", Actividad.class);
+        query.setParameter("nombre", nombre);
+        try {
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return ENTRADA_NULL;
+        }
+    }
+    
+    // Método de ActividadClienteServicios
     public Actividad[] buscaActividadPorPalabraClave(String palabraClave) {
         TypedQuery<Actividad> query = em.createNamedQuery("Actividad.encuentraPorPalabraClave", Actividad.class);
         query.setParameter("palabraClave", "%" + palabraClave + "%");
+        List<Actividad> listaActividades = query.getResultList();
+        Actividad[] actividades = new Actividad[listaActividades.size()];
+        listaActividades.toArray(actividades);
+        return actividades;
+    }
+    
+    // Método de ActividadClienteServicios
+    public Actividad[] buscaActividadPorCategoria(String categoria) {
+        TypedQuery<Actividad> query = em.createNamedQuery("Actividad.encuentraPorCategoria", Actividad.class);
+        query.setParameter("categoria", categoria);
         List<Actividad> listaActividades = query.getResultList();
         Actividad[] actividades = new Actividad[listaActividades.size()];
         listaActividades.toArray(actividades);

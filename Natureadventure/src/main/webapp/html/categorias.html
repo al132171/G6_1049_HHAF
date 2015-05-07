@@ -2,7 +2,10 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"  ng-app="usuarioG"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" ng-app="actividadCliente">
+<!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <title>NaturAdventure | categorías</title>
@@ -24,11 +27,13 @@
     <script src="../js/usuario/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
 
-    <script src="../js/serviceUsuario.js"></script>
+
+    <script src="../js/serviceActividadCliente.js"></script>
 
 
 
 </head>
+
 <body ng-controller="UsuarioCtrl as usuarioCtrl">
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
@@ -43,51 +48,80 @@
                         <a href="#">
                             <img src="../images/logo.png" alt="travel html5 template" title="travel html5 template">
                         </a>
-                    </div> <!-- /.logo -->
-                </div> <!-- /.col-md-4 -->
+                    </div>
+                    <!-- /.logo -->
+                </div>
+                <!-- /.col-md-4 -->
                 <div class="col-md-10 col-sm-6 col-xs-2">
                     <div class="main-menu">
                         <ul class="visible-lg visible-md">
-                            <li><a href="index.html">Inicio</a></li>
-                            <li><a href="services.html">Noticias</a></li>
-                            <li class="active"><a href="categorias.html">Reserva de actividades</a></li>
-                            <li><a href="about.html">Quiénes somos</a></li>
-                            <li><a href="contact.html">Contacto</a></li>
-                            <li><a href="login.html">Administración</a></li>
+                            <li><a href="index.html">Inicio</a>
+                            </li>
+                            <li><a href="services.html">Noticias</a>
+                            </li>
+                            <li class="active"><a href="categorias.html">Reserva de actividades</a>
+                            </li>
+                            <li><a href="about.html">Quiénes somos</a>
+                            </li>
+                            <li><a href="contact.html">Contacto</a>
+                            </li>
+                            <li><a href="login.html">Administración</a>
+                            </li>
                         </ul>
                         <a href="#" class="toggle-menu visible-sm visible-xs">
                             <i class="fa fa-bars"></i>
                         </a>
-                    </div> <!-- /.main-menu -->
-                </div> <!-- /.col-md-8 -->
-            </div> <!-- /.row -->
-        </div> <!-- /.main-header -->
+                    </div>
+                    <!-- /.main-menu -->
+                </div>
+                <!-- /.col-md-8 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.main-header -->
         <div class="row">
             <div class="col-md-12 visible-sm visible-xs">
                 <div class="menu-responsive">
                     <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="services.html">Noticias</a></li>
-                        <li class="active"><a href="categorias.html">Reserva de actividades</a></li>
-                        <li><a href="about.html">Quiénes somos</a></li>
-                        <li><a href="contact.html">Contacto</a></li>
-                        <li><a href="login.html">Administración</a></li>
+                        <li><a href="index.html">Inicio</a>
+                        </li>
+                        <li><a href="services.html">Noticias</a>
+                        </li>
+                        <li class="active"><a href="categorias.html">Reserva de actividades</a>
+                        </li>
+                        <li><a href="about.html">Quiénes somos</a>
+                        </li>
+                        <li><a href="contact.html">Contacto</a>
+                        </li>
+                        <li><a href="login.html">Administración</a>
+                        </li>
                     </ul>
-                </div> <!-- /.menu-responsive -->
-            </div> <!-- /.col-md-12 -->
-        </div> <!-- /.row -->
-    </div> <!-- /.container -->
-</div> <!-- /.site-header -->
+                </div>
+                <!-- /.menu-responsive -->
+            </div>
+            <!-- /.col-md-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.site-header -->
 
 <div class="page-top" id="content_events">
-</div> <!-- /.page-header -->
+</div>
+<!-- /.page-header -->
 
 <div class="middle-content">
 
     <div class="container">
 
-        <div class="row" id="row_categorias" ng-show="show.categorias===true"><!-- first row -->
-            
+
+        <!-- **************************************** -->
+        <!-- div que muestra el listado de categorías -->
+
+        <div class="row" id="row_categorias" ng-show="show.categorias===true">
+            <!-- first row -->
+
             <div class="widget-item">
                 <div class="col-md-8 col-sm-6">
                     <h4 class="consult-title"></h4>
@@ -96,91 +130,218 @@
                 <div class="col-md-4 col-sm-6">
 
                     <!--<div class="row">
-                        <div class="col-md-6">
-                            <h4 class="consult-title">Busca actividad:</h4>
-                        </div>
-                        <div class="col-md-6"><h4 class="consult-title">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Palabra clave">
-                                  <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button> 
-                                  </span>
-                            </div>&lt;!&ndash; /input-group &ndash;&gt;
-                        </h4>
-                        </div>
+                    <div class="col-md-6">
+                        <h4 class="consult-title">Busca actividad:</h4>
+                    </div>
+                    <div class="col-md-6"><h4 class="consult-title">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Palabra clave">
+                              <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
+                              </span>
+                        </div>&lt;!&ndash; /input-group &ndash;&gt;
+                    </h4>
+                    </div>
 
-                    </div> &lt;!&ndash; /.row &ndash;&gt;-->
+                </div> &lt;!&ndash; /.row &ndash;&gt;-->
 
                     <h4 class="consult-title">Busca actividad:</h4>
                     <div class="input-group">
                         <input type="text" id="inputCategorias" class="form-control" placeholder="Palabra clave" ng-model="palabraClave" ng-change="usuarioCtrl.buscaActividades(palabraClave)">
-                                  <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" ng-click="usuarioCtrl.buscaActividades(palabraClave)"><span class="fa fa-search"></span></button>
-                                  </span>
-                    </div><!-- /input-group -->
+                            <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" ng-click="usuarioCtrl.buscaActividades(palabraClave)"><span class="fa fa-search"></span>
+                                    </button>
+                            </span>
+                    </div>
+                    <!-- /input-group -->
 
-                </div><!-- /.col-md-4 col-sm-6 -->
-            </div><!-- /.widget-item -->
+                </div>
+                <!-- /.col-md-4 col-sm-6 -->
+            </div>
+            <!-- /.widget-item -->
 
-            <div class="col-md-4 col-sm-4"><!-- first column -->
+            <div class="col-md-4 col-sm-4">
+                <!-- first column -->
                 <div class="widget-item">
-                    <div ng-repeat="a in feed.categorias">
+                    <div ng-repeat="categoria in feed.categorias">
                         <div class="service-item" ng-if="$even">
-                            <a href="index.html" class="link">
+                            <a href ng-click="muestraActividadesCategoria(categoria.name)" class="link">
                                 <div class="service-icon">
                                     <i class="fa fa-chevron-right"></i>
-                                </div> <!-- /.service-icon -->
+                                </div>
+                                <!-- /.service-icon -->
                             </a>
                             <div class="service-content">
-                                <h4 class="consult-title "><a href="index.html" class="link">{{a.name}}</a></h4>
-                            </div> <!-- /.service-content -->
-                        </div> <!-- /.service-item -->
+                                <h4 class="consult-title "><a href ng-click="muestraActividadesCategoria(categoria.name)" class="link">{{categoria.name}}</a></h4>
+                            </div>
+                            <!-- /.service-content -->
+                        </div>
+                        <!-- /.service-item -->
                     </div>
-                </div> <!-- /.widget-item -->
-            </div> <!-- /.col-md-4 -->
+                </div>
+                <!-- /.widget-item -->
+            </div>
+            <!-- /.col-md-4 -->
 
 
-            <div class="col-md-4 col-sm-4"><!-- second column -->
+            <div class="col-md-4 col-sm-4">
+                <!-- second column -->
                 <div class="widget-item">
-                    <div ng-repeat="a in feed.categorias">
+                    <div ng-repeat="categoria in feed.categorias">
                         <div class="service-item" ng-if="$odd">
-                            <a href="index.html" class="link">
+                            <a href ng-click="muestraActividadesCategoria(categoria.name)" >
                                 <div class="service-icon">
                                     <i class="fa fa-chevron-right"></i>
-                                </div> <!-- /.service-icon -->
+                                </div>
+                                <!-- /.service-icon -->
                             </a>
                             <div class="service-content">
-                                <h4 class="consult-title "><a href="index.html" class="link">{{a.name}}</a></h4>
-                            </div> <!-- /.service-content -->
-                        </div> <!-- /.service-item -->
+                                <h4 class="consult-title "><a href ng-click="muestraActividadesCategoria(categoria.name)" >{{categoria.name}}</a></h4>
+                            </div>
+                            <!-- /.service-content -->
+                        </div>
+                        <!-- /.service-item -->
                     </div>
-                </div> <!-- /.widget-item -->
-            </div> <!-- /.col-md-4 -->
+                </div>
+                <!-- /.widget-item -->
+            </div>
+            <!-- /.col-md-4 -->
 
-            <div class="col-md-4 col-sm-4"><!-- third column -->
+            <div class="col-md-4 col-sm-4">
+                <!-- third column -->
                 <div class="widget-item">
-                  
+
                     <div class="sample-thumb img-border">
                         <img src="../images/event_1.jpg" alt="New Event" title="New Event">
-                    </div> <!-- /.sample-thumb -->
+                    </div>
+                    <!-- /.sample-thumb -->
                     <h4 class="consult-title">Las actividades más salvajes<br><br><br>Y los mejores paisajes</h4>
                     <div class="sample-thumb img-border">
                         <img src="../images/event_2.jpg" alt="New Event" title="New Event">
-                    </div> <!-- /.sample-thumb -->                        </div> <!-- /.widget-item -->
-            </div> <!-- /.col-md-4 -->
-        </div> <!-- /.row first -->
-
-
-        <div class="row" id="row_resultados_busqueda" ng-show="show.resultadosBusqueda===true">
-
-            <div class="widget-item">
-                <div class="col-md-8 col-sm-6">
-                    <h4 class="consult-title"></h4>
-                    <h3 class="widget-title">Resultados búsqueda "{{palabraClave}}":</h3>
+                    </div>
+                    <!-- /.sample-thumb -->
                 </div>
-                <div class="col-md-4 col-sm-6">
+                <!-- /.widget-item -->
+            </div>
+            <!-- /.col-md-4 -->
+        </div>
+        <!-- /.row first -->
 
-                    <!--<div class="row">
+
+        <!-- ************************************************************** -->
+        <!-- div que muestra las actividades pertenecientes a una categoría -->
+
+        <div id="row_resultados_categoria" ng-show="show.resultadosCategoria===true">
+            <div ng-show="show.cantidadResultados > 0">
+                <div class="row">
+
+                    <div class="widget-item">
+                        <div class="col-md-8 col-sm-6">
+                            <h4 class="consult-title"></h4>
+                            <h3 class="widget-title">Resultados categoría "{{show.categoria}}" :</h3>
+                        </div>
+                        <!--                        <div class="col-md-4 col-sm-6"> -->
+
+                        <!--                             <h4 class="consult-title">Busca actividad en categoría:</h4> -->
+                        <!--                             <div class="input-group"> -->
+                        <!--                                 <input type="text" id="inputResultadosBusqueda" class="form-control" placeholder="Palabra clave" ng-model="palabraClave" ng-change="usuarioCtrl.buscaActividadesEnCategoria(palabraClave)"> -->
+                        <!--                                 <span class="input-group-btn"> -->
+                        <!--                                     <button class="btn btn-default" type="button" ng-click="usuarioCtrl.buscaActividades(palabraClave)"><span class="fa fa-search"></span> -->
+                        <!--                                 </button> -->
+                        <!--                                 </span> -->
+                        <!--                             </div> -->
+                        <!--                             /input-group -->
+                        <!--                         </div> -->
+                        <!--                         /.col-md-4 col-sm-6 -->
+                        
+                    </div>
+                    <!-- /.widget-item -->
+
+
+
+
+                    <div ng-repeat="a in feed.resultadosCategoria | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage">
+                        <div class="col-md-4 col-sm-4">
+                            <!-- column -->
+
+                            <div class="service-item">
+                                <div class='sample-thumb img-border'>
+                                    <img ng-src="../imagenes/{{a.categoria}}/{{a.imagen}}" alt="Imagen de la actividad" height=200 weight=200 />
+                                </div>
+                                <div class='service-content'>
+                                    <h4 class="consult-title">{{a.nombre}}</h4>
+                                    <p>{{a.descripcion}}</p>
+                                    <p>Precio: {{a.precio}}€</p>
+                                    <p><a href="#row_informacion_actividad" class="btn btn-info" ng-click="informacionActividad(a.nombre)"> Más información</a>
+                                    </p>
+                                </div>
+                                <!-- /.service-content -->
+                            </div>
+                            <!-- /.service-item -->
+                        </div>
+                        <!-- /.col-md-4 -->
+                    </div>
+                    <!-- /ng-repeat -->
+
+
+                </div>
+                <!-- /.row -->
+
+
+                <!-- Paginación -->
+                <div class="row">
+                    <div class="pager">
+                        <ul>
+                            <li class="right">
+                                <a class="categoriasPagination" href="#row_categorias" ng-click="usuarioCtrl.muestraCategorias()">«« Categorías</a>
+                            </li>
+                            <li ng-class="prevPageDisabled()">
+                                <a href ng-click="prevPage()">« Prev</a>
+                            </li>
+                            <li ng-repeat="n in range()" ng-click="setPage(n)">
+                                <a href ng-class="{activePagination: n == paginacion.currentPage}">{{n+1}}</a>
+                            </li>
+                            <li ng-class="nextPageDisabled()">
+                                <a href ng-click="nextPage()">Next »</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- /Paginación -->
+
+            </div>
+
+            <div ng-show="show.cantidadResultados == 0">
+
+                <div class="widget-item">
+                    <h4 class="consult-title"></h4>
+                    <h3 class="widget-title">Resultados categoría "{{show.categoria}}" :</h3>
+                    <p>Actualmente no hay actividades disponibles en esta categoría </p> <a href class="btn btn-info" ng-click="usuarioCtrl.muestraCategorias()">Categorías</a>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /resultadosCategoria -->
+
+
+
+        <!-- div que muestra las actividades relacionadas con la palabra clave buscada -->
+        <div ng-show="show.resultadosBusqueda===true">
+
+            <div ng-show="show.cantidadResultados > 0">
+                <div class="row" id="row_resultados_busqueda">
+
+                    <div class="widget-item">
+                        <div class="col-md-8 col-sm-6">
+                            <h4 class="consult-title"></h4>
+                            <h3 class="widget-title">Resultados búsqueda "{{palabraClave}}":</h3>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+
+                            <!--<div class="row">
                         <div class="col-md-6">
                             <h4 class="consult-title">Busca actividad:</h4>
                         </div>
@@ -196,55 +357,183 @@
 
                     </div> &lt;!&ndash; /.row &ndash;&gt;-->
 
-                    <h4 class="consult-title">Busca actividad:</h4>
-                    <div class="input-group">
-                        <input type="text" id="inputResultadosBusqueda" class="form-control" placeholder="Palabra clave" ng-model="palabraClave" ng-change="usuarioCtrl.buscaActividades(palabraClave)">
-                                  <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" ng-click="usuarioCtrl.buscaActividades(palabraClave)"><span class="fa fa-search"></span></button> 
-                                  </span>
-                    </div><!-- /input-group -->
-                </div><!-- /.col-md-4 col-sm-6 -->
-            </div><!-- /.widget-item -->
-
-
-
-            <div ng-repeat="a in feed.resultadosBusqueda">
-                <div class="col-md-4 col-sm-4"><!-- column -->
-
-                    <div class="service-item">
-                        <a href="index.html" class="link">
-                            <div class='sample-thumb img-border'>
-                                <img ng-src="../imagenes/{{a.categoria}}/{{a.imagen}}" alt="Imagen de la actividad" height=200 weight=200 />
+                            <h4 class="consult-title">Busca actividad:</h4>
+                            <div class="input-group">
+                                <input type="text" id="inputResultadosBusqueda" class="form-control" placeholder="Palabra clave" ng-model="palabraClave" ng-change="usuarioCtrl.buscaActividades(palabraClave)">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" ng-click="usuarioCtrl.buscaActividades(palabraClave)"><span class="fa fa-search"></span>
+                                    </button>
+                                </span>
                             </div>
-                        </a>
-                        <div class="service-content">
-                            <button class="btn btn-success">{{a.nombre}}</button>
-                        </div> <!-- /.service-content -->
-                    </div> <!-- /.service-item -->
-                </div> <!-- /.col-md-4 -->
-            </div> <!-- /ng-repeat -->
-
-
-
-
-            <div class='col-sm-4 col-md-4'>
-                <div class='wow fadeInLeft' data-wow-delay='0.2s'>
-                    <div class='service-item'>
-                        <div class='sample-thumb img-border'>
-                            <img src='../images/event_3.jpg' alt='' height=200 weight=200 />
+                            <!-- /input-group -->
                         </div>
-                        <div class='service-desc'>
-                            <h5>Anabel</h5>
-                            <p>Bolso ideal para la primavera</p>
-                            <p>Precio: 15&euro;</p>
-                            <p><a onclick=informacionBolso('6')> M&aacutes informaci&oacuten</a></p>
-                            <button class="btn btn-danger" ng-click="usuarioCtrl.muestraCategorias()">Categorías</button>
+                        <!-- /.col-md-4 col-sm-6 -->
+                    </div>
+                    <!-- /.widget-item -->
+
+
+                    <div ng-repeat="a in feed.resultadosBusqueda | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage">
+                        <div class="col-md-4 col-sm-4">
+                            <!-- column -->
+
+                            <div class="service-item">
+                                <div class='sample-thumb img-border'>
+                                    <img ng-src="../imagenes/{{a.categoria}}/{{a.imagen}}" alt="Imagen de la actividad" height=200 weight=200 />
+                                </div>
+                                <div class='service-content'>
+                                    <h4 class="consult-title">{{a.nombre}}</h4>
+                                    <p>{{a.descripcion}}</p>
+                                    <p>Precio: {{a.precio}}€</p>
+                                    <p><a href="#row_informacion_actividad" class="btn btn-info" ng-click="informacionActividad(a.nombre)"> Más información</a>
+                                    </p>
+                                </div>
+                                <!-- /.service-content -->
+                            </div>
+                            <!-- /.service-item -->
                         </div>
+                        <!-- /.col-md-4 -->
+                    </div>
+                    <!-- /ng-repeat -->
+
+
+                </div>
+                <!-- /.row -->
+
+
+                <!-- Paginación -->
+                <div class="row">
+                    <div class="pager">
+                        <ul>
+                            <li class="right">
+                                <a class="categoriasPagination" href="#row_categorias" ng-click="usuarioCtrl.muestraCategorias()">«« Categorías</a>
+                            </li>
+                            <li ng-class="prevPageDisabled()">
+                                <a href ng-click="prevPage()">« Prev</a>
+                            </li>
+                            <li ng-repeat="n in range()" ng-click="setPage(n)">
+                                <a href ng-class="{activePagination: n == paginacion.currentPage}">{{n+1}}</a>
+                            </li>
+                            <li ng-class="nextPageDisabled()">
+                                <a href ng-click="nextPage()">Next »</a>
+                            </li>
+
+                        </ul>
                     </div>
                 </div>
+                <!-- /Paginación -->
+
             </div>
 
-        </div><!-- /.row -->
+            <div ng-show="show.cantidadResultados == 0">
+
+                <div class="row">
+                    <div class="widget-item">
+                        <div class="col-md-8 col-sm-6">
+                            <h4 class="consult-title"></h4>
+                            <h3 class="widget-title">Resultados búsqueda "{{palabraClave}}":</h3>
+
+                            <p>Actualmente no hay actividades relacionadas con la búsqueda </p> <a href class="btn btn-info" ng-click="usuarioCtrl.muestraCategorias()">Categorías</a>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+
+                            <!--<div class="row">
+                        <div class="col-md-6">
+                            <h4 class="consult-title">Busca actividad:</h4>
+                        </div>
+                        <div class="col-md-6"><h4 class="consult-title">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Palabra clave">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button> 
+                                  </span>
+                            </div>&lt;!&ndash; /input-group &ndash;&gt;
+                        </h4>
+                        </div>
+
+                    </div> &lt;!&ndash; /.row &ndash;&gt;-->
+
+                            <h4 class="consult-title">Busca actividad:</h4>
+                            <div class="input-group">
+                                <input type="text" id="inputResultadosBusqueda" class="form-control" placeholder="Palabra clave" ng-model="palabraClave" ng-change="usuarioCtrl.buscaActividades(palabraClave)">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" ng-click="usuarioCtrl.buscaActividades(palabraClave)"><span class="fa fa-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </div>
+                        <!-- /.col-md-4 col-sm-6 -->
+
+
+
+                    </div>
+                    <!-- /.widget-item -->
+                </div>
+                <!-- /.row -->
+
+            </div>
+
+        </div>
+        <!-- /resultadosBusqueda -->
+
+
+        <!-- *************************************************** -->
+        <!-- Sección de información de una actividad en concreto -->
+
+        <div id = "informacionActividad" ng-show="show.informacionActividad===true">
+            <div class="row" id="row_informacion_actividad">
+
+                <div class="widget-item">
+                    <div class="col-md-12 col-sm-12">
+                        <h3 class="widget-title">{{show.actividad}}</h3>
+                    </div>
+                
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class='sample-thumb img-border'>
+                                <img ng-src="../imagenes/{{feed.informacionActividad.categoria}}/{{feed.informacionActividad.imagen}}" alt="Imagen de la actividad" height=200 weight=200 />
+                            </div>
+                        <div class="contact-infos">
+                            <ul>
+                                <li>Disponible del: {{feed.informacionActividad.fechaInicio}} al {{feed.informacionActividad.fechaFin}}</li>
+                                <li>Hora inicio: {{feed.informacionActividad.horaInicio}}</li>
+                                <li>Nivel: {{feed.informacionActividad.nivel}}</li>
+                                <li>Participantes entre {{feed.informacionActividad.participantesMin}} y {{feed.informacionActividad.participantesMax}}</a></li>
+                                <li class="label label-warning">Precio: {{feed.informacionActividad.precio}}€</li>&nbsp;&nbsp;&nbsp;  
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="map-wrapper">
+                        <div id="googleMap" class="map-holder"></div>
+                            </div>
+                       
+                    </div>
+                </div>
+            
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <h4 class="titulo-categorias">Descripción:</h3>
+                    <p>{{feed.informacionActividad.descripcion}}</p>
+                    </br>
+                </div>
+            
+            </div>
+            
+            <p></p>
+                <a href="#contente_events" class="btn btn-info" ng-click="muestraActividadesCategoria(feed.informacionActividad.categoria)">« {{feed.informacionActividad.categoria}}</a>
+            <a href="#contente_events" class="btn btn-success" ng-click="muestraActividadesCategoria(feed.informacionActividad.categoria)">Realizar reserva »</a>
+        
+       
+            
+                    </div>
+                <!-- /.widget-item -->
+                
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /informacionActividad -->
 
 
 
@@ -258,17 +547,26 @@
                                     <h2>Personaliza tus propias actividades</h2>
                                     <span>Escoge la actividad que prefieras y adaptala a tus necesidades</span>
                                 </div>
-                            </div> <!-- /.inner -->
-                            <a href="#" class="link">  <!-- Enlace a personalizar actividades -->
+                            </div>
+                            <!-- /.inner -->
+                            <a href="#" class="link">
+                                <!-- Enlace a personalizar actividades -->
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        </div> <!-- /.act-btn -->
-                    </div> <!-- /.col-md-8 -->
-                </div> <!-- /.row -->
-            </div> <!-- /.container -->
-        </div> <!-- /.go-act -->
-    </div> <!-- /.container -->
-</div> <!-- /.middle-content -->
+                        </div>
+                        <!-- /.act-btn -->
+                    </div>
+                    <!-- /.col-md-8 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.go-act -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.middle-content -->
 
 <div class="partner-list">
     <div class="container">
@@ -276,36 +574,51 @@
             <div class="col-md-2 col-sm-4 col-xs-6">
                 <div class="partner-item">
                     <img src="../images/partners/partner1.png" alt="">
-                </div> <!-- /.partner-item -->
-            </div> <!-- /.col-md-2 -->
+                </div>
+                <!-- /.partner-item -->
+            </div>
+            <!-- /.col-md-2 -->
             <div class="col-md-2 col-sm-4 col-xs-6">
                 <div class="partner-item">
                     <img src="../images/partners/partner2.png" alt="">
-                </div> <!-- /.partner-item -->
-            </div> <!-- /.col-md-2 -->
+                </div>
+                <!-- /.partner-item -->
+            </div>
+            <!-- /.col-md-2 -->
             <div class="col-md-2 col-sm-4 col-xs-6">
                 <div class="partner-item">
                     <img src="../images/partners/partner3.png" alt="">
-                </div> <!-- /.partner-item -->
-            </div> <!-- /.col-md-2 -->
+                </div>
+                <!-- /.partner-item -->
+            </div>
+            <!-- /.col-md-2 -->
             <div class="col-md-2 col-sm-4 col-xs-6">
                 <div class="partner-item">
                     <img src="../images/partners/partner1.png" alt="">
-                </div> <!-- /.partner-item -->
-            </div> <!-- /.col-md-2 -->
+                </div>
+                <!-- /.partner-item -->
+            </div>
+            <!-- /.col-md-2 -->
             <div class="col-md-2 col-sm-4 col-xs-6">
                 <div class="partner-item">
                     <img src="../images/partners/partner2.png" alt="">
-                </div> <!-- /.partner-item -->
-            </div> <!-- /.col-md-2 -->
+                </div>
+                <!-- /.partner-item -->
+            </div>
+            <!-- /.col-md-2 -->
             <div class="col-md-2 col-sm-4 col-xs-6">
                 <div class="partner-item last">
                     <img src="../images/partners/partner3.png" alt="">
-                </div> <!-- /.partner-item -->
-            </div> <!-- /.col-md-2 -->
-        </div> <!-- /.row -->
-    </div> <!-- /.container -->
-</div> <!-- /.partner-list -->
+                </div>
+                <!-- /.partner-item -->
+            </div>
+            <!-- /.col-md-2 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.partner-list -->
 
 
 
@@ -318,28 +631,72 @@
                         <img src="../images/logo.png" alt="">
                     </a>
                 </div>
-            </div> <!-- /.col-md-4 -->
+            </div>
+            <!-- /.col-md-4 -->
             <div class="col-md-4 col-sm-4">
                 <div class="copyright">
                     <span>Copyright &copy; 2015 <a href="#">APPujimática</a></span>
                 </div>
-            </div> <!-- /.col-md-4 -->
+            </div>
+            <!-- /.col-md-4 -->
             <div class="col-md-4 col-sm-4">
                 <ul class="social-icons">
-                    <li><a href="#" class="fa fa-facebook"></a></li>
-                    <li><a href="#" class="fa fa-twitter"></a></li>
-                    <li><a href="#" class="fa fa-linkedin"></a></li>
-                    <li><a href="#" class="fa fa-flickr"></a></li>
-                    <li><a href="#" class="fa fa-rss"></a></li>
+                    <li>
+                        <a href="#" class="fa fa-facebook"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="fa fa-twitter"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="fa fa-linkedin"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="fa fa-flickr"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="fa fa-rss"></a>
+                    </li>
                 </ul>
-            </div> <!-- /.col-md-4 -->
-        </div> <!-- /.row -->
-    </div> <!-- /.container -->
-</div> <!-- /.site-footer -->
+            </div>
+            <!-- /.col-md-4 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.site-footer -->
 
 <script src="../js/usuario/vendor/jquery-1.11.0.min.js"></script>
 <script src="../js/usuario/bootstrap.js"></script>
 <script src="../js/usuario/plugins.js"></script>
 <script src="../js/usuario/main.js"></script>
+    
+    
+    
+    <!-- Google Map -->
+        <script src="http://maps.google.com/maps/api/js"></script>
+        <script src="../js/usuario/vendor/jquery.gmap3.min.js"></script>
+    
+            
+        <!-- Google Map Init-->
+<!--        <script type="text/javascript">
+            
+            jQuery(function($){
+                $('.first-map, .map-holder').gmap3({
+                    marker:{
+                        address: '39.993995, -0.069576' 
+                    },
+                        map:{
+                        options:{
+                        zoom: 16,
+                        scrollwheel: false,
+                        streetViewControl : true
+                        }
+                    }
+                });
+            });
+        </script> -->
+    
 </body>
+
 </html>

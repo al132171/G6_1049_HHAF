@@ -141,6 +141,19 @@ a:hover {
     text-decoration: none;
 }
 
+a.categoriasPagination {
+    background-color: #5CB8E6;
+    color: darkred;
+    text-decoration: none;
+}
+
+a.activePagination {
+    background-color: #5CB8E6;
+    color: #5CB8E6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 h1,h2,h3,h4,h5,h6 {
     font-family: "Open Sans",Arial,sans-serif;
     color: #444;
@@ -249,6 +262,10 @@ hr {
 }
 
 .main-menu ul li.active {
+    background: #9ed034;
+}
+
+a.activePage {
     background: #9ed034;
 }
 
