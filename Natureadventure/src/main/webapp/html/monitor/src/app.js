@@ -16,7 +16,6 @@ app.controller('MainCtrl', ['$scope', '$modal', 'CalendarioService', 'moment',
      *
      */
     
-    /*
     var reservas = {"reserva":
     				[{"fechaActividad": "8-05-2015", "fechaReserva": "8-05-2015", "cantidadPersonas": 4,
     				"precio": 35, "nombre": "Monitor1","apellidos": "ApellidosMonitor1", "dni": "20875643S",
@@ -43,15 +42,14 @@ app.controller('MainCtrl', ['$scope', '$modal', 'CalendarioService', 'moment',
         				"correo": "correo@monitor2.com", "telefono": 654321987, "estado": "aceptada",
         				"actividad": 1, "usuario": 1, "contrato": "contrato"}]}
 
-    */
-    
+    /*
     var reservas = CalendarioService.retrieveAllSupervisar()
 	.success(function(data){
 		reservas = data;
 	});
+    */
     
-    
-	$scope.calendarView = 'month';
+    $scope.calendarView = 'month';
     $scope.calendarDay = new Date();
     $scope.events = [
 	
