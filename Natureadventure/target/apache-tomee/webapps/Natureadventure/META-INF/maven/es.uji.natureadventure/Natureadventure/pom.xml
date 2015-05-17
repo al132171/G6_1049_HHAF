@@ -134,6 +134,8 @@
 				<configuration>
 					<target>1.7</target>
 					<source>1.7</source>
+
+					
 				</configuration>
 			</plugin>
 			<plugin>
@@ -142,6 +144,7 @@
 				<version>2.5</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+
 				</configuration>
 			</plugin>
 			<plugin>
@@ -151,6 +154,7 @@
 				<configuration>
 					<tomeeVersion>1.7.1</tomeeVersion>
 					<tomeeClassifier>plume</tomeeClassifier>
+
 				</configuration>
 			</plugin>
 		</plugins>

@@ -17,19 +17,26 @@
     <link rel="shortcut icon" href="../images/ico/favicon.ico">
 
     <link rel="stylesheet" href="../css/usuario/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/usuario/font-awesome.css">
     <link rel="stylesheet" href="../css/usuario/animate.css">
     <link rel="stylesheet" href="../css/usuario/misc.css">
     <link rel="stylesheet" href="../css/usuario/style.css">
+    <!-- ----------- -->
+        		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+ 		
+
+     
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
-
+  
     <script src="../js/usuario/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
 
 
     <script src="../js/serviceActividadCliente.js"></script>
-
+	      <link href="../css/angular-input-stars.css" rel="stylesheet">
+       	<script src="../js/angular-input-stars.js"></script>
 
 
 </head>
@@ -272,7 +279,7 @@
                                     <h4 class="consult-title">{{a.nombre}}</h4>
                                     <p>{{a.descripcion}}</p>
                                     <p>Precio: {{a.precio}}€</p>
-                                    <p><a href="#row_informacion_actividad" class="btn btn-info" ng-click="informacionActividad(a.nombre)"> Más información</a>
+                                    <p><a href="#row_informacion_actividad" id="masinfo" class="btn btn-info" ng-click="informacionActividad(a.nombre)"> Más información</a>
                                     </p>
                                 </div>
                                 <!-- /.service-content -->
@@ -514,9 +521,15 @@
             
             <div class="row">
                 <div class="col-md-12 col-sm-12">
-                    <h4 class="titulo-categorias">Descripción:</h3>
+                <div id=estrellas></div>
+                	
+                	<!--  <input id="pmedia" class="rating" type="number"  data-show-caption=false data-disabled=true data-readonly=true style="float:left;"><br>-->
+                    <input-stars id=pmedia ng-model="pMedia" max="5" readonly></input-stars>
+                    <h4 style="margin-top:10px;" class="titulo-categorias">Descripción:</h3>
                     <p>{{feed.informacionActividad.descripcion}}</p>
                     </br>
+
+				 
                 </div>
             
             </div>
@@ -532,10 +545,43 @@
                 
             </div>
             <!-- /.row -->
+            
+             <!-- COMENTARIOS -->
+
+
+ 
+<div style="margin:25px">
+<form id="comentarForm" name="comentarForm">
+	
+	<textarea placeholder="Escribir comentario" ng-model="usuarioCtrl.contenido" name="comentarCont" id="comentarCont" rows=15 cols=150 style="resize:none"></textarea>
+	<input-stars id="puntuar" ng-model="usuarioCtrl.puntuacion" max="5"></input-stars> 	
+	<input type="text" id="nombreU" placeholder="Nombre" ng-model="usuarioCtrl.nombreU">
+	    <button id="comentar" name="comentar" type="submit" ng-click="usuarioCtrl.createComent(usuarioCtrl.nombreU,usuarioCtrl.contenido,usuarioCtrl.puntuacion)" 
+			        class="btn btn-success">Comentar</button>
+
+</form>
+</div>
+<div id=cajaComentarios>
+	<div ng-repeat="c in comentarios | orderBy:'id':true" ng-switch="usuarioCtrl.username" style="margin:25px;">
+	<div ng-switch-when="admin"> 
+	            	<button type="submit" class="btn btn-danger btn-sm" data-toggle="modal"  title="eliminar este comentario"
+	            	data-target="#eliminar" ng-click="usuarioCtrl.deleteComent(c.id)">
+				    <span class="glyphicon glyphicon-folder-close"></span></button>
+	</div>
+	<div style="" ><b>{{c.nombreU}}</b> ha opinado sobre esta actividad:</div>
+		<textarea id="comentario-{{c.id}}" rows="10" cols="150" readonly style="resize:none">{{c.contenido}}</textarea>
+		<input-stars  ng-model="c.puntuacion" max="5" readonly></input-stars>
+	</div>
+</div>
+<!-- /Fin Comentarios -->
+            
+
+            
         </div>
         <!-- /informacionActividad -->
-
-
+		
+		
+		
 
         <div class="go-act">
             <div class="container">
@@ -670,7 +716,6 @@
 <script src="../js/usuario/bootstrap.js"></script>
 <script src="../js/usuario/plugins.js"></script>
 <script src="../js/usuario/main.js"></script>
-    
     
     
     <!-- Google Map -->

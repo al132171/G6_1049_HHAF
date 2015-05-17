@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 
 @XmlRootElement
-@XmlType(propOrder = {"nombre", "duracion","horaInicio", "fechaInicio","fechaFin","descripcion","nivel",
+@XmlType(propOrder = {"id","nombre", "duracion","horaInicio", "fechaInicio","fechaFin","descripcion","nivel",
 		"precio","participantesMax","participantesMin","lugar","imagen", "categoria", "estado"})
 @Entity
 @NamedQueries({
@@ -77,6 +77,13 @@ public class Actividad {
 		this.imagen = imagen;
 		this.categoria = categoria;
 		this.estado = estado;
+	}
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNombre() {

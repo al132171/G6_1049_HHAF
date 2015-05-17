@@ -1,6 +1,6 @@
 (function () {
 
-    var actividadCliente = angular.module('actividadCliente', []); //Define el modulo de la aplicación (ng-app="actividadCliente") para todo el fichero
+    var actividadCliente = angular.module('actividadCliente', ['angular-input-stars']); //Define el modulo de la aplicación (ng-app="actividadCliente") para todo el fichero
 
 
     // Filtro para la paginación
@@ -12,9 +12,11 @@
     });
 
 
-    actividadCliente.controller('UsuarioCtrl', ['$scope', 'UsuarioService', function ($scope, UsuarioService) { //Inyecta los atributos
+    actividadCliente.controller('UsuarioCtrl', ['$scope', 'UsuarioService', '$rootScope', 'ComentariosService' , function ($scope, UsuarioService,$rootScope,ComentariosService) { //Inyecta los atributos
 
         actividadCliente.baseURI = 'http://localhost:8080/Natureadventure/cliente/actividades/';
+        actividadCliente.baseURIC = 'http://localhost:8080/Natureadventure/comentarios/';
+        $scope.username =  window.location.href.slice(window.location.href.indexOf('?') + 1).split('=')[1];
 
         var self = this;
 
@@ -181,7 +183,7 @@
             
             UsuarioService.retrieveActividad(nombre)
                 .success(function (data) {
-                
+                	$scope.idActividad=data.actividad.id;
                     $scope.feed.informacionActividad = data.actividad;
                     $scope.feed.datosActuales = data.actividad;
                 
@@ -214,7 +216,54 @@ marker.setMap(map);
   script.src = "http://maps.googleapis.com/maps/api/js?key=&sensor=false&callback=initialize";
   document.body.appendChild(script);
                 
-                
+//COMENTARIOS
+
+
+$scope.comentarios = ComentariosService.retrieveAll($scope.idActividad).success(function(data){
+	$scope.comentarios=data.comentario;
+	
+		
+		
+		CalcularMedia = function(){
+		       var total = 0;
+		       for (var i = 0; i < $scope.comentarios.length; i++) {
+		              total = total + $scope.comentarios[i].puntuacion;
+		            }
+		            $scope.pMedia = total/i;
+		};
+		CalcularMedia();
+		
+});
+
+self.createComent = function (nombreU,contenido,puntuacion) {
+
+    if (nombreU === undefined || nombreU==="") {
+    	nombreU="Anonimo";
+    }
+
+	ComentariosService.create($scope.idActividad,nombreU,contenido,puntuacion)
+			.success(function (data) {
+				ComentariosService.retrieveAll($scope.idActividad)
+				.success(function (data) {
+					$scope.comentarios = data.comentario;
+					$scope.comentarForm.$setPristine(); 
+					document.getElementById("comentarCont").value="";
+
+					
+				});
+			});
+	};
+
+self.deleteComent = function (id) {
+	ComentariosService.delete(id)
+	.success(function (data) {
+		ComentariosService.retrieveAll()
+		.success(function (data) {
+			$scope.comentarios = data.comentario;
+		});
+	});
+};
+/// fin comentarios              
                 
                 
                 
@@ -222,9 +271,11 @@ marker.setMap(map);
             });
         };
 
+        
 
 
  }]);
+
 
     // FUNCIO SERVICIOS WEB
     actividadCliente.service('UsuarioService', ['$http', function ($http) {
@@ -246,7 +297,34 @@ marker.setMap(map);
 
 
  }]);
+    
+    
+
+//FUNCION SERVICIOS WEB Comentarios
 
 
+actividadCliente.service('ComentariosService', ['$http', function($http) {
+	
+	this.retrieveAll = function(idActividad) {
+		var url = actividadCliente.baseURIC + "A/"+idActividad;
+		return $http.get(url);
+	};
+	
+
+	this.create = function(idActividad,nombreU,contenido,puntuacion) {
+		dato = {'comentario': {'idActividad': idActividad, 'nombreU': nombreU, 'contenido': contenido, 
+			'puntuacion':puntuacion}};
+		
+		var url = actividadCliente.baseURIC + idActividad;
+		return $http.put(url, dato);
+	}
+	
+	this.delete = function(id) {
+			var url = actividadCliente.baseURIC + id;
+			return $http.delete(url);
+		}
+	
+	
+}]);
 
 })();
