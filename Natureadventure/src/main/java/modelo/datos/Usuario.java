@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
 //  ####### MONITOR
         @NamedQuery(name="Usuario.encuentraTodosActivos", query = "SELECT p FROM Usuario p WHERE p.rol = 'M' AND p.estado = 'A'"),
         @NamedQuery(name="Usuario.encuentraTodosNoDisponibles", query = "SELECT p FROM Usuario p WHERE p.rol = 'M' AND p.estado = 'B'"),
-        @NamedQuery(name = "Usuario.encuentraPorNombre", query = "SELECT p FROM Usuario p WHERE p.nombre = :nombre AND p.rol = 'M'"),
+        @NamedQuery(name="Usuario.encuentraPorNombre", query = "SELECT p FROM Usuario p WHERE p.nombre = :nombre AND p.rol = 'M'"),
         @NamedQuery(name="Usuario.borraPorDni", query = "DELETE FROM Usuario WHERE dni = :dni"),
         @NamedQuery(name="Usuario.encuentraPorEspecialidad", query = "SELECT p FROM Usuario p WHERE p.especialidad = :especialidad")
 

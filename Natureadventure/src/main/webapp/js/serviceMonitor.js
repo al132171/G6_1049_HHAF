@@ -5,6 +5,13 @@
 
 var app = angular.module("app", []); 
 	
+//Filtro para la paginación
+app.filter('offset', function () {
+    return function (input, start) {
+        start = parseInt(start, 10);
+        return input.slice(start);
+    };
+});
 	app.controller('MonitorActividadesCtrl', ['$scope', 'ReservasService',
 	                                            function ($scope, ReservasService) { //Inyecta los atributos
 		app.baseURI = 'http://localhost:8080/Natureadventure/monitor/reservas/';
@@ -22,6 +29,7 @@ var app = angular.module("app", []);
 	            $scope.reservas = ReservasService.retrieveAllPasadas()
 	    		.success(function(data){
 	    			$scope.reservas = data.reserva;
+	    			$scope.pagReservas.reservas = data.reserva;
 	    		});
 	        }
 	         else if($scope.class2 == "active" && tipo=="1"){
@@ -31,15 +39,82 @@ var app = angular.module("app", []);
 	    		.success(function(data){
 	    			$scope.pendientes = Object.keys(data.reserva).length;
 	    			$scope.reservas = data.reserva;
+	    			$scope.pagReservas.reservas = data.reserva;
 	    		});
 	         }
 	    };
+	    
+	    
+//		***************************************
+	    //Datos para la paginación
+	           $scope.paginacion = {};
+	           $scope.paginacion.itemsPerPage = 5;
+	           $scope.paginacion.currentPage = 0;
+	           $scope.paginacion.range = {};
+	           //Fin datos para la paginación
+
+
+	   // Funciones para la paginación
+	           $scope.range = function () {
+	               var rangeSize = 5;
+	               var ret = [];
+	               var start;
+
+	               start = $scope.paginacion.currentPage;
+	               if (start > $scope.pageCount() - rangeSize) {
+	                   start = $scope.pageCount() - rangeSize + 1;
+	               }
+	                           
+	               if( start < 0 ) {
+	                   start = 0;
+	                   rangeSize = $scope.pageCount()+1;
+	               }
+	                          
+	               for (var i = start; i < start + rangeSize; i++) {
+	                   ret.push(i);
+	               }
+	               return ret;
+	           };
+
+	           $scope.prevPage = function () {
+	               if ($scope.paginacion.currentPage > 0) {
+	                   $scope.paginacion.currentPage--;
+	               }
+	           };
+
+	           $scope.prevPageDisabled = function () {
+	               return $scope.paginacion.currentPage === 0 ? "disabled" : "";
+	           };
+
+	           $scope.pageCount = function () {
+	               return Math.ceil($scope.pagReservas.reservas.length / $scope.paginacion.itemsPerPage) - 1;
+	           };
+
+	           $scope.nextPage = function () {
+	               if ($scope.paginacion.currentPage < $scope.pageCount()) {
+	                   $scope.paginacion.currentPage++;
+	               }
+	           };
+
+	           $scope.nextPageDisabled = function () {
+	               return $scope.paginacion.currentPage === $scope.pageCount() ? "disabled" : "";
+	           };
+
+	           $scope.setPage = function (n) {
+	               $scope.paginacion.currentPage = n;
+	           };
+	           // Fin funciones para la paginación
+
+		
+//		***************************************
+       $scope.pagReservas = {};
 		
 	  //Para la primera vez que carge la página en supervisar
 		$scope.reservas = ReservasService.retrieveAllSupervisar()
 		.success(function(data){
 			$scope.pendientes = Object.keys(data.reserva).length;
 			$scope.reservas = data.reserva;
+			$scope.pagReservas.reservas = data.reserva;
 		});
 	
 	}]);
@@ -64,4 +139,5 @@ var app = angular.module("app", []);
 			return $http.get(url);
 		};
 	}]);
+
 		 

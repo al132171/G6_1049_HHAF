@@ -33,6 +33,17 @@ function validator($scope, tipo) {
 
 	var app = angular.module("app", []); //Define el modulo de la aplicación (ng-app="app") para todo el fichero
 	
+	
+	// Filtro para la paginación
+    app.filter('offset', function () {
+        return function (input, start) {
+            start = parseInt(start, 10);
+            return input.slice(start);
+        };
+    });
+    
+	
+	
 	app.controller('ActividadesCtrl', ['$scope', 'ActividadGService',
 	                                            function ($scope, ActividadGService) { //Inyecta los atributos
 		app.baseURI = 'http://localhost:8080/Natureadventure/gerente/actividades/';
@@ -41,24 +52,27 @@ function validator($scope, tipo) {
 		var self = this;
 		
 	    $scope.class1 = "active";
+	    //$scope.add = false;
 	    
 		$scope.changeClass = function(tipo){
 	        if ($scope.class1 === "active" && tipo=="2"){
 	            $scope.class2 = "active";
 	            $scope.class1 = "";
-	            $scope.add = true; //esconde el botón de añadir
+	            //$scope.add = true; //esconde el botón de añadir
 	            $scope.actividades = ActividadGService.retrieveAllArchivadas()
 	    		.success(function(data){
 	    			$scope.actividades = data.actividad;
+	    			$scope.pagActividades.actividades = data.actividad;
 	    		});
 	        }
 	         else if($scope.class2 == "active" && tipo=="1"){
 	            $scope.class2 = "";
 	            $scope.class1 = "active";
-	            $scope.add = false; // muestra el botón de añadir
+	            //$scope.add = false; // muestra el botón de añadir
 	            $scope.actividades = ActividadGService.retrieveAllActivas()
 	    		.success(function(data){
 	    			$scope.actividades = data.actividad;
+	    			$scope.pagActividades.actividades = data.actividad;
 	    		});
 	         }
 	    };
@@ -92,15 +106,6 @@ function validator($scope, tipo) {
 
 			});
 		};
-
-
-
-		/*$scope.$watch(function() {
-		  return $scope.currentActividad.actividad.nombre;
-		}, function(newValue, oldValue) {
-		 alert("change detected: " + newValue +"--"+ oldValue);
-		});*/
-
 
 //		Comprueba si los datos introducidos son números o "-"
 		$scope.fechaInicio1 = { 
@@ -178,11 +183,75 @@ function validator($scope, tipo) {
 			}
 		};
 
+//		***************************************
+	    //Datos para la paginación
+	           $scope.paginacion = {};
+	           $scope.paginacion.itemsPerPage = 5;
+	           $scope.paginacion.currentPage = 0;
+	           $scope.paginacion.range = {};
+	           //Fin datos para la paginación
+
+
+	   // Funciones para la paginación
+	           $scope.range = function () {
+	               var rangeSize = 5;
+	               var ret = [];
+	               var start;
+
+	               start = $scope.paginacion.currentPage;
+	               if (start > $scope.pageCount() - rangeSize) {
+	                   start = $scope.pageCount() - rangeSize + 1;
+	               }
+	                           
+	               if( start < 0 ) {
+	                   start = 0;
+	                   rangeSize = $scope.pageCount()+1;
+	               }
+	                          
+	               for (var i = start; i < start + rangeSize; i++) {
+	                   ret.push(i);
+	               }
+	               return ret;
+	           };
+
+	           $scope.prevPage = function () {
+	               if ($scope.paginacion.currentPage > 0) {
+	                   $scope.paginacion.currentPage--;
+	               }
+	           };
+
+	           $scope.prevPageDisabled = function () {
+	               return $scope.paginacion.currentPage === 0 ? "disabled" : "";
+	           };
+
+	           $scope.pageCount = function () {
+	               return Math.ceil($scope.pagActividades.actividades.length / $scope.paginacion.itemsPerPage) - 1;
+	           };
+
+	           $scope.nextPage = function () {
+	               if ($scope.paginacion.currentPage < $scope.pageCount()) {
+	                   $scope.paginacion.currentPage++;
+	               }
+	           };
+
+	           $scope.nextPageDisabled = function () {
+	               return $scope.paginacion.currentPage === $scope.pageCount() ? "disabled" : "";
+	           };
+
+	           $scope.setPage = function (n) {
+	               $scope.paginacion.currentPage = n;
+	           };
+	           // Fin funciones para la paginación
+
+		
+//		***************************************
+       $scope.pagActividades = {};
+
 		//Para la primera vez que carge la página en activas
 		$scope.actividades = ActividadGService.retrieveAllActivas()
 		.success(function(data){
+			$scope.pagActividades.actividades = data.actividad;
 			$scope.actividades = data.actividad;
-			
 		});
 
 		self.create = function (nombre, duracion, horaInicio, fechaInicio, fechaFin,
@@ -198,6 +267,7 @@ function validator($scope, tipo) {
 							borraCampos($scope);
 							ActividadGService.retrieveAllActivas()
 							.success(function (data) {
+								$scope.pagActividades.actividades = data.actividad;
 								$scope.actividades = data.actividad;
 								$scope.createForm.$setPristine(); 
 							});
@@ -211,6 +281,7 @@ function validator($scope, tipo) {
 			.success(function (data) {
 				ActividadGService.retrieveAllActivas()
 				.success(function (data) {
+					$scope.pagActividades.actividades = data.actividad;
 					$scope.actividades = data.actividad;
 					$scope.class1 = "active";
 					$scope.class2 = "";
@@ -239,6 +310,8 @@ function validator($scope, tipo) {
 							ActividadGService.retrieveAllActivas()
 							.success(function (data) {
 								$scope.actividades = data.actividad;
+								$scope.pagActividades.actividades = data.actividad;
+
 							});
 							$('#actualizar').modal('hide');
 						});
@@ -268,6 +341,7 @@ function validator($scope, tipo) {
 	            $scope.reservas = ReservasService.retrieveReservasAceptadas()
 	    		.success(function(data){
 	    			$scope.reservas = data.reserva;
+	    			$scope.pagReservas.reservas = data.reserva;
 	    		});
 	        }
 	         else if($scope.class2 == "active" && tipo=="1"){
@@ -276,19 +350,87 @@ function validator($scope, tipo) {
 	            $scope.reservas = ReservasService.retrieveReservasPendientes()
 	    		.success(function(data){
 	    			$scope.reservas = data.reserva;
+	    			$scope.pagReservas.reservas = data.reserva;
 	    			$scope.pendientes = Object.keys(data.reserva).length;
 	    		});
 	         }
 	    };
+	    
+	    
+//		***************************************
+	    //Datos para la paginación
+	           $scope.paginacion = {};
+	           $scope.paginacion.itemsPerPage = 5;
+	           $scope.paginacion.currentPage = 0;
+	           $scope.paginacion.range = {};
+	           //Fin datos para la paginación
+
+
+	   // Funciones para la paginación
+	           $scope.range = function () {
+	               var rangeSize = 5;
+	               var ret = [];
+	               var start;
+
+	               start = $scope.paginacion.currentPage;
+	               if (start > $scope.pageCount() - rangeSize) {
+	                   start = $scope.pageCount() - rangeSize + 1;
+	               }
+	                           
+	               if( start < 0 ) {
+	                   start = 0;
+	                   rangeSize = $scope.pageCount()+1;
+	               }
+	                          
+	               for (var i = start; i < start + rangeSize; i++) {
+	                   ret.push(i);
+	               }
+	               return ret;
+	           };
+
+	           $scope.prevPage = function () {
+	               if ($scope.paginacion.currentPage > 0) {
+	                   $scope.paginacion.currentPage--;
+	               }
+	           };
+
+	           $scope.prevPageDisabled = function () {
+	               return $scope.paginacion.currentPage === 0 ? "disabled" : "";
+	           };
+
+	           $scope.pageCount = function () {
+	               return Math.ceil($scope.pagReservas.reservas.length / $scope.paginacion.itemsPerPage) - 1;
+	           };
+
+	           $scope.nextPage = function () {
+	               if ($scope.paginacion.currentPage < $scope.pageCount()) {
+	                   $scope.paginacion.currentPage++;
+	               }
+	           };
+
+	           $scope.nextPageDisabled = function () {
+	               return $scope.paginacion.currentPage === $scope.pageCount() ? "disabled" : "";
+	           };
+
+	           $scope.setPage = function (n) {
+	               $scope.paginacion.currentPage = n;
+	           };
+	           // Fin funciones para la paginación
+
+		
+//		***************************************
+       $scope.pagReservas = {};
+	    
 		
 	    //Primera vez que carga la página
 		$scope.reservas = ReservasService.retrieveReservasPendientes()
 		.success(function(data) {
 			$scope.reservas = data.reserva;
+			$scope.pagReservas.reservas = data.reserva;
 			$scope.pendientes = Object.keys(data.reserva).length;
 		});
 		
-		self.retrieveReserva = function(dni, fechaReserva) { //TODO: implementar servidor
+		self.retrieveReserva = function(dni, fechaReserva) { 
 			ReservasService.retrieveReserva(dni, fechaReserva)
 			.success(function(data) {
 				$scope.currentReserva = data;
@@ -318,8 +460,10 @@ function validator($scope, tipo) {
 				ReservasService.retrieveReservasPendientes()
 				.success(function (data) {
 					$scope.reservas = data.reserva;
+					$scope.pagReservas.reservas = data.reserva;
 					$scope.pendientes = Object.keys(data.reserva).length;
 			});
+				$('#aceptar').modal('hide');
 		});
 		};
 		
@@ -331,6 +475,7 @@ function validator($scope, tipo) {
 			ReservasService.retrieveReservasPendientes()
 			.success(function (data) {
 				$scope.reservas = data.reserva;
+				$scope.pagReservas.reservas = data.reserva;
 				$scope.pendientes = Object.keys(data.reserva).length;
 				$scope.class1 = "active";
 				$scope.class2 = "";
@@ -466,7 +611,7 @@ function validator($scope, tipo) {
 			return $http.get(url);
 		};
 		
-		this.updateReserva = function(reservacurrentReserva,dniMonitor){
+		this.updateReserva = function(currentReserva,dniMonitor){
 			var url = app.baseURI+dniMonitor;
 			return $http.put(url, currentReserva);
 		};

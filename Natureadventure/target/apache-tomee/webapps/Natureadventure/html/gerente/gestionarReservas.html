@@ -111,7 +111,8 @@
 					<th>Monitor</th>
 				</tr>
 				<tbody>
-					<tr ng-repeat="r in reservas" ng-switch="r.estado" id="{{r.actividad.nombre}}">
+				
+					<tr ng-repeat="r in pagReservas.reservas | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage" ng-switch="r.estado" id="{{r.actividad.nombre}}">
 						<td>{{r.actividad.nombre}}</td>
 						<td>{{r.fechaActividad}}</td>
 						<td>{{r.fechaReserva}}</td>
@@ -123,7 +124,7 @@
 						<td>{{r.correo}}</td>
 						<td>{{r.telefono}}</td>
 						<td ng-switch-when="A">{{r.usuario.nombre}} {{r.usuario.apellidos}}</td>
-						<td ng-switch-when="A"><a ng-href="../../../contratos/{{r.contrato}}.pdf">Contrato</a></td>
+						<td ng-switch-when="A"><a ng-href="../../contratos/{{r.contrato}}.pdf">Contrato</a></td>
 
 						<td ng-switch-when="P"><button type="submit" id="asignar:{{r.actividad.nombre}}"
 								class="btn btn-info btn-sm" data-toggle="modal"
@@ -131,7 +132,7 @@
 								<span class="glyphicon glyphicon-ok"></span> Asignar monitor
 							</button></td>
 							
-						<td ng-switch-when="P"><button type="submit" id="cancelar"
+						<td ng-switch-when="P"><button type="submit" id="cancelar:{{r.actividad.nombre}}"
 								class="btn btn-danger btn-sm" data-toggle="modal"
 								data-target="#cancelar" ng-click="reservasCtrl.retrieveReserva(r.dni, r.fechaReserva)">
 								<span class="glyphicon glyphicon-remove"></span> Cancelar
@@ -139,6 +140,8 @@
 				</tbody>
 			</table>
 		</div>
+		
+		 
 
 
 		<div class="modal fade" id="cancelar" tabindex="-1" role="dialog"
@@ -197,6 +200,25 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- Paginación -->
+                <div class="row">
+                    <div>
+                        <ul class="pagination">
+                            <li ng-class="prevPageDisabled()">
+                                <a href ng-click="prevPage()">« Prev</a>
+                            </li>
+                            <li ng-repeat="n in range()" ng-click="setPage(n)">
+                                <a href ng-class="{activePagination: n == paginacion.currentPage}">{{n+1}}</a>
+                            </li>
+                            <li ng-class="nextPageDisabled()">
+                                <a href ng-click="nextPage()">Next »</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!-- /Paginación -->
 		
 	</div>
 

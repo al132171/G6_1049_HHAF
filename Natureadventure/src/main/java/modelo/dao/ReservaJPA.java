@@ -17,6 +17,11 @@ public class ReservaJPA {
 	public static Reserva ENTRADA_NULL = new Reserva();
 	@PersistenceContext(unitName = "natureadventureJTA")
 	EntityManager em;
+	
+	public void nuevaReserva(Reserva reserva) {
+    	reserva.setEstado("P"); 
+        em.persist(reserva);
+    }
 
 	public Reserva[] listaTodasReservasPendientes() {
 		TypedQuery<Reserva> query = em.createNamedQuery("Reserva.encuentraTodasPendientes", Reserva.class);

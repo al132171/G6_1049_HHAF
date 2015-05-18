@@ -94,7 +94,8 @@
             	
             </tr>
             <tbody>
-            <tr ng-repeat="a in actividades" ng-switch="a.estado" id="{{a.nombre}}">
+            <tr ng-repeat="a in pagActividades.actividades | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage"
+            ng-switch="a.estado" id="{{a.nombre}}">
                 <td>{{a.nombre}}</td>
                 <td>{{a.duracion}}</td>
                 <td>{{a.fechaInicio}}</td>
@@ -126,6 +127,37 @@
         </table>
         </div>
         
+    <!-- Paginación -->
+                <div class="row">
+                    <div>
+                        <ul class="pagination">
+                            <li ng-class="prevPageDisabled()">
+                                <a href ng-click="prevPage()">« Prev</a>
+                            </li>
+                            <li ng-repeat="n in range()" ng-click="setPage(n)">
+                                <a href ng-class="{activePagination: n == paginacion.currentPage}">{{n+1}}</a>
+                            </li>
+                            <li ng-class="nextPageDisabled()">
+                                <a href ng-click="nextPage()">Next »</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!-- /Paginación -->
+
+
+
+  
+        
+        
+	<button type="submit" id="añadir1"  class="btn btn-success" data-toggle="modal" data-target="#create" ng-click="resetForm(user)">
+    <span class="glyphicon glyphicon-plus"></span>Añadir</button>
+        
+        
+    
+        
+        
 			     <!-- Ventana Modal insertar-->
 			    <div class="modal fade" id="eliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
 			    
@@ -146,7 +178,10 @@
 						</div>
 			        	</div>
 			    </div>
-			</div>
+			    </div>
+			    
+	
+	
        
 	<!-- Ventana modal actualizar -->
     <div class="modal fade" id="actualizar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -296,8 +331,7 @@
     </div>
     </div>
     
-    <button type="submit" id="añadir1" ng-hide="add" class="btn btn-success" data-toggle="modal" data-target="#create" ng-click="resetForm(user)">
-    <span class="glyphicon glyphicon-plus"></span>Añadir</button>
+    
     <!-- Ventana Modal insertar-->
 		<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
 		  <div class="modal-dialog">
@@ -559,8 +593,15 @@ ng-change="compararFechas(user.fechaInicio, user.fechaFin)"/>
 		    </div>
 		  </div>
 		</div>
-		
-		<!-- ######################################################################33 -->
+		</div>
+
+	<footer class="footer">
+		<div class="container">
+			<p></p>
+		</div>
+	</footer>
+
+	<!-- ######################################################################33 -->
   
   
 

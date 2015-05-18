@@ -94,7 +94,8 @@
             	
             </tr>
             <tbody>
-            <tr ng-repeat="r in reservas">
+            
+            <tr ng-repeat="r in pagReservas.reservas | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage">
                 <td>{{r.actividad.nombre}}</td>
                 <td>{{r.fechaActividad}}</td>
                 <td>{{r.actividad.horaInicio}}</td>
@@ -108,6 +109,24 @@
                 </table>
                 
 	</div>
+	<!-- Paginación -->
+                <div class="row">
+                    <div>
+                        <ul class="pagination">
+                            <li ng-class="prevPageDisabled()">
+                                <a href ng-click="prevPage()">« Prev</a>
+                            </li>
+                            <li ng-repeat="n in range()" ng-click="setPage(n)">
+                                <a href ng-class="{activePagination: n == paginacion.currentPage}">{{n+1}}</a>
+                            </li>
+                            <li ng-class="nextPageDisabled()">
+                                <a href ng-click="nextPage()">Next »</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!-- /Paginación -->
 	</div>
 	
 

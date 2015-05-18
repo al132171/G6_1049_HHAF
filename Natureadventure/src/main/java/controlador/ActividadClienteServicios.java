@@ -1,15 +1,9 @@
 package controlador;
 
-import java.net.URI;
-
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -17,11 +11,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
 import modelo.dao.ActividadJPA;
+import modelo.dao.ReservaJPA;
 import modelo.datos.Actividad;
+import modelo.datos.Reserva;
+
 
 /**
  * Created by oscar on 27/11/14.
@@ -31,6 +27,9 @@ import modelo.datos.Actividad;
 public class ActividadClienteServicios {
     @Inject
     ActividadJPA actividadJPA;
+    @Inject
+    ReservaJPA reservaJPA;
+   
     @Context
     private UriInfo uriInfo;
 
@@ -63,6 +62,17 @@ public class ActividadClienteServicios {
     public Response buscarActividadPorCategoria(@PathParam("categoria") String categoria) {
     	Actividad[] actividades = actividadJPA.buscaActividadPorCategoria(categoria);
         return Response.ok(actividades).build();
+    }
+    
+    @PUT
+    @Path("reserva/{dni}")
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response creaNuevaEntrada(@PathParam("dni") String dni, Reserva reserva) {
+		
+    	System.out.println("******************************************************* en el put" + dni);
+    	reservaJPA.nuevaReserva(reserva);
+    	return Response.ok(reserva).build();
     }
     
 }

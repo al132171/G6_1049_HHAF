@@ -96,7 +96,8 @@
             	<th>Especialidad</th>
             </tr>
             <tbody>
-            <tr ng-repeat="m in monitores" ng-switch="m.estado">
+            <tr ng-repeat="m in pagMonitores.usuario | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage" 
+             ng-switch="m.estado">
             
             
                 <td>{{m.nombre}}</td>
@@ -113,7 +114,7 @@
                         <span class="glyphicon glyphicon-pencil"></span> Actualizar</button></td>
                 <td ng-switch-when="A">           	
             	<button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar" ng-click="monitoresCtrl.retreiveContact(m.dni)">
-			    <span class="glyphicon glyphicon-cancel"></span> Dar de baja</button>
+			    <span class="glyphicon glyphicon-remove"></span> Dar de baja</button>
 			    
 			     <td ng-switch-when="B">           	
             	<button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#eliminar" ng-click="monitoresCtrl.retreiveContact(m.dni)">
@@ -125,6 +126,25 @@
             </tbody>
         </table>
         </div>
+        
+        <!-- Paginación -->
+                <div class="row">
+                    <div>
+                        <ul class="pagination">
+                            <li ng-class="prevPageDisabled()">
+                                <a href ng-click="prevPage()">« Prev</a>
+                            </li>
+                            <li ng-repeat="n in range()" ng-click="setPage(n)">
+                                <a href ng-class="{activePagination: n == paginacion.currentPage}">{{n+1}}</a>
+                            </li>
+                            <li ng-class="nextPageDisabled()">
+                                <a href ng-click="nextPage()">Next »</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!-- /Paginación -->
        
        
         <!-- Ventana Modal dar de baja-->
@@ -353,7 +373,8 @@
 		</div>
 		<br/>
 		
- </div>		
+ </div>	
+ 	
 		<!-- ######################################################################33 -->
   
   
