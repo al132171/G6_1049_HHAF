@@ -4,135 +4,148 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" ng-app="actividadCliente">
-    <!--<![endif]-->
+<!--<![endif]-->
 
-    <head>
-        <meta charset="utf-8">
-        <title>NaturAdventure | categorías</title>
-        <meta name="description" content="">
+<head>
+<meta charset="utf-8">
+<title>NaturAdventure | categorías</title>
+<meta name="description" content="">
 
-        <meta name="viewport" content="width=device-width">
-        <link
-              href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300'
-              rel='stylesheet' type='text/css'>
+<meta name="viewport" content="width=device-width">
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300'
+	rel='stylesheet' type='text/css'>
 
-        <link rel="shortcut icon" href="../images/ico/favicon.ico">
+<link rel="shortcut icon" href="../images/ico/favicon.ico">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-
-        <link rel="stylesheet" href="../css/usuario/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/usuario/font-awesome.css">
-        <link rel="stylesheet" href="../css/usuario/animate.css">
-        <link rel="stylesheet" href="../css/usuario/misc.css">
-        <link rel="stylesheet" href="../css/usuario/style.css">
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
-        <script src="../js/bootstrap-datetimepicker.min.js"></script>
-        <script type="text/javascript" src="../js/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
+<link rel="stylesheet" href="../css/usuario/bootstrap.min.css">
+<link rel="stylesheet" href="../css/usuario/font-awesome.css">
+<link rel="stylesheet" href="../css/usuario/animate.css">
+<link rel="stylesheet" href="../css/usuario/misc.css">
+<link rel="stylesheet" href="../css/usuario/style.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
-
-        <script src="../js/usuario/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
-
-
-        <!-- Google Map -->
-        <script src="http://maps.google.com/maps/api/js"></script>
-        <script src="../js/usuario/vendor/jquery.gmap3.min.js"></script>
-
-        <script src="../js/serviceActividadCliente.js"></script>
+<!-- ----------- -->
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
 
-    </head>
+<script src="../js/usuario/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
-    <body ng-controller="UsuarioCtrl as usuarioCtrl">
-        <!--[if lt IE 7]>
+
+<script src="../js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript"
+	src="../js/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
+
+
+<script src="../js/serviceActividadCliente.js"></script>
+<link href="../css/angular-input-stars.css" rel="stylesheet">
+<script src="../js/angular-input-stars.js"></script>
+
+
+<!-- Google Map -->
+<script src="http://maps.google.com/maps/api/js"></script>
+<script src="../js/usuario/vendor/jquery.gmap3.min.js"></script>
+
+<!--         <script src="../js/serviceActividadCliente.js"></script> -->
+
+
+
+</head>
+
+<body ng-controller="UsuarioCtrl as usuarioCtrl">
+	<!--[if lt IE 7]>
 <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
 <![endif]-->
 
-        <div class="site-header">
-            <div class="container">
-                <div class="main-header">
-                    <div class="row">
-                        <div class="col-md-2 col-sm-6 col-xs-10">
-                            <div class="logo">
-                                <a href="#"> <img src="../images/logo.png"
-                                                  alt="travel html5 template" title="travel html5 template">
-                                </a>
-                            </div>
-                            <!-- /.logo -->
-                        </div>
-                        <!-- /.col-md-4 -->
-                        <div class="col-md-10 col-sm-6 col-xs-2">
-                            <div class="main-menu">
-                                <ul class="visible-lg visible-md">
-                                    <li><a href="index.html">Inicio</a></li>
-                                    <li><a href="services.html">Noticias</a></li>
-                                    <li class="active"><a href="categorias.html">Reserva de
-                                        actividades</a></li>
-                                    <li><a href="about.html">Quiénes somos</a></li>
-                                    <li><a href="contact.html">Contacto</a></li>
-                                    <li><a href="login.html">Administración</a></li>
-                                </ul>
-                                <a href="#" class="toggle-menu visible-sm visible-xs"> <i
-                                                                                          class="fa fa-bars"></i>
-                                </a>
-                            </div>
-                            <!-- /.main-menu -->
-                        </div>
-                        <!-- /.col-md-8 -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.main-header -->
-                <div class="row">
-                    <div class="col-md-12 visible-sm visible-xs">
-                        <div class="menu-responsive">
-                            <ul>
-                                <li><a href="index.html">Inicio</a></li>
-                                <li><a href="services.html">Noticias</a></li>
-                                <li class="active"><a href="categorias.html">Reserva de
-                                    actividades</a></li>
-                                <li><a href="about.html">Quiénes somos</a></li>
-                                <li><a href="contact.html">Contacto</a></li>
-                                <li><a href="login.html">Administración</a></li>
-                            </ul>
-                        </div>
-                        <!-- /.menu-responsive -->
-                    </div>
-                    <!-- /.col-md-12 -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container -->
-        </div>
-        <!-- /.site-header -->
+	<div class="site-header">
+		<div class="container">
+			<div class="main-header">
+				<div class="row">
+					<div class="col-md-2 col-sm-6 col-xs-10">
+						<div class="logo">
+							<a href="#"> <img src="../images/logo.png"
+								alt="travel html5 template" title="travel html5 template">
+							</a>
+						</div>
+						<!-- /.logo -->
+					</div>
+					<!-- /.col-md-4 -->
+					<div class="col-md-10 col-sm-6 col-xs-2">
+						<div class="main-menu">
+							<ul class="visible-lg visible-md">
+								<li><a href="index.html">Inicio</a></li>
+								<li><a href="services.html">Noticias</a></li>
+								<li class="active"><a href="categorias.html">Reserva de
+										actividades</a></li>
+								<li><a href="about.html">Quiénes somos</a></li>
+								<li><a href="contact.html">Contacto</a></li>
+								<li><a href="login.html">Administración</a></li>
+							</ul>
+							<a href="#" class="toggle-menu visible-sm visible-xs"> <i
+								class="fa fa-bars"></i>
+							</a>
+						</div>
+						<!-- /.main-menu -->
+					</div>
+					<!-- /.col-md-8 -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.main-header -->
+			<div class="row">
+				<div class="col-md-12 visible-sm visible-xs">
+					<div class="menu-responsive">
+						<ul>
+							<li><a href="index.html">Inicio</a></li>
+							<li><a href="services.html">Noticias</a></li>
+							<li class="active"><a href="categorias.html">Reserva de
+									actividades</a></li>
+							<li><a href="about.html">Quiénes somos</a></li>
+							<li><a href="contact.html">Contacto</a></li>
+							<li><a href="login.html">Administración</a></li>
+						</ul>
+					</div>
+					<!-- /.menu-responsive -->
+				</div>
+				<!-- /.col-md-12 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /.site-header -->
 
-        <div class="page-top" id="content_events"></div>
-        <!-- /.page-header -->
+	<div class="page-top" id="content_events"></div>
+	<!-- /.page-header -->
 
-        <div class="middle-content">
+	<div class="middle-content">
 
-            <div class="container">
+		<div class="container">
 
 
-                <!-- **************************************** -->
-                <!-- div que muestra el listado de categorías -->
+			<!-- **************************************** -->
+			<!-- div que muestra el listado de categorías -->
 
-                <div class="row" id="row_categorias" ng-show="show.categorias===true">
-                    <!-- first row -->
+			<div class="row" id="row_categorias" ng-show="show.categorias===true">
+				<!-- first row -->
 
-                    <div class="widget-item">
-                        <div class="col-md-8 col-sm-6">
-                            <h4 class="consult-title"></h4>
-                            <h3 class="widget-title">Selecciona categoría:</h3>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
+				<div class="widget-item">
+					<div class="col-md-8 col-sm-6">
+						<h4 class="consult-title"></h4>
+						<h3 class="widget-title">Selecciona categoría:</h3>
+					</div>
+					<div class="col-md-4 col-sm-6">
 
-                            <!--<div class="row">
+						<!--<div class="row">
 <div class="col-md-6">
 <h4 class="consult-title">Busca actividad:</h4>
 </div>
@@ -148,227 +161,227 @@
 
 </div> &lt;!&ndash; /.row &ndash;&gt;-->
 
-                            <h4 class="consult-title">Busca actividad:</h4>
-                            <div class="input-group">
-                                <input type="text" id="inputCategorias" class="form-control"
-                                       placeholder="Palabra clave" ng-model="palabraClave"
-                                       ng-change="usuarioCtrl.buscaActividades(palabraClave)">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"
-                                            ng-click="usuarioCtrl.buscaActividades(palabraClave)">
-                                        <span class="fa fa-search"></span>
-                                    </button>
-                                </span>
-                            </div>
-                            <!-- /input-group -->
+						<h4 class="consult-title">Busca actividad:</h4>
+						<div class="input-group">
+							<input type="text" id="inputCategorias" class="form-control"
+								placeholder="Palabra clave" ng-model="palabraClave"
+								ng-change="usuarioCtrl.buscaActividades(palabraClave)">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button"
+									ng-click="usuarioCtrl.buscaActividades(palabraClave)">
+									<span class="fa fa-search"></span>
+								</button>
+							</span>
+						</div>
+						<!-- /input-group -->
 
-                        </div>
-                        <!-- /.col-md-4 col-sm-6 -->
-                    </div>
-                    <!-- /.widget-item -->
+					</div>
+					<!-- /.col-md-4 col-sm-6 -->
+				</div>
+				<!-- /.widget-item -->
 
-                    <div class="col-md-4 col-sm-4">
-                        <!-- first column -->
-                        <div class="widget-item">
-                            <div ng-repeat="categoria in feed.categorias">
-                                <div class="service-item" ng-if="$even">
-                                    <a href ng-click="muestraActividadesCategoria(categoria.name)"
-                                       class="link">
-                                        <div class="service-icon">
-                                            <i class="fa fa-chevron-right"></i>
-                                        </div> <!-- /.service-icon -->
-                                    </a>
-                                    <div class="service-content">
-                                        <h4 class="consult-title ">
-                                            <a href ng-click="muestraActividadesCategoria(categoria.name)"
-                                               class="link">{{categoria.name}}</a>
-                                        </h4>
-                                    </div>
-                                    <!-- /.service-content -->
-                                </div>
-                                <!-- /.service-item -->
-                            </div>
-                        </div>
-                        <!-- /.widget-item -->
-                    </div>
-                    <!-- /.col-md-4 -->
-
-
-                    <div class="col-md-4 col-sm-4">
-                        <!-- second column -->
-                        <div class="widget-item">
-                            <div ng-repeat="categoria in feed.categorias">
-                                <div class="service-item" ng-if="$odd">
-                                    <a href ng-click="muestraActividadesCategoria(categoria.name)">
-                                        <div class="service-icon">
-                                            <i class="fa fa-chevron-right"></i>
-                                        </div> <!-- /.service-icon -->
-                                    </a>
-                                    <div class="service-content">
-                                        <h4 class="consult-title ">
-                                            <a href ng-click="muestraActividadesCategoria(categoria.name)">{{categoria.name}}</a>
-                                        </h4>
-                                    </div>
-                                    <!-- /.service-content -->
-                                </div>
-                                <!-- /.service-item -->
-                            </div>
-                        </div>
-                        <!-- /.widget-item -->
-                    </div>
-                    <!-- /.col-md-4 -->
-
-                    <div class="col-md-4 col-sm-4">
-                        <!-- third column -->
-                        <div class="widget-item">
-
-                            <div class="sample-thumb img-border">
-                                <img src="../images/event_1.jpg" alt="New Event"
-                                     title="New Event">
-                            </div>
-                            <!-- /.sample-thumb -->
-                            <h4 class="consult-title">
-                                Las actividades más salvajes<br>
-                                <br>
-                                <br>Y los mejores paisajes
-                            </h4>
-                            <div class="sample-thumb img-border">
-                                <img src="../images/event_2.jpg" alt="New Event"
-                                     title="New Event">
-                            </div>
-                            <!-- /.sample-thumb -->
-                        </div>
-                        <!-- /.widget-item -->
-                    </div>
-                    <!-- /.col-md-4 -->
-                </div>
-                <!-- /.row first -->
+				<div class="col-md-4 col-sm-4">
+					<!-- first column -->
+					<div class="widget-item">
+						<div ng-repeat="categoria in feed.categorias">
+							<div class="service-item" ng-if="$even">
+								<a href ng-click="muestraActividadesCategoria(categoria.name)"
+									class="link">
+									<div class="service-icon">
+										<i class="fa fa-chevron-right"></i>
+									</div> <!-- /.service-icon -->
+								</a>
+								<div class="service-content">
+									<h4 class="consult-title ">
+										<a href ng-click="muestraActividadesCategoria(categoria.name)"
+											class="link">{{categoria.name}}</a>
+									</h4>
+								</div>
+								<!-- /.service-content -->
+							</div>
+							<!-- /.service-item -->
+						</div>
+					</div>
+					<!-- /.widget-item -->
+				</div>
+				<!-- /.col-md-4 -->
 
 
-                <!-- ************************************************************** -->
-                <!-- div que muestra las actividades pertenecientes a una categoría -->
+				<div class="col-md-4 col-sm-4">
+					<!-- second column -->
+					<div class="widget-item">
+						<div ng-repeat="categoria in feed.categorias">
+							<div class="service-item" ng-if="$odd">
+								<a href ng-click="muestraActividadesCategoria(categoria.name)">
+									<div class="service-icon">
+										<i class="fa fa-chevron-right"></i>
+									</div> <!-- /.service-icon -->
+								</a>
+								<div class="service-content">
+									<h4 class="consult-title ">
+										<a href ng-click="muestraActividadesCategoria(categoria.name)">{{categoria.name}}</a>
+									</h4>
+								</div>
+								<!-- /.service-content -->
+							</div>
+							<!-- /.service-item -->
+						</div>
+					</div>
+					<!-- /.widget-item -->
+				</div>
+				<!-- /.col-md-4 -->
 
-                <div id="row_resultados_categoria"
-                     ng-show="show.resultadosCategoria===true">
-                    <div ng-show="show.cantidadResultados > 0">
-                        <div class="row">
+				<div class="col-md-4 col-sm-4">
+					<!-- third column -->
+					<div class="widget-item">
 
-                            <div class="widget-item">
-                                <div class="col-md-8 col-sm-6">
-                                    <h4 class="consult-title"></h4>
-                                    <h3 class="widget-title">Resultados categoría
-                                        "{{show.categoria}}" :</h3>
-                                </div>
-                                <!--                        <div class="col-md-4 col-sm-6"> -->
+						<div class="sample-thumb img-border">
+							<img src="../images/event_1.jpg" alt="New Event"
+								title="New Event">
+						</div>
+						<!-- /.sample-thumb -->
+						<h4 class="consult-title">
+							Las actividades más salvajes<br> <br> <br>Y los
+							mejores paisajes
+						</h4>
+						<div class="sample-thumb img-border">
+							<img src="../images/event_2.jpg" alt="New Event"
+								title="New Event">
+						</div>
+						<!-- /.sample-thumb -->
+					</div>
+					<!-- /.widget-item -->
+				</div>
+				<!-- /.col-md-4 -->
+			</div>
+			<!-- /.row first -->
 
-                                <!--                             <h4 class="consult-title">Busca actividad en categoría:</h4> -->
-                                <!--                             <div class="input-group"> -->
-                                <!--                                 <input type="text" id="inputResultadosBusqueda" class="form-control" placeholder="Palabra clave" ng-model="palabraClave" ng-change="usuarioCtrl.buscaActividadesEnCategoria(palabraClave)"> -->
-                                <!--                                 <span class="input-group-btn"> -->
-                                <!--                                     <button class="btn btn-default" type="button" ng-click="usuarioCtrl.buscaActividades(palabraClave)"><span class="fa fa-search"></span> -->
-                                <!--                                 </button> -->
-                                <!--                                 </span> -->
-                                <!--                             </div> -->
-                                <!--                             /input-group -->
-                                <!--                         </div> -->
-                                <!--                         /.col-md-4 col-sm-6 -->
 
-                            </div>
-                            <!-- /.widget-item -->
+			<!-- ************************************************************** -->
+			<!-- div que muestra las actividades pertenecientes a una categoría -->
 
+			<div id="row_resultados_categoria"
+				ng-show="show.resultadosCategoria===true">
+				<div ng-show="show.cantidadResultados > 0">
+					<div class="row">
+
+						<div class="widget-item">
+							<div class="col-md-8 col-sm-6">
+								<h4 class="consult-title"></h4>
+								<h3 class="widget-title">Resultados categoría
+									"{{show.categoria}}" :</h3>
+							</div>
+							<!--                        <div class="col-md-4 col-sm-6"> -->
+
+							<!--                             <h4 class="consult-title">Busca actividad en categoría:</h4> -->
+							<!--                             <div class="input-group"> -->
+							<!--                                 <input type="text" id="inputResultadosBusqueda" class="form-control" placeholder="Palabra clave" ng-model="palabraClave" ng-change="usuarioCtrl.buscaActividadesEnCategoria(palabraClave)"> -->
+							<!--                                 <span class="input-group-btn"> -->
+							<!--                                     <button class="btn btn-default" type="button" ng-click="usuarioCtrl.buscaActividades(palabraClave)"><span class="fa fa-search"></span> -->
+							<!--                                 </button> -->
+							<!--                                 </span> -->
+							<!--                             </div> -->
+							<!--                             /input-group -->
+							<!--                         </div> -->
+							<!--                         /.col-md-4 col-sm-6 -->
+
+						</div>
+						<!-- /.widget-item -->
 
 
 
-                            <div
-                                 ng-repeat="a in feed.resultadosCategoria | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage">
-                                <div class="col-md-4 col-sm-4">
-                                    <!-- column -->
 
-                                    <div class="service-item">
-                                        <div class='sample-thumb img-border'>
-                                            <img ng-src="../imagenes/{{a.categoria}}/{{a.imagen}}"
-                                                 alt="Imagen de la actividad" height=200 weight=200 />
-                                        </div>
-                                        <div class='service-content'>
-                                            <h4 class="consult-title">{{a.nombre}}</h4>
-                                            <p>{{a.descripcion}}</p>
-                                            <p>Precio: {{a.precio}}€</p>
-                                            <p>
-                                                <a href="#row_informacion_actividad" class="btn btn-info"
-                                                   ng-click="informacionActividad(a.nombre)"> Más
-                                                    información</a>
-                                            </p>
-                                        </div>
-                                        <!-- /.service-content -->
-                                    </div>
-                                    <!-- /.service-item -->
-                                </div>
-                                <!-- /.col-md-4 -->
-                            </div>
-                            <!-- /ng-repeat -->
+						<div
+							ng-repeat="a in feed.resultadosCategoria | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage">
+							<div class="col-md-4 col-sm-4">
+								<!-- column -->
 
-
-                        </div>
-                        <!-- /.row -->
+								<div class="service-item">
+									<div class='sample-thumb img-border'>
+										<img ng-src="../imagenes/{{a.categoria}}/{{a.imagen}}"
+											alt="Imagen de la actividad" height=200 weight=200 />
+									</div>
+									<div class='service-content'>
+										<h4 class="consult-title">{{a.nombre}}</h4>
+										<p>{{a.descripcion}}</p>
+										<p>Precio: {{a.precio}}€</p>
+										<p>
+											<a href="#row_informacion_actividad" class="btn btn-info"
+												ng-click="informacionActividad(a.nombre)"> Más
+												información</a>
+										</p>
+									</div>
+									<!-- /.service-content -->
+								</div>
+								<!-- /.service-item -->
+							</div>
+							<!-- /.col-md-4 -->
+						</div>
+						<!-- /ng-repeat -->
 
 
-                        <!-- Paginación -->
-                        <div class="row">
-                            <div class="pager">
-                                <ul>
-                                    <li class="right"><a class="categoriasPagination"
-                                                         href="#row_categorias"
-                                                         ng-click="usuarioCtrl.muestraCategorias()">«« Categorías</a></li>
-                                    <li ng-class="prevPageDisabled()"><a href
-                                                                         ng-click="prevPage()">« Prev</a></li>
-                                    <li ng-repeat="n in range()" ng-click="setPage(n)"><a href
-                                                                                          ng-class="{activePagination: n == paginacion.currentPage}">{{n+1}}</a>
-                                    </li>
-                                    <li ng-class="nextPageDisabled()"><a href
-                                                                         ng-click="nextPage()">Next »</a></li>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /Paginación -->
-
-                    </div>
-
-                    <div ng-show="show.cantidadResultados == 0">
-
-                        <div class="widget-item">
-                            <h4 class="consult-title"></h4>
-                            <h3 class="widget-title">Resultados categoría
-                                "{{show.categoria}}" :</h3>
-                            <p>Actualmente no hay actividades disponibles en esta
-                                categoría</p>
-                            <a href class="btn btn-info"
-                               ng-click="usuarioCtrl.muestraCategorias()">Categorías</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <!-- /resultadosCategoria -->
+						<<<<<<< HEAD
+					</div>
+					<!-- /.row -->
 
 
+					<!-- Paginación -->
+					<div class="row">
+						<div class="pager">
+							<ul>
+								<li class="right"><a class="categoriasPagination"
+									href="#row_categorias"
+									ng-click="usuarioCtrl.muestraCategorias()">«« Categorías</a></li>
+								<li ng-class="prevPageDisabled()"><a href
+									ng-click="prevPage()">« Prev</a></li>
+								<li ng-repeat="n in range()" ng-click="setPage(n)"><a href
+									ng-class="{activePagination: n == paginacion.currentPage}">{{n+1}}</a>
+								</li>
+								<li ng-class="nextPageDisabled()"><a href
+									ng-click="nextPage()">Next »</a></li>
 
-                <!-- div que muestra las actividades relacionadas con la palabra clave buscada -->
-                <div ng-show="show.resultadosBusqueda===true">
+							</ul>
+							</div>
+						</div>
+						<!-- /Paginación -->
 
-                    <div ng-show="show.cantidadResultados > 0">
-                        <div class="row" id="row_resultados_busqueda">
+					</div>
 
-                            <div class="widget-item">
-                                <div class="col-md-8 col-sm-6">
-                                    <h4 class="consult-title"></h4>
-                                    <h3 class="widget-title">Resultados búsqueda
-                                        "{{palabraClave}}":</h3>
-                                </div>
-                                <div class="col-md-4 col-sm-6">
+					<div ng-show="show.cantidadResultados == 0">
 
-                                    <!--<div class="row">
+						<div class="widget-item">
+							<h4 class="consult-title"></h4>
+							<h3 class="widget-title">Resultados categoría
+								"{{show.categoria}}" :</h3>
+							<p>Actualmente no hay actividades disponibles en esta
+								categoría</p>
+							<a href class="btn btn-info"
+								ng-click="usuarioCtrl.muestraCategorias()">Categorías</a>
+
+						</div>
+
+					</div>
+
+				</div>
+				<!-- /resultadosCategoria -->
+
+
+
+				<!-- div que muestra las actividades relacionadas con la palabra clave buscada -->
+				<div ng-show="show.resultadosBusqueda===true">
+
+					<div ng-show="show.cantidadResultados > 0">
+						<div class="row" id="row_resultados_busqueda">
+
+							<div class="widget-item">
+								<div class="col-md-8 col-sm-6">
+									<h4 class="consult-title"></h4>
+									<h3 class="widget-title">Resultados búsqueda
+										"{{palabraClave}}":</h3>
+								</div>
+								<div class="col-md-4 col-sm-6">
+
+									<!--<div class="row">
 <div class="col-md-6">
 <h4 class="consult-title">Busca actividad:</h4>
 </div>
@@ -384,98 +397,98 @@
 
 </div> &lt;!&ndash; /.row &ndash;&gt;-->
 
-                                    <h4 class="consult-title">Busca actividad:</h4>
-                                    <div class="input-group">
-                                        <input type="text" id="inputResultadosBusqueda"
-                                               class="form-control" placeholder="Palabra clave"
-                                               ng-model="palabraClave"
-                                               ng-change="usuarioCtrl.buscaActividades(palabraClave)">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button"
-                                                    ng-click="usuarioCtrl.buscaActividades(palabraClave)">
-                                                <span class="fa fa-search"></span>
-                                            </button>
-                                        </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </div>
-                                <!-- /.col-md-4 col-sm-6 -->
-                            </div>
-                            <!-- /.widget-item -->
+									<h4 class="consult-title">Busca actividad:</h4>
+									<div class="input-group">
+										<input type="text" id="inputResultadosBusqueda"
+											class="form-control" placeholder="Palabra clave"
+											ng-model="palabraClave"
+											ng-change="usuarioCtrl.buscaActividades(palabraClave)">
+										<span class="input-group-btn">
+											<button class="btn btn-default" type="button"
+												ng-click="usuarioCtrl.buscaActividades(palabraClave)">
+												<span class="fa fa-search"></span>
+											</button>
+										</span>
+									</div>
+									<!-- /input-group -->
+								</div>
+								<!-- /.col-md-4 col-sm-6 -->
+							</div>
+							<!-- /.widget-item -->
 
 
-                            <div
-                                 ng-repeat="a in feed.resultadosBusqueda | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage">
-                                <div class="col-md-4 col-sm-4">
-                                    <!-- column -->
+							<div
+								ng-repeat="a in feed.resultadosBusqueda | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage">
+								<div class="col-md-4 col-sm-4">
+									<!-- column -->
 
-                                    <div class="service-item">
-                                        <div class='sample-thumb img-border'>
-                                            <img ng-src="../imagenes/{{a.categoria}}/{{a.imagen}}"
-                                                 alt="Imagen de la actividad" height=200 weight=200 />
-                                        </div>
-                                        <div class='service-content'>
-                                            <h4 class="consult-title">{{a.nombre}}</h4>
-                                            <p>{{a.descripcion}}</p>
-                                            <p>Precio: {{a.precio}}€</p>
-                                            <p>
-                                                <a href="#row_informacion_actividad" class="btn btn-info"
-                                                   ng-click="informacionActividad(a.nombre)"> Más
-                                                    información</a>
-                                            </p>
-                                        </div>
-                                        <!-- /.service-content -->
-                                    </div>
-                                    <!-- /.service-item -->
-                                </div>
-                                <!-- /.col-md-4 -->
-                            </div>
-                            <!-- /ng-repeat -->
-
-
-                        </div>
-                        <!-- /.row -->
+									<div class="service-item">
+										<div class='sample-thumb img-border'>
+											<img ng-src="../imagenes/{{a.categoria}}/{{a.imagen}}"
+												alt="Imagen de la actividad" height=200 weight=200 />
+										</div>
+										<div class='service-content'>
+											<h4 class="consult-title">{{a.nombre}}</h4>
+											<p>{{a.descripcion}}</p>
+											<p>Precio: {{a.precio}}€</p>
+											<p>
+												<a href="#row_informacion_actividad" class="btn btn-info"
+													ng-click="informacionActividad(a.nombre)"> Más
+													información</a>
+											</p>
+										</div>
+										<!-- /.service-content -->
+									</div>
+									<!-- /.service-item -->
+								</div>
+								<!-- /.col-md-4 -->
+							</div>
+							<!-- /ng-repeat -->
 
 
-                        <!-- Paginación -->
-                        <div class="row">
-                            <div class="pager">
-                                <ul>
-                                    <li class="right"><a class="categoriasPagination"
-                                                         href="#row_categorias"
-                                                         ng-click="usuarioCtrl.muestraCategorias()">«« Categorías</a></li>
-                                    <li ng-class="prevPageDisabled()"><a href
-                                                                         ng-click="prevPage()">« Prev</a></li>
-                                    <li ng-repeat="n in range()" ng-click="setPage(n)"><a href
-                                                                                          ng-class="{activePagination: n == paginacion.currentPage}">{{n+1}}</a>
-                                    </li>
-                                    <li ng-class="nextPageDisabled()"><a href
-                                                                         ng-click="nextPage()">Next »</a></li>
+						</div>
+						<!-- /.row -->
 
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /Paginación -->
 
-                    </div>
+						<!-- Paginación -->
+						<div class="row">
+							<div class="pager">
+								<ul>
+									<li class="right"><a class="categoriasPagination"
+										href="#row_categorias"
+										ng-click="usuarioCtrl.muestraCategorias()">«« Categorías</a></li>
+									<li ng-class="prevPageDisabled()"><a href
+										ng-click="prevPage()">« Prev</a></li>
+									<li ng-repeat="n in range()" ng-click="setPage(n)"><a href
+										ng-class="{activePagination: n == paginacion.currentPage}">{{n+1}}</a>
+									</li>
+									<li ng-class="nextPageDisabled()"><a href
+										ng-click="nextPage()">Next »</a></li>
 
-                    <div ng-show="show.cantidadResultados == 0">
+								</ul>
+							</div>
+						</div>
+						<!-- /Paginación -->
 
-                        <div class="row">
-                            <div class="widget-item">
-                                <div class="col-md-8 col-sm-6">
-                                    <h4 class="consult-title"></h4>
-                                    <h3 class="widget-title">Resultados búsqueda
-                                        "{{palabraClave}}":</h3>
+					</div>
 
-                                    <p>Actualmente no hay actividades relacionadas con la
-                                        búsqueda</p>
-                                    <a href class="btn btn-info"
-                                       ng-click="usuarioCtrl.muestraCategorias()">Categorías</a>
-                                </div>
-                                <div class="col-md-4 col-sm-6">
+					<div ng-show="show.cantidadResultados == 0">
 
-                                    <!--<div class="row">
+						<div class="row">
+							<div class="widget-item">
+								<div class="col-md-8 col-sm-6">
+									<h4 class="consult-title"></h4>
+									<h3 class="widget-title">Resultados búsqueda
+										"{{palabraClave}}":</h3>
+
+									<p>Actualmente no hay actividades relacionadas con la
+										búsqueda</p>
+									<a href class="btn btn-info"
+										ng-click="usuarioCtrl.muestraCategorias()">Categorías</a>
+								</div>
+								<div class="col-md-4 col-sm-6">
+
+									<!--<div class="row">
 <div class="col-md-6">
 <h4 class="consult-title">Busca actividad:</h4>
 </div>
@@ -491,356 +504,466 @@
 
 </div> &lt;!&ndash; /.row &ndash;&gt;-->
 
-                                    <h4 class="consult-title">Busca actividad:</h4>
-                                    <div class="input-group">
-                                        <input type="text" id="inputResultadosBusqueda"
-                                               class="form-control" placeholder="Palabra clave"
-                                               ng-model="palabraClave"
-                                               ng-change="usuarioCtrl.buscaActividades(palabraClave)">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button"
-                                                    ng-click="usuarioCtrl.buscaActividades(palabraClave)">
-                                                <span class="fa fa-search"></span>
-                                            </button>
-                                        </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </div>
-                                <!-- /.col-md-4 col-sm-6 -->
-                            </div>
-                            <!-- /.widget-item -->
-                        </div>
-                        <!-- /.row -->
+									<h4 class="consult-title">Busca actividad:</h4>
+									<div class="input-group">
+										<input type="text" id="inputResultadosBusqueda"
+											class="form-control" placeholder="Palabra clave"
+											ng-model="palabraClave"
+											ng-change="usuarioCtrl.buscaActividades(palabraClave)">
+										<span class="input-group-btn">
+											<button class="btn btn-default" type="button"
+												ng-click="usuarioCtrl.buscaActividades(palabraClave)">
+												<span class="fa fa-search"></span>
+											</button>
+										</span>
+									</div>
+									<!-- /input-group -->
+								</div>
+								<!-- /.col-md-4 col-sm-6 -->
+							</div>
+							<!-- /.widget-item -->
+						</div>
+						<!-- /.row -->
 
-                    </div>
+					</div>
 
-                </div>
-                <!-- /resultadosBusqueda -->
-
-
-                <!-- *************************************************** -->
-                <!-- Sección de información de una actividad en concreto -->
-
-                <div id="informacionActividad"
-                     ng-show="show.informacionActividad===true">
-                    <div class="row" id="row_informacion_actividad">
-
-                        <div class="widget-item">
-                            <div class="col-md-12 col-sm-12">
-                                <h3 class="widget-title">{{show.actividad}}</h3>
-                            </div>
+				</div>
+				<!-- /resultadosBusqueda -->
 
 
-                            <div class="row">
-                                <div class="col-md-4 col-sm-4">
-                                    <div class='sample-thumb img-border'>
-                                        <img
-                                             ng-src="../imagenes/{{feed.informacionActividad.categoria}}/{{feed.informacionActividad.imagen}}"
-                                             alt="Imagen de la actividad" height=200 weight=200 />
-                                    </div>
-                                    <div class="contact-infos">
-                                        <ul>
-                                            <li>Disponible del:
-                                                {{feed.informacionActividad.fechaInicio}} al
-                                                {{feed.informacionActividad.fechaFin}}</li>
-                                            <li>Hora inicio: {{feed.informacionActividad.horaInicio}}</li>
-                                            <li>Nivel: {{feed.informacionActividad.nivel}}</li>
-                                            <li>Participantes entre
-                                                {{feed.informacionActividad.participantesMin}} y
-                                                {{feed.informacionActividad.participantesMax}}</a>
-                                        </li>
-                                    <li class="label label-warning">Precio:
-                                        {{feed.informacionActividad.precio}}€</li>
-                                    </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-8 col-sm-8">
-                            <div class="map-wrapper">
-                                <div id="googleMap" class="map-holder"></div>
-                            </div>
+				<!-- *************************************************** -->
+				<!-- Sección de información de una actividad en concreto -->
 
-                        </div>
-                    </div>
+				<div id="informacionActividad"
+					ng-show="show.informacionActividad===true">
+					<div class="row" id="row_informacion_actividad">
 
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <h4 class="titulo-categorias">
-                                Descripción:
-                                </h3>
-                            <p>{{feed.informacionActividad.descripcion}}</p>
-                            </br>
-                    </div>
-
-                </div>
-
-                <p></p>
-                <a href="#contente_events" class="btn btn-info"
-                   ng-click="muestraActividadesCategoria(feed.informacionActividad.categoria)">«
-                    {{feed.informacionActividad.categoria}}</a>
-                <button type="button" id="realizar_reserva" class="btn btn-success" data-toggle="modal" data-target="#modalReservar" ng-click="resetForm(reserva)">Realizar reserva »</button>
-
-            </div>
-            <!-- /.widget-item -->
-        </div>
-        <!-- /.row -->
-        </div>
-    <!-- /informacionActividad -->
+						<div class="widget-item">
+							<div class="col-md-12 col-sm-12">
+								<h3 class="widget-title">{{show.actividad}}</h3>
+							</div>
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="modalReservar" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header modal-header-new">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title panel-title" id="myModalLabel"><i class="fa fa-plus"></i>&nbsp;Reservar {{show.actividad}}</h4>
-                </div>
-                <div class="modal-body">
+							<div class="row">
+								<div class="col-md-4 col-sm-4">
+									<div class='sample-thumb img-border'>
+										<img
+											ng-src="../imagenes/{{feed.informacionActividad.categoria}}/{{feed.informacionActividad.imagen}}"
+											alt="Imagen de la actividad" height=200 weight=200 />
+									</div>
+									<div class="contact-infos">
+										<ul>
+											<li>Disponible del:
+												{{feed.informacionActividad.fechaInicio}} al
+												{{feed.informacionActividad.fechaFin}}</li>
+											<li>Hora inicio:
+												{{feed.informacionActividad.horaInicio}}</li>
+											<li>Nivel: {{feed.informacionActividad.nivel}}</li>
+											<li>Participantes entre
+												{{feed.informacionActividad.participantesMin}} y
+												{{feed.informacionActividad.participantesMax}}</a>
+											</li>
+											<li class="label label-warning">Precio:
+												{{feed.informacionActividad.precio}}€</li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-md-8 col-sm-8">
+									<div class="map-wrapper">
+										<div id="googleMap" class="map-holder"></div>
+									</div>
 
-                    <form id="formularioReserva" name="formularioReserva">
-                        <div class="form-group" ng-class="{ 'has-error' : formularioReserva.nombre.$invalid && !formularioReserva.nombre.$pristine, 'has-success' : !formularioReserva.nombre.$invalid}" >
-                            <label>Nombre:</label>
-                            <input class="form-control" type="text" ng-minlength=1 ng-maxlength=50 ng-model="reserva.nombre" id="nombre" name="nombre" required/>
-                            <div class="error" ng-show="formularioReserva.nombre.$dirty && formularioReserva.nombre.$invalid">
-                                <small class="error" ng-show="formularioReserva.nombre.$error.required">
-                                    *Nombre obligatorio
-                                </small>
-                                <small class="error" ng-show="formularioReserva.nombre.$error.maxlength">
-                                    *Máx. 50 caracteres
-                                </small>
-                            </div>
-                        </div>
+								</div>
+							</div>
 
-                        <div class="form-group" ng-class="{ 'has-error' : formularioReserva.apellidos.$invalid && !formularioReserva.apellidos.$pristine, 'has-success' : !formularioReserva.apellidos.$invalid}" >
-                            <label>Apellidos:</label>
-                            <input class="form-control" type="text" ng-minlength=1 ng-maxlength=50 ng-model="reserva.apellidos" id="apellidos" name="apellidos" required/>
-                            <div class="error" ng-show="formularioReserva.apellidos.$dirty && formularioReserva.apellidos.$invalid">
-                                <small class="error" ng-show="formularioReserva.apellidos.$error.required">
-                                    *Apellidos obligatorios
-                                </small>
-                                <small class="error" ng-show="formularioReserva.apellidos.$error.maxlength">
-                                    *Máx. 50 caracteres
-                                </small>
-                            </div>
-                        </div>
+							<div class="row">
+								<div class="col-md-12 col-sm-12">
+									<h4 class="titulo-categorias">
+										Descripción:
+										</h3>
+										<p>{{feed.informacionActividad.descripcion}}</p>
+										</br>
+								</div>
 
-                        <div class="form-group" ng-class="{ 'has-error' : formularioReserva.correo.$invalid && !formularioReserva.correo.$pristine, 
-                                                          'has-success' : !formularioReserva.correo.$invalid}" >
-                            <label>Correo:</label>
-                            <input class="form-control" type="email" ng-minlength=1 ng-maxlength=50 ng-model="reserva.correo" id="correo" name="correo" required/>
-                            <div class="error" ng-show="formularioReserva.correo.$dirty && formularioReserva.correo.$invalid">
-                                <small class="error" ng-show="formularioReserva.correo.$error.required">*Correo obligatorio</small>
-                                <small class="error" ng-show="formularioReserva.correo.$error.maxlength">*Máx. 50 caracteres</small>
-                            </div>
-                        </div>
+							</div>
 
-                        <div class="form-group" ng-class="{ 'has-error' : formularioReserva.telefono.$invalid && !formularioReserva.telefono.$pristine, 'has-success' : !formularioReserva.telefono.$invalid}" >
-                            <label>Telefono:</label>
-                            <input class="form-control" type="text" ng-minlength=9 ng-maxlength=9 ng-model="reserva.telefono" ng-pattern="telefono.word" id="telefono" name="telefono" required/>
-                            <div class="error" ng-show="formularioReserva.telefono.$dirty && formularioReserva.telefono.$invalid">
-                                <small class="error" ng-show="formularioReserva.telefono.$error.required">*Telefono obligatorio</small>
-                                <small class="error" ng-show="formularioReserva.telefono.$error.minlength">*Min. 9 caracteres</small>
-                                <small class="error" ng-show="formularioReserva.telefono.$error.maxlength">*Máx. 9 caracteres</small>
-                            </div>
-                        </div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<div id=estrellas></div>
 
-                        <div class="form-group" ng-class="{ 'has-error' : formularioReserva.dni.$invalid && !formularioReserva.dni.$pristine, 
-                                                          'has-success' : !formularioReserva.dni.$invalid}">	
-                            <label>Dni:</label>
-                            <input type="text" name="dni" ng-minlength=9 ng-maxlength=9 ng-model="reserva.dni" class="form-control" required >
-                            <div class="error" ng-show="formularioReserva.dni.$dirty && formularioReserva.dni.$invalid">
-                                <small class="error" ng-show="formularioReserva.dni.$error.required">*DNI obligatorio</small>
-                                <small class="error" ng-show="formularioReserva.dni.$error.minlength">*Min. 9 caracteres</small>
-                                <small class="error" ng-show="formularioReserva.dni.$error.maxlength">*Máx. 9 caracteres</small>
-                            </div>
-                        </div>
+								<!--  <input id="pmedia" class="rating" type="number"  data-show-caption=false data-disabled=true data-readonly=true style="float:left;"><br>-->
+								<input-stars id=pmedia ng-model="pMedia" max="5" readonly></input-stars>
+								<h4 style="margin-top: 10px;" class="titulo-categorias">
+									Descripción:</h4>
+								<p>{{feed.informacionActividad.descripcion}}</p>
+								</br>
+							</div>
+						</div>
+						<!-- COMENTARIOS -->
 
-                        <div class="form-group" ng-class="{ 'has-error' : formularioReserva.fechaActividad.$invalid && !formularioReserva.fechaActividad.$pristine, 'has-success' : !formularioReserva.fechaActividad.$invalid}">	
-                            <label for="dtp_input3">Fecha realización:</label>
-                            <div id="fechaActividad" class="input-group date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input3" data-link-format="yyyy-mm-dd">
-                                <input type="text" name="fechaActividad" class="form-control" ng-model="reserva.fechaAtividad" ng-maxlength="10" ng-minlength="10" ng-pattern="fechaActividad.word" required />
-                                <span class="input-group-addon"><span class="fa fa-power-off"></span></span>
-                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                            </div>
-                            <div class="error" ng-show="formularioReserva.fechaActividad.$dirty && formularioReserva.dni.$invalid">
-                                <small class="error" ng-show="formularioReserva.fechaActividad.$error.required">*Fecha obligatoria</small>
-                                <small class="error" ng-show="formularioReserva.fechaActividad.$error.maxlength || formularioReserva.fechaActividad.$error.pattern">*Fecha inválida</small>
-                            </div>
-                        </div>
+						<p></p>
+							<a href="#contente_events" class="btn btn-info"
+								ng-click="muestraActividadesCategoria(feed.informacionActividad.categoria)">«
+								{{feed.informacionActividad.categoria}}</a>
+							<button type="button" id="realizar_reserva"
+								class="btn btn-success" data-toggle="modal"
+								data-target="#modalReservar" ng-click="resetForm(reserva)">Realizar
+								reserva »</button>
 
-                        <div class="form-group" ng-class="{ 'has-error' : formularioReserva.cantidadPersonas.$invalid && !formularioReserva.cantidadPersonas.$pristine, 'has-success' : !formularioReserva.cantidadPersonas.$invalid}">
-                            <label for="cantidadPersonas">Participantes</label>
-                            <input id="cantidadPersonas" class="form-control input-group-lg reg_name" type="number" ng-min=feed.informacionActividad.participantesMin ng-max=feed.informacionActividad.participantesMax ng-model="reserva.cantidadPersonas" name="cantidadPersonas" min="{{feed.informacionActividad.participantesMin}}" max="{{feed.informacionActividad.participantesMax}}" required />
-                            <div class="error" ng-show="formularioReserva.cantidadPersonas.$dirty && formularioReserva.cantidadPersonas.$invalid">
-                                <small class="error" 
-                                       ng-show="formularioReserva.cantidadPersonas.$error.required">
-                                    *Participantes obligatorios
-                                </small>
-                                <small class="error" 
-                                       ng-show="formularioReserva.cantidadPersonas.$error.min">
-                                    *Cantidad participantes insuficiente
-                                </small>
-                                <small class="error" 
-                                       ng-show="formularioReserva.cantidadPersonas.$error.max">
-                                    *Cantidad participantes excesiva
-                                </small>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <p class="h4">Precio total = {{reserva.cantidadPersonas * feed.datosActuales.precio}}</p>
-                            </div>    
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <button id="btnReservar" type="submit" class="btn btn-success" ng-click="usuarioCtrl.create(reserva.nombre, reserva.apellidos, reserva.correo, reserva.telefono, reserva.dni, reserva.fechaActividad, reserva.cantidadPersonas)">Realizar reserva</button>
-                        </div>
-
-                    </form>    
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ./Modal -->
+						</div>
+						<!-- /.widget-item -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /informacionActividad -->
 
 
+				<!-- Modal -->
+				<div class="modal fade" id="modalReservar" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header modal-header-new">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h4 class="modal-title panel-title" id="myModalLabel">
+									<i class="fa fa-plus"></i>&nbsp;Reservar {{show.actividad}}
+								</h4>
+							</div>
+							<div class="modal-body">
+
+								<form id="formularioReserva" name="formularioReserva">
+									<div class="form-group"
+										ng-class="{ 'has-error' : formularioReserva.nombre.$invalid && !formularioReserva.nombre.$pristine, 'has-success' : !formularioReserva.nombre.$invalid}">
+										<label>Nombre:</label> <input class="form-control" type="text"
+											ng-minlength=1 ng-maxlength=50 ng-model="reserva.nombre"
+											id="nombre" name="nombre" required />
+										<div class="error"
+											ng-show="formularioReserva.nombre.$dirty && formularioReserva.nombre.$invalid">
+											<small class="error"
+												ng-show="formularioReserva.nombre.$error.required">
+												*Nombre obligatorio </small> <small class="error"
+												ng-show="formularioReserva.nombre.$error.maxlength">
+												*Máx. 50 caracteres </small>
+										</div>
+									</div>
+
+									<div class="form-group"
+										ng-class="{ 'has-error' : formularioReserva.apellidos.$invalid && !formularioReserva.apellidos.$pristine, 'has-success' : !formularioReserva.apellidos.$invalid}">
+										<label>Apellidos:</label> <input class="form-control"
+											type="text" ng-minlength=1 ng-maxlength=50
+											ng-model="reserva.apellidos" id="apellidos" name="apellidos"
+											required />
+										<div class="error"
+											ng-show="formularioReserva.apellidos.$dirty && formularioReserva.apellidos.$invalid">
+											<small class="error"
+												ng-show="formularioReserva.apellidos.$error.required">
+												*Apellidos obligatorios </small> <small class="error"
+												ng-show="formularioReserva.apellidos.$error.maxlength">
+												*Máx. 50 caracteres </small>
+										</div>
+									</div>
+
+									<div class="form-group"
+										ng-class="{ 'has-error' : formularioReserva.correo.$invalid && !formularioReserva.correo.$pristine, 
+                                                          'has-success' : !formularioReserva.correo.$invalid}">
+										<label>Correo:</label> <input class="form-control"
+											type="email" ng-minlength=1 ng-maxlength=50
+											ng-model="reserva.correo" id="correo" name="correo" required />
+										<div class="error"
+											ng-show="formularioReserva.correo.$dirty && formularioReserva.correo.$invalid">
+											<small class="error"
+												ng-show="formularioReserva.correo.$error.required">*Correo
+												obligatorio</small> <small class="error"
+												ng-show="formularioReserva.correo.$error.maxlength">*Máx.
+												50 caracteres</small>
+										</div>
+									</div>
+
+									<div class="form-group"
+										ng-class="{ 'has-error' : formularioReserva.telefono.$invalid && !formularioReserva.telefono.$pristine, 'has-success' : !formularioReserva.telefono.$invalid}">
+										<label>Telefono:</label> <input class="form-control"
+											type="text" ng-minlength=9 ng-maxlength=9
+											ng-model="reserva.telefono" ng-pattern="telefono.word"
+											id="telefono" name="telefono" required />
+										<div class="error"
+											ng-show="formularioReserva.telefono.$dirty && formularioReserva.telefono.$invalid">
+											<small class="error"
+												ng-show="formularioReserva.telefono.$error.required">*Telefono
+												obligatorio</small> <small class="error"
+												ng-show="formularioReserva.telefono.$error.minlength">*Min.
+												9 caracteres</small> <small class="error"
+												ng-show="formularioReserva.telefono.$error.maxlength">*Máx.
+												9 caracteres</small>
+										</div>
+									</div>
+
+									<div class="form-group"
+										ng-class="{ 'has-error' : formularioReserva.dni.$invalid && !formularioReserva.dni.$pristine, 
+                                                          'has-success' : !formularioReserva.dni.$invalid}">
+										<label>Dni:</label> <input type="text" name="dni"
+											ng-minlength=9 ng-maxlength=9 ng-model="reserva.dni"
+											class="form-control" required>
+										<div class="error"
+											ng-show="formularioReserva.dni.$dirty && formularioReserva.dni.$invalid">
+											<small class="error"
+												ng-show="formularioReserva.dni.$error.required">*DNI
+												obligatorio</small> <small class="error"
+												ng-show="formularioReserva.dni.$error.minlength">*Min.
+												9 caracteres</small> <small class="error"
+												ng-show="formularioReserva.dni.$error.maxlength">*Máx.
+												9 caracteres</small>
+										</div>
+									</div>
+
+									<div class="form-group"
+										ng-class="{ 'has-error' : formularioReserva.fechaActividad.$invalid && !formularioReserva.fechaActividad.$pristine, 'has-success' : !formularioReserva.fechaActividad.$invalid}">
+										<label for="dtp_input3">Fecha realización:</label>
+										<div id="fechaActividad" class="input-group date form_date"
+											data-date="" data-date-format="dd-mm-yyyy"
+											data-link-field="dtp_input3" data-link-format="yyyy-mm-dd">
+											<input type="text" name="fechaActividad" class="form-control"
+												ng-model="reserva.fechaAtividad" ng-maxlength="10"
+												ng-minlength="10" ng-pattern="fechaActividad.word" required />
+											<span class="input-group-addon"><span
+												class="fa fa-power-off"></span></span> <span
+												class="input-group-addon"><span
+												class="fa fa-calendar"></span></span>
+										</div>
+										<div class="error"
+											ng-show="formularioReserva.fechaActividad.$dirty && formularioReserva.dni.$invalid">
+											<small class="error"
+												ng-show="formularioReserva.fechaActividad.$error.required">*Fecha
+												obligatoria</small> <small class="error"
+												ng-show="formularioReserva.fechaActividad.$error.maxlength || formularioReserva.fechaActividad.$error.pattern">*Fecha
+												inválida</small>
+										</div>
+									</div>
+
+									<div class="form-group"
+										ng-class="{ 'has-error' : formularioReserva.cantidadPersonas.$invalid && !formularioReserva.cantidadPersonas.$pristine, 'has-success' : !formularioReserva.cantidadPersonas.$invalid}">
+										<label for="cantidadPersonas">Participantes</label> <input
+											id="cantidadPersonas"
+											class="form-control input-group-lg reg_name" type="number"
+											ng-min=feed.informacionActividad.participantesMin
+											ng-max=feed.informacionActividad.participantesMax
+											ng-model="reserva.cantidadPersonas" name="cantidadPersonas"
+											min="{{feed.informacionActividad.participantesMin}}"
+											max="{{feed.informacionActividad.participantesMax}}" required />
+										<div class="error"
+											ng-show="formularioReserva.cantidadPersonas.$dirty && formularioReserva.cantidadPersonas.$invalid">
+											<small class="error"
+												ng-show="formularioReserva.cantidadPersonas.$error.required">
+												*Participantes obligatorios </small> <small class="error"
+												ng-show="formularioReserva.cantidadPersonas.$error.min">
+												*Cantidad participantes insuficiente </small> <small class="error"
+												ng-show="formularioReserva.cantidadPersonas.$error.max">
+												*Cantidad participantes excesiva </small>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-lg-12">
+											<p class="h4">Precio total = {{reserva.cantidadPersonas *
+												feed.datosActuales.precio}}</p>
+										</div>
+									</div>
+
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Cancelar</button>
+										<button id="btnReservar" type="submit" class="btn btn-success"
+											ng-click="usuarioCtrl.create(reserva.nombre, reserva.apellidos, reserva.correo, reserva.telefono, reserva.dni, reserva.fechaActividad, reserva.cantidadPersonas)">Realizar
+											reserva</button>
+									</div>
+
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- ./Modal -->
+
+				
 
 
+				<div style="margin: 25px">
+					<form id="comentarForm" name="comentarForm">
 
+						<textarea placeholder="Escribir comentario"
+							ng-model="usuarioCtrl.contenido" name="comentarCont"
+							id="comentarCont" rows=15 cols=150 style="resize: none"></textarea>
+						<input-stars id="puntuar" ng-model="usuarioCtrl.puntuacion"
+							max="5"></input-stars>
+						<input type="text" id="nombreU" placeholder="Nombre"
+							ng-model="usuarioCtrl.nombreU">
+						<button id="comentar" name="comentar" type="submit"
+							ng-click="usuarioCtrl.createComent(usuarioCtrl.nombreU,usuarioCtrl.contenido,usuarioCtrl.puntuacion)"
+							class="btn btn-success">Comentar</button>
 
-
-    <div class="go-act">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="act-btn">
-                        <div class="inner">
-                            <div class="title">
-                                <h2>Consulta nuestras ofertas</h2>
-                                <span>Escoge la actividad que prefieras y adaptala a
-                                    tus necesidades</span>
-                            </div>
-                        </div>
-                        <!-- /.inner -->
-                        <a href="index.html" class="link"> <!-- Enlace a ofertas -->
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </div>
-                    <!-- /.act-btn -->
-                </div>
-                <!-- /.col-md-8 -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </div>
-    <!-- /.go-act -->
-    </div>
-<!-- /.container -->
-</div>
-<!-- /.middle-content -->
-
-<div class="partner-list">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2 col-sm-4 col-xs-6">
-                <div class="partner-item">
-                    <img src="../images/partners/partner1.png" alt="">
-                </div>
-                <!-- /.partner-item -->
-            </div>
-            <!-- /.col-md-2 -->
-            <div class="col-md-2 col-sm-4 col-xs-6">
-                <div class="partner-item">
-                    <img src="../images/partners/partner2.png" alt="">
-                </div>
-                <!-- /.partner-item -->
-            </div>
-            <!-- /.col-md-2 -->
-            <div class="col-md-2 col-sm-4 col-xs-6">
-                <div class="partner-item">
-                    <img src="../images/partners/partner3.png" alt="">
-                </div>
-                <!-- /.partner-item -->
-            </div>
-            <!-- /.col-md-2 -->
-            <div class="col-md-2 col-sm-4 col-xs-6">
-                <div class="partner-item">
-                    <img src="../images/partners/partner1.png" alt="">
-                </div>
-                <!-- /.partner-item -->
-            </div>
-            <!-- /.col-md-2 -->
-            <div class="col-md-2 col-sm-4 col-xs-6">
-                <div class="partner-item">
-                    <img src="../images/partners/partner2.png" alt="">
-                </div>
-                <!-- /.partner-item -->
-            </div>
-            <!-- /.col-md-2 -->
-            <div class="col-md-2 col-sm-4 col-xs-6">
-                <div class="partner-item last">
-                    <img src="../images/partners/partner3.png" alt="">
-                </div>
-                <!-- /.partner-item -->
-            </div>
-            <!-- /.col-md-2 -->
-        </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container -->
-</div>
-<!-- /.partner-list -->
-
-
-
-<div class="site-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-sm-4">
-                <div class="footer-logo">
-                    <a href="index.html"> <img src="../images/logo.png" alt="">
-                    </a>
-                </div>
-            </div>
-            <!-- /.col-md-4 -->
-            <div class="col-md-4 col-sm-4">
-                <div class="copyright">
-                    <span>Copyright &copy; 2015 <a href="#">APPujimática</a></span>
-                </div>
-            </div>
-            <!-- /.col-md-4 -->
-            <div class="col-md-4 col-sm-4">
-                <ul class="social-icons">
-                    <li><a href="#" class="fa fa-facebook"></a></li>
-                    <li><a href="#" class="fa fa-twitter"></a></li>
-                    <li><a href="#" class="fa fa-linkedin"></a></li>
-                    <li><a href="#" class="fa fa-flickr"></a></li>
-                    <li><a href="#" class="fa fa-rss"></a></li>
-                </ul>
-            </div>
-            <!-- /.col-md-4 -->
-        </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container -->
-</div>
-<!-- /.site-footer -->
-
-<!--<script src="../js/usuario/vendor/jquery-1.11.0.min.js"></script>-->
-<script src="../js/usuario/bootstrap.js"></script>
-<script src="../js/usuario/plugins.js"></script>
-<script src="../js/usuario/main.js"></script>
+					</form>
+				</div>
+				<div id=cajaComentarios>
+					<div ng-repeat="c in comentarios | orderBy:'id':true"
+						ng-switch="usuarioCtrl.username" style="margin: 25px;">
+						<div ng-switch-when="admin">
+							<button type="submit" class="btn btn-danger btn-sm"
+								data-toggle="modal" title="eliminar este comentario"
+								data-target="#eliminar"
+								ng-click="usuarioCtrl.deleteComent(c.id)">
+								<span class="glyphicon glyphicon-folder-close"></span>
+							</button>
+						</div>
+						<div style="">
+							<b>{{c.nombreU}}</b> ha opinado sobre esta actividad:
+						</div>
+						<textarea id="comentario-{{c.id}}" rows="10" cols="150" readonly
+							style="resize: none">{{c.contenido}}</textarea>
+						<input-stars ng-model="c.puntuacion" max="5" readonly></input-stars>
+					</div>
+				</div>
+				<!-- /Fin Comentarios -->
 
 
 
-<script type="text/javascript">
+			</div>
+			<!-- /informacionActividad -->
+
+
+
+
+
+
+
+
+			<div class="go-act">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="act-btn">
+								<div class="inner">
+									<div class="title">
+										<h2>Consulta nuestras ofertas</h2>
+										<span>Escoge la actividad que prefieras y adaptala a
+											tus necesidades</span>
+									</div>
+								</div>
+								<!-- /.inner -->
+								<a href="index.html" class="link"> <!-- Enlace a ofertas -->
+									<i class="fa fa-angle-right"></i>
+								</a>
+							</div>
+							<!-- /.act-btn -->
+						</div>
+						<!-- /.col-md-8 -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container -->
+			</div>
+			<!-- /.go-act -->
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /.middle-content -->
+
+	<div class="partner-list">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2 col-sm-4 col-xs-6">
+					<div class="partner-item">
+						<img src="../images/partners/partner1.png" alt="">
+					</div>
+					<!-- /.partner-item -->
+				</div>
+				<!-- /.col-md-2 -->
+				<div class="col-md-2 col-sm-4 col-xs-6">
+					<div class="partner-item">
+						<img src="../images/partners/partner2.png" alt="">
+					</div>
+					<!-- /.partner-item -->
+				</div>
+				<!-- /.col-md-2 -->
+				<div class="col-md-2 col-sm-4 col-xs-6">
+					<div class="partner-item">
+						<img src="../images/partners/partner3.png" alt="">
+					</div>
+					<!-- /.partner-item -->
+				</div>
+				<!-- /.col-md-2 -->
+				<div class="col-md-2 col-sm-4 col-xs-6">
+					<div class="partner-item">
+						<img src="../images/partners/partner1.png" alt="">
+					</div>
+					<!-- /.partner-item -->
+				</div>
+				<!-- /.col-md-2 -->
+				<div class="col-md-2 col-sm-4 col-xs-6">
+					<div class="partner-item">
+						<img src="../images/partners/partner2.png" alt="">
+					</div>
+					<!-- /.partner-item -->
+				</div>
+				<!-- /.col-md-2 -->
+				<div class="col-md-2 col-sm-4 col-xs-6">
+					<div class="partner-item last">
+						<img src="../images/partners/partner3.png" alt="">
+					</div>
+					<!-- /.partner-item -->
+				</div>
+				<!-- /.col-md-2 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /.partner-list -->
+
+
+
+	<div class="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="footer-logo">
+						<a href="index.html"> <img src="../images/logo.png" alt="">
+						</a>
+					</div>
+				</div>
+				<!-- /.col-md-4 -->
+				<div class="col-md-4 col-sm-4">
+					<div class="copyright">
+						<span>Copyright &copy; 2015 <a href="#">APPujimática</a></span>
+					</div>
+				</div>
+				<!-- /.col-md-4 -->
+				<div class="col-md-4 col-sm-4">
+					<ul class="social-icons">
+						<li><a href="#" class="fa fa-facebook"></a></li>
+						<li><a href="#" class="fa fa-twitter"></a></li>
+						<li><a href="#" class="fa fa-linkedin"></a></li>
+						<li><a href="#" class="fa fa-flickr"></a></li>
+						<li><a href="#" class="fa fa-rss"></a></li>
+					</ul>
+				</div>
+				<!-- /.col-md-4 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /.site-footer -->
+
+	<!--<script src="../js/usuario/vendor/jquery-1.11.0.min.js"></script>-->
+	<script src="../js/usuario/bootstrap.js"></script>
+	<script src="../js/usuario/plugins.js"></script>
+	<script src="../js/usuario/main.js"></script>
+
+
+	<script type="text/javascript">
 
     $('.form_date').datetimepicker({
         language:  'es',

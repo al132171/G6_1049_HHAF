@@ -4,10 +4,13 @@ modelo/dao/MonitorJPA.class
 controlador/LoginServicios.class
 modelo/dao/ActividadJPA.class
 controlador/ReservaServicios.class
+controlador/ComentarioServicios.class
 modelo/dao/UsuarioJPA.class
+modelo/dao/ComentarioJPA.class
 controlador/MonitorAdminServicios.class
 modelo/dao/ReservaJPA.class
 controlador/utilidades/EnviaCorreo.class
+modelo/datos/Comentario.class
 controlador/ActividadServicios.class
 controlador/MonitorServicios.class
 controlador/ActividadClienteServicios.class

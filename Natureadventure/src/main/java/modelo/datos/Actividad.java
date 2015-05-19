@@ -17,8 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 
 @XmlRootElement
-@XmlType(propOrder = {"id", "nombre", "duracion","horaInicio", "fechaInicio","fechaFin","descripcion","nivel",
-		"precio","participantesMax","participantesMin","lugar","imagen", "categoria", "estado"})
+@XmlType(propOrder = {"id", "nombre", "duracion","horaInicio", "fechaInicio","fechaFin","descripcion","nivel", "precio","participantesMax","participantesMin","lugar","imagen", "categoria", "estado"})
 @Entity
 @NamedQueries({
 	@NamedQuery(name="Actividad.encuentraTodasActivas", query = "SELECT p FROM Actividad p WHERE p.estado = 'T'"),
@@ -78,7 +77,7 @@ public class Actividad {
 		this.categoria = categoria;
 		this.estado = estado;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
