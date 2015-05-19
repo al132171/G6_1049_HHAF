@@ -124,7 +124,6 @@
 						<td>{{r.correo}}</td>
 						<td>{{r.telefono}}</td>
 						<td ng-switch-when="A">{{r.usuario.nombre}} {{r.usuario.apellidos}}</td>
-						<td ng-switch-when="A"><a ng-href="../../contratos/{{r.contrato}}.pdf">Contrato</a></td>
 
 						<td ng-switch-when="P"><button type="submit" id="asignar:{{r.actividad.nombre}}"
 								class="btn btn-info btn-sm" data-toggle="modal"

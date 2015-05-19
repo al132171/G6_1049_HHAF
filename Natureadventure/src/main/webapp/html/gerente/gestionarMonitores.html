@@ -97,7 +97,7 @@
             </tr>
             <tbody>
             <tr ng-repeat="m in pagMonitores.usuario | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage" 
-             ng-switch="m.estado" id="{{m.dni}}>
+             ng-switch="m.estado" id="{{m.dni}}">
             
             
                 <td>{{m.nombre}}</td>
