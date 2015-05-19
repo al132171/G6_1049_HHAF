@@ -11,6 +11,12 @@ app.controller('MainCtrl', ['$scope', '$modal', 'CalendarioService', 'moment',
 
     var currentYear = moment().year();
     var currentMonth = moment().month();
+	
+	$scope.calendarView = 'month';
+    $scope.calendarDay = new Date();
+    $scope.events = [
+	
+	];
     
     /*
 	//Datos de reservas de prueba
@@ -41,38 +47,31 @@ app.controller('MainCtrl', ['$scope', '$modal', 'CalendarioService', 'moment',
         				"correo": "correo@monitor2.com", "telefono": 654321987, "estado": "aceptada",
         				"actividad": 1, "usuario": 1, "contrato": "contrato"}]}
 	*/
-    
-    // Obtener las reservas a supervisar por el monitor que ha iniciado sesión
-    $scope.reservas = CalendarioService.retrieveAllSupervisar()
-	.success(function(data) {
-		$scope.reservas = data.reserva;
-	});
-    
-    $scope.calendarView = 'month';
-    $scope.calendarDay = new Date();
-    $scope.events = [
-	
-	];
-	
-    // Obtener el nombre del monitor que ha iniciado sesión
-	$scope.username =  window.location.href.slice(window.location.href.indexOf('?') + 1).split('=')[1];
 
-	// Rellenar el vector de eventos a mostrar en el calendario
-	for (var i = 0; i < $scope.reservas.length; i++) {
-		var tmpEvent = {
-			title: "Reserva para "+$scope.username,
-			type: "important",
-			starts_at: new Date($scope.reservas[i].fechaActividad.split("-")[2],
-								$scope.reservas[i].fechaActividad.split("-")[1]-1,
-								$scope.reservas[i].fechaActividad.split("-")[0],
-								8, 30),
-			ends_at: new Date($scope.reservas[i].fechaActividad.split("-")[2],
-							  $scope.reservas[i].fechaActividad.split("-")[1]-1,
-							  $scope.reservas[i].fechaActividad.split("-")[0],
-							  9,30)
+	// Obtener el nombre del monitor que ha iniciado sesión
+	$scope.username =  window.location.href.slice(window.location.href.indexOf('?') + 1).split('=')[1];
+	
+    // Obtener las reservas a supervisar por el monitor que ha iniciado sesión
+    CalendarioService.retrieveAllSupervisar()
+	.success(function(data) {
+
+		// Rellenar el vector de eventos a mostrar en el calendario
+		for (var i = 0; i < data.reserva.length; i++) {
+			var tmpEvent = {
+				title: data.reserva[i].actividad.nombre,
+				type: "important",
+				starts_at: new Date(data.reserva[i].fechaActividad.split("-")[2],
+									data.reserva[i].fechaActividad.split("-")[1]-1,
+									data.reserva[i].fechaActividad.split("-")[0],
+									12, 00),
+				ends_at: new Date(data.reserva[i].fechaActividad.split("-")[2],
+								  data.reserva[i].fechaActividad.split("-")[1]-1,
+								  data.reserva[i].fechaActividad.split("-")[0],
+								  12, 00)
+			}
+			$scope.events.push(tmpEvent);
 		}
-		$scope.events.push(tmpEvent);
-	}
+	});
 
     $scope.setCalendarToToday = function() {
       $scope.calendarDay = new Date();
