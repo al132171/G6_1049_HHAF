@@ -63,11 +63,13 @@ app.controller('MainCtrl', ['$scope', '$modal', 'CalendarioService', 'moment',
 				starts_at: new Date(data.reserva[i].fechaActividad.split("-")[2],
 									data.reserva[i].fechaActividad.split("-")[1]-1,
 									data.reserva[i].fechaActividad.split("-")[0],
-									12, 00),
+									data.reserva[i].horaInicio.split("-")[0],
+									data.reserva[i].horaInicio.split("-")[0]),
 				ends_at: new Date(data.reserva[i].fechaActividad.split("-")[2],
 								  data.reserva[i].fechaActividad.split("-")[1]-1,
 								  data.reserva[i].fechaActividad.split("-")[0],
-								  12, 00)
+								  data.reserva[i].horaInicio.split("-")[0],
+								  data.reserva[i].horaInicio.split("-")[0])
 			}
 			$scope.events.push(tmpEvent);
 		}
