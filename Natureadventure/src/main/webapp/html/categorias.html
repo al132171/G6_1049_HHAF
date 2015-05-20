@@ -167,7 +167,7 @@
 								placeholder="Palabra clave" ng-model="palabraClave"
 								ng-change="usuarioCtrl.buscaActividades(palabraClave)">
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="button"
+								<button id="submitCategoria" class="btn btn-default" type="button"
 									ng-click="usuarioCtrl.buscaActividades(palabraClave)">
 									<span class="fa fa-search"></span>
 								</button>
@@ -302,7 +302,7 @@
 											alt="Imagen de la actividad" height=200 weight=200 />
 									</div>
 									<div class='service-content'>
-										<h4 class="consult-title">{{a.nombre}}</h4>
+										<h4 id="{{a.nombre}}" class="consult-title">{{a.nombre}}</h4>
 										<p>{{a.descripcion}}</p>
 										<p>Precio: {{a.precio}}€</p>
 										<p>
