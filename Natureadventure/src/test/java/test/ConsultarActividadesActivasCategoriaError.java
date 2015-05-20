@@ -35,7 +35,7 @@ public class ConsultarActividadesActivasCategoriaError {
 	    @Then("^No se muestra ninguna actividad$")
 	    public void click_submit() throws Throwable {
 	        try {
-		    	webDriver.findElement(By.id("masinfo"));
+		    	webDriver.findElement(By.id("Bicicleta de montaña"));
 	            fail("Búsqueda de actividades incorrecta");
 	        } catch (NoSuchElementException e) {
 		    	webDriver.close();
