@@ -598,7 +598,7 @@
 								</br>
 							</div>
 						</div>
-						<!-- COMENTARIOS -->
+						
 
 						<p></p>
 							<a href="#contente_events" class="btn btn-info"
@@ -613,6 +613,45 @@
 						<!-- /.widget-item -->
 					</div>
 					<!-- /.row -->
+					
+					<!-- COMENTARIOS -->
+					<div style="margin: 25px">
+					<form id="comentarForm" name="comentarForm">
+
+						<textarea placeholder="Escribir comentario"
+							ng-model="usuarioCtrl.contenido" name="comentarCont"
+							id="comentarCont" rows=15 cols=150 style="resize: none"></textarea>
+						<input-stars id="puntuar" ng-model="usuarioCtrl.puntuacion"
+							max="5"></input-stars>
+						<input type="text" id="nombreU" placeholder="Nombre"
+							ng-model="usuarioCtrl.nombreU">
+						<button id="comentar" name="comentar" type="submit"
+							ng-click="usuarioCtrl.createComent(usuarioCtrl.nombreU,usuarioCtrl.contenido,usuarioCtrl.puntuacion)"
+							class="btn btn-success">Comentar</button>
+
+					</form>
+				</div>
+				<div id=cajaComentarios>
+					<div ng-repeat="c in comentarios | orderBy:'id':true"
+						ng-switch="usuarioCtrl.username" style="margin: 25px;">
+						<div ng-switch-when="admin">
+							<button type="submit" class="btn btn-danger btn-sm"
+								data-toggle="modal" title="eliminar este comentario"
+								data-target="#eliminar"
+								ng-click="usuarioCtrl.deleteComent(c.id)">
+								<span class="glyphicon glyphicon-folder-close"></span>
+							</button>
+						</div>
+						<div style="">
+							<b>{{c.nombreU}}</b> ha opinado sobre esta actividad:
+						</div>
+						<textarea id="comentario-{{c.id}}" rows="10" cols="150" readonly
+							style="resize: none">{{c.contenido}}</textarea>
+						<input-stars ng-model="c.puntuacion" max="5" readonly></input-stars>
+					</div>
+				</div>
+				<!-- /Fin Comentarios -->
+					
 				</div>
 				<!-- /informacionActividad -->
 
@@ -789,42 +828,7 @@
 				
 
 
-				<div style="margin: 25px">
-					<form id="comentarForm" name="comentarForm">
-
-						<textarea placeholder="Escribir comentario"
-							ng-model="usuarioCtrl.contenido" name="comentarCont"
-							id="comentarCont" rows=15 cols=150 style="resize: none"></textarea>
-						<input-stars id="puntuar" ng-model="usuarioCtrl.puntuacion"
-							max="5"></input-stars>
-						<input type="text" id="nombreU" placeholder="Nombre"
-							ng-model="usuarioCtrl.nombreU">
-						<button id="comentar" name="comentar" type="submit"
-							ng-click="usuarioCtrl.createComent(usuarioCtrl.nombreU,usuarioCtrl.contenido,usuarioCtrl.puntuacion)"
-							class="btn btn-success">Comentar</button>
-
-					</form>
-				</div>
-				<div id=cajaComentarios>
-					<div ng-repeat="c in comentarios | orderBy:'id':true"
-						ng-switch="usuarioCtrl.username" style="margin: 25px;">
-						<div ng-switch-when="admin">
-							<button type="submit" class="btn btn-danger btn-sm"
-								data-toggle="modal" title="eliminar este comentario"
-								data-target="#eliminar"
-								ng-click="usuarioCtrl.deleteComent(c.id)">
-								<span class="glyphicon glyphicon-folder-close"></span>
-							</button>
-						</div>
-						<div style="">
-							<b>{{c.nombreU}}</b> ha opinado sobre esta actividad:
-						</div>
-						<textarea id="comentario-{{c.id}}" rows="10" cols="150" readonly
-							style="resize: none">{{c.contenido}}</textarea>
-						<input-stars ng-model="c.puntuacion" max="5" readonly></input-stars>
-					</div>
-				</div>
-				<!-- /Fin Comentarios -->
+				
 
 
 
@@ -860,6 +864,7 @@
 						<!-- /.col-md-8 -->
 					</div>
 					<!-- /.row -->
+					
 				</div>
 				<!-- /.container -->
 			</div>

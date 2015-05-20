@@ -214,7 +214,7 @@
 				};
 				var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 				var marker=new google.maps.Marker({
-					position:myCenter,
+					position:myCenter
 				});
 
 				marker.setMap(map);
@@ -263,7 +263,7 @@
 				};
 
 				self.deleteComent = function (id) {
-					ComentariosService.delete(id)
+					ComentariosService.remove(id)
 					.success(function (data) {
 						ComentariosService.retrieveAll()
 						.success(function (data) {
@@ -400,7 +400,7 @@
 					alert("antes del put 3");
 
 					return $http.put(url, dato);
-		}
+		};
 
 
 
@@ -425,12 +425,12 @@
 
 			var url = actividadCliente.baseURIC + idActividad;
 			return $http.put(url, dato);
-		}
+		};
 
-		this.delete = function(id) {
+		this.remove = function(id) {
 			var url = actividadCliente.baseURIC + id;
-			return $http.delete(url);
-		}
+			return $http["delete"](url);
+		};
 
 
 	}]);
