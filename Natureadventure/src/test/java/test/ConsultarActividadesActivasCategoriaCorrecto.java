@@ -35,7 +35,7 @@ public class ConsultarActividadesActivasCategoriaCorrecto {
 	    @Then("^Se muestran todas las actividades disponibles en esa categoría$")
 	    public void click_submit() throws Throwable {
 	        try {
-		    	webDriver.findElement(By.id("masinfo"));
+		    	webDriver.findElement(By.id("Bicicleta de montaña"));
 		    	webDriver.close();
 	        } catch (NoSuchElementException e) {
 	            fail("Búsqueda de actividades incorrecta");
