@@ -57,17 +57,35 @@ app.controller('MainCtrl', ['$scope', '$modal', 'CalendarioService', 'moment',
 
 		// Rellenar el vector de eventos a mostrar en el calendario
 		for (var i = 0; i < data.reserva.length; i++) {
+			var duracionH = Math.floor(parseInt(data.reserva[i].actividad.duracion) / 60);
+			var duracionM = parseInt(data.reserva[i].actividad.duracion) % 60;
+			if (parseInt(data.reserva[i].actividad.horaInicio.split(":")[1]) + duracionM < 60) {
+				var horaFin = parseInt(data.reserva[i].actividad.horaInicio.split(":")[1]);
+				var minFin = parseInt(data.reserva[i].actividad.horaInicio.split(":")[1]) + duracionM;
+			}
+			else if (parseInt(data.reserva[i].actividad.horaInicio.split(":")[1]) + duracionM == 60) {
+				duracionH++;
+				var horaFin = parseInt(data.reserva[i].actividad.horaInicio.split(":")[0]) + duracionH;
+				var minFin = 0;
+			}
+			else if (parseInt(data.reserva[i].actividad.horaInicio.split(":")[1]) + duracionM > 60) {
+				var horaFin = parseInt(data.reserva[i].actividad.horaInicio.split(":")[0]) + duracionH;
+				var minFin = duracionM;
+			}
+			
 			var tmpEvent = {
 				title: data.reserva[i].actividad.nombre,
 				type: "important",
 				starts_at: new Date(data.reserva[i].fechaActividad.split("-")[2],
 									data.reserva[i].fechaActividad.split("-")[1]-1,
 									data.reserva[i].fechaActividad.split("-")[0],
-									12, 00),
+									data.reserva[i].actividad.horaInicio.split(":")[0],
+									data.reserva[i].actividad.horaInicio.split(":")[1]),
 				ends_at: new Date(data.reserva[i].fechaActividad.split("-")[2],
 								  data.reserva[i].fechaActividad.split("-")[1]-1,
 								  data.reserva[i].fechaActividad.split("-")[0],
-								  12, 00)
+								  horaFin,
+								  minFin)
 			}
 			$scope.events.push(tmpEvent);
 		}
