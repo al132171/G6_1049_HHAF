@@ -43,6 +43,7 @@ public class NoticiaJPA {
         query.setParameter("id", noticia.getId());
         try {
             Noticia noticiaBBDD = query.getSingleResult();
+            noticiaBBDD.setUser(noticia.getUser());
             noticiaBBDD.setFecha(noticia.getFecha());
             noticiaBBDD.setTitulo(noticia.getTitulo());
             noticiaBBDD.setSubtitulo((noticia.getSubtitulo()));

@@ -32,7 +32,7 @@
     
     <!-- Mis scripts-->
     <script src="../../js/serviceGerente.js"></script>
-    <script src="../../js/funcionesActividadG.js"></script>
+    <script src="../../js/funcionesNoticiasG.js"></script>
     
 
 </head>
@@ -91,7 +91,7 @@
 			<th>Descripción</th>
 		</tr>
 		<tbody>
-		<tr ng-repeat="n in pagNoticias.noticias | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage" id="{{a.nombre}}">
+		<tr ng-repeat="n in pagNoticias.noticias | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage">
 			<td>{{n.titulo}}</td>
 			<td>{{n.subtitulo}}</td>
 			<td>{{n.fecha}}</td>
@@ -176,7 +176,7 @@
 						'has-success' : !updateForm.tituloU.$invalid}">					    	
 						    <label>Titulo:</label>
 					   		<input type="text" id="tituloU" name="tituloU" class="form-control" ng-model="currentNoticia.noticia.titulo" 
-								ng-minlength="1" ng-maxlength="50" ng-change="comprobar(currentNoticia.noticia.titulo)" required> 
+								ng-minlength="1" ng-maxlength="50" required> 
 							<small class="error" ng-show="updateForm.nombreU.$error.required">*Título obligatorio</small>
 					  </div>
 						 
@@ -192,7 +192,7 @@
 						'has-success' : !updateForm.fechaU.$invalid}">	
 					    	<label for="dtp_input2">Fecha:</label>
 					    	<div class="input-group date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-					    		<input type="text" name="fechaInicioU" class="form-control" ng-pattern="fechaInicio1.word" ng-model="currentNoticia.noticia.fecha" ng-maxlength="10" ng-minlength="10" required />
+					    		<input type="text" name="fechaU" class="form-control" ng-pattern="fechaInicio1.word" ng-model="currentNoticia.noticia.fecha" ng-maxlength="10" ng-minlength="10" required />
 					  			<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 					  		</div>
@@ -233,7 +233,7 @@
 					'has-success' : !createForm.titulo.$invalid}" >
 					<label>Título:</label>
 					<input class="form-control" type="text" ng-minlength=1 ng-maxlength=50 ng-model="noticia.titulo"
-						ng-change="comprobar(noticia.titulo)" id="titulo" name="titulo" required/>
+						id="titulo" name="titulo" required/>
 					<div class="error" ng-show="createForm.titulo.$dirty && createForm.titulo.$invalid">
 					<small class="error" ng-show="createForm.titulo.$error.required">
 						*Título obligatorio
@@ -245,7 +245,7 @@
 					'has-success' : !createForm.subtitulo.$invalid}" >
 					<label>Subtítulo:</label>
 					<input class="form-control" type="text" ng-minlength=1 ng-maxlength=100 ng-model="noticia.subtitulo"
-						ng-change="comprobar(noticia.sbutitulo)" id="subtitulo" name="subtitulo" required/>
+						id="subtitulo" name="subtitulo" required/>
 					<div class="error" ng-show="createForm.subtitulo.$dirty && createForm.subtitulo.$invalid">
 					<small class="error" ng-show="createForm.subtitulo.$error.required">
 						*Subítulo obligatorio
@@ -258,7 +258,7 @@
 					<label for="dtp_input2">Fecha:</label>
 					<div class="input-group date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
 						<input type="text" name="fecha" class="form-control" ng-model="noticia.fecha"  id="fecha"
-						ng-maxlength="10" ng-minlength="10" ng-pattern="fechaInicio1.word" required ng-change="compararFechas(noticia.fecha, noticia.fecha)" />
+						ng-maxlength="10" ng-minlength="10" ng-pattern="fechaInicio1.word" required />
 						<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 					</div>
@@ -290,7 +290,7 @@
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-					<button type="submit" ng-click="noticiasCtrl.create(noticia.titulo, noticia.subtitulo, noticia.fecha, 
+					<button type="submit" ng-click="noticiasCtrl.create(noticia.fecha, noticia.titulo, noticia.subtitulo, 
 					noticia.descripcion)" 
 					class="btn btn-success">Añadir</button>
 				</div>

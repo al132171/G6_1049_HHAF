@@ -1,7 +1,3 @@
-/**
- * Created by oscar on 13/11/14.
- */
-
 //Borra los datos de los campos del formulario
 function borraCampos($scope) {
 	document.getElementById("createForm").reset();
@@ -505,7 +501,145 @@ function validator($scope, tipo) {
 		};
 
 	}]);
+
+// **************** NOTICIAS CONTROLLER ******************
+
+	app.controller('NoticiasCtrl', ['$scope', 'NoticiaGService', function ($scope, NoticiasGService) {
+		
+	app.baseURI = 'http://localhost:8080/Natureadventure/gerente/noticias/';
 	
+	var self = this;
+	
+	$scope.class1 = "active";
+	
+	$scope.username =  window.location.href.slice(window.location.href.indexOf('?') + 1).split('=')[1];
+	// Limpiar el formulario para que si sales de la ventana modal se limpien los mensajes de error y formato
+	$scope.resetForm = function(user) { 
+		var defaultForm = {
+				fecha : "", titulo : "", subtitulo : "", descripcion : ""
+		};
+		$scope.createForm.$setPristine();
+		$scope.user = defaultForm;
+	};
+	
+	//Comprueba si los datos introducidos son números o "-"
+	$scope.fechaInicio1 = { 
+			//word: /[^\d|\-+|\.+]/g
+			word: /^([0-9-])*$/
+	};
+	
+	//***************************************
+	//Datos para la paginación
+	      $scope.paginacion = {};
+	      $scope.paginacion.itemsPerPage = 5;
+	      $scope.paginacion.currentPage = 0;
+	      $scope.paginacion.range = {};
+	      //Fin datos para la paginación
+	
+	
+	// Funciones para la paginación
+	      $scope.range = function () {
+	          var rangeSize = 5;
+	          var ret = [];
+	          var start;
+	
+	          start = $scope.paginacion.currentPage;
+	          if (start > $scope.pageCount() - rangeSize) {
+	              start = $scope.pageCount() - rangeSize + 1;
+	          }
+	                      
+	          if( start < 0 ) {
+	              start = 0;
+	              rangeSize = $scope.pageCount()+1;
+	          }
+	                     
+	          for (var i = start; i < start + rangeSize; i++) {
+	              ret.push(i);
+	          }
+	          return ret;
+	      };
+	
+	      $scope.prevPage = function () {
+	          if ($scope.paginacion.currentPage > 0) {
+	              $scope.paginacion.currentPage--;
+	          }
+	      };
+	
+	      $scope.prevPageDisabled = function () {
+	          return $scope.paginacion.currentPage === 0 ? "disabled" : "";
+	      };
+	
+	      $scope.pageCount = function () {
+	          return Math.ceil($scope.pagActividades.actividades.length / $scope.paginacion.itemsPerPage) - 1;
+	      };
+	
+	      $scope.nextPage = function () {
+	          if ($scope.paginacion.currentPage < $scope.pageCount()) {
+	              $scope.paginacion.currentPage++;
+	          }
+	      };
+	
+	      $scope.nextPageDisabled = function () {
+	          return $scope.paginacion.currentPage === $scope.pageCount() ? "disabled" : "";
+	      };
+	
+	      $scope.setPage = function (n) {
+	          $scope.paginacion.currentPage = n;
+	      };
+	      // Fin funciones para la paginación
+	
+	
+	//***************************************
+	$scope.pagNoticias = {};
+	
+	// Para la primera vez que carge la página en activas
+	$scope.noticias = NoticiaGService.retrieveAll()
+	.success(function(data) {
+		$scope.pagNoticias.noticias = data.noticia;
+		$scope.noticias = data.noticia;
+	});
+	
+	self.create = function (fecha, titulo, subtitulo, descripcion) {
+	
+		var bool = validator($scope, "create");
+	
+		if(bool == true) {
+			NoticiaGService.create($scope.username, fecha, titulo, subtitulo, descripcion)
+					.success(function (data) {
+						borraCampos($scope);
+						NoticiaGService.retrieveAll()
+						.success(function (data) {
+							$scope.pagNoticias.noticias = data.noticia;
+							$scope.noticias = data.noticia;
+							$scope.createForm.$setPristine(); 
+						});
+					});
+			$('#create').modal('hide');
+		};
+	};
+	
+	self.update = function (fecha, titulo, subtitulo, descripcion) {
+	
+		var bool = validator($scope, "update");
+	
+		if(bool == true) {
+			NoticiaGService.update(fecha, titulo, subtitulo, descripcion)
+					.success(function(data) {
+	
+						NoticiaGService.retrieveAll()
+						.success(function (data) {
+							$scope.noticias = data.noticia;
+							$scope.pagNoticias.noticias = data.noticia;
+	
+						});
+						$('#actualizar').modal('hide');
+					});
+		};
+	};
+
+}]);
+
+
 //	***************PERFIL CONTROLLER**********************
 	
 	app.controller('PerfilCtrl', ['$scope', 'PerfilService',
@@ -632,7 +766,28 @@ function validator($scope, tipo) {
 			return $http.get(url);
 		};
 	}]);
-	
+
+//	SERVICIOS WEB NOTICIAS
+	app.service('NoticiaGService', ['$http', function($http) {
+
+		this.create = function(user, fecha, titulo, subtitulo, descripcion) {
+			dato = {'noticia': {'user': username, 'fecha': fecha, 'titulo': titulo,
+				'subtitulo': subtitulo, 'descripcion': descripcion}};
+			var url = app.baseURI + user;
+			return $http.put(url, dato);
+		}
+
+		this.retrieveAll = function() {
+			return $http.get(app.baseURI);
+		}
+
+		this.update = function (noticia) {
+			var url = app.baseURI + noticia.noticia.user;
+			return $http.put(url, noticia);
+		};
+
+	}]);
+
 //	SERVICIOS WEB PERFIL
 	app.service('PerfilService', ['$http', function($http) {
 		this.retrieveUser = function() {

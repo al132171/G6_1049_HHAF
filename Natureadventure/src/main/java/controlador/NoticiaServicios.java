@@ -33,12 +33,13 @@ public class NoticiaServicios {
     @Produces(MediaType.APPLICATION_JSON)
     public Response nuevaEntradaDesdeFormulario(
             @FormParam("id") Long id,
+            @FormParam("user") String user,
             @FormParam("fecha") String fecha,
             @FormParam("titulo") String titulo,
             @FormParam("subtitulo") String subtitulo,
             @FormParam("descripcion") String descripcion) {
         if (noticiaJPA.buscaNoticiaPorId(id) == NoticiaJPA.ENTRADA_NULL) {
-            Noticia noticia = new Noticia(id, fecha, titulo, subtitulo, descripcion);
+        	Noticia noticia = new Noticia(id, user, fecha, titulo, subtitulo, descripcion);
             noticiaJPA.nuevaNoticia(noticia);;
             UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
             URI uri = uriBuilder.path(Long.toString(id)).build();
