@@ -1,14 +1,13 @@
 package controlador;
 
 import java.net.URI;
-
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
-import modelo.dao.NoticiaJPA;
 import modelo.datos.Noticia;
+import modelo.dao.NoticiaJPA;
 
 @Path("gerente/noticias")
 @Stateless
