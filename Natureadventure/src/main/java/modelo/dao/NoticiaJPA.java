@@ -38,6 +38,16 @@ public class NoticiaJPA {
         return noticias;
     }
     
+    public Noticia[] listaUltimasNoticias() {
+    	int cantidadNoticias = 6;
+        TypedQuery<Noticia> query = em.createNamedQuery("Noticia.encuentraRecientes", Noticia.class);
+        query.setMaxResults(cantidadNoticias);
+        List<Noticia> listaNoticias = query.getResultList();
+        Noticia[] noticias = new Noticia[listaNoticias.size()];
+        listaNoticias.toArray(noticias);
+        return noticias;
+    }
+    
     public boolean actualizaNoticia(Noticia noticia) {
         TypedQuery<Noticia> query = em.createNamedQuery("Noticia.encuentraPorId", Noticia.class);
         query.setParameter("id", noticia.getId());

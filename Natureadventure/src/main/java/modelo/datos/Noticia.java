@@ -15,6 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="Noticia.encuentraTodas", query = "SELECT n FROM Noticia n"),
+	@NamedQuery(name="Noticia.encuentraRecientes", query = "SELECT n FROM Noticia n ORDER BY n.id"),
     @NamedQuery(name = "Noticia.encuentraPorId", query = "SELECT n FROM Noticia n WHERE n.id = :id"),
 	@NamedQuery(name = "Noticia.borraPorId", query = "DELETE FROM Noticia n WHERE n.id = :id")
 })

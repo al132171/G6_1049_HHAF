@@ -28,6 +28,14 @@ public class NoticiaServicios {
         return Response.ok(noticias).build();
     }
     
+    @GET
+    @Path("/ultimas")
+    @Produces("application/json")
+    public Response listaUltimasNoticias() {
+        Noticia[] noticias = noticiaJPA.listaUltimasNoticias();
+        return Response.ok(noticias).build();
+    }
+    
     /*
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)

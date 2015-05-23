@@ -22,7 +22,7 @@ app.controller('UsuarioCtrl', ['$scope', 'NoticiaUService', function ($scope, No
 	};
 	
 	// Cargar las noticias
-	NoticiaUService.retrieveAll()
+	NoticiaUService.retrieveUltimasNoticias()
 	.success(function(data) {
 		$scope.noticia1I = data.noticia[0];
 		$scope.noticia2I = data.noticia[1];
@@ -83,8 +83,9 @@ app.controller('UsuarioCtrl', ['$scope', 'NoticiaUService', function ($scope, No
 
 app.service('NoticiaUService', ['$http', function ($http) {
 
-	this.retrieveAll = function() {
-		return $http.get(app.baseURI);
+	this.retrieveUltimasNoticias = function() {
+		var url = app.baseURI + "ultimas"
+		return $http.get(url);
 	}
 
 }]);
