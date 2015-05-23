@@ -60,6 +60,7 @@
 	        <li><a href="gestionarActividades.html#/user?id={{username}}">Actividades</a></li>
 	        <li  class="active"><a href="">Monitores</a></li> 
 	        <li><a href="gestionarReservas.html#/user?id={{username}}">Reservas</a></li> 
+	        <li><a href="gestionarNoticias.html#/user?id={{username}}">Noticias</a></li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -97,7 +98,7 @@
             </tr>
             <tbody>
             <tr ng-repeat="m in pagMonitores.usuario | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage" 
-             ng-switch="m.estado">
+             ng-switch="m.estado" id="{{m.dni}}">
             
             
                 <td>{{m.nombre}}</td>
@@ -113,7 +114,7 @@
                         ng-click="monitoresCtrl.retreiveContact(m.dni)">
                         <span class="glyphicon glyphicon-pencil"></span> Actualizar</button></td>
                 <td ng-switch-when="A">           	
-            	<button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar" ng-click="monitoresCtrl.retreiveContact(m.dni)">
+            	<button type="submit" id="darDeBaja" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar" ng-click="monitoresCtrl.retreiveContact(m.dni)">
 			    <span class="glyphicon glyphicon-remove"></span> Dar de baja</button>
 			    
 			     <td ng-switch-when="B">           	
@@ -268,7 +269,7 @@
     </div>
     </div>
     
-    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#create" ng-click="resetForm(user)">
+    <button type="submit" id="añadirModal" class="btn btn-success" data-toggle="modal" data-target="#create" ng-click="resetForm(user)">
     <span class="glyphicon glyphicon-plus"></span>Añadir</button>
     
     
@@ -330,6 +331,10 @@
 					   		<div class="error" ng-show="createForm.dni.$dirty && createForm.dni.$invalid">
 					   		<small class="error" ng-show="createForm.dni.$error.required">*DNI obligatorio</small>
 					   		<small class="error" ng-show="createForm.dni.$error.dni">*DNI ya existe</small>
+					   		<small class="error" 
+					            		ng-show="createForm.nombre.$error.nombre" id="errorDNI">
+					        		*El dni introducido ya existe
+					    		</small>
 					   		</div>
 			  </div>
 			  
@@ -362,7 +367,7 @@
         
 			     <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-		        <button type="submit" ng-click="monitoresCtrl.create(user.nombre, user.apellidos, user.dni, user.correo, user.telefono, user.username, user.password, user.especialidad)" 
+		        <button id="añadir" type="submit" ng-click="monitoresCtrl.create(user.nombre, user.apellidos, user.dni, user.correo, user.telefono, user.username, user.password, user.especialidad)" 
 		        class="btn btn-success">Añadir</button>
 		      </div>
         </form>

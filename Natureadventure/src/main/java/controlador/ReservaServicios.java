@@ -95,18 +95,18 @@ public class ReservaServicios {
 		//		Genero un ID para el contrato
 		Calendar calendario = Calendar.getInstance();
 		String idContrato = u.getDni() + calendario.getTimeInMillis();
-		CrearFactura.createContrato(reserva, idContrato, u);
+//		CrearFactura.createContrato(reserva, idContrato, u);
 
-		//		ENVIAR CORREO
-		//		try {
-		//			enviaCorreo.generateAndSendEmail();
-		//		} catch (AddressException e) {
-		//			// TODO Auto-generated catch block
-		//			e.printStackTrace();
-		//		} catch (MessagingException e) {
-		//			// TODO Auto-generated catch block
-		//			e.printStackTrace();
-		//		}
+//				ENVIAR CORREO
+				try {
+					enviaCorreo.generateAndSendEmail(reserva, "aceptar");
+				} catch (AddressException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (MessagingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		reserva.setContrato(idContrato);
 		reservaJPA.actualizaReserva(reserva);
 		System.out.println("acabo actualiza");		
@@ -117,8 +117,19 @@ public class ReservaServicios {
 	@Path("{dni}/{fechaReserva}")
 	@Produces("application/json")
 	public Response cambiaEstado(@PathParam("dni") String dni, @PathParam("fechaReserva") String fechaReserva) {
-		if (reservaJPA.cambiaEstado(dni, fechaReserva) == true)
+
+		if (reservaJPA.cambiaEstado(dni, fechaReserva) == true){
+			try {
+				enviaCorreo.generateAndSendEmail(null, "cancelar");
+			} catch (AddressException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return Response.status(Response.Status.ACCEPTED).build();
+		}
 		else
 			return Response.status(Response.Status.NOT_FOUND).build();
 

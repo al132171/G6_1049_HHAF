@@ -17,6 +17,9 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
 
+import modelo.datos.Reserva;
+import modelo.datos.Usuario;
+
 public class EnviaCorreo{
 	
 
@@ -25,7 +28,7 @@ public class EnviaCorreo{
 	static MimeMessage generateMailMessage;
  
  
-	public void generateAndSendEmail() throws AddressException, MessagingException {
+	public void generateAndSendEmail(Reserva reserva, String tipo) throws AddressException, MessagingException {
  
 //Step1		
 		System.out.println("\n 1st ===> setup Mail Server Properties..");
@@ -33,33 +36,43 @@ public class EnviaCorreo{
 		mailServerProperties.put("mail.smtp.port", "587");
 		mailServerProperties.put("mail.smtp.auth", "true");
 		mailServerProperties.put("mail.smtp.starttls.enable", "true");
-		System.out.println("Mail Server Properties have been setup successfully..");
  
 //Step2				
 		System.out.println("\n\n 2nd ===> get Mail Session..");
 		getMailSession = Session.getInstance(mailServerProperties);
 		generateMailMessage = new MimeMessage(getMailSession);
-		generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress("frodriguezsidro@gmail.com"));
-		generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress("appujimatica@gmail.com"));
-		generateMailMessage.setSubject("Appujimática ha ampliado su catálogo");
-		String emailBody = "El equipo de Appujimática le notifica que ha ampliado su catálogo disponible en su página web. " + "<br><br>";
-		MimeMultipart multiParte = new MimeMultipart();
-		BodyPart adjunto = new MimeBodyPart();
-		adjunto.setDataHandler(new DataHandler(new FileDataSource("/home/fer/Desktop/natureadventure_rep/Natureadventure/src/main/webapp/contratos/6781430324446945.pdf")));
-		adjunto.setFileName("6781430324446945.pdf");
-//		
-//		BodyPart texto = new MimeBodyPart();
-//		texto.setText("Ha comprado de forma satisfactoria sus entradas. Se adjuntan las entradas "
-//				+ "para que pueda acceder a nuestras instalaciones.\n Gracias por confiar en nosotros, \n Un cordial saludo,"
-//				+ "\n La dirección de TicketSales.");
-//
-//
-//		
-//		multiParte.addBodyPart(texto);
-		multiParte.addBodyPart(adjunto);
-		
+		generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress("al132171@uji.es"));
+		generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress("ujimaticaNatureadventure@gmail.com"));
+		String emailBody = "";
+		if(tipo.equals("aceptar")){
+			generateMailMessage.setSubject("NatureAdventure: confirmación reserva");
+			emailBody = "La administración de NatureAdventure le confirma que su reserva realizada el día "+reserva.getFechaReserva()+" ha sido aceptada. " + "<br><br>"
+					+ "A continuación le facilitamos los detalles de la transacción: <br/> "
+					+ "<ul>"
+					+ "<li> Nombre y apellidos cliente: "+reserva.getNombre() + " "+reserva.getApellidos()+"</li>"
+					+ "<li> DNI cliente: "+reserva.getDni()+"</li>"
+					+ "<li> E-mail: "+reserva.getCorreo()+"</li>"
+					+ "<li> Actividad: "+reserva.getActividad().getNombre()+"</li>"
+					+ "<li> Fecha de la actividad: "+reserva.getFechaActividad()+"</li>"
+					+ "<li> Cantidad personas: "+reserva.getCantidadPersonas()+"</li>"
+					+ "<li> Precio Total (con I.V.A): <strong>"+reserva.getPrecio()+"€</strong></li>"
+					+ "</ul>"
+					+ "A continuación le facilitamos la información personal del monitor asignado a la actividad: <br/>"
+					+ "<ul>"
+					+ "<li> Nombre y apellidos: "+reserva.getUsuario().getNombre()+" "+reserva.getUsuario().getApellidos()+"</li>"
+					+ "<li> Teléfono: " +reserva.getUsuario().getTelefono()+"</li>"
+					+ "<li> Correo: "+reserva.getUsuario().getEmail()+"</li>"
+					+ "</ul>"
+					+ "Gracias por confiar en NatureAdventure. <br/> Reciba un coordial saludo, <br/> La dirección de NatureAdventure";	
+		}else{
+			generateMailMessage.setSubject("NatureAdventure: reserva cancelada");
+
+			emailBody = "La administración de NatureAdventure lamenta comunicarle que la actividad no ha podido ser aceptada debido a la falta de disponibilidad de los monitores. <br/>"
+							+ "Se le ha devuelto el importe íntegro de la reserva <br/>"+
+					"Lamentamos que no pueda disfrutar de la actividad deseada y le invitamos a que siga comprando en nuestra plataforma.";
+					
+			}
 		generateMailMessage.setContent(emailBody, "text/html");
-		generateMailMessage.setContent(multiParte);
 		System.out.println("Mail Session has been created successfully..");
  
 //Step3		
@@ -67,8 +80,7 @@ public class EnviaCorreo{
 		System.out.println("\n\n 3rd ===> Get Session and Send mail");
 		Transport transport = getMailSession.getTransport("smtp");
 		
-		// Enter your correct gmail UserID and Password (XXXarpitshah@gmail.com)
-		transport.connect("smtp.gmail.com", "appujimatica@gmail.com", "practicas123()");
+		transport.connect("smtp.gmail.com", "ujimaticaNatureadventure@gmail.com", "practicas123()");
 		transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
 		
 		

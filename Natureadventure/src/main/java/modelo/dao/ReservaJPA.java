@@ -3,6 +3,8 @@ package modelo.dao;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -72,6 +74,7 @@ public class ReservaJPA {
         query.setParameter("fechaReserva", fechaReserva);
         try {
             int deletedRows = query.executeUpdate();
+           
             if(deletedRows == 1) return true;
             else return false;
         } catch (NoResultException e) {

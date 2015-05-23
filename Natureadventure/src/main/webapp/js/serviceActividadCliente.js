@@ -273,14 +273,14 @@
                 };
 
                 self.deleteComent = function (id) {
-                    ComentariosService.delete(id)
-                        .success(function (data) {
-                        ComentariosService.retrieveAll()
-                            .success(function (data) {
-                            $scope.comentarios = data.comentario;
-                        });
-                    });
-                };
+					ComentariosService.remove(id)
+					.success(function (data) {
+						ComentariosService.retrieveAll()
+						.success(function (data) {
+							$scope.comentarios = data.comentario;
+						});
+					});
+				};
                 //				/ fin comentarios              
 
 
@@ -448,21 +448,20 @@
             return $http.get(url);
         };
 
-
         this.create = function(idActividad,nombreU,contenido,puntuacion) {
-            dato = {'comentario': {'idActividad': idActividad, 'nombreU': nombreU, 'contenido': contenido, 
-                                   'puntuacion':puntuacion}};
+			dato = {'comentario': {'idActividad': idActividad, 'nombreU': nombreU, 'contenido': contenido, 
+				'puntuacion':puntuacion}};
 
-            var url = actividadCliente.baseURIC + idActividad;
-            return $http.put(url, dato);
-        }
+			var url = actividadCliente.baseURIC + idActividad;
+			return $http.put(url, dato);
+		};
 
-        this.delete = function(id) {
-            var url = actividadCliente.baseURIC + id;
-            return $http.delete(url);
-        }
+		this.remove = function(id) {
+			var url = actividadCliente.baseURIC + id;
+			return $http["delete"](url);
+		};
 
 
-    }]);
+	}]);
 
 })();

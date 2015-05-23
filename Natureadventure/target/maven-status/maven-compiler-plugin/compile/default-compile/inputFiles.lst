@@ -1,8 +1,10 @@
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/modelo/dao/ReservaJPA.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/controlador/LoginServicios.java
+/home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/controlador/NoticiaServicios.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/modelo/dao/MonitorJPA.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/modelo/dao/LoginJPA.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/controlador/ReservaServicios.java
+/home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/modelo/datos/Noticia.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/modelo/dao/UsuarioJPA.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/controlador/utilidades/EnviaCorreo.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/controlador/ComentarioServicios.java
@@ -14,6 +16,7 @@
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/modelo/dao/ComentarioJPA.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/controlador/utilidades/CrearFactura.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/controlador/MonitorServicios.java
+/home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/modelo/dao/NoticiaJPA.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/controlador/UsuarioServicios.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/modelo/datos/Reserva.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/modelo/datos/Usuario.java
