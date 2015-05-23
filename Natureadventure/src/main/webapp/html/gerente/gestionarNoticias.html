@@ -92,19 +92,19 @@
 		</tr>
 		<tbody>
 		<tr ng-repeat="n in pagNoticias.noticias | offset: paginacion.currentPage*paginacion.itemsPerPage | limitTo: paginacion.itemsPerPage">
-			<td>{{n.titulo}}</td>
-			<td>{{n.subtitulo}}</td>
-			<td>{{n.fecha}}</td>
-			<td>{{n.descripcion}}</td>
+			<td class="col-md-2">{{n.titulo}}</td>
+			<td class="col-md-2">{{n.subtitulo}}</td>
+			<td class="col-md-1">{{n.fecha}}</td>
+			<td class="col-md-6">{{n.descripcion}}</td>
 
 			<td> 
 			<button type="submit" class="btn btn-info btn-sm" data-toggle="modal"
-				data-target="#actualizar" ng-click="noticiasCtrl.retreiveNoticia(n.id)">
+				data-target="#actualizar" ng-click="noticiasCtrl.retrieveNoticia(n.id)">
 				<span class="glyphicon glyphicon-pencil"></span> Actualizar</button>
 			</td>
 			<td> 
 				<button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" 
-				data-target="#eliminar" ng-click="anoticiasCtrl.retreiveNoticia(n.id)">
+				data-target="#eliminar" ng-click="noticiasCtrl.retrieveNoticia(n.id)">
 				<span class="glyphicon glyphicon-folder-close"></span> Eliminar</button>
 			</td>
 			
@@ -151,7 +151,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 				 <button type="button" class="btn btn-warning" data-dismiss="modal" 
-				 ng-click='noticiasCtrl.deleteNoticia(currentActividad)'> 
+				 ng-click='noticiasCtrl.removeNoticia(currentNoticia)'> 
 				  Aceptar</button>
 				</div>
 			</div>

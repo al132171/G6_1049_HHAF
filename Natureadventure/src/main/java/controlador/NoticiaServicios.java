@@ -28,6 +28,7 @@ public class NoticiaServicios {
         return Response.ok(noticias).build();
     }
     
+    /*
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
@@ -67,6 +68,16 @@ public class NoticiaServicios {
                 return Response.ok(noticia).build();
             }
         }
+    }
+    */
+    
+    @PUT
+    @Path("{user}")
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response creaNuevaEntrada(@PathParam("user") String user, Noticia noticia) {
+        noticiaJPA.nuevaNoticia(noticia);
+        return Response.ok(noticia).build();
     }
     
     @DELETE

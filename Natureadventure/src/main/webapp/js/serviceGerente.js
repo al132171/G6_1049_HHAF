@@ -504,15 +504,14 @@ function validator($scope, tipo) {
 
 // **************** NOTICIAS CONTROLLER ******************
 
-	app.controller('NoticiasCtrl', ['$scope', 'NoticiaGService', function ($scope, NoticiasGService) {
+	app.controller('NoticiasCtrl', ['$scope', 'NoticiaGService', function ($scope, NoticiaGService) {
 		
 	app.baseURI = 'http://localhost:8080/Natureadventure/gerente/noticias/';
 	
 	var self = this;
-	
-	$scope.class1 = "active";
-	
+		
 	$scope.username =  window.location.href.slice(window.location.href.indexOf('?') + 1).split('=')[1];
+	
 	// Limpiar el formulario para que si sales de la ventana modal se limpien los mensajes de error y formato
 	$scope.resetForm = function(user) { 
 		var defaultForm = {
@@ -522,7 +521,7 @@ function validator($scope, tipo) {
 		$scope.user = defaultForm;
 	};
 	
-	//Comprueba si los datos introducidos son números o "-"
+	// Comprueba si los datos introducidos son números o "-"
 	$scope.fechaInicio1 = { 
 			//word: /[^\d|\-+|\.+]/g
 			word: /^([0-9-])*$/
@@ -530,69 +529,68 @@ function validator($scope, tipo) {
 	
 	//***************************************
 	//Datos para la paginación
-	      $scope.paginacion = {};
-	      $scope.paginacion.itemsPerPage = 5;
-	      $scope.paginacion.currentPage = 0;
-	      $scope.paginacion.range = {};
-	      //Fin datos para la paginación
-	
+	$scope.paginacion = {};
+	$scope.paginacion.itemsPerPage = 5;
+	$scope.paginacion.currentPage = 0;
+	$scope.paginacion.range = {};
+	//Fin datos para la paginación
 	
 	// Funciones para la paginación
-	      $scope.range = function () {
-	          var rangeSize = 5;
-	          var ret = [];
-	          var start;
-	
-	          start = $scope.paginacion.currentPage;
-	          if (start > $scope.pageCount() - rangeSize) {
-	              start = $scope.pageCount() - rangeSize + 1;
-	          }
-	                      
-	          if( start < 0 ) {
-	              start = 0;
-	              rangeSize = $scope.pageCount()+1;
-	          }
-	                     
-	          for (var i = start; i < start + rangeSize; i++) {
-	              ret.push(i);
-	          }
-	          return ret;
-	      };
-	
-	      $scope.prevPage = function () {
-	          if ($scope.paginacion.currentPage > 0) {
-	              $scope.paginacion.currentPage--;
-	          }
-	      };
-	
-	      $scope.prevPageDisabled = function () {
-	          return $scope.paginacion.currentPage === 0 ? "disabled" : "";
-	      };
-	
-	      $scope.pageCount = function () {
-	          return Math.ceil($scope.pagActividades.actividades.length / $scope.paginacion.itemsPerPage) - 1;
-	      };
-	
-	      $scope.nextPage = function () {
-	          if ($scope.paginacion.currentPage < $scope.pageCount()) {
-	              $scope.paginacion.currentPage++;
-	          }
-	      };
-	
-	      $scope.nextPageDisabled = function () {
-	          return $scope.paginacion.currentPage === $scope.pageCount() ? "disabled" : "";
-	      };
-	
-	      $scope.setPage = function (n) {
-	          $scope.paginacion.currentPage = n;
-	      };
-	      // Fin funciones para la paginación
+    $scope.range = function () {
+        var rangeSize = 5;
+        var ret = [];
+        var start;
+
+        start = $scope.paginacion.currentPage;
+        if (start > $scope.pageCount() - rangeSize) {
+            start = $scope.pageCount() - rangeSize + 1;
+        }
+                      
+        if( start < 0 ) {
+            start = 0;
+            rangeSize = $scope.pageCount()+1;
+        }
+                     
+        for (var i = start; i < start + rangeSize; i++) {
+            ret.push(i);
+        }
+        return ret;
+    };
+
+    $scope.prevPage = function () {
+        if ($scope.paginacion.currentPage > 0) {
+            $scope.paginacion.currentPage--;
+        }
+    };
+
+    $scope.prevPageDisabled = function () {
+        return $scope.paginacion.currentPage === 0 ? "disabled" : "";
+    };
+
+    $scope.pageCount = function () {
+        return Math.ceil($scope.pagNoticias.noticias.length / $scope.paginacion.itemsPerPage) - 1;
+    };
+
+    $scope.nextPage = function () {
+        if ($scope.paginacion.currentPage < $scope.pageCount()) {
+            $scope.paginacion.currentPage++;
+        }
+    };
+
+    $scope.nextPageDisabled = function () {
+        return $scope.paginacion.currentPage === $scope.pageCount() ? "disabled" : "";
+    };
+
+    $scope.setPage = function (n) {
+        $scope.paginacion.currentPage = n;
+    };
+    // Fin funciones para la paginación
 	
 	
 	//***************************************
 	$scope.pagNoticias = {};
 	
-	// Para la primera vez que carge la página en activas
+	// Para la primera vez que cargue la página
 	$scope.noticias = NoticiaGService.retrieveAll()
 	.success(function(data) {
 		$scope.pagNoticias.noticias = data.noticia;
@@ -618,6 +616,15 @@ function validator($scope, tipo) {
 		};
 	};
 	
+	self.retrieveNoticia = function(id) {
+		for (var i = 0; i < $scope.noticias.length; i++) {
+			if ($scope.noticias[i].id == id) {
+				$scope.currentNoticia = $scope.noticias[i];
+			}
+		}
+		// alert($scope.currentNoticia.titulo);
+	};
+	
 	self.update = function (fecha, titulo, subtitulo, descripcion) {
 	
 		var bool = validator($scope, "update");
@@ -636,6 +643,16 @@ function validator($scope, tipo) {
 					});
 		};
 	};
+	
+	self.removeNoticia = function(noticia) {
+		NoticiaGService.remove(noticia.id)
+		.success(function (data) {
+			NoticiaGService.retrieveAll()
+			.success(function (data) {
+				$scope.noticias = data.noticia;
+			});
+		});
+	}
 
 }]);
 
@@ -771,9 +788,9 @@ function validator($scope, tipo) {
 	app.service('NoticiaGService', ['$http', function($http) {
 
 		this.create = function(user, fecha, titulo, subtitulo, descripcion) {
-			dato = {'noticia': {'user': username, 'fecha': fecha, 'titulo': titulo,
+			dato = {'noticia': {'user': user, 'fecha': fecha, 'titulo': titulo,
 				'subtitulo': subtitulo, 'descripcion': descripcion}};
-			var url = app.baseURI + user;
+			var url = app.baseURI + titulo;
 			return $http.put(url, dato);
 		}
 
@@ -782,9 +799,15 @@ function validator($scope, tipo) {
 		}
 
 		this.update = function (noticia) {
-			var url = app.baseURI + noticia.noticia.user;
+			var url = app.baseURI + noticia.noticia.id;
 			return $http.put(url, noticia);
 		};
+		
+		// De momento no se almacenan por ID
+		this.remove = function (id) {
+			var url = app.baseURI + id;
+			return $http["delete"](url);
+		}
 
 	}]);
 
