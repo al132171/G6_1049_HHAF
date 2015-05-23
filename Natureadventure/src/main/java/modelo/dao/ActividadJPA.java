@@ -32,6 +32,26 @@ public class ActividadJPA {
         }
     }
     
+    public Actividad[] buscarOfertas() {
+    	int cantidadOfertas = 6;
+        TypedQuery<Actividad> query = em.createNamedQuery("Actividad.encuentraOfertas", Actividad.class);
+        query.setMaxResults(cantidadOfertas);
+        List<Actividad> listaActividades = query.getResultList();
+        Actividad[] actividades = new Actividad[listaActividades.size()];
+        listaActividades.toArray(actividades);
+        return actividades;
+    }
+    
+    public Actividad[] buscarNovedades() {
+    	int cantidadNovedades = 3;
+        TypedQuery<Actividad> query = em.createNamedQuery("Actividad.encuentraNovedades", Actividad.class);
+        query.setMaxResults(cantidadNovedades);
+        List<Actividad> listaActividades = query.getResultList();
+        Actividad[] actividades = new Actividad[listaActividades.size()];
+        listaActividades.toArray(actividades);
+        return actividades;
+    }
+    
     // Método de ActividadClienteServicios
     public Actividad buscaActividadPorNombreActiva(String nombre) {
         TypedQuery<Actividad> query = em.createNamedQuery("Actividad.encuentraPorNombreActiva", Actividad.class);

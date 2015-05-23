@@ -21,6 +21,8 @@ import javax.xml.bind.annotation.XmlType;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="Actividad.encuentraTodasActivas", query = "SELECT p FROM Actividad p WHERE p.estado = 'T'"),
+	@NamedQuery(name="Actividad.encuentraOfertas", query = "SELECT p FROM Actividad p WHERE p.estado = 'T' ORDER BY p.precio"),
+	@NamedQuery(name="Actividad.encuentraNovedades", query = "SELECT p FROM Actividad p WHERE p.estado = 'T' ORDER BY p.id"),
 	@NamedQuery(name="Actividad.encuentraTodasArchivadas", query = "SELECT p FROM Actividad p WHERE p.estado = 'F'"),
 	@NamedQuery(name = "Actividad.encuentraPorNombre", query = "SELECT p FROM Actividad p WHERE p.nombre = :nombre"),
 	@NamedQuery(name = "Actividad.encuentraPorNombreActiva", query = "SELECT p FROM Actividad p WHERE p.estado = 'T' AND p.nombre = :nombre"),

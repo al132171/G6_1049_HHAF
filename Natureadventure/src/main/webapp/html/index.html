@@ -2,10 +2,11 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js" ng-app="actividadCliente"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <title>Inicio | NaturAdventure - Vacaciones de aventura</title>
+        <title>NaturAdventure | Inicio</title>
         <meta name="description" content="">
 
         <meta name="viewport" content="width=device-width">
@@ -18,10 +19,19 @@
         <link rel="stylesheet" href="../css/usuario/animate.css">
         <link rel="stylesheet" href="../css/usuario/misc.css">
         <link rel="stylesheet" href="../css/usuario/style.css">
+        <link rel="stylesheet" href="../css/style.css">
+
 
         <script src="../js/usuario/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+
+        <script src="../js/angular-input-stars.js"></script>
+        
+        <script src="../js/serviceActividadCliente.js"></script>
+
+        
     </head>
-    <body>
+    <body ng-controller="UsuarioCtrl as usuarioCtrl">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
@@ -76,15 +86,15 @@
             <ul class="slides">
                 <li>
                     <div class="overlay"></div>
-                    <img src="../images/slider/slide_1.jpg" alt="Special 1">
+                    <img ng-src="../images/slider/{{feed.novedades[0].categoria}}.jpg" alt="Special 1">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-5 col-lg-4">
                                 <div class="flex-caption visible-lg">
-                                    <span class="price">Desde sólo 19€</span>
-                                    <h3 class="title">Puenting</h3>
-                                    <p>Un salto que te llevará a vivir sensaciones inolvidables. Desconecta tu mente y experimenta la emoción más fuerte que puedas imaginar.</p>
-                                    <a href="#" class="slider-btn">Reserva ahora</a>
+                                    <span class="price">{{feed.novedades[0].precio}}€ / persona</span>
+                                    <h3 class="title">{{feed.novedades[0].nombre}}</h3>
+                                    <p>{{feed.novedades[0].descripcion}}</p>
+                                    <a ng-href="categorias.html#/actividad?nombre={{feed.novedades[0].nombre}}" class="slider-btn">Reserva ahora</a>
                                 </div>
                             </div>
                         </div>
@@ -92,15 +102,15 @@
                 </li>
                 <li>
                     <div class="overlay"></div>
-                    <img src="../images/slider/slide_2.jpg" alt="Special 2">
+                    <img ng-src="../images/slider/{{feed.novedades[1].categoria}}.jpg" alt="Special 2">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-5 col-lg-4">
                                 <div class="flex-caption visible-lg">
-                                    <span class="price">Desde 32€</span>
-                                    <h3 class="title">Escalada</h3>
-                                    <p>Ofrecemos distintos tipos de escalada, desde la más sencilla para los que nunca lo han probado, hasta escalar largos de mayor nivel.</p>
-                                    <a href="#" class="slider-btn">Reserva ahora</a>
+                                    <span class="price">{{feed.novedades[1].precio}}€ / persona</span>
+                                    <h3 class="title">{{feed.novedades[1].nombre}}</h3>
+                                    <p>{{feed.novedades[1].descripcion}}</p>
+                                    <a ng-href="categorias.html#/actividad?nombre={{feed.novedades[1].nombre}}" class="slider-btn">Reserva ahora</a>
                                 </div>
                             </div>
                         </div>
@@ -108,15 +118,15 @@
                 </li>
                 <li>
                     <div class="overlay"></div>
-                    <img src="../images/slider/slide_3.jpg" alt="Special 3">
+                    <img ng-src="../images/slider/{{feed.novedades[2].categoria}}.jpg" alt="Special 3">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-5 col-lg-4">
                                 <div class="flex-caption visible-lg">
-                                    <span class="price">Desde 25€ / p</span>
-                                    <h3 class="title">Rafting</h3>
-                                    <p>Travesía  de 2 o 3 horas de duración, adecuada para todo tipo de participantes, pero especialmente para los que busquen adrenalina y diversión.</p>
-                                    <a href="#" class="slider-btn">Reserva ahora</a>
+                                    <span class="price">{{feed.novedades[2].precio}}€ / persona</span>
+                                    <h3 class="title">{{feed.novedades[2].nombre}}</h3>
+                                    <p>{{feed.novedades[2].descripcion}}</p>
+                                    <a ng-href="categorias.html#/actividad?nombre={{feed.novedades[2].nombre}}" class="slider-btn">Reserva ahora</a>
                                 </div>
                             </div>
                         </div>
@@ -133,79 +143,79 @@
                     <div class="list-item">
                         <div class="list-thumb">
                             <div class="title">
-                                <h4>Stand Up Surf</h4>
+                                <h4>{{feed.ofertas[0].categoria}}</h4>
                             </div>
-                            <img src="../images/destination_1.jpg" alt="destination 1">
+                            <img ng-src="../images/{{feed.ofertas[0].categoria}}.jpg" alt="destination 1">
                         </div> <!-- /.list-thumb -->
                         <div class="list-content">
-                            <h5>Tanto en río como en mar</h5>
-                            <span>Desde 38€</span>
-                            <a href="#" class="price-btn">Reserva ahora</a>
+                            <h5>{{feed.ofertas[0].nombre}}</h5>
+                            <span>{{feed.ofertas[0].precio}}€ / persona</span>
+                            <a ng-href="categorias.html#/actividad?nombre={{feed.ofertas[0].nombre}}" class="price-btn">Reserva ahora</a>
                         </div> <!-- /.list-content -->
                     </div> <!-- /.list-item -->
                     <div class="list-item">
                         <div class="list-thumb">
                             <div class="title">
-                                <h4>Barranquismo</h4>
+                                <h4>{{feed.ofertas[1].categoria}}</h4>
                             </div>
-                            <img src="../images/destination_2.jpg" alt="destination 2">
+                            <img ng-src="../images/{{feed.ofertas[1].categoria}}.jpg" alt="destination 2">
                         </div> <!-- /.list-thumb -->
                         <div class="list-content">
-                            <h5>Iniciación, medio o avanzado</h5>
-                            <span>Desde 42€</span>
-                            <a href="#" class="price-btn">Reserva ahora</a>
+                            <h5>{{feed.ofertas[1].nombre}}</h5>
+                            <span>{{feed.ofertas[1].precio}}€ / persona</span>
+                            <a ng-href="categorias.html#/actividad?nombre={{feed.ofertas[1].nombre}}" class="price-btn">Reserva ahora</a>
                         </div> <!-- /.list-content -->
                     </div> <!-- /.list-item -->
                     <div class="list-item">
                         <div class="list-thumb">
                             <div class="title">
-                                <h4>Piragüismo</h4>
+                                <h4>{{feed.ofertas[2].categoria}}</h4>
                             </div>
-                            <img src="../images/destination_3.jpg" alt="destination 3">
+                            <img ng-src="../images/{{feed.ofertas[2].categoria}}.jpg" alt="destination 3">
                         </div> <!-- /.list-thumb -->
                         <div class="list-content">
-                            <h5>Para 1 o 2 personas</h5>
-                            <span>Desde 25€ / persona</span>
-                            <a href="#" class="price-btn">Reserva ahora</a>
+                            <h5>{{feed.ofertas[2].nombre}}</h5>
+                            <span>{{feed.ofertas[2].precio}}€ / persona</span>
+                            <a ng-href="categorias.html#/actividad?nombre={{feed.ofertas[2].nombre}}" class="price-btn">Reserva ahora</a>
                         </div> <!-- /.list-content -->
                     </div> <!-- /.list-item -->
                     <div class="list-item">
                         <div class="list-thumb">
                             <div class="title">
-                                <h4>Alpinismo</h4>
+                                <h4>{{feed.ofertas[3].categoria}}</h4>
                             </div>
-                            <img src="../images/destination_4.jpg" alt="destination 4">
+                            <img ng-src="../images/{{feed.ofertas[3].categoria}}.jpg" alt="destination 4">
                         </div> <!-- /.list-thumb -->
                         <div class="list-content">
-                            <h5>Rutas de entre 2 y 3 horas</h5>
-                            <span>Desde 28€</span>
-                            <a href="#" class="price-btn">Reserva ahora</a>
+                            <h5>{{feed.ofertas[3].nombre}}</h5>
+                            <span>{{feed.ofertas[3].precio}}€ / persona</span>
+                            <a ng-href="categorias.html#/actividad?nombre={{feed.ofertas[3].nombre}}" class="price-btn">Reserva ahora</a>
                         </div> <!-- /.list-content -->
                     </div> <!-- /.list-item -->
                     <div class="list-item">
                         <div class="list-thumb">
                             <div class="title">
-                                <h4>Rutas en BTT</h4>
+                                <h4>{{feed.ofertas[4].categoria}}</h4>
                             </div>
-                            <img src="../images/destination_5.jpg" alt="destination 5">
+                            <img ng-src="../images/{{feed.ofertas[4].categoria}}.jpg" alt="destination 5">
                         </div> <!-- /.list-thumb -->
                         <div class="list-content">
-                            <h5>Descensos con las mejores vistas</h5>
-                            <span>Desde 32€</span>
-                            <a href="#" class="price-btn">Reserva ahora</a>
+                            <h5>{{feed.ofertas[4].nombre}}</h5>
+                            <span>{{feed.ofertas[4].precio}}€ / persona</span>
+                            <a ng-href="categorias.html#/actividad?nombre={{feed.ofertas[4].nombre}}" class="price-btn">Reserva ahora</a>
                         </div> <!-- /.list-content -->
                     </div> <!-- /.list-item -->
                     <div class="list-item">
                         <div class="list-thumb">
                             <div class="title">
-                                <h4>Nieve</h4>
+                                <h4>{{feed.ofertas[5].categoria}}</h4>
                             </div>
-                            <img src="../images/destination_6.jpg" alt="destination 6">
+                            <img ng-src="../images/{{feed.ofertas[5].categoria}}.jpg" alt="destination 6">
                         </div> <!-- /.list-thumb -->
                         <div class="list-content">
-                            <h5>Alpinismo, raquetas, etc.</h5>
-                            <span>Desde 45€</span>
-                            <a href="#" class="price-btn">Reserva ahora</a>
+                            <h5>{{feed.ofertas[5].nombre}}</h5>
+                            <span>{{feed.ofertas[5].precio}}€ / persona</span>
+                            <a ng-href="categorias.html#/actividad?nombre={{feed.ofertas[5].nombre}}" class="price-btn">Reserva ahora</a>
                         </div> <!-- /.list-content -->
                     </div> <!-- /.list-item -->
                 </div> <!-- /.our-listing -->
@@ -213,6 +223,201 @@
         </div> <!-- /.container -->
 
 		<div class="middle-content"></div>
+        
+        <div class="go-act">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="act-btn">
+								<div class="inner">
+									<div class="title">
+										<h2>Recibe boletines de novedades</h2>
+										<span>Suscribete y te notificaremos las nuevas actividades</span>
+									</div>
+								</div>
+								<!-- /.inner -->
+								<a href class="link" data-toggle="modal" data-target="#modalReservar"> <!-- Enlace a ofertas -->
+									<i class="fa fa-angle-right"></i>
+								</a>
+							</div>
+							<!-- /.act-btn -->
+						</div>
+						<!-- /.col-md-8 -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container -->
+			</div>
+			<!-- /.go-act -->
+        
+        <!-- Modal -->
+				<div class="modal fade" id="modalReservar" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header modal-header-new">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h4 class="modal-title panel-title" id="myModalLabel">
+									<i class="fa fa-plus"></i>&nbsp;Reservar {{show.actividad}}
+								</h4>
+							</div>
+							<div class="modal-body">
+
+								<form id="formularioReserva" name="formularioReserva">
+									<div class="form-group"
+										ng-class="{ 'has-error' : formularioReserva.nombre.$invalid && !formularioReserva.nombre.$pristine, 'has-success' : !formularioReserva.nombre.$invalid}">
+										<label>Nombre:</label> <input class="form-control" type="text"
+											ng-minlength=1 ng-maxlength=50 ng-model="reserva.nombre"
+											id="nombre" name="nombre" required />
+										<div class="error"
+											ng-show="formularioReserva.nombre.$dirty && formularioReserva.nombre.$invalid">
+											<small class="error"
+												ng-show="formularioReserva.nombre.$error.required">
+												*Nombre obligatorio </small> <small class="error"
+												ng-show="formularioReserva.nombre.$error.maxlength">
+												*Máx. 50 caracteres </small>
+										</div>
+									</div>
+
+									<div class="form-group"
+										ng-class="{ 'has-error' : formularioReserva.apellidos.$invalid && !formularioReserva.apellidos.$pristine, 'has-success' : !formularioReserva.apellidos.$invalid}">
+										<label>Apellidos:</label> <input class="form-control"
+											type="text" ng-minlength=1 ng-maxlength=50
+											ng-model="reserva.apellidos" id="apellidos" name="apellidos"
+											required />
+										<div class="error"
+											ng-show="formularioReserva.apellidos.$dirty && formularioReserva.apellidos.$invalid">
+											<small class="error"
+												ng-show="formularioReserva.apellidos.$error.required">
+												*Apellidos obligatorios </small> <small class="error"
+												ng-show="formularioReserva.apellidos.$error.maxlength">
+												*Máx. 50 caracteres </small>
+										</div>
+									</div>
+
+									<div class="form-group"
+										ng-class="{ 'has-error' : formularioReserva.correo.$invalid && !formularioReserva.correo.$pristine, 
+                                                          'has-success' : !formularioReserva.correo.$invalid}">
+										<label>Correo:</label> <input class="form-control"
+											type="email" ng-minlength=1 ng-maxlength=50
+											ng-model="reserva.correo" id="correo" name="correo" required />
+										<div class="error"
+											ng-show="formularioReserva.correo.$dirty && formularioReserva.correo.$invalid">
+											<small class="error"
+												ng-show="formularioReserva.correo.$error.required">*Correo
+												obligatorio</small> <small class="error"
+												ng-show="formularioReserva.correo.$error.maxlength">*Máx.
+												50 caracteres</small>
+										</div>
+									</div>
+
+									<div class="form-group"
+										ng-class="{ 'has-error' : formularioReserva.telefono.$invalid && !formularioReserva.telefono.$pristine, 'has-success' : !formularioReserva.telefono.$invalid}">
+										<label>Telefono:</label> <input class="form-control"
+											type="text" ng-minlength=9 ng-maxlength=9
+											ng-model="reserva.telefono" ng-pattern="telefono.word"
+											id="telefono" name="telefono" required />
+										<div class="error"
+											ng-show="formularioReserva.telefono.$dirty && formularioReserva.telefono.$invalid">
+											<small class="error"
+												ng-show="formularioReserva.telefono.$error.required">*Telefono
+												obligatorio</small> <small class="error"
+												ng-show="formularioReserva.telefono.$error.minlength">*Min.
+												9 caracteres</small> <small class="error"
+												ng-show="formularioReserva.telefono.$error.maxlength">*Máx.
+												9 caracteres</small>
+										</div>
+									</div>
+
+									<div class="form-group"
+										ng-class="{ 'has-error' : formularioReserva.dni.$invalid && !formularioReserva.dni.$pristine, 
+                                                          'has-success' : !formularioReserva.dni.$invalid}">
+										<label>Dni:</label> <input type="text" name="dni"
+											ng-minlength=9 ng-maxlength=9 ng-model="reserva.dni"
+											class="form-control" required>
+										<div class="error"
+											ng-show="formularioReserva.dni.$dirty && formularioReserva.dni.$invalid">
+											<small class="error"
+												ng-show="formularioReserva.dni.$error.required">*DNI
+												obligatorio</small> <small class="error"
+												ng-show="formularioReserva.dni.$error.minlength">*Min.
+												9 caracteres</small> <small class="error"
+												ng-show="formularioReserva.dni.$error.maxlength">*Máx.
+												9 caracteres</small>
+										</div>
+									</div>
+
+									<div class="form-group"
+										ng-class="{ 'has-error' : formularioReserva.fechaActividad.$invalid && !formularioReserva.fechaActividad.$pristine, 'has-success' : !formularioReserva.fechaActividad.$invalid}">
+										<label for="dtp_input3">Fecha realización:</label>
+										<div id="fechaActividad" class="input-group date form_date"
+											data-date="" data-date-format="dd-mm-yyyy"
+											data-link-field="dtp_input3" data-link-format="yyyy-mm-dd">
+											<input type="text" name="fechaActividad" class="form-control"
+												ng-model="reserva.fechaAtividad" ng-maxlength="10"
+												ng-minlength="10" ng-pattern="fechaActividad.word" required />
+											<span class="input-group-addon"><span
+												class="fa fa-power-off"></span></span> <span
+												class="input-group-addon"><span
+												class="fa fa-calendar"></span></span>
+										</div>
+										<div class="error"
+											ng-show="formularioReserva.fechaActividad.$dirty && formularioReserva.dni.$invalid">
+											<small class="error"
+												ng-show="formularioReserva.fechaActividad.$error.required">*Fecha
+												obligatoria</small> <small class="error"
+												ng-show="formularioReserva.fechaActividad.$error.maxlength || formularioReserva.fechaActividad.$error.pattern">*Fecha
+												inválida</small>
+										</div>
+									</div>
+
+									<div class="form-group"
+										ng-class="{ 'has-error' : formularioReserva.cantidadPersonas.$invalid && !formularioReserva.cantidadPersonas.$pristine, 'has-success' : !formularioReserva.cantidadPersonas.$invalid}">
+										<label for="cantidadPersonas">Participantes</label> <input
+											id="cantidadPersonas"
+											class="form-control input-group-lg reg_name" type="number"
+											ng-min=feed.informacionActividad.participantesMin
+											ng-max=feed.informacionActividad.participantesMax
+											ng-model="reserva.cantidadPersonas" name="cantidadPersonas"
+											min="{{feed.informacionActividad.participantesMin}}"
+											max="{{feed.informacionActividad.participantesMax}}" required />
+										<div class="error"
+											ng-show="formularioReserva.cantidadPersonas.$dirty && formularioReserva.cantidadPersonas.$invalid">
+											<small class="error"
+												ng-show="formularioReserva.cantidadPersonas.$error.required">
+												*Participantes obligatorios </small> <small class="error"
+												ng-show="formularioReserva.cantidadPersonas.$error.min">
+												*Cantidad participantes insuficiente </small> <small class="error"
+												ng-show="formularioReserva.cantidadPersonas.$error.max">
+												*Cantidad participantes excesiva </small>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-lg-12">
+											<p class="h4">Precio total = {{reserva.cantidadPersonas *
+												feed.datosActuales.precio}}</p>
+										</div>
+									</div>
+
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Cancelar</button>
+										<button id="btnReservar" type="submit" class="btn btn-success"
+											ng-click="usuarioCtrl.create(reserva.nombre, reserva.apellidos, reserva.correo, reserva.telefono, reserva.dni, reserva.fechaActividad, reserva.cantidadPersonas)">Realizar
+											reserva</button>
+									</div>
+
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- ./Modal -->
 
         <div class="partner-list">
             <div class="container">

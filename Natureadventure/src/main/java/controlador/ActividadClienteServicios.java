@@ -49,6 +49,22 @@ public class ActividadClienteServicios {
     }
     
     @GET
+    @Path("ofertas")
+    @Produces("application/json")
+    public Response buscarOfertas() {
+        Actividad[] actividades = actividadJPA.buscarOfertas();
+        return Response.ok(actividades).build();
+    }
+    
+    @GET
+    @Path("novedades")
+    @Produces("application/json")
+    public Response buscarNovedades() {
+    	 Actividad[] actividades = actividadJPA.buscarNovedades();
+         return Response.ok(actividades).build();
+    }
+    
+    @GET
     @Path("palabraClave/{palabraClave}")
     @Produces("application/json")
     public Response buscarActividadPorPalabraClave(@PathParam("palabraClave") String palabraClave) {
@@ -65,12 +81,15 @@ public class ActividadClienteServicios {
     }
     
     @PUT
-    @Path("reserva/{dni}")
+    @Path("reserva/{nombre}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Produces(MediaType.APPLICATION_JSON)
-    public Response creaNuevaEntrada(@PathParam("dni") String dni, Reserva reserva) {
+    public Response creaNuevaEntrada(@PathParam("nombre") String nombre, Reserva reserva) {
 		
-    	System.out.println("******************************************************* en el put" + dni);
+    	System.out.println("******************************************************* en el put " + nombre);
+    	Actividad actividad = actividadJPA.buscaActividadPorNombre(nombre);
+    	reserva.setActividad(actividad);
+    	reserva.setUsuario(null);
     	reservaJPA.nuevaReserva(reserva);
     	return Response.ok(reserva).build();
     }
