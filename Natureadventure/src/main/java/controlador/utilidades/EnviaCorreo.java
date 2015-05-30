@@ -3,22 +3,15 @@ package controlador.utilidades;
 
 import java.util.Properties;
 
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
-import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import javax.mail.util.ByteArrayDataSource;
 
 import modelo.datos.Reserva;
-import modelo.datos.Usuario;
 
 public class EnviaCorreo{
 	
@@ -46,7 +39,7 @@ public class EnviaCorreo{
 		String emailBody = "";
 		if(tipo.equals("aceptar")){
 			generateMailMessage.setSubject("NatureAdventure: confirmación reserva");
-			emailBody = "La administración de NatureAdventure le confirma que su reserva realizada el día "+reserva.getFechaReserva()+" ha sido aceptada. " + "<br><br>"
+			emailBody = "La administración de NatureAdventure le confirma que su reserva realizada el día <b>"+reserva.getFechaReserva()+"</b> ha sido aceptada. " + "<br><br>"
 					+ "A continuación le facilitamos los detalles de la transacción: <br/> "
 					+ "<ul>"
 					+ "<li> Nombre y apellidos cliente: "+reserva.getNombre() + " "+reserva.getApellidos()+"</li>"
@@ -55,7 +48,7 @@ public class EnviaCorreo{
 					+ "<li> Actividad: "+reserva.getActividad().getNombre()+"</li>"
 					+ "<li> Fecha de la actividad: "+reserva.getFechaActividad()+"</li>"
 					+ "<li> Cantidad personas: "+reserva.getCantidadPersonas()+"</li>"
-					+ "<li> Precio Total (con I.V.A): <strong>"+reserva.getPrecio()+"€</strong></li>"
+					+ "<li> Precio Total (I.V.A incluido): <strong>"+reserva.getPrecio()+"Euros</strong></li>"
 					+ "</ul>"
 					+ "A continuación le facilitamos la información personal del monitor asignado a la actividad: <br/>"
 					+ "<ul>"

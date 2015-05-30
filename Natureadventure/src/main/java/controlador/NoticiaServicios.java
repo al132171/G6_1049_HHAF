@@ -1,12 +1,14 @@
 package controlador;
 
 import java.net.URI;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 import modelo.datos.Noticia;
+import modelo.datos.Usuario;
 import modelo.dao.NoticiaJPA;
 
 @Path("gerente/noticias")
@@ -36,48 +38,16 @@ public class NoticiaServicios {
         return Response.ok(noticias).build();
     }
     
-    /*
-    @POST
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response nuevaEntradaDesdeFormulario(
-            @FormParam("id") Long id,
-            @FormParam("user") String user,
-            @FormParam("fecha") String fecha,
-            @FormParam("titulo") String titulo,
-            @FormParam("subtitulo") String subtitulo,
-            @FormParam("descripcion") String descripcion) {
-        if (noticiaJPA.buscaNoticiaPorId(id) == NoticiaJPA.ENTRADA_NULL) {
-        	Noticia noticia = new Noticia(id, user, fecha, titulo, subtitulo, descripcion);
-            noticiaJPA.nuevaNoticia(noticia);;
-            UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
-            URI uri = uriBuilder.path(Long.toString(id)).build();
-            return Response.created(uri).entity(noticia).build();
-        } else
-            return Response.status(Response.Status.CONFLICT).build();
+    @GET
+    @Path("{titulo}")
+    @Produces("application/json")
+    public Response recuperarNoticia(@PathParam("titulo") String titulo) {
+        Noticia noticia = noticiaJPA.recuperarNoticia(titulo);
+        System.out.println(noticia.toString());
+        if(noticia == NoticiaJPA.ENTRADA_NULL)
+        	return Response.status(Response.Status.NOT_FOUND).build();
+    	return Response.ok(noticia).build();
     }
-    
-    @PUT
-    @Path("{id}")
-    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response creaNuevaEntrada(@PathParam("id") Long id, Noticia noticia) {
-        if(!id.equals(noticia.getId())) {
-            System.out.println(id);
-            System.out.println(noticia.getFecha());
-            System.out.println(noticia.getTitulo());
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
-        else {
-            if (noticiaJPA.actualizaNoticia(noticia) == true)
-                return Response.status(Response.Status.NO_CONTENT).build();
-            else {
-                noticiaJPA.nuevaNoticia(noticia);
-                return Response.ok(noticia).build();
-            }
-        }
-    }
-    */
     
     @PUT
     @Path("{user}")
@@ -88,12 +58,22 @@ public class NoticiaServicios {
         return Response.ok(noticia).build();
     }
     
+    @PUT
+	@Path("actualizar/{id}")
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response actualizaNoticia(@PathParam("id") Integer id, Noticia noticia) {
+		noticiaJPA.actualizaNoticia(noticia);
+		return Response.ok(noticia).build();
+	}
+    
+    
     @DELETE
-    @Path("/{id}")
+    @Path("/{titulo}")
     @Produces("application/json")
-    public Response borraEntrada(@PathParam("id") Long id) {
-        if (id != null) {
-            if (noticiaJPA.borraNoticia(id) == true)
+    public Response borraEntrada(@PathParam("titulo") String titulo) {
+        if (titulo != null) {
+            if (noticiaJPA.borraNoticia(titulo) == true)
                 return Response.status(Response.Status.ACCEPTED).build();
             else
                 return Response.status(Response.Status.NOT_FOUND).build();

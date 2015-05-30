@@ -9,6 +9,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import modelo.datos.Noticia;
+import modelo.datos.Usuario;
 
 @Stateless
 public class NoticiaJPA {
@@ -58,16 +59,15 @@ public class NoticiaJPA {
             noticiaBBDD.setTitulo(noticia.getTitulo());
             noticiaBBDD.setSubtitulo((noticia.getSubtitulo()));
             noticiaBBDD.setDescripcion(noticia.getDescripcion());
-            noticiaBBDD.setId(noticia.getId());
             return true;
         } catch (NoResultException e) {
             return false;
         }
     }
     
-    public boolean borraNoticia(Long id) {
-        TypedQuery<Noticia> query = em.createNamedQuery("Noticia.borraPorId", Noticia.class);
-        query.setParameter("id", id);
+    public boolean borraNoticia(String titulo) {
+        TypedQuery<Noticia> query = em.createNamedQuery("Noticia.borraPorTitulo", Noticia.class);
+        query.setParameter("titulo", titulo);
         try {
             int deletedRows = query.executeUpdate();
             if(deletedRows == 1) return true;
@@ -76,5 +76,15 @@ public class NoticiaJPA {
             return false;
         }
     }
+
+	public Noticia recuperarNoticia(String titulo) {
+		TypedQuery<Noticia> query = em.createNamedQuery("Noticia.encuentraPorTitulo", Noticia.class);
+		query.setParameter("titulo", titulo);	        
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return ENTRADA_NULL;
+		}
+	}
 
 }
