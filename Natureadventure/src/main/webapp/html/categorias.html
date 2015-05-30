@@ -727,19 +727,18 @@
 											data-date="" data-date-format="dd-mm-yyyy"
 											data-link-field="dtp_input3" data-link-format="yyyy-mm-dd">
 											<input type="text" name="fechaActividad" class="form-control"
-												ng-model="reserva.fechaActividad" ng-maxlength="10"
-												ng-minlength="10" ng-pattern="fechaActividad.word" required />
+												ng-model="reserva.fechaActividad" ng-maxlength=10 ng-pattern="fechaActividad.word" required ng-change="validaFechaDDMMAAAA(reserva.fechaActividad)"/>
 											<span class="input-group-addon"><span
 												class="fa fa-power-off"></span></span> <span
 												class="input-group-addon"><span
 												class="fa fa-calendar"></span></span>
 										</div>
 										<div class="error"
-											ng-show="formularioReserva.fechaActividad.$dirty && formularioReserva.dni.$invalid">
+											ng-show="formularioReserva.fechaActividad.$dirty && formularioReserva.fechaActividad.$invalid">
 											<small class="error"
 												ng-show="formularioReserva.fechaActividad.$error.required">*Fecha
 												obligatoria</small> <small class="error"
-												ng-show="formularioReserva.fechaActividad.$error.maxlength || formularioReserva.fechaActividad.$error.pattern">*Fecha
+												ng-show="!show.formatoFechaValido || formularioReserva.fechaActividad.$error.maxlength">*Fecha
 												inválida</small>
 										</div>
 									</div>
