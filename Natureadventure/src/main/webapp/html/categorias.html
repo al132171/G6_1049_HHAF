@@ -541,7 +541,7 @@
 								</div>
 							</div>
 
-							<div class="row">
+							<!--<div class="row">
 								<div class="col-md-12 col-sm-12">
 									<h4 class="titulo-categorias">
 										Descripción:
@@ -550,7 +550,7 @@
 										</br>
 								</div>
 
-							</div>
+							</div>-->
 
 						<div class="row">
 							<div class="col-md-12 col-sm-12">
@@ -755,7 +755,8 @@
 											ng-max=feed.informacionActividad.participantesMax
 											ng-model="reserva.cantidadPersonas" name="cantidadPersonas"
 											min="{{feed.informacionActividad.participantesMin}}"
-											max="{{feed.informacionActividad.participantesMax}}" required />
+											max="{{feed.informacionActividad.participantesMax}}" 
+                                            ng-change="calculaPrecio(reserva.cantidadPersonas)" required />
 										<div class="error"
 											ng-show="formularioReserva.cantidadPersonas.$dirty && formularioReserva.cantidadPersonas.$invalid">
 											<small class="error"
@@ -770,8 +771,7 @@
 
 									<div class="row">
 										<div class="col-lg-12">
-											<p class="h4">Precio total = {{reserva.cantidadPersonas *
-												feed.datosActuales.precio}}</p>
+											<p class="h4">Precio total = {{show.precio}}€ (IVA incluido)</p>
 										</div>
 									</div>
 

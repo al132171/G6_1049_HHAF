@@ -85,6 +85,7 @@
         $scope.show.resultadosCategoria = false;
         $scope.show.informacionActividad = false;
         $scope.show.cantidadResultados = 0;
+        $scope.show.precio = 0;
 
 
 
@@ -294,11 +295,20 @@
         };
 
         if($scope.nameActividad !== undefined) {
-            var nombre = $scope.nameActividad.replace("%20", " ");
-            
+            var nombre = $scope.nameActividad.split("%20").join(" ");
+            alert(nombre);
+            $scope.show.actividad = nombre;
             $scope.informacionActividad(nombre);
 
         }
+        
+        //  Calcula el precio de la reserva en función de el numero de participantes y le añade el 21% de IVA
+        $scope.calculaPrecio = function(numeroAsistentes){
+            
+            var precio = $scope.feed.datosActuales.precio * numeroAsistentes * 1.21;
+            $scope.show.precio = precio.toFixed(2);
+        };
+        
 
         //		Limpiar el formulario para que si sales de la ventana modal se limpien los mensajes de error y formato
         $scope.resetFormReserva = function(reserva){ 
@@ -381,6 +391,7 @@
                     alert("succes");
                 });
                 $('#modalReservar').modal('hide');
+                window.location.href="http://localhost:8080/Natureadventure/html/PagosPrueba.html";
             };
         };
 
