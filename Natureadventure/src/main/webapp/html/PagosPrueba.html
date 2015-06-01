@@ -7,6 +7,30 @@
 <head>
 
 
+<title>NaturAdventure | categorías</title>
+<meta name="description" content="">
+
+<meta name="viewport" content="width=device-width">
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300'
+	rel='stylesheet' type='text/css'>
+
+<link rel="shortcut icon" href="../images/ico/favicon.ico">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="../css/usuario/bootstrap.min.css">
+
+<!-- ----------- -->
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+<script src="../js/funcionesCalendario.js"></script>
+    
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
 
 </head>
 
@@ -62,6 +86,109 @@
 </tr>
 <tr><td><input type=submit value=Pagar onclick="location.href='index.html';"></td></tr>
 </table>
+<p></p>
+<p></p>
+
+
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Pago reserva</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Titular">Titular de la tarjeta</label>  
+  <div class="col-md-5">
+  <input id="Titular" name="Titular" placeholder="Nompre y apellidos" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Numero">Número de la tarjeta</label>  
+  <div class="col-md-5">
+  <input id="Numero" name="Numero" placeholder="Número" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Codigo">Código de seguridad</label>  
+  <div class="col-md-1">
+  <input id="Codigo" name="Codigo" placeholder="CVC" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Caducidad">Fecha de caducidad</label>
+  <div class="col-md-1">
+    <select id="mes" name="mes" class="form-control">
+      <option value="null">mes</option>
+      <option value="01">01</option>
+      <option value="02">02</option>
+      <option value="03">03</option>
+      <option value="04">04</option>
+      <option value="05">05</option>
+      <option value="06">06</option>
+      <option value="07">07</option>
+      <option value="08">08</option>
+      <option value="09">09</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+    </div>
+    
+    <div class="col-md-1">
+    <select name="anyo" id="anyo" class="form-control">
+    <option value="01">2015</option>
+    <option value="02">2016</option>
+    <option value="03">2017</option>
+    <option value="04">2018</option>
+    <option value="05">2019</option>
+    <option value="06">2020</option>
+    <option value="07">2021</option>
+    <option value="08">2022</option>
+    <option value="09">2023</option>
+    <option value="10">2024</option>
+    <option value="11">2025</option>
+    <option value="12">2026</option>
+    <option value="13">2027</option>
+    <option value="14">2028</option>
+    <option value="15">2029</option>
+    <option value="16">2030</option>
+    <option value="17">2031</option>
+    <option value="18">2032</option>
+    <option value="19">2033</option>
+    <option value="20">2034</option>
+    <option value="21">2035</option>
+    <option value="22">2036</option>
+
+</select>
+</div>
+</div>
+
+<!-- Button (Double) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="button1id"></label>
+  <div class="col-md-8">
+    <button id="button1id" name="button1id" class="btn btn-success">Pagar</button>
+    <button id="button2id" name="button2id" class="btn btn-danger">Cancelar</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+
+<script src="../js/usuario/bootstrap.js"></script>
+	<script src="../js/usuario/plugins.js"></script>
+	<script src="../js/usuario/main.js"></script>
 </body>
 
 </html>

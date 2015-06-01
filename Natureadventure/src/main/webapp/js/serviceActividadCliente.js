@@ -310,7 +310,7 @@
             $scope.show.precio = precio.toFixed(2);
         };
 
-        
+        // Valida el formato de la fecha de reserva
         $scope.validaFechaDDMMAAAA = function (fecha){
             var dtCh= "-";
             var minYear=1900;
@@ -351,7 +351,7 @@
                 var strMonth=dtStr.substring(pos1+1,pos2)
                 var strYear=dtStr.substring(pos2+1)
                 strYr=strYear
-                
+
                 for (var i = 1; i <= 3; i++) {
                     if (strYr.charAt(0)=="0" && strYr.length>1) strYr=strYr.substring(1)
                         }
@@ -383,7 +383,48 @@
                 $scope.formularioReserva.fechaActividad.$invalid = true;
                 alert("incorrecta");
             }
-};
+        };
+
+        
+        //		Comprueba que la fecha inicio no sea mayor que la final
+		$scope.validarRangoFecha =  function(fechaReserva){
+            
+            var diaReserva = fechaReserva.substring(0, 2);
+            var diaInicio = $scope.feed.datosActuales.fechaInicio.substring(0, 2);
+            var diaFin = $scope.feed.datosActuales.fechaFin.substring(0, 2);
+
+            var mesReserva = fechaReserva.substring(3, 5);
+            var mesInicio = $scope.feed.datosActuales.fechaInicio.substring(3, 5);
+            var mesFin = $scope.feed.datosActuales.fechaFin.substring(3, 5);
+
+            var añoReserva = fechaReserva.substring(6,10);
+            var añoInicio = $scope.feed.datosActuales.fechaInicio.substring(6);
+            var añoFin = $scope.feed.datosActuales.fechaFin.substring(6);
+
+            var FechaFinalReserva = mesFin + "/" + diaFin + "/" + añoFin;
+            var FechaInicialReserva = mesInicio + "/" + diaInicio + "/" + añoInicio;
+            var FechaReservaActividad = mesReserva + "/" + diaReserva + "/" + añoReserva;
+
+
+            if(Date.parse(FechaReservaActividad) > Date.parse(FechaFinalReserva)){
+                $scope.show.formatoFechaValido = false;
+                $scope.formularioReserva.fechaActividad.$invalid = true;
+                alert("La fecha de reserva no puede ser mayor a la fecha final.");
+            }
+            else {
+                if(Date.parse(FechaReservaActividad) < Date.parse(FechaInicialReserva)){
+                    $scope.show.formatoFechaValido = false;
+                    $scope.formularioReserva.fechaActividad.$invalid = true;
+                    alert("La fecha de reserva no puede ser menor a la fecha inicial.");
+                }
+                else {
+                    $scope.show.formatoFechaValido = true;
+
+                }
+
+            }
+		};
+
         
 
         //		Limpiar el formulario para que si sales de la ventana modal se limpien los mensajes de error y formato
@@ -456,7 +497,7 @@
 
         self.create = function (nombre, apellidos, correo, telefono, dni, fechaActividad, cantidadPersonas) {
 
-            var precioTotal = $scope.reserva.precio * cantidadPersonas;
+            var precioTotal = $scope.reserva.precio * cantidadPersonas * 1.21;
 
             if($scope.formularioReserva.$valid){
                 alert($scope.reserva.actividad_id);
@@ -498,7 +539,6 @@
         this.create = function(apellidos, cantidadPersonas, contrato, correo, dni, estado, fechaActividad, fechaReserva, nombre, precio, telefono, actividad_id, usuario_id) {
             alert("antes del put");
 
-            // var???
             dato = {'reserva': {'fechaActividad': fechaActividad, 'fechaReserva': fechaReserva, 'cantidadPersonas': cantidadPersonas, 'precio': precio, 'nombre': nombre, 'apellidos': apellidos, 'dni': dni, 'correo': correo, 'telefono': telefono, 'estado': estado, 'contrato': contrato, 'actividad': actividad_id, 'usuario': usuario_id}};
             alert("antes del put 2");
 
