@@ -1,19 +1,29 @@
 package controlador;
 
 import java.net.URI;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import controlador.utilidades.EnviaNoticia;
 import modelo.datos.Noticia;
+import modelo.datos.UsuarioSuscritoNoticias;
 import modelo.dao.NoticiaJPA;
+import modelo.dao.UsuarioSuscritoNoticiasJPA;
 
 @Path("gerente/noticias")
 @Stateless
 public class NoticiaServicios {
 	@Inject
     NoticiaJPA noticiaJPA;
+	@Inject
+	EnviaNoticia enviaNoticia;
+	@Inject
+	UsuarioSuscritoNoticiasJPA usnJPA;
     @Context
     private UriInfo uriInfo;
     
@@ -34,6 +44,17 @@ public class NoticiaServicios {
     public Response listaUltimasNoticias() {
         Noticia[] noticias = noticiaJPA.listaUltimasNoticias();
         return Response.ok(noticias).build();
+    }
+    
+    @GET
+    @Path("{titulo}")
+    @Produces("application/json")
+    public Response recuperarNoticia(@PathParam("titulo") String titulo) {
+        Noticia noticia = noticiaJPA.recuperarNoticia(titulo);
+        System.out.println(noticia.toString());
+        if(noticia == NoticiaJPA.ENTRADA_NULL)
+        	return Response.status(Response.Status.NOT_FOUND).build();
+    	return Response.ok(noticia).build();
     }
     
     /*
@@ -85,8 +106,53 @@ public class NoticiaServicios {
     @Produces(MediaType.APPLICATION_JSON)
     public Response creaNuevaEntrada(@PathParam("user") String user, Noticia noticia) {
         noticiaJPA.nuevaNoticia(noticia);
+        
+        UsuarioSuscritoNoticias[] suscritos = usnJPA.listaTodosSuscritos();
+        String[] emailSuscritos = new String[suscritos.length];
+        
+        for (int i = 0; i < suscritos.length; i++) {
+			emailSuscritos[i] = suscritos[i].getEmail();
+		}
+        
+        try {
+			enviaNoticia.generateAndSendEmail(noticia, emailSuscritos);
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+          
         return Response.ok(noticia).build();
     }
+    
+    @PUT
+	@Path("actualizar/{id}")
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response actualizaNoticia(@PathParam("id") Integer id, Noticia noticia) {
+		noticiaJPA.actualizaNoticia(noticia);
+		
+		UsuarioSuscritoNoticias[] suscritos = usnJPA.listaTodosSuscritos();
+        String[] emailSuscritos = new String[suscritos.length];
+        
+        for (int i = 0; i < suscritos.length; i++) {
+			emailSuscritos[i] = suscritos[i].getEmail();
+		}
+        
+        try {
+			enviaNoticia.generateAndSendEmail(noticia, emailSuscritos);
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return Response.ok(noticia).build();
+	}
     
     @DELETE
     @Path("/{id}")

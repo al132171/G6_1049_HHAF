@@ -10,6 +10,7 @@ controlador/ActividadServicios.class
 controlador/MonitorServicios.class
 controlador/ActividadClienteServicios.class
 controlador/UsuarioServicios.class
+controlador/utilidades/EnviaNoticia.class
 modelo/datos/Noticia.class
 modelo/datos/Actividad.class
 modelo/dao/MonitorJPA.class

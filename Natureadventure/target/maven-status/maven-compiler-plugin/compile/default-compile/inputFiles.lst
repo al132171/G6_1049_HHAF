@@ -11,6 +11,7 @@
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/controlador/LoginServicios.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/modelo/dao/MonitorJPA.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/modelo/dao/LoginJPA.java
+/home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/controlador/utilidades/EnviaNoticia.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/modelo/dao/UsuarioJPA.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/controlador/utilidades/EnviaCorreo.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/main/java/controlador/ActividadClienteServicios.java
