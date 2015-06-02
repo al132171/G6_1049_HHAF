@@ -23,6 +23,8 @@
 <link rel="stylesheet" href="../css/misc.css">
 <link rel="stylesheet" href="../css/usuario/style.css">
 <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/usuario/style.css">
+
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -115,18 +117,23 @@
 						<h3 class="widget-title">Últimas noticias</h3>
 						<div class="post-small" ng-repeat="n in noticias">
 							<div class="post-date">
-								<span class="time"> {{n.fecha.split('-')[0]}}</span>
-								<span class="time" id="{{n.fecha}}"> {{ n.fecha.split('-')[1]}}-{{n.fecha.split('-')[2]}} </span>
-							</div> 
+								<span class="time"> {{n.fecha.split('-')[0]}}</span> <span
+									class="time" id="{{n.fecha}}"> {{
+									n.fecha.split('-')[1]}}-{{n.fecha.split('-')[2]}} </span>
+							</div>
 							<!-- /.post-thumb -->
 							<div class="post-content">
 								<h4>{{n.titulo}}</h4>
 								<span>{{n.subtitulo}}</span>
 								<p>{{n.descripcion}}</p>
-							</div> <!-- /.post-content -->
-						</div><!-- /.post-small -->
-					</div><!-- /.widget-item -->
-				</div><!-- /.col-md-4 -->				
+							</div>
+							<!-- /.post-content -->
+						</div>
+						<!-- /.post-small -->
+					</div>
+					<!-- /.widget-item -->
+				</div>
+				<!-- /.col-md-4 -->
 
 				<div class="col-md-4">
 					<div class="widget-item">
@@ -178,40 +185,96 @@
 				<!-- /.col-md-4 -->
 			</div>
 			<!-- /.row -->
-            
-            
-            <!-- row sucripción a noticias -->
-                <div class="row">
-                    <div class="col-md-8">
-                        <h3 class="widget-title">Siempre informado</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
-                        <form class="form-horizontal">
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-1 control-label" for="Email">Email: </label>  
-                                    <div class="col-md-4">
-                                        <input id="Email" name="Email" placeholder="email" class="form-control input-md" type="text">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <button id="botonSuscripcion" type="submit" name="botonSuscripcion" class="btn btn-primary">Suscríbete</button>
-                                    </div>
-                                </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- /row suscripcion a noticias -->
-            
-            
+
+
+			<!-- row sucripción a noticias -->
+			<div class="row">
+				<div class="col-md-8">
+					<h3 class="widget-title">Siempre informado</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-8">
+					<form id="formSuscripcion" name="formSuscripcion"
+						class="form-horizontal">
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-1 control-label" for="Email">Email:
+							</label>
+							<div class="col-md-4">
+								<input id="Email" name="Email" placeholder="email"
+									class="form-control input-md" type="text"
+									ng-model="suscripcion.email" required>
+							</div>
+							<label class="col-md-1 control-label" for="Nombre">Nombre:
+							</label>
+							<div class="col-md-4">
+								<input id="Nombre" name="Email" placeholder="Nombre"
+									class="form-control input-md" type="text"
+									ng-model="suscripcion.nombre" required>
+							</div>
+							<div class="col-md-2">
+								<button id="botonSuscripcion" type="submit"
+									name="botonSuscripcion" class="btn btn-primary"
+									ng-click="usuarioCtrl.create(suscripcion.nombre, suscripcion.email)">Suscríbete</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- /row suscripcion a noticias -->
+
+
+			<!-- Modal -->
+			<div class="modal fade" id="modalSuscripcionFallida" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header modal-header-danger">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title panel-title" id="myModalLabel">Suscripción fallida</h4>
+						</div>
+						<div class="modal-body">Ese correo electronico ya se está utilizando.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Modal -->
+			<div class="modal fade" id="modalSuscripcionCorrecta" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header modal-header-new">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title panel-title" id="myModalLabel">Suscripción correcta</h4>
+						</div>
+						<div class="modal-body">La suscripción se ha realizado con éxito.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
 		</div>
 		<!-- /.container -->
 	</div>
 	<!-- /.middle-content -->
 
-    
-    
+
+
 	<div class="go-act">
 		<div class="container">
 			<div class="row">
@@ -238,89 +301,6 @@
 		<!-- /.container -->
 	</div>
 	<!-- /.go-act -->
-
-	<div class="ticket-list">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 col-sm-6">
-					<div class="ticket-item">
-						<h4>
-							<a href="#">Airlines</a>
-						</h4>
-						<p>
-							Travel is free responsive HTML5 template from <span class="blue">template</span><span
-								class="green">mo</span>. You may download, edit and use this
-							template for your travel related websites.<br>
-							<br> Aliquam justo lectus, fermentum vitae libero
-							sollicitudin, tincidunt accumsan magna.Vestibulum congue lorem
-							odio, at sodales nisi luctus quis.
-						</p>
-						<a href="#" class="ticket-btn">Book a Ticket</a>
-					</div>
-					<!-- /.ticket-item -->
-				</div>
-				<!-- /.col-md-3 -->
-				<div class="col-md-3 col-sm-6">
-					<div class="ticket-item">
-						<h4>
-							<a href="#">Best Cities</a>
-						</h4>
-						<p>
-							Praesent ornare commodo tincidunt. Interdum et malesuada fames ac
-							ante ipsum primis in faucibus. Aliquam justo lectus, fermentum
-							vitae libero sollicitudin, tincidunt accumsan magna. <br>
-							<br>Vestibulum congue lorem odio, at sodales nisi luctus
-							quis. Suspendisse suscipit ligula libero, id consectetur magna
-							dictum sed.
-						</p>
-						<a href="#" class="ticket-btn">Book a Ticket</a>
-					</div>
-					<!-- /.ticket-item -->
-				</div>
-				<!-- /.col-md-3 -->
-				<div class="col-md-3 col-sm-6">
-					<div class="ticket-item">
-						<h4>
-							<a href="#">Travel Guides</a>
-						</h4>
-						<p>
-							Praesent ornare commodo tincidunt. Interdum et malesuada fames ac
-							ante ipsum primis in faucibus. Aliquam justo lectus, fermentum
-							vitae libero sollicitudin, tincidunt accumsan magna. <br>
-							<br>Vestibulum congue lorem odio, at sodales nisi luctus
-							quis. Suspendisse suscipit ligula libero, id consectetur magna
-							dictum sed.
-						</p>
-						<a href="#" class="ticket-btn">Book a Ticket</a>
-					</div>
-					<!-- /.ticket-item -->
-				</div>
-				<!-- /.col-md-3 -->
-				<div class="col-md-3 col-sm-6">
-					<div class="ticket-item">
-						<h4>
-							<a href="#">Special Events</a>
-						</h4>
-						<p>
-							Praesent ornare commodo tincidunt. Interdum et malesuada fames ac
-							ante ipsum primis in faucibus. Aliquam justo lectus, fermentum
-							vitae libero sollicitudin, tincidunt accumsan magna. <br>
-							<br>Vestibulum congue lorem odio, at sodales nisi luctus
-							quis. Suspendisse suscipit ligula libero, id consectetur magna
-							dictum sed.
-						</p>
-						<a href="#" class="ticket-btn">Book a Ticket</a>
-					</div>
-					<!-- /.ticket-item -->
-				</div>
-				<!-- /.col-md-3 -->
-			</div>
-			<!-- /.row -->
-		</div>
-		<!-- /.container -->
-	</div>
-	<!-- /.ticket-list -->
-
 
 
 

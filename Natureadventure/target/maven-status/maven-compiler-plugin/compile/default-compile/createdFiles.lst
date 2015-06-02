@@ -1,3 +1,4 @@
+controlador/UsuarioSuscritoNoticiasServicios.class
 controlador/utilidades/CrearFactura.class
 controlador/LoginServicios.class
 modelo/dao/ActividadJPA.class
@@ -14,6 +15,8 @@ modelo/datos/Actividad.class
 modelo/dao/MonitorJPA.class
 controlador/ComentarioServicios.class
 modelo/dao/UsuarioJPA.class
+modelo/datos/UsuarioSuscritoNoticias.class
+modelo/dao/UsuarioSuscritoNoticiasJPA.class
 modelo/dao/NoticiaJPA.class
 modelo/dao/ReservaJPA.class
 modelo/datos/Comentario.class

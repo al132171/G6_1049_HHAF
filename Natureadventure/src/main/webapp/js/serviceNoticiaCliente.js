@@ -3,6 +3,7 @@ var app = angular.module("noticiaCliente", []);
 app.controller('UsuarioCtrl', ['$scope', 'NoticiaUService', function ($scope, NoticiaUService) {
 
 	app.baseURI = 'http://localhost:8080/Natureadventure/gerente/noticias/';
+	app.baseSuscripcionURI = 'http://localhost:8080/Natureadventure/usuarioSuscritoNoticias/'
 
 	var self = this;
 
@@ -24,6 +25,24 @@ app.controller('UsuarioCtrl', ['$scope', 'NoticiaUService', function ($scope, No
     $scope.noticias = NoticiaUService.retrieveUltimasNoticias().success(function(data){
             $scope.noticias = data.noticia;
         });
+    
+    self.create = function(nombre, email) {
+    	NoticiaUService.buscaSuscripcion(email)
+    	.success(function (data) {
+    		$('#modalSuscripcionFallida').modal('show');
+    	}).error(function(){
+    		NoticiaUService.createSuscripcion(nombre, email)
+    		.success(function(data) {    			
+    			var defaultForm = {
+    					nombre:"", email: ""
+    			};
+    			$scope.formSuscripcion.$setPristine();
+    			$scope.suscripcion = defaultForm;
+    			$('#modalSuscripcionCorrecta').modal('show');
+    		});
+    	});
+    	
+    };
     
 	// Cargar las noticias
 	NoticiaUService.retrieveUltimasNoticias()
@@ -89,6 +108,17 @@ app.service('NoticiaUService', ['$http', function ($http) {
 
 	this.retrieveUltimasNoticias = function() {
 		var url = app.baseURI + "ultimas"
+		return $http.get(url);
+	}
+	
+	this.createSuscripcion = function(nombre, email){
+		dato = {'usuarioSuscritoNoticias':{'nombre': nombre, 'email': email}};
+		var url = app.baseSuscripcionURI + email;
+		return $http.put(url, dato);
+	}
+	
+	this.buscaSuscripcion = function(email){
+		var url = app.baseSuscripcionURI + email;
 		return $http.get(url);
 	}
 
