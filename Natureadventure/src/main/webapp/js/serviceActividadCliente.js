@@ -377,16 +377,14 @@
             }
             if(isDate(fecha)){
                 $scope.show.formatoFechaValido = true;
-                alert("correcta");
             }else{
                 $scope.show.formatoFechaValido = false;
                 $scope.formularioReserva.fechaActividad.$invalid = true;
-                alert("incorrecta");
             }
         };
 
         
-        //		Comprueba que la fecha inicio no sea mayor que la final
+        //		Comprueba que la fecha de realización de la actividad que se ha escogido está dentro del periodo de realización de la actividad
 		$scope.validarRangoFecha =  function(fechaReserva){
             
             var diaReserva = fechaReserva.substring(0, 2);
@@ -409,13 +407,11 @@
             if(Date.parse(FechaReservaActividad) > Date.parse(FechaFinalReserva)){
                 $scope.show.formatoFechaValido = false;
                 $scope.formularioReserva.fechaActividad.$invalid = true;
-                alert("La fecha de reserva no puede ser mayor a la fecha final.");
             }
             else {
                 if(Date.parse(FechaReservaActividad) < Date.parse(FechaInicialReserva)){
                     $scope.show.formatoFechaValido = false;
                     $scope.formularioReserva.fechaActividad.$invalid = true;
-                    alert("La fecha de reserva no puede ser menor a la fecha inicial.");
                 }
                 else {
                     $scope.show.formatoFechaValido = true;
@@ -425,6 +421,19 @@
             }
 		};
 
+        $scope.escondeFormularioReserva = function() {
+            if($scope.formularioReserva.$valid){
+                $('#modalReservar').modal('hide');
+                $('#modalPagar').modal('show');
+            }
+        }
+        
+        $scope.muestraFormularioReserva = function() {
+            if($scope.formularioReserva.$valid){
+                $('#modalPagar').modal('hide');
+                $('#modalReservar').modal('show');
+            }
+        }
         
 
         //		Limpiar el formulario para que si sales de la ventana modal se limpien los mensajes de error y formato
@@ -499,16 +508,13 @@
 
             var precioTotal = $scope.reserva.precio * cantidadPersonas * 1.21;
 
-            if($scope.formularioReserva.$valid){
-                alert($scope.reserva.actividad_id);
-                alert($scope.reserva.usuario_id);
+            if($scope.formularioReserva.$valid && $scope.formularioPago.$valid){
 
                 UsuarioService.create(apellidos, cantidadPersonas, $scope.reserva.contrato, correo, dni, $scope.reserva.estado, fechaActividad, $scope.reserva.fechaReserva, nombre, precioTotal, telefono, $scope.show.actividad, $scope.reserva.usuario_id)
                     .success(function (data) {
-                    alert("succes");
                 });
-                $('#modalReservar').modal('hide');
-                window.location.href="http://localhost:8080/Natureadventure/html/PagosPrueba.html";
+                $('#modalPagar').modal('hide');
+                $('#modalConfirmación').modal('show');
             };
         };
 
