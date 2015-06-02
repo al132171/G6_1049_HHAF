@@ -21,6 +21,10 @@ app.controller('UsuarioCtrl', ['$scope', 'NoticiaUService', function ($scope, No
 		"12": "Diciembre",
 	};
 	
+    $scope.noticias = NoticiaUService.retrieveUltimasNoticias().success(function(data){
+            $scope.noticias = data.noticia;
+        });
+    
 	// Cargar las noticias
 	NoticiaUService.retrieveUltimasNoticias()
 	.success(function(data) {
