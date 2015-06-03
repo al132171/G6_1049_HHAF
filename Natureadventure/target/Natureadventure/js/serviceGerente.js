@@ -514,8 +514,9 @@ function validator($scope, tipo) {
 	
 	// Limpiar el formulario para que si sales de la ventana modal se limpien los mensajes de error y formato
 	$scope.resetForm = function(user) { 
+		console.log(user);
 		var defaultForm = {
-				fecha : "", titulo : "", subtitulo : "", descripcion : ""
+				fecha: "", titulo: "", subtitulo: "", descripcion: ""
 		};
 		$scope.createForm.$setPristine();
 		$scope.user = defaultForm;
@@ -590,6 +591,41 @@ function validator($scope, tipo) {
 	//***************************************
 	$scope.pagNoticias = {};
 	
+	
+	$scope.comprobar = function(titulo){        
+		NoticiaGService.retrieveNoticia(titulo).success(function(data){
+			//alert("esta" + nombre);
+			console.log(data);
+			$scope.createForm.titulo.$setValidity("titulo", false);
+			$scope.updateForm.tituloU.$setValidity("tituloU", false);		  
+			if(data.noticia.titulo == titulo){
+
+				//alert(data.actividad.nombre);
+			}
+		}).error(function(){
+			//alert("no está"+nombre);
+			$scope.createForm.titulo.$setValidity("titulo", true);
+			$scope.updateForm.tituloU.$setValidity("tituloU", true);
+		});
+	};
+	
+	$scope.comprobarUpdate = function(titulo){
+        
+		NoticiaGService.retrieveNoticia(titulo).success(function(data){
+			
+			if($scope.currentNoticia.noticia.id != data.noticia.id){
+				$scope.updateForm.tituloU.$setValidity("tituloU", false);	
+			} else {
+				$scope.updateForm.tituloU.$setValidity("tituloU", true);
+			}
+		}).error(function(){
+			$scope.updateForm.tituloU.$setValidity("tituloU", true);
+		});
+	};
+
+	
+	
+	
 	// Para la primera vez que cargue la página
 	$scope.noticias = NoticiaGService.retrieveAll()
 	.success(function(data) {
@@ -616,21 +652,24 @@ function validator($scope, tipo) {
 		};
 	};
 	
-	self.retrieveNoticia = function(id) {
-		for (var i = 0; i < $scope.noticias.length; i++) {
-			if ($scope.noticias[i].id == id) {
-				$scope.currentNoticia = $scope.noticias[i];
-			}
-		}
+	self.retrieveNoticia = function(titulo) {
+		NoticiaGService.retrieveNoticia(titulo)
+		.success(function(data) {
+            $scope.updateForm.tituloU.$setValidity("tituloU", true);
+			console.log(data);
+			$scope.currentNoticia = data;
+		});
+
 		// alert($scope.currentNoticia.titulo);
 	};
 	
-	self.update = function (fecha, titulo, subtitulo, descripcion) {
+	self.update = function (fecha, titulo, subtitulo, descripcion,id) {
 	
+		alert("entro update");
 		var bool = validator($scope, "update");
 	
 		if(bool == true) {
-			NoticiaGService.update(fecha, titulo, subtitulo, descripcion)
+			NoticiaGService.update(fecha, titulo, subtitulo, descripcion,id)
 					.success(function(data) {
 	
 						NoticiaGService.retrieveAll()
@@ -645,14 +684,18 @@ function validator($scope, tipo) {
 	};
 	
 	self.removeNoticia = function(noticia) {
-		NoticiaGService.remove(noticia.id)
+		NoticiaGService.remove(noticia)
 		.success(function (data) {
 			NoticiaGService.retrieveAll()
 			.success(function (data) {
 				$scope.noticias = data.noticia;
+				$scope.pagNoticias.noticias = data.noticia;
+				
 			});
-		});
-	}
+			$('#eliminar').modal('hide');
+			});
+	
+	};
 
 }]);
 
@@ -792,22 +835,28 @@ function validator($scope, tipo) {
 				'subtitulo': subtitulo, 'descripcion': descripcion}};
 			var url = app.baseURI + titulo;
 			return $http.put(url, dato);
-		}
+		};
+		
+		this.retrieveNoticia = function(titulo) {
+			var url = app.baseURI +titulo;
+			return $http.get(url);
+		};
 
 		this.retrieveAll = function() {
 			return $http.get(app.baseURI);
-		}
+		};
 
 		this.update = function (noticia) {
-			var url = app.baseURI + noticia.noticia.id;
+			var url = app.baseURI +"actualizar/"+ noticia.noticia.id;
 			return $http.put(url, noticia);
 		};
 		
 		// De momento no se almacenan por ID
-		this.remove = function (id) {
-			var url = app.baseURI + id;
-			return $http["delete"](url);
-		}
+		this.remove = function (titulo) {
+			var url = app.baseURI + titulo;
+			console.log(url);
+			return $http.delete(url);
+		};
 
 	}]);
 

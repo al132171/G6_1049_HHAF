@@ -23,25 +23,34 @@ app.controller('UsuarioCtrl', ['$scope', 'NoticiaUService', function ($scope, No
 	};
 	
     $scope.noticias = NoticiaUService.retrieveUltimasNoticias().success(function(data){
-            $scope.noticias = data.noticia;
-        });
-    
+        $scope.noticias = data.noticia;
+    });
+
     self.create = function(nombre, email) {
-    	NoticiaUService.buscaSuscripcion(email)
-    	.success(function (data) {
-    		$('#modalSuscripcionFallida').modal('show');
-    	}).error(function(){
-    		NoticiaUService.createSuscripcion(nombre, email)
-    		.success(function(data) {    			
-    			var defaultForm = {
-    					nombre:"", email: ""
-    			};
-    			$scope.formSuscripcion.$setPristine();
-    			$scope.suscripcion = defaultForm;
-    			$('#modalSuscripcionCorrecta').modal('show');
-    		});
-    	});
-    	
+
+        var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if ( !expr.test(email) ) {
+            alert("correo");
+            $('#modalCorreoInvalido').modal('show');
+        } else {
+
+            NoticiaUService.buscaSuscripcion(email)
+                .success(function (data) {
+                $('#modalSuscripcionFallida').modal('show');
+            }).error(function(){
+                NoticiaUService.createSuscripcion(nombre, email)
+                    .success(function(data) {    			
+                    var defaultForm = {
+                        nombre:"", email: ""
+                    };
+                    $scope.formSuscripcion.$setPristine();
+                    $scope.suscripcion = defaultForm;
+                    $('#modalSuscripcionCorrecta').modal('show');
+                });
+            });
+
+        }
+
     };
     
 	// Cargar las noticias

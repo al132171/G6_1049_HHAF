@@ -52,7 +52,7 @@ public class EnviaNoticia{
 		generateMailMessage.addRecipients(Message.RecipientType.TO, direcciones);
 		generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress("ujimaticaNatureadventure@gmail.com"));
 		String emailBody = "";
-			generateMailMessage.setSubject("NatureAdventure: confirmación reserva");
+			generateMailMessage.setSubject("NatureAdventure: noticia publicada");
 			
 			emailBody = "Hola, hemos publicado una nueva noticia en nuestro blog, te la ponemos a continuación.<br><br>"
 					+ noticia.getTitulo() + "<br>" + noticia.getSubtitulo() + "<br>"

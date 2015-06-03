@@ -203,15 +203,16 @@
 							</label>
 							<div class="col-md-4">
 								<input id="Email" name="Email" placeholder="email"
-									class="form-control input-md" type="text"
-									ng-model="suscripcion.email" required>
+									class="form-control input-md" type="email"
+									ng-model="suscripcion.email" ng-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/" required>
+                                <small class="error" ng-show="formSuscripcion.$error.pattern"> *Formato inválido</small>
 							</div>
 							<label class="col-md-1 control-label" for="Nombre">Nombre:
 							</label>
 							<div class="col-md-4">
-								<input id="Nombre" name="Email" placeholder="Nombre"
+								<input id="Nombre" name="Nombre" placeholder="Nombre"
 									class="form-control input-md" type="text"
-									ng-model="suscripcion.nombre" required>
+									ng-model="suscripcion.nombre"  required>
 							</div>
 							<div class="col-md-2">
 								<button id="botonSuscripcion" type="submit"
@@ -225,7 +226,7 @@
 			<!-- /row suscripcion a noticias -->
 
 
-			<!-- Modal -->
+			<!-- Modal suscripción fallida -->
 			<div class="modal fade" id="modalSuscripcionFallida" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
@@ -245,8 +246,31 @@
 					</div>
 				</div>
 			</div>
+            <!-- /Modal suscripción fallida -->
+            
+            <!-- Modal correo inválido -->
+			<div class="modal fade" id="modalCorreoInvalido" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header modal-header-danger">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title panel-title" id="myModalLabel">Suscripción fallida</h4>
+						</div>
+						<div class="modal-body">El formato del correo no es válido, por favor introduce uno válido.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+            <!-- /Modal correo inválido -->
 			
-			<!-- Modal -->
+			<!-- Modal suscripción correcta -->
 			<div class="modal fade" id="modalSuscripcionCorrecta" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
@@ -266,7 +290,7 @@
 					</div>
 				</div>
 			</div>
-
+            <!-- /Modal suscripción correcta -->
 
 		</div>
 		<!-- /.container -->

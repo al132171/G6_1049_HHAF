@@ -155,11 +155,11 @@ public class NoticiaServicios {
 	}
     
     @DELETE
-    @Path("/{id}")
+    @Path("/{titulo}")
     @Produces("application/json")
-    public Response borraEntrada(@PathParam("id") Long id) {
-        if (id != null) {
-            if (noticiaJPA.borraNoticia(id) == true)
+    public Response borraEntrada(@PathParam("titulo") String titulo) {
+        if (titulo != null) {
+            if (noticiaJPA.borraNoticia(titulo) == true)
                 return Response.status(Response.Status.ACCEPTED).build();
             else
                 return Response.status(Response.Status.NOT_FOUND).build();

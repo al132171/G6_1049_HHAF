@@ -15,9 +15,10 @@ import javax.xml.bind.annotation.XmlType;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="Noticia.encuentraTodas", query = "SELECT n FROM Noticia n"),
+	@NamedQuery(name="Noticia.encuentraPorTitulo", query = "SELECT n FROM Noticia n where n.titulo = :titulo"),
 	@NamedQuery(name="Noticia.encuentraRecientes", query = "SELECT n FROM Noticia n ORDER BY n.id"),
-    @NamedQuery(name = "Noticia.encuentraPorId", query = "SELECT n FROM Noticia n WHERE n.id = :id"),
-	@NamedQuery(name = "Noticia.borraPorId", query = "DELETE FROM Noticia n WHERE n.id = :id")
+	@NamedQuery(name = "Noticia.encuentraPorId", query = "SELECT n FROM Noticia n WHERE n.id = :id"),
+	@NamedQuery(name = "Noticia.borraPorTitulo", query = "DELETE FROM Noticia n WHERE n.titulo = :titulo")
 })
 
 public class Noticia {
@@ -30,11 +31,11 @@ public class Noticia {
 	private String titulo;
 	private String subtitulo;
 	private String descripcion;
-	
+
 	public Noticia() {
 		super();
 	}
-	
+
 	public Noticia(Long id, String user, String fecha, String titulo,
 			String subtitulo, String descripcion) {
 		this.id = id;
@@ -48,11 +49,11 @@ public class Noticia {
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getUser() {
 		return user;
 	}
@@ -60,35 +61,35 @@ public class Noticia {
 	public void setUser(String user) {
 		this.user = user;
 	}
-	
+
 	public String getFecha() {
 		return fecha;
 	}
-	
+
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
-	
+
 	public String getTitulo() {
 		return titulo;
 	}
-	
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	
+
 	public String getSubtitulo() {
 		return subtitulo;
 	}
-	
+
 	public void setSubtitulo(String subtitulo) {
 		this.subtitulo = subtitulo;
 	}
-	
+
 	public String getDescripcion() {
 		return descripcion;
 	}
-	
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
