@@ -23,7 +23,8 @@ import modelo.dao.ActividadJPA;
 import modelo.datos.Actividad;
 
 /**
- * Created by oscar on 27/11/14.
+ * @author appujimatica
+ * Servicios de actividades para la gerencia de la plataforma
  */
 @Path("gerente/actividades")
 @Stateless

@@ -1,5 +1,10 @@
 package controlador;
 
+/**
+ * @author appujimatica
+ * Servicio de login para acceder al back-end de la plataforma
+ */
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -32,7 +37,6 @@ public class LoginServicios {
     public Response comprobarLogin(@PathParam("username") String username, @PathParam("password") String password) {
         Usuario usuario = loginJPA.buscaUsuario(username, password);
         if (usuario == LoginJPA.ENTRADA_NULL){
-        	System.out.println(usuario.getNombre());
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         return Response.ok(usuario).build();

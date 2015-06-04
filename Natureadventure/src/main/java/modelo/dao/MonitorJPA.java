@@ -1,6 +1,10 @@
 package modelo.dao;
 
-import java.text.DateFormat;
+/**
+ * @author appujimatica
+ * JPA que gestiona los monitores de la plataforma
+ */
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,7 +18,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import cucumber.api.java.ca.Cal;
 import modelo.datos.Reserva;
 
 @Stateless

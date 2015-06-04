@@ -1,5 +1,10 @@
 package modelo.datos;
 
+/**
+ * @author appujimatica
+ * Objeto de dominio Reserva
+ */
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

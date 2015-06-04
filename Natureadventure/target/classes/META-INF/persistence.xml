@@ -42,6 +42,7 @@
             <!--<property name="eclipselink.target-database" value="DERBY"/>-->
             <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.logging.level" value="FINE"/>
+            
         </properties>
     </persistence-unit>
     <persistence-unit name="personasJTADerby" transaction-type="JTA">

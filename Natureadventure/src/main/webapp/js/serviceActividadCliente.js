@@ -297,7 +297,6 @@
 
         if($scope.nameActividad !== undefined) {
             var nombre = $scope.nameActividad.split("%20").join(" ");
-            alert(nombre);
             $scope.show.actividad = nombre;
             $scope.informacionActividad(nombre);
 
@@ -543,13 +542,10 @@
         };
 
         this.create = function(apellidos, cantidadPersonas, contrato, correo, dni, estado, fechaActividad, fechaReserva, nombre, precio, telefono, actividad_id, usuario_id) {
-            alert("antes del put");
 
             dato = {'reserva': {'fechaActividad': fechaActividad, 'fechaReserva': fechaReserva, 'cantidadPersonas': cantidadPersonas, 'precio': precio, 'nombre': nombre, 'apellidos': apellidos, 'dni': dni, 'correo': correo, 'telefono': telefono, 'estado': estado, 'contrato': contrato, 'actividad': actividad_id, 'usuario': usuario_id}};
-            alert("antes del put 2");
 
             var url = actividadCliente.baseURI + "reserva/" + actividad_id;
-            alert(dato.reserva.usuario);
 
             return $http.put(url, dato);
         }

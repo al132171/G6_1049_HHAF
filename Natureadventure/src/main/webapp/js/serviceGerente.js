@@ -88,15 +88,9 @@ function validator($scope, tipo) {
 		$scope.comprobar = function(nombre){
 
 			ActividadGService.retrieveContact(nombre).success(function(data){
-				//alert("esta" + nombre);
 				$scope.createForm.nombre.$setValidity("nombre", false);
 				$scope.updateForm.nombreU.$setValidity("nombreU", false);		  
-				if(data.actividad.nombre == nombre){
-
-					//alert(data.actividad.nombre);
-				}
 			}).error(function(){
-				//alert("no está"+nombre);
 				$scope.createForm.nombre.$setValidity("nombre", true);
 				$scope.updateForm.nombreU.$setValidity("nombreU", true);
 
@@ -594,16 +588,11 @@ function validator($scope, tipo) {
 	
 	$scope.comprobar = function(titulo){        
 		NoticiaGService.retrieveNoticia(titulo).success(function(data){
-			//alert("esta" + nombre);
 			console.log(data);
 			$scope.createForm.titulo.$setValidity("titulo", false);
 			$scope.updateForm.tituloU.$setValidity("tituloU", false);		  
-			if(data.noticia.titulo == titulo){
-
-				//alert(data.actividad.nombre);
-			}
+			
 		}).error(function(){
-			//alert("no está"+nombre);
 			$scope.createForm.titulo.$setValidity("titulo", true);
 			$scope.updateForm.tituloU.$setValidity("tituloU", true);
 		});
@@ -660,12 +649,10 @@ function validator($scope, tipo) {
 			$scope.currentNoticia = data;
 		});
 
-		// alert($scope.currentNoticia.titulo);
 	};
 	
 	self.update = function (fecha, titulo, subtitulo, descripcion,id) {
 	
-		alert("entro update");
 		var bool = validator($scope, "update");
 	
 		if(bool == true) {

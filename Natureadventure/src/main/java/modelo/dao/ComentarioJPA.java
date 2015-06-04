@@ -1,17 +1,19 @@
 package modelo.dao;
 
+/**
+ * @author appujimatica
+ * JPA que gestiona los comentarios de la plataforma
+ */
 
-import modelo.datos.Comentario;
+import java.util.List;
 
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
-import javax.enterprise.inject.Default;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import java.util.List;
+import modelo.datos.Comentario;
 
 @Stateless
 public class ComentarioJPA {

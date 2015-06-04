@@ -1,5 +1,10 @@
 package modelo.dao;
 
+/**
+ * @author appujimatica
+ * JPA que gestiona las suscripciones de noticias de la plataforma
+ */
+
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,7 +13,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import modelo.datos.Usuario;
 import modelo.datos.UsuarioSuscritoNoticias;
 
 @Stateless

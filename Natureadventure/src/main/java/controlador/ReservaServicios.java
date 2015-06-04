@@ -1,5 +1,10 @@
 package controlador;
 
+/**
+ * @author appujimatica
+ * Servicio que gestiona las reservas en el back-end
+ */
+
 import java.util.Calendar;
 
 import javax.ejb.Stateless;
@@ -21,7 +26,6 @@ import modelo.dao.ReservaJPA;
 import modelo.dao.UsuarioJPA;
 import modelo.datos.Reserva;
 import modelo.datos.Usuario;
-import controlador.utilidades.CrearFactura;
 import controlador.utilidades.EnviaCorreo;
 
 @Path("gerente/reservas")
@@ -64,7 +68,6 @@ public class ReservaServicios {
 		Reserva reserva = reservaJPA.buscaReserva(dni, fechaReserva);
 
 		if (reserva == ReservaJPA.ENTRADA_NULL){
-			System.out.println(reserva.getNombre());
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
 		return Response.ok(reserva).build();
@@ -88,7 +91,6 @@ public class ReservaServicios {
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response actualizaActividad(@PathParam("dniMonitor") String dniMonitor, Reserva reserva) {
-		System.out.println("entro actualiza");
 		//		CREAR CONTRATO
 		Usuario u = usuarioJPA.buscaMonitorPorDni(dniMonitor);		
 		reserva.setUsuario(u);
@@ -101,15 +103,12 @@ public class ReservaServicios {
 				try {
 					enviaCorreo.generateAndSendEmail(reserva, "aceptar");
 				} catch (AddressException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (MessagingException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 		reserva.setContrato(idContrato);
 		reservaJPA.actualizaReserva(reserva);
-		System.out.println("acabo actualiza");		
 		return Response.status(Response.Status.NO_CONTENT).build();                
 	}
 
@@ -122,10 +121,8 @@ public class ReservaServicios {
 			try {
 				enviaCorreo.generateAndSendEmail(null, "cancelar");
 			} catch (AddressException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (MessagingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return Response.status(Response.Status.ACCEPTED).build();

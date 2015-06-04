@@ -1,8 +1,15 @@
 @CHARSET "UTF-8";
 
 body {
-	background: #eee !important;
-}
+	  background: url("../images/login.jpg") no-repeat center center fixed;
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	  color: #333;
+	  background-color: #333;
+	  font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+	}
 
 .wrapper {
 	margin-top: 80px;

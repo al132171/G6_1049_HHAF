@@ -1,5 +1,10 @@
 package modelo.dao;
 
+/**
+ * @author appujimatica
+ * JPA que gestiona los usuarios (gerente-monitor) de la plataforma
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 

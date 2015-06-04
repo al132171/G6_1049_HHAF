@@ -1,5 +1,10 @@
 package modelo.datos;
 
+/**
+ * @author appujimatica
+ * Objeto de dominio Comentario
+ */
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;

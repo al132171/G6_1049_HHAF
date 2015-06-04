@@ -16,6 +16,10 @@ import javax.ws.rs.core.UriInfo;
 import modelo.dao.UsuarioJPA;
 import modelo.datos.Usuario;
 
+/**
+ * @author appujimatica
+ * Servicio de monitores para que usen los monitores de la plataforma
+ */
 
 @Path("gerente/monitores")
 @Stateless

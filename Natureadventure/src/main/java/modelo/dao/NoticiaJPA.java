@@ -1,5 +1,10 @@
 package modelo.dao;
 
+/**
+ * @author appujimatica
+ * JPA que gestiona las noticias de la plataforma
+ */
+
 import java.util.List;
 
 import javax.ejb.Stateless;

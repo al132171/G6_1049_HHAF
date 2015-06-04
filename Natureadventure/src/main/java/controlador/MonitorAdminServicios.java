@@ -1,5 +1,10 @@
 package controlador;
 
+/**
+ * @author appujimatica
+ * Servicio de monitores para que use el gerente de la plataforma
+ */
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;

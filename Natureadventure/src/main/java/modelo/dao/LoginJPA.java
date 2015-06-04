@@ -1,5 +1,10 @@
 package modelo.dao;
 
+/**
+ * @author appujimatica
+ * JPA que gestiona el login de la plataforma
+ */
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

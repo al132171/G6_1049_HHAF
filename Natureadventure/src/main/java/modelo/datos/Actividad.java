@@ -1,6 +1,9 @@
 package modelo.datos;
 
-
+/**
+ * @author appujimatica
+ * Objeto de dominio Actividad
+ */
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,9 +15,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
-/**
- * Created by oscar on 27/11/14.
- */
 
 @XmlRootElement
 @XmlType(propOrder = {"id", "nombre", "duracion","horaInicio", "fechaInicio","fechaFin","descripcion","nivel", "precio","participantesMax","participantesMin","lugar","imagen", "categoria", "estado"})

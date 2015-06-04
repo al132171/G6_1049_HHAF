@@ -40,8 +40,10 @@
             <!--<property name="eclipselink.jdbc.user" value="APP"/>-->
             <!--<property name="eclipselink.jdbc.password" value="APP"/>-->
             <!--<property name="eclipselink.target-database" value="DERBY"/>-->
-            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
             <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="javax.persistence.sql-load-script-source" value="META-INF/insert.sql"/>
+            
         </properties>
     </persistence-unit>
     <persistence-unit name="personasJTADerby" transaction-type="JTA">

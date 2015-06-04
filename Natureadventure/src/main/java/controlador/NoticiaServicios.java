@@ -1,19 +1,32 @@
 package controlador;
 
-import java.net.URI;
+/**
+ * @author appujimatica
+ * Servicio noticias para mostrar, enviar y añadir nuevas noticias
+ * tanto en el back-end como front-end
+ */
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
-import controlador.utilidades.EnviaNoticia;
-import modelo.datos.Noticia;
-import modelo.datos.UsuarioSuscritoNoticias;
 import modelo.dao.NoticiaJPA;
 import modelo.dao.UsuarioSuscritoNoticiasJPA;
+import modelo.datos.Noticia;
+import modelo.datos.UsuarioSuscritoNoticias;
+import controlador.utilidades.EnviaCorreo;
 
 @Path("gerente/noticias")
 @Stateless
@@ -21,7 +34,7 @@ public class NoticiaServicios {
 	@Inject
     NoticiaJPA noticiaJPA;
 	@Inject
-	EnviaNoticia enviaNoticia;
+	EnviaCorreo enviaCorreo;
 	@Inject
 	UsuarioSuscritoNoticiasJPA usnJPA;
     @Context
@@ -51,7 +64,6 @@ public class NoticiaServicios {
     @Produces("application/json")
     public Response recuperarNoticia(@PathParam("titulo") String titulo) {
         Noticia noticia = noticiaJPA.recuperarNoticia(titulo);
-        System.out.println(noticia.toString());
         if(noticia == NoticiaJPA.ENTRADA_NULL)
         	return Response.status(Response.Status.NOT_FOUND).build();
     	return Response.ok(noticia).build();
@@ -84,9 +96,7 @@ public class NoticiaServicios {
     @Produces(MediaType.APPLICATION_JSON)
     public Response creaNuevaEntrada(@PathParam("id") Long id, Noticia noticia) {
         if(!id.equals(noticia.getId())) {
-            System.out.println(id);
-            System.out.println(noticia.getFecha());
-            System.out.println(noticia.getTitulo());
+           
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         else {
@@ -115,7 +125,7 @@ public class NoticiaServicios {
 		}
         
         try {
-			enviaNoticia.generateAndSendEmail(noticia, emailSuscritos);
+        	enviaCorreo.enviaNoticia(noticia, emailSuscritos);
 		} catch (AddressException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -142,7 +152,7 @@ public class NoticiaServicios {
 		}
         
         try {
-			enviaNoticia.generateAndSendEmail(noticia, emailSuscritos);
+			enviaCorreo.enviaNoticia(noticia, emailSuscritos);
 		} catch (AddressException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
