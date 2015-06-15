@@ -26,6 +26,7 @@ public class ActividadJPA {
     	actividad.setEstado("T"); //Siempre esta dada de alta cuando se añade
         em.persist(actividad);
     }
+    
 
     public Actividad buscaActividadPorNombre(String nombre) {
         TypedQuery<Actividad> query = em.createNamedQuery("Actividad.encuentraPorNombre", Actividad.class);

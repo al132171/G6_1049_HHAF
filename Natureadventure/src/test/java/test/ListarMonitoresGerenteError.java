@@ -24,7 +24,7 @@ public class ListarMonitoresGerenteError {
 	        webDriver.navigate().to("http://localhost:8080/Natureadventure/html/gerente/gestionarMonitores.html");
 	    }
 
-	    @When("^Se consultan los monitores del sistema$")
+	    @When("^Se listan los monitores del sistema$")
 	    public void get_monitores() throws Throwable {
         	webDriver.manage().timeouts().pageLoadTimeout(2, TimeUnit.SECONDS);
 	    }

@@ -30,7 +30,6 @@ app.controller('UsuarioCtrl', ['$scope', 'NoticiaUService', function ($scope, No
 
         var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         if ( !expr.test(email) ) {
-            alert("correo");
             $('#modalCorreoInvalido').modal('show');
         } else {
 
@@ -106,7 +105,6 @@ app.controller('UsuarioCtrl', ['$scope', 'NoticiaUService', function ($scope, No
 		$scope.descripcion3D = $scope.noticia3D.descripcion;
 	})
 	.error(function(data) {
-		alert("ERROR - No se han cargado las noticias");
 	});
 
 }]);

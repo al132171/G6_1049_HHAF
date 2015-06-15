@@ -46,9 +46,11 @@ public class AnyadirActividadGerenteCorrecto {
 	    @Then("^El sistema añade la actividad y muestra las existentes$")
 	    public void list_actividades() throws Throwable {
 	        try {
+		    	webDriver.manage().timeouts().pageLoadTimeout(3, TimeUnit.SECONDS);
 		    	webDriver.findElement(By.id("Actividad CUCUMBER")); //tiene que estar Running
-		    	webDriver.close();
+		    	webDriver.quit();
 	        } catch (NoSuchElementException e) {
+	        	webDriver.quit();
 	            fail("Añadir incorrecto");
 	        }
 	    }

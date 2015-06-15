@@ -3,6 +3,8 @@ package controlador;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -15,8 +17,11 @@ import org.junit.Test;
 
 public class ActividadServiciosTest {
 
-	private static final String uriBase = "http://localhost:8080/Natureadventure/actividades/";
+	private static final String uriBase = "http://localhost:8080/Natureadventure/gerente/actividades/";
 	private Actividad actividad1, actividad2, actividad3;
+	
+	@PersistenceContext(unitName = "natureadventureJTA")
+    EntityManager em;
 
 	@Before
 	public void setUp() {
@@ -78,18 +83,22 @@ public class ActividadServiciosTest {
 		.accept(MediaType.APPLICATION_JSON)
 		.type(MediaType.APPLICATION_XML)
 		.put(actividad3);
+		
+		
+		
 	}
 
 	@Test
 	public void testCreaNuevaEntradaOkXml() {
 		Response response;
-		Actividad actividad4 = new Actividad(null, "ActividadPrueba4", "01:00", "10:00", "12-04-2015", "12-05-2015", 
+		int numero = (int) Math.floor(Math.random()*(10000000-1+1)+1);
+		Actividad actividad4 = new Actividad(null, "ActividadPrueba" + numero, "01:00", "10:00", "12-04-2015", "12-05-2015", 
 				"Cuarta actividad de prueba para el método creaNuevaEntrada", "Bajo", 10.0f, 10, 5,
 				"Lugar establecido", "Imagen de prueba4", "Bicicleta", "T");
 
 		// Test OK produciendo un XML 
 		response = WebClient.create(uriBase)
-				.path("ActividadPrueba4")
+				.path("ActividadPrueba" + numero)
 				.accept(MediaType.APPLICATION_JSON)
 				.type(MediaType.APPLICATION_XML)
 				.put(actividad4);
@@ -99,14 +108,14 @@ public class ActividadServiciosTest {
 	@Test
 	public void testCreaNuevaEntradaOkJson() {
 		Response response;
-		
-		Actividad actividad5 = new Actividad(null, "ActividadPrueba5", "02:00", "10:00", "13-04-2015", "13-05-2015", 
+		int numero = (int) Math.floor(Math.random()*(10000000-1+1)+1);
+		Actividad actividad5 = new Actividad(null, "ActividadPrueba" + numero, "02:00", "10:00", "13-04-2015", "13-05-2015", 
 				"Quinta actividad de prueba para el método creaNuevaEntrada", "Bajo", 10.0f, 10, 5,
 				"Lugar establecido", "Imagen de prueba5", "Bicicleta","T");
 		
 		// Test OK produciendo un JSON 
 				response = WebClient.create(uriBase)
-						.path("ActividadPrueba5")
+						.path("ActividadPrueba" + numero)
 						.accept(MediaType.APPLICATION_JSON)
 						.type(MediaType.APPLICATION_JSON)
 						.put(actividad5);
@@ -184,30 +193,4 @@ public class ActividadServiciosTest {
 				.get();
 		assertThat(response.getStatusInfo().getStatusCode(), is(Response.Status.OK.getStatusCode()));
 	}
-
-
-	@Test
-	public void testBorraEntradaAccepted() {
-		Response response;
-
-		// Test recupera actividad1 OK
-		response = WebClient.create(uriBase)
-				.path("ActividadPrueba1")
-				.accept(MediaType.APPLICATION_JSON)
-				.delete();
-		assertThat(response.getStatusInfo().getStatusCode(), is(Response.Status.ACCEPTED.getStatusCode()));
-	}
-
-	@Test
-	public void testBorraEntradaNotFound() {
-		Response response;
-
-		// Test borra actividad0 Not Found
-		response = WebClient.create(uriBase)
-				.path("ActividadPrueba0")
-				.accept(MediaType.APPLICATION_JSON)
-				.delete();
-		assertThat(response.getStatusInfo().getStatusCode(), is(Response.Status.NOT_FOUND.getStatusCode()));
-	}
-
 }

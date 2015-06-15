@@ -1,4 +1,4 @@
-@delete
+@put
 Feature: Gestionar monitores
   In order to mantener monitores
   As a gerente 

@@ -8,7 +8,6 @@ persistencia/ActividadJPATest.class
 test/VisualizarActividadesCalendarioCorrecto.class
 test/ListarActividadesGerente.class
 test/ConsultarActividadesNoActivasCategoria.class
-controlador/PersonaServiciosJPATest.class
 test/LoginIncorrectoScenario.class
 test/EditarMonitorGerenteCorrecto.class
 test/AsignarMonitorReserva.class

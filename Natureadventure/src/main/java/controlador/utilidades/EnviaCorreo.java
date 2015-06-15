@@ -40,7 +40,7 @@ public class EnviaCorreo{
 		System.out.println("\n\n 2nd ===> get Mail Session..");
 		getMailSession = Session.getInstance(mailServerProperties);
 		generateMailMessage = new MimeMessage(getMailSession);
-		generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress("al132171@uji.es"));
+		generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(reserva.getCorreo()));
 		generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress("ujimaticaNatureadventure@gmail.com"));
 		String emailBody = "";
 		if(tipo.equals("aceptar")){

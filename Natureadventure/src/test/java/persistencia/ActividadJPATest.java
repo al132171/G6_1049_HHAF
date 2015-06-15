@@ -22,9 +22,9 @@ public class ActividadJPATest {
         when(segunda.getNombre()).thenReturn("2");
         actividadJPA.nuevaActividad(primera);
         actividadJPA.nuevaActividad(segunda);
-        Actividad[] personas = new Actividad[2];
-        Arrays.asList(primera, segunda).toArray(personas);
-        assertThat(actividadJPA.listaTodasActividadesActivas(), is(personas));
+        Actividad[] actividades = new Actividad[2];
+        Arrays.asList(primera, segunda).toArray(actividades);
+        assertThat(actividadJPA.listaTodasActividadesActivas(), is(actividades));
     }
 
     @Test

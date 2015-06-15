@@ -74,17 +74,21 @@
 		<!-- Fin de JPA -->
 
 		<!-- Para usar cucumber -->
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-junit</artifactId>
-			<version>1.2.0</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-java</artifactId>
 			<version>1.2.2</version>
 		</dependency>
+ 		
 
+	<dependency>
+		<groupId>info.cukes</groupId>
+		<artifactId>cucumber-junit</artifactId>
+		<version>1.2.2</version>
+	</dependency>
+		
+		
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-firefox-driver</artifactId>
@@ -118,9 +122,7 @@
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-osgi-registry</artifactId>
 			<version>1.1</version>
-		</dependency>
-
-
+		</dependency>		
 
 	</dependencies>
 

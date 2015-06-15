@@ -5,6 +5,6 @@ Feature: Gestionar monitores
   I want poder consultar, añadir, editar y dar de baja monitores en el sistema
   
   Scenario: Listar monitores
-    Given Hay monitores registrados en el sistema
+    Given Hay monitores en el sistema
     When Se consultan los monitores del sistema
     Then Se muestra una lista con los monitores existentes en el sistema

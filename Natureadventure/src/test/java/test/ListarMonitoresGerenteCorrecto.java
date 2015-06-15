@@ -18,7 +18,7 @@ public class ListarMonitoresGerenteCorrecto {
 
 	    WebDriver webDriver = null;
 
-	    @Given("^Hay monitores registrados en el sistema$")
+	    @Given("^Hay monitores en el sistema$")
 	    public void list_displayed() throws Throwable {
 	        webDriver = new FirefoxDriver();
 	        webDriver.navigate().to("http://localhost:8080/Natureadventure/html/gerente/gestionarMonitores.html");

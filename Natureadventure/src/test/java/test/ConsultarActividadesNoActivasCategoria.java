@@ -19,20 +19,20 @@ public class ConsultarActividadesNoActivasCategoria {
 
 	    WebDriver webDriver = null;
 
-	    @Given("^Una cotegoría de actividades en el sistema$")
+	    @Given("^Selecciono una categoría de actividades en el sistema$")
 	    public void list_displayed() throws Throwable {
 	        webDriver = new FirefoxDriver();
 	        webDriver.navigate().to("http://localhost:8080/Natureadventure/html/categorias.html");
 	    }
 
-	    @When("^Consulto dicha categoría$")
+	    @When("^Consulto la categoría$")
 	    @And("^No existen actividades ni activas ni no activas en el sistema pertenecientes a esa categoría$")
 	    public void get_actividades() throws Throwable {
         	webDriver.manage().timeouts().pageLoadTimeout(2, TimeUnit.SECONDS);
             webDriver.findElement(By.id("actividadesCategoria-Bicicleta")).click();
 	    }
 
-	    @Then("^No se muestra ninguna actividad$")
+	    @Then("^No aparece ninguna actividad$")
 	    public void click_submit() throws Throwable {
 	        try {
 		    	webDriver.findElement(By.id("Bicicleta de montaña"));

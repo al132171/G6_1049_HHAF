@@ -6,5 +6,5 @@ Feature: Gestionar monitores
   
   Scenario: Listar monitores
     Given No hay monitores registrados en el sistema
-    When Se consultan los monitores del sistema
+    When Se listan los monitores del sistema
     Then Se muestra un mensaje indicando que no existen monitores registrados en el sistema

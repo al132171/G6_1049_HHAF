@@ -12,7 +12,6 @@
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/test/java/test/EditarPerfilGerenteIncorrecto.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/test/java/test/LoginIncorrectoScenario.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/test/java/test/ListarMonitoresGerenteError.java
-/home/hector/Repositorio_EI1049-1050/Natureadventure/src/test/java/controlador/PersonaServiciosJPATest.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/test/java/test/ConsultarActividadesNoActivasCategoria.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/test/java/test/AnyadirActividadGerenteCorrecto.java
 /home/hector/Repositorio_EI1049-1050/Natureadventure/src/test/java/persistencia/ActividadJPATest.java

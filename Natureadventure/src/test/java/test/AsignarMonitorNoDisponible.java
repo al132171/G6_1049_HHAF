@@ -25,11 +25,11 @@ public class AsignarMonitorNoDisponible {
 
 	@When("^Pulso el botón de asignar un monitor$")
 	public void click_button_asignar_monitor() throws Throwable {
-		webDriver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
+		webDriver.manage().timeouts().pageLoadTimeout(3, TimeUnit.SECONDS);
 		webDriver.findElement(By.id("asignar:Motor Storm")).click();
 		try {
-			webDriver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
-			webDriver.findElement(By.id("cancelar")).click();		
+			webDriver.manage().timeouts().pageLoadTimeout(3, TimeUnit.SECONDS);
+			webDriver.findElement(By.id("cancelar")).click();	
 			webDriver.close();
 		} catch (NoSuchElementException e) {
 			fail("Añadir incorrecto");

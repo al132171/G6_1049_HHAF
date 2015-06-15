@@ -19,13 +19,13 @@ public class ConsultarActividadesActivasCategoriaError {
 
 	    WebDriver webDriver = null;
 
-	    @Given("^Una cotegoría de actividades en el sistema$")
+	    @Given("^Una categoría de actividades en el sistema$")
 	    public void list_displayed() throws Throwable {
 	        webDriver = new FirefoxDriver();
 	        webDriver.navigate().to("http://localhost:8080/Natureadventure/html/categorias.html");
 	    }
 
-	    @When("^Consulto dicha categoría$")
+	    @When("^Busco dicha categoría$")
 	    @And("^No xisten actividades activas en el sistema pertenecientes a esa categoría$")
 	    public void get_actividades() throws Throwable {
         	webDriver.manage().timeouts().pageLoadTimeout(2, TimeUnit.SECONDS);
