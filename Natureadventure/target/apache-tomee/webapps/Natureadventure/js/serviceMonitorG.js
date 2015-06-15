@@ -193,7 +193,6 @@ app.controller('MonitoresCtrl', ['$scope', 'MonitorGService',
 		var bool = validator($scope, "create");
 
 		if(bool == true){
-			alert("correo "+especialidad);
 			MonitorGService.create(nombre,apellidos,dni, correo, telefono, username, password, especialidad)
 			.success(function (data) {
 				borraCampos($scope);
@@ -258,7 +257,6 @@ app.service('MonitorGService', ['$http', function($http) {
 			'telefono':telefono, 'username':username, 'password':password, 'especialidad':especialidad, 'rol':'M', 'estado':'A'}};
 		
 		var url = app.baseURI +"anyadir/"+ dni;
-		alert(url);
 		return $http.put(url, dato);
 	}
 
@@ -285,7 +283,6 @@ app.service('MonitorGService', ['$http', function($http) {
 
 	this.update = function (monitor) {
 		var url = app.baseURI +"actualizar/" + monitor.usuario.dni;
-		alert(url);
 		return $http.put(url, monitor);
 	};
 }]);
